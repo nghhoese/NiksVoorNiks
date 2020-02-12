@@ -16,15 +16,14 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        background-color: GREEN;
+        background-color: RED;
     }
     /* HEADER */
 
     .header {
         display: flex;
         height: 51px;
-        justify-content: space-evenly;
-        background-color: #66BB6A;
+        background-color: RED;
         border-bottom: 1px solid #eee;
         font-family: 'Roboto', sans-serif;
         z-index: 10;
@@ -35,19 +34,14 @@
     .header-start{
         display: flex;
         align-items: center;
-        justify-content: flex-start;
     }
 
     .header-end{
-        display: flex;
         align-items: center;
-        justify-content: flex-end;
     }
 
     .nav{
-        display: flex;
         align-items: center;
-        justify-content: flex-end;
     }
     .nav a {
         text-decoration: none;
@@ -55,7 +49,7 @@
     }
 
     .fa-bell{
-font-size: 24px;
+        font-size: 24px;
     }
 
 
@@ -87,7 +81,7 @@ font-size: 24px;
         display: flex;
         justify-content: space-evenly;
         height: 100%;
-        background-color: YELLOW;
+        background-color: RED;
     }
 
     /* FOOTER */
