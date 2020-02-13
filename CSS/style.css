@@ -16,7 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: BLUE;
+    background-color: #C4E9C7;
 }
 
 /* HEADER */
@@ -98,7 +98,7 @@ body {
     display: flex;
     justify-content: space-evenly;
     height: 100%;
-    background-color: #66BB6A;
+    background-color: white;
 }
 
 /* FOOTER */

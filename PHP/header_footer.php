@@ -10,14 +10,14 @@
 </head>
 
 <body>
-<div class="container">
-    <header class="header">
+    <div class="container">
+        <header class="header">
 
             <div class="header-start">
                 <div class="logo"><a href="index.html"><img src="../Resources/favicon.png"></a></div>
             </div>
 
-        <nav class="nav">
+            <nav class="nav">
 
                 <a href="index.html">Over ons</a>
                 <a href="index.html">Advertenties</a>
@@ -25,31 +25,31 @@
                 <a href="index.html">Deelnemer worden</a>
                 <a href="index.html">Contact</a>
 
-        </nav>
+            </nav>
 
-        <div class="header-end">
+            <div class="header-end">
                 <a href="index.html"><span style="font-size: small">A</span><span style="font-size: large">A</span></a>
                 <a href="index.html" class="fa fa-bell"></a>
                 <a href="index.html">Inloggen</a>
             </div>
-    </header>
+        </header>
 
-    <div class="content">
+        <div class="content">
+
+        </div>
+
+        <div class="footer">
+            <div>
+                CONTACT:
+                info@email.nl
+                +316123456789
+            </div>
+            <div>
+                &#169 2020 Niks voor Niks
+            </div>
+        </div>
 
     </div>
-
-    <div class="footer">
-        <div>
-            CONTACT:
-            info@email.nl
-            +316123456789
-        </div>
-        <div>
-            &#169 2020 Niks voor Niks
-        </div>
-    </div>
-
-</div>
 </body>
 
 </html>
