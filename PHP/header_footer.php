@@ -36,17 +36,16 @@
 
         <div class="content">
 
-        </div>
+    </div>
 
-        <div class="footer">
-            <div>
-                CONTACT:
-                info@email.nl
-                +316123456789
-            </div>
-            <div>
-                &#169 2020 Niks voor Niks
-            </div>
+    <div class="footer">
+        <div class="contact">
+            CONTACT:
+            info@email.nl
+            +316123456789
+        </div>
+        <div class="copyright">
+            &#169 2020 Niks voor Niks
         </div>
 
     </div>
