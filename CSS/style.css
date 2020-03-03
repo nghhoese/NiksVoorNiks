@@ -15,7 +15,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100%;
     background-color: #C4E9C7;
 }
 
@@ -129,7 +129,7 @@ width: 100px;
     justify-content: space-evenly;
     flex-direction: column;
     height: 100%;
-    background-color:white;
+    background-color: #C4E9C7;
 }
 .preview-aanbod{
   display: flex;
@@ -232,7 +232,6 @@ width: 100px;
 /* FOOTER */
 
 .footer {
-    position: absolute;
     bottom: 0;
 
     width: 100%;
