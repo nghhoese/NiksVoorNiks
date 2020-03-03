@@ -2,7 +2,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <header class="header">
-
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	 <div class="header-start">
                 <div class="logo"><a href="index.php"><img src="Resources/favicon.png"></a></div>
             </div>

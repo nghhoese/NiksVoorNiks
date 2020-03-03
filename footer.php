@@ -1,5 +1,5 @@
 <div class="footer">
- <script src="JS/script.js"></script>
+ <script src="JS/nav.js"></script>
 <div id="innerfooter">
     <div class="contact">
     <p>    CONTACT:</p>
