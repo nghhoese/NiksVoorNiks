@@ -18,13 +18,44 @@
     background-color: white;
 }
 
+.btn{
+    margin-top: 20px;
+    border: none;
+    background-color: #66BB6A;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+}
+
+.btn:hover {
+    background: #eee;
+    color:black;
+}
+
 .info{
     margin: 20px;
     margin-right: 10%;
+    padding: 20px;
     max-width: 20%;
     height: 100%;
     border: 1px black;
     background-color: white;
+}
+
+.naam{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.locatie{
+    margin-bottom: 10px;
+}
+
+.persoonsbeschrijving{
+    max-width: 100%;
+    margin-top: 40px;
 }
 
 .stats{
