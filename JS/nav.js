@@ -3,10 +3,25 @@ document.querySelector('#menu').addEventListener('click',function(){
  navs.forEach(nav => nav.classList.toggle('toggleshow'));
 })
 document.querySelector('.biggerfont').addEventListener('click',function(){
-if(document.querySelector('*').fontSize == '100%';){
-document.querySelector('*').fontSize = '150%';
+console.log('hello');
+
+if(document.querySelector('.container').style.fontSize == '150%'){
+document.querySelector('.container').style.fontSize = '100%';
+var x = document.querySelectorAll(".nav a");
+var i;
+for (i = 0; i < x.length; i++) {
+  x[i].style.fontSize = "17px";
+} 
+
 }else{
-document.querySelector('*').fontSize = '100%';
+console.log('get here');
+document.querySelector(".container").style.fontSize = "150%";
+var x = document.querySelectorAll(".nav a");
+var i;
+for (i = 0; i < x.length; i++) {
+  x[i].style.fontSize = "150%";
+} 
+
 }
 })
 

@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <title>Niks voor Niks - Advertenties</title>
-    <link rel="icon" href="../Resources/favicon.png">
-    <link rel="stylesheet" type="text/css" href="../NiksVoorNiks/CSS/advertentiedetails.css">
-    <link rel="stylesheet" type="text/css" href="../NiksVoorNiks/CSS/style.css">
+    <link rel="icon" href="Resources/favicon.png">
+    <link rel="stylesheet" type="text/css" href="CSS/advertentiedetails.css">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="../NiksVoorNiks/JS/script.js"></script>
+   
 </head>
 
 <body>
@@ -20,7 +20,7 @@
         <div class="flex-container">
             <div class="main-content">
                 <div class="title"><h1>Vers gebakken pannekoeken, taarten en brood.</h1></div>
-                <img src="../NiksVoorNiks/Resources/csm_Bakken.nl_Q2_Batch1_Pannenkoeken_Origineel_3b4e9665a9.png" >
+                <img src="Resources/csm_Bakken.nl_Q2_Batch1_Pannenkoeken_Origineel_3b4e9665a9.png" >
                 <div class="stats">
                     <div>sinds 03 maart, 2020, 15:20</div>
                     <div>tot 05 maart, 2020, 00:00</div>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="info">
-                <img src="../NiksVoorNiks/Resources/Terry.png">
+                <img src="Resources/Terry.png">
                 <div class="naam"><b>Terry Gestold</b></div>
                 <div class="locatie">Koetshuis 16, Den Bosch</div>
                 <div class="Persoonsbeschrijving">
