@@ -423,7 +423,55 @@ i.adloc label {
     cursor: pointer;
 }
 
+/* ADVERTENTIE PLAATSEN  */
+.plaatsadvertentie {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex: 1;
+  background-color: white;
 
+}
+
+.plaatsadvertentie h2{
+  margin-top: 10%;
+}
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 24px 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+.plaatsadvertentie form label {
+  font-size: 1em;
+}
+
+.plaatsadvertentie form select {
+  width: 96%;
+  border-color: #66BB6A;
+  border-width: 2px;
+  padding: 5px;
+}
+
+.plaatsadvertentie form input {
+  border-color: #66BB6A;
+  border-width: 2px;
+  padding: 5px;
+}
+
+.plaatsadvertentie form input[type=number] {
+  width: 20%;
+}
+
+.plaatsadvertentie form input[type=text] {
+  width: 96%;
+}
 /* FOOTER */
 
 .footer {

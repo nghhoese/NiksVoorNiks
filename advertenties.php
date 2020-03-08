@@ -3,17 +3,16 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Niks voor Niks - Advertenties</title>
-    <link rel="icon" href="Resources/favicon.png">
-    <link rel="stylesheet" type="text/css" href="CSS/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="JS/script.js"></script>
+    
+<title>Niks voor Niks - Advertenties</title>
+    
 </head>
 
 <body>
     <div class="container">
 
-        <?php include("header.php"); ?>
+    <?php include("header.php"); ?>
+    
 
         <div class="articles">
             <div class="filters">

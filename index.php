@@ -4,15 +4,17 @@
 <head>
     <meta charset="utf-8">
     <title>Niks voor Niks</title>
-    <link rel="icon" href="Resources/favicon.png">
-
     
+ 
+
+	    
 </head>
 
 <body>
     <div class="container">
+	<?php include("header.php"); ?>
 
-        <?php include("header.php"); ?>
+        
 
         
         <div class="content">
