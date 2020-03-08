@@ -19,7 +19,7 @@
             </nav>
 
             <div class="header-end">
-                <a href="#"><span style="font-size: small">A</span><span style="font-size: large">A</span></a>
+                <a class="biggerfont" href="#"><span style="font-size: small">A</span><span style="font-size: large">A</span></a>
                 <a href="#" class="fa fa-bell"></a>
                 <a href="login.php">Inloggen</a>
             </div>
