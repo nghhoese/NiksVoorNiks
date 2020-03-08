@@ -3,16 +3,16 @@
 
 <head>
     <meta charset="utf-8">
-    
-<title>Niks voor Niks - Advertenties</title>
-    
+
+    <title>Niks voor Niks - Advertenties</title>
+
 </head>
 
 <body>
     <div class="container">
 
-    <?php include("header.php"); ?>
-    
+        <?php include("header.php"); ?>
+
 
         <div class="articles">
             <div class="filters">
@@ -56,6 +56,11 @@
                     </select><br>
 
                 </form>
+
+                <a class="addad" href="advertentiePlaatsen.php">
+                    Klik hier om zelf een advertentie te plaatsen
+                    <i class="fa fa-arrow-right"></i>
+                </a>
             </div>
 
             <div class="article-list">

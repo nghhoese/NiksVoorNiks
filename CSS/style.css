@@ -339,6 +339,28 @@ body {
 
 /* Article list */
 
+.addad {
+    font-size: 1.2em;
+    position: absolute;
+    align-content: center;
+    width: 25%;
+    padding: 15px;
+    background-color: #66BB6A;
+    color: white;
+    cursor: pointer;
+}
+
+.addad:link,
+.addad:visited {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.addad:link:hover,
+.addad:visited:hover {
+    background-color: #bbb;
+}
+
 .article-list {
     background-color: white;
     width: 75%;
