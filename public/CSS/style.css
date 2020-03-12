@@ -26,9 +26,6 @@ body {
     header.header {
         height: 100%;
     }
-    .preview-aanbod {
-        display: block!important;
-    }
     .header-end {
         display: block!important;
     }
@@ -140,8 +137,72 @@ body {
 .preview-aanbod {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     margin-top: 1%;
+}
+
+.aanbod {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    transition-duration: 200ms;
+    position: relative;
+    min-width: 300px;
+    max-width: 300px;
+}
+
+.aanbod:link,
+.aanbod:visited {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.aanbod:link:active,
+.aanbod:visited:active {
+    color: black;
+}
+
+.aanbod:link:hover,
+.aanbod:visited:hover {
+    background-color: #bbb;
+}
+
+.aanbod img {
+    display: block;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title {
+    font-size: 2em;
+}
+
+.price,
+.type {
+    font-size: 1.2em;
+    background-color: #66BB6A;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.price {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.type {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.beschrijving {
+    font-size: 1.4em;
 }
 
 
@@ -152,61 +213,36 @@ body {
 }
 
 .slider {
-    max-width: 1000px;
+    max-width: 100%;
     position: relative;
     margin: auto;
 }
 
-.mySlides p {
-    font-size: 55px;
+.mySlides {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
-
-/* Next & previous buttons */
-
-.prev,
-.next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-
-
-/* Position the "next button" to the right */
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-
-/* On hover, add a black background color with a little bit see-through */
-
-.prev:hover,
-.next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+.mySlides img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
 }
 
 
 /* Caption text */
 
 .text {
-    color: #f2f2f2;
-    font-size: 15px;
+    color: black;
+    font-weight: 700;
+    font-size: 2.5em;
     padding: 8px 12px;
     position: absolute;
-    bottom: 8px;
+    top: 25%;
     width: 100%;
     text-align: center;
+    background-color: #ffffffda;
 }
 
 
