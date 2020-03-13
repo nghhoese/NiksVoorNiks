@@ -6,9 +6,7 @@ home
 
 
         
-<div class="container">
 
-</div>
         
       
      

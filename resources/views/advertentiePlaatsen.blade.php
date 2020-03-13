@@ -3,7 +3,7 @@
 home
 @endsection
 @section ('content')
-<div class="container">
+
 <div class="plaatsadvertentie">
 
             <div class="createForm">
@@ -49,7 +49,7 @@ home
             </div>
         </div>
 
-</div>
+
 
         
 

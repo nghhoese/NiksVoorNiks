@@ -28,3 +28,6 @@ Route::get('/advertentieDetails', function () {
 Route::get('/activiteiten', function () {
     return view('activiteiten');
 });
+Route::get('/overons', function () {
+    return view('overons');
+});
