@@ -127,11 +127,31 @@ body {
 /* CONTENT */
 
 .content {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
     height: 100%;
     background-color: white;
+}
+
+.homecontent {
+    overflow: auto;
+    height: 100%;
+    display: flex;
+}
+
+.over-ons-small {
+    position: relative;
+    width: 30%;
+    flex: 1;
+    height: 100%;
+    background-color: white;
+    float: left;
+    padding: 10px 50px;
+    margin: 0px;
+}
+
+.link {
+    color: #bbb;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .preview-aanbod {
@@ -140,6 +160,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin-top: 1%;
+    width: 60%;
 }
 
 .aanbod {
@@ -203,6 +224,23 @@ body {
 
 .beschrijving {
     font-size: 1.4em;
+}
+
+@media screen and (max-width: 905px) {
+    .homecontent {
+        display: inline;
+    }
+    .over-ons-small {
+        width: 100%;
+    }
+    .preview-aanbod {
+        width: 100%;
+        flex-direction: column;
+    }
+    .aanbod {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 
