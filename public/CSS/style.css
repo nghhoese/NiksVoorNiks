@@ -15,7 +15,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 86.5vh;
+    min-height: 87.3vh;
     background-color: #C4E9C7;
 }
 
@@ -54,7 +54,6 @@ body {
     justify-content: space-between;
     height: 51px;
     background-color: #66BB6A;
-    border-bottom: 1px solid #eee;
     font-family: 'Roboto', sans-serif;
     z-index: 10;
     position: sticky;
@@ -510,13 +509,8 @@ input[type=submit]:hover {
     color: white;
 }
 
-.contact {
-    margin: 2px;
-}
 
-.copyright {
-    margin: 2px;
-}
+
 
 .footer>p {
     display: flex;
