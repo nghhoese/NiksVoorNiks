@@ -27,14 +27,14 @@
             </div>
 
             <div class="info">
+                <div class="title"><h1>Inschrijven</h1></div>
+
+                <div class="explanation">Leuk dat je je misschien wil inschrijven bij onze club! We zijn altijd erg enthusiast om nieuwe deelnemers aan te mogen nemen en kijken daarom ook erg uit naar jouw bijdrage. Om deel te nemen vragen we alleen een paar simpele dingen van je en dan ben je binnen een week voolwaardig lid van onze ruilkring.</div>
+                <div class="explanation">Eerst vragen we je om naar de "Deelnemer worden" knop te navigeren op deze website. Daar vind je de mogelijkheid om een van onze leden te mailen en op die manier kun je je dan aanmelden. Na een paar dagen zul je gevraagd worden om langs te komen voor een kop koffie en een gesprek, zodat je al wat mensen kan leren kennen!</div>
+                <div class="explanation">Als dat allemaal gebeurt is zul je binnen dezelfde week nog horen of je mee kan doen, je krijgt dan je account voor de website en bent officieel lid!</div>
+                <div class="explanation">Laat het ruilen beginnen!</div>
 
 
-                <div class="title"><h1>Wie zijn wij?</h1></div>
-
-                <div class="explanation">Wij zijn ruilkring Den Bosch, ook wel bekend als Niks voor Niks. Wij zijn een hechte groep van allemaal verschillende mensen die graag diensten of waren van anderen in huis nemen, maar hier liever toch niet voor betalen, vandaar dat wij de niks hebben gemaakt.</div>
-                <div class="explanation">Op dit moment telt de ruilkring ongeveer 100 leden, een aardig aantal. Toch kennen de meeste mensen elkaar erg goed, we zijn bekend met mekaar en kunnen daarom ook altijd zonder problemen even op de koffie of leuk wat gaan doen.</div>
-                <div class="explanation">We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de optie om deze passie te uiten en tot bloei te laten komen.</div>
-                <div class="explanation">Klinkt dit allemaal wel interessant? Neem dan vooral een kijkje over hoe je lid wordt!</div>
 
             </div>
         </div>

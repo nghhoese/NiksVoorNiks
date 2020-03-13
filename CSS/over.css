@@ -1,0 +1,79 @@
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    margin: 5px auto;
+    width: 100%;
+    height: 100%;
+    border: 1px black;
+}
+
+.main-content{
+    margin: 20px;
+    margin-top: 10%;
+    padding: 20px;
+    align-content: center;
+    max-width: 60%;
+    height: 100%;
+    border: 20px black;
+    background-color: white;
+}
+
+.btn{
+    margin-top: 20px;
+    border: none;
+    background-color: #66BB6A;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+}
+
+.btn:hover {
+    background: #eee;
+    color:black;
+}
+
+.info{
+    margin: 20px;
+    margin-right: 10%;
+    padding: 20px;
+    font-size: 1.4em;
+    max-width:75%;
+    height: 100%;
+    border: 1px black;
+    background-color: white;
+}
+
+.questions{
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    margin-bottom: 10px;
+}
+
+.explanation{
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+
+
+
+
+
+
+button{
+    size: 20px 20px;
+}
+
+
+b{
+    font-size: 1.5em;
+}
+
+h1{
+    font-size: 4em;
+}
