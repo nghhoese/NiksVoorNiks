@@ -41,6 +41,7 @@
 <footer>
 <div class="footer">
 <script src="JS/nav.js" ></script>
+<Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 @yield ('footer')
 <div id="innerfooter">
     <div class="contact">

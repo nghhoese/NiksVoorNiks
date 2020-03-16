@@ -19,6 +19,9 @@ Route::get('/', function () {
 Route::get('/advertenties', function () {
     return view('advertenties');
 });
+Route::get('/login', function () {
+    return view('login');
+});
 Route::get('/advertentiePlaatsen', function () {
     return view('advertentiePlaatsen');
 });
