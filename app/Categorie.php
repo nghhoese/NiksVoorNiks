@@ -14,4 +14,8 @@ class Categorie extends Model
     public $timestamps = false;
     const CREATED_AT = 'creation_date';
     const UPDATED_AT = 'last_update';
+    public function advertentie()
+    {
+        return $this->hasMany('App\Advertentie', 'categorie', 'naam');
+    }
 }

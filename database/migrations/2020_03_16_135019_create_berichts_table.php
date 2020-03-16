@@ -17,11 +17,11 @@ class CreateBerichtsTable extends Migration
             $table->increments('id');
             $table->string('inhoud',500);
             $table->string('onderwerp',50);
-            $table->date('datum');
+            $table->dateTime('datum');
             $table->string('zender_email',50);
             $table->string('ontvanger_email',50);
             $table->foreign('zender_email')->references('email')->on('deelnemer');
-            $table->foreign('Ontvanger_email')->references('email')->on('deelnemer');
+            $table->foreign('ontvanger_email')->references('email')->on('deelnemer');
            
         });
     }

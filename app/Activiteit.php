@@ -13,6 +13,7 @@ class Activiteit extends Model
     //timestamps kan wel op true, mochten we het ooit ergens nodig voor hebben.
     // Maar kans is zo klein, dat hij van mij ook op false mag blijven
     public $timestamps = true;
-    const CREATED_AT = 'datum';
+    const CREATED_AT = 'creation_date';
     const UPDATED_AT = 'last_update';
+    
 }

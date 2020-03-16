@@ -13,4 +13,9 @@ class Bericht extends Model
     public $timestamps = true;
     const CREATED_AT = 'datum';
     const UPDATED_AT = 'last_update';
+    public function deelnemer(){
+   
+        return $this->belongsTo('App\Deelnemer');
+    }
+
 }

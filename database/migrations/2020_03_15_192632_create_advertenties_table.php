@@ -18,12 +18,12 @@ class CreateAdvertentiesTable extends Migration
             $table->string('deelnemer_email',50);
             $table->foreign('deelnemer_email')->references('email')->on('deelnemer');
             $table->string('title',50);
-            $table->int('vraag',4);
-            $table->int('bieden',4);
+            $table->unsignedInteger('vraag');
+            $table->unsignedInteger('bieden');
             $table->string('beschrijving',500)->nullable();
-            $table->date('aanmaakdatum');
+            $table->dateTime('aanmaakdatum');
             $table->string('foto',200)->nullable();
-            $table->int('prijs',11);
+            $table->unsignedInteger('prijs');
             $table->string('postcode',6);
             $table->string('huisnummer',10);
             $table->string('categorie',50);

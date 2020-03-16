@@ -14,4 +14,9 @@ class Rol extends Model
     public $timestamps = false;
     const CREATED_AT = 'creation_date';
     const UPDATED_AT = 'last_update';
+    public function deelnemer()
+    {
+        return $this->hasMany('App\Deelnemer', 'rol_naam', 'naam');
+
+    }
 }
