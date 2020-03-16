@@ -17,7 +17,7 @@ class CreateAdvertentiesTable extends Migration
             $table->increments('id');
             $table->string('deelnemer_email',50);
             $table->foreign('deelnemer_email')->references('email')->on('deelnemer');
-            $table->string('title',50);
+            $table->string('titel',50);
             $table->unsignedInteger('vraag');
             $table->unsignedInteger('bieden');
             $table->string('beschrijving',500)->nullable();

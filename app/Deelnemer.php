@@ -33,4 +33,11 @@ class Deelnemer extends Model
     public function rol(){
         return $this->belongsTo('App\Rol');
     }
+    public function activiteit(){
+        return $this->belongsToMany('App\Activiteit', 'activiteit_heeft_deelnemer', 'deelnemer_email', 'activiteit_id');
+
+    }
+    public function groep(){
+        return $this->belongsToMany('App\Groep', 'deelnemer_heeft_groep', 'deelnemer_email', 'groep_naam');
+    }
 }

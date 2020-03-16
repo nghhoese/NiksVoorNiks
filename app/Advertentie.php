@@ -19,4 +19,7 @@ class Advertentie extends Model
     public function deelnemer(){
         return $this->belongsTo('App\Deelnemer');
     }
+    public function groep(){
+        return $this->belongsToMany('App\Groep', 'advertentie_heeft_groep', 'groep_naam', 'advertentie_id');
+    }
 }

@@ -16,8 +16,8 @@ class CreateAdvertentieHeeftGroepsTable extends Migration
         Schema::create('advertentie_heeft_groep', function (Blueprint $table) {
             $table->string('groep_naam',50);
             $table->foreign('groep_naam')->references('naam')->on('groep');
-            $table->unsignedInteger('activiteit_id');
-            $table->foreign('activiteit_id')->references('id')->on('activiteit');
+            $table->unsignedInteger('advertentie_id');
+            $table->foreign('advertentie_id')->references('id')->on('advertentie');
 
 
         });

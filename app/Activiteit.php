@@ -15,5 +15,11 @@ class Activiteit extends Model
     public $timestamps = true;
     const CREATED_AT = 'creation_date';
     const UPDATED_AT = 'last_update';
+    public function deelnemer(){
+        return $this->belongsToMany('App\Deelnemer', 'activiteit_heeft_deelnemer', 'deelnemer_email', 'activiteit_id');
+    }
+    public function groep(){
+        return $this->belongsToMany('App\Groep', 'activiteit_heeft_deelnemer', 'deelnemer_email', 'activiteit_id');
+    }
     
 }
