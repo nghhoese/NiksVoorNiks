@@ -28,6 +28,7 @@ class Deelnemer extends Model
     }
     public function advertentie()
     {
+        
         return $this->hasMany('App\Advertentie', 'deelnemer_email', 'email');
     }
     public function rol(){

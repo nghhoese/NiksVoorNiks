@@ -18,8 +18,6 @@ class Activiteit extends Model
     public function deelnemer(){
         return $this->belongsToMany('App\Deelnemer', 'activiteit_heeft_deelnemer', 'deelnemer_email', 'activiteit_id');
     }
-    public function groep(){
-        return $this->belongsToMany('App\Groep', 'activiteit_heeft_deelnemer', 'deelnemer_email', 'activiteit_id');
-    }
+
     
 }

@@ -34,3 +34,4 @@ Route::get('/activiteiten', function () {
 Route::get('/overons', function () {
     return view('overons');
 });
+Route::get('/nicksadvertenties','Advertentie@showAdvertenties');
