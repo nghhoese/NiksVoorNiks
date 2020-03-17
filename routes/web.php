@@ -31,6 +31,14 @@ Route::get('/advertentieDetails', function () {
 Route::get('/activiteiten', function () {
     return view('activiteiten');
 });
-Route::get('/overons', function () {
-    return view('overons');
+Route::get('/overons', 'HomeController@index')->name('overons');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return view('activiteiten');
 });
