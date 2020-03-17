@@ -13,6 +13,7 @@ class Advertentie extends Model
     public $timestamps = false;
     const CREATED_AT = 'aanmaakdatum';
     const UPDATED_AT = 'last_update';
+
     public function categorie(){
         return $this->belongsTo('App\Categorie');
     }
