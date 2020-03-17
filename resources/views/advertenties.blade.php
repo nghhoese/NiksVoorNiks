@@ -2,14 +2,11 @@
 @section('title')
 home
 @endsection
+@section ('stylesheets')
+<link rel="stylesheet" href="CSS/pagination.css">
+
+@endsection
 @section ('content')
-
-
-        
-
-
-        
-
 
 <div class="articles">
     <div class="filters">
@@ -61,50 +58,19 @@ home
     </div>
 
     <div class="article-list">
+    @foreach($advertenties as $advertentie)
         <a class="article" href="#" id="ad1">
-            <img src="Resources/MXsfEWs.png" alt="placeholder">
+            <img src="{{ $advertentie->foto }}" alt="placeholder">
             <div class="addetails">
                 <p class="adtype">Aangeboden</p><br>
-                <h3 class="adtitle">Verse appels</h3>
-                <p class="addescr">Vers geplukte appels. Ik heb een aantal appelbomen, maar ze geven zo veel appels, dat ik ze niet allemaal alleen op kan. De appels worden verkocht per kilo.</p>
+                <h3 class="adtitle">{{ $advertentie->titel }}</h3>
+                <p class="addescr">{{ $advertentie->beschrijving }}</p>
                 <i class="fa fa-map-marker adloc"><label> Rosmalen</label></i>
-                <label class="adprice" for="ad1">1 Niks</label>
+                <label class="adprice" for="ad1">{{ $advertentie->prijs}} Niks</label>
             </div>
         </a>
-
-        <a class="article" href="#" id="ad2">
-            <img src="Resources/MXsfEWs.png" alt="placeholder">
-            <div class="addetails">
-                <p class="adtype">Aangeboden</p><br>
-                <h3 class="adtitle">Auto's wassen</h3>
-                <p class="addescr">Heeft u een auto die nodig gewassen moet worden? Neem dan contact op met mij.</p>
-                <i class="fa fa-map-marker adloc"><label> 's-Hertogenbosch centrum</label></i>
-                <label class="adprice" for="ad2">3 Niks</label>
-            </div>
-        </a>
-
-        <a class="article" href="#" id="ad3">
-            <img src="Resources/grasmaaier.png" alt="grasmaaier">
-            <div class="addetails">
-                <p class="adtype">Gevraagd</p><br>
-                <h3 class="adtitle">Gras laten maaien</h3>
-                <p class="addescr">Ik zoek iemand om mijn voortuin een keer te maaien. Mijn voortuin is 66 vierkante meter. Ik heb al een grasmaaier klaar staan in de schuur.</p>
-                <i class="fa fa-map-marker adloc"><label> Vlijmen</label></i>
-                <label class="adprice" for="ad3">2 Niks</label>
-            </div>
-        </a>
-
-        <a class="article" href="#" id="ad4">
-            <img src="Resources/fiets.png" alt="fiets">
-            <div class="addetails">
-                <p class="adtype">Aangeboden</p><br>
-                <h3 class="adtitle">Tweedehands fiets</h3>
-                <p class="addescr">Een tweedehands fiets in goede staat. Het is een Gazelle vrouwenfiets uit 2005. 7 versnellingen. Voor- en achterlicht werken op dynamo.</p>
-                <i class="fa fa-map-marker adloc"><label> Vlijmen</label></i>
-                <label class="adprice" for="ad4">5 Niks</label>
-            </div>
-        </a>
-
+@endforeach
+{{$advertenties->links("pagination::bootstrap-4")}}
     </div>
 </div>
 

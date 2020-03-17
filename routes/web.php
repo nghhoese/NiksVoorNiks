@@ -42,3 +42,4 @@ Route::get('/logout', function () {
     Auth::logout();
     return view('activiteiten');
 });
+Route::get('/nicksadvertenties','Advertentie@showAdvertenties');
