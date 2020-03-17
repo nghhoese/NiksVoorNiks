@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/advertenties', function () {
-    return view('advertenties');
-});
+Route::get('/advertenties', 'Advertentie@showAdvertenties');
 Route::get('/login', function () {
     return view('login');
 });
