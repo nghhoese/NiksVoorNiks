@@ -3,8 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Deelnemer extends Model
+class Deelnemer extends Authenticatable
 {
     protected $table = 'deelnemer';
     protected $primaryKey = 'email';
@@ -14,6 +17,24 @@ class Deelnemer extends Model
     public $timestamps = false;
     const CREATED_AT = 'creation_date';
     const UPDATED_AT = 'last_update';
+
+    protected $fillable = [
+        'voornaam', 'email', 'wachtwoord', 'tussenvoegsel', 'achternaam', 'postcode', 'huisnummer', 'telefoonnummer', 'geboortedatum', 'rol_naam', 'niksen', 'beschrijving'
+    ];
+
+    protected $hidden = [
+        'wachtwoord', 'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    public function getAuthPassword()
+    {
+        return $this->wachtwoord;
+    }
+
     public function bericht()
     {
         return $this->hasMany('App\Bericht', 'zender_email', 'email');
@@ -28,7 +49,7 @@ class Deelnemer extends Model
     }
     public function advertentie()
     {
-        
+
         return $this->hasMany('App\Advertentie', 'deelnemer_email', 'email');
     }
     public function rol(){
