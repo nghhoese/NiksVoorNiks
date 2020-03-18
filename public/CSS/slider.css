@@ -5,13 +5,38 @@
 }
 
 .slider {
-    max-width: 1000px;
+    max-width: 100%;
     position: relative;
     margin: auto;
 }
 
-.mySlides p {
-    font-size: 55px;
+.mySlides {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.mySlides img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+
+/* Caption text */
+
+.text {
+    color: #f2f2f2;
+    font-size: 1em;
+    color: black;
+    font-weight: 700;
+    font-size: 2.5em;
+    padding: 8px 12px;
+    position: absolute;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    background-color: #ffffffda;
 }
 
 
@@ -47,19 +72,6 @@
 .prev:hover,
 .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
-}
-
-
-/* Caption text */
-
-.text {
-    color: #f2f2f2;
-    font-size: 15px;
-    padding: 8px 12px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
 }
 
 
