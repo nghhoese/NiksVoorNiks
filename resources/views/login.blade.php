@@ -11,9 +11,22 @@
       <button>Nieuw wachtwoord aanvragen</button>
       <p class="message">Al een account? <a href="#">Log in</a></p>
     </form>
-    <form class="login-form">
-      <input type="text" placeholder="Email"/>
-      <input type="password" placeholder="Wachtwoord"/>
+      <form class="login-form" method="POST" action="{{ route('login') }}">
+          @csrf
+        <input id="email" placeholder="E-Mail" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+        @error('email')
+        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+        @enderror
+        <input id="password" type="password" placeholder="Wachtwoord" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+        @error('password')
+        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+        @enderror
       <button>login</button>
       <p class="message">Wachtwoord vergeten? <a href="#">Vraag een nieuw wachtwoord aan!</a></p>
     </form>
