@@ -643,6 +643,15 @@ input[type=submit]:hover {
     border-radius: 10px;
 }
 
+.main-content img {
+    max-width: 70%;
+}
+
+h1.title {
+    font-size: 2.3em;
+    margin-bottom: 20px;
+}
+
 .btn {
     margin-top: 20px;
     border: none;
@@ -686,11 +695,12 @@ input[type=submit]:hover {
 .stats {
     margin-top: 10px;
     margin-bottom: 10px;
+    font-size: 1.2em;
 }
 
 .description {
     margin-top: 10px;
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 .details {
@@ -716,6 +726,9 @@ b {
     .main-content {
         max-width: 100%;
         margin: 20px;
+    }
+    .main-content img {
+        max-width: 100%;
     }
     .info {
         max-width: 100%;
