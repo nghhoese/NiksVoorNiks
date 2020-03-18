@@ -19,6 +19,9 @@ Route::get('/', function () {
 Route::get('/advertenties', function () {
     return view('advertenties');
 });
+Route::get('/login', function () {
+    return view('login');
+});
 Route::get('/advertentiePlaatsen', function () {
     return view('advertentiePlaatsen');
 });
@@ -28,3 +31,15 @@ Route::get('/advertentieDetails', function () {
 Route::get('/activiteiten', function () {
     return view('activiteiten');
 });
+Route::get('/overons', 'HomeController@index')->name('overons');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return view('activiteiten');
+});
+Route::get('/nicksadvertenties','Advertentie@showAdvertenties');

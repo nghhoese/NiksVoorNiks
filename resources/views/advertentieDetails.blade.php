@@ -4,7 +4,7 @@ home
 @endsection
 @section ('content')
 
-<div class="container">
+
 <div class="content">
         <div class="flex-container">
             <div class="main-content">
@@ -36,7 +36,7 @@ home
             </div>
         </div>
     </div>
-</div>
+
         
 
         

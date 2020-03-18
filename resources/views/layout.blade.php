@@ -7,6 +7,8 @@
 <div class="top">
 <header class="header">
 <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/login.css">
+@yield ('stylesheets')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	 <div class="header-start">
                 <div class="logo"><a href="/"><img src="Resources/favicon.png"></a></div>
@@ -25,7 +27,7 @@
             <div class="header-end">
                 <a class="biggerfont" href="#"><span style="font-size: small">A</span><span style="font-size: large">A</span></a>
                 <a href="#" class="fa fa-bell"></a>
-                <a href="login.php">Inloggen</a>
+                <a href="login">Inloggen</a>
             </div>
 	<button id="menu">Menu</button>
 </header>
@@ -40,6 +42,7 @@
 <footer>
 <div class="footer">
 <script src="JS/nav.js" ></script>
+<Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 @yield ('footer')
 <div id="innerfooter">
     <div class="contact">

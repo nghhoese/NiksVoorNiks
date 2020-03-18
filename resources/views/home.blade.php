@@ -2,6 +2,10 @@
 @section('title')
 home
 @endsection
+@section ('stylesheets')
+<link rel="stylesheet" href="CSS/slider.css">
+
+@endsection
 @section ('content')
 
         <div class="content">
