@@ -6,12 +6,12 @@
 <title>@yield ('title')</title>
 <div class="top">
 <header class="header">
-<link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/login.css">
+<link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/login.css">
 @yield ('stylesheets')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	 <div class="header-start">
-                <div class="logo"><a href="/"><img src="Resources/favicon.png"></a></div>
+                <div class="logo"><a href="/"><img src="/Resources/favicon.png"></a></div>
             </div>
 
             <nav class="nav">

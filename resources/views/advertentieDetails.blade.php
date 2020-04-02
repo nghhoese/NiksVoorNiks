@@ -3,16 +3,16 @@
 home
 @endsection
 @section('stylesheets')
-<link rel="stylesheet" href="CSS/advertentiedetails.css">
+<link rel="stylesheet" href="/CSS/advertentiedetails.css">
 @endsection
 @section ('content')
 
 
-<div class="content">
+
         <div class="flex-container">
             <div class="main-content">
                 <h1 class="title">{{$advertentie->titel}}</h1>
-                <img src="Resources/csm_Bakken.nl_Q2_Batch1_Pannenkoeken_Origineel_3b4e9665a9.png" >
+                <img src="/Resources/csm_Bakken.nl_Q2_Batch1_Pannenkoeken_Origineel_3b4e9665a9.png" >
                 <div class="stats">
                     <div>Koetshuis 16, Den Bosch</div>
                 </div>
@@ -23,7 +23,7 @@ home
             </div>
 
             <div class="info">
-                <img src="Resources/Terry.png">
+                <img src="/Resources/Terry.png">
                 <div class="naam"><b>Terry Gestold</b></div>
                 <div class="locatie">Koetshuis 16, Den Bosch</div>
                 <div class="Persoonsbeschrijving">
@@ -32,7 +32,7 @@ home
                 <button class="btn">Koop nu voor 5 Niks!</button>
             </div>
         </div>
-    </div>
+ 
 
         
 
