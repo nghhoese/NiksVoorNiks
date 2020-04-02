@@ -24,7 +24,7 @@ Route::get('/advertentiePlaatsen', 'AdvertentieController@create');
 Route::post('/advertentiePlaatsen', 'AdvertentieController@store');
 
 
-Route::get('/advertentieDetails', 'AdvertentieController@view/{id}');
+Route::get('/advertentieDetails/{id}', 'AdvertentieController@view');
 
 Route::get('/activiteiten', function () {
     return view('activiteiten');
