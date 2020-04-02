@@ -7,19 +7,25 @@ use \App\Advertentie;
 
 class AdvertentieController extends Controller
 {
-        public function showAdvertenties(){
+        public function showAll(){
         $advertentie = Advertentie::paginate(1);
         return view('advertenties',['advertenties' => $advertentie]);
     }
-    public function createAdvertentie(){
+    public function create(){
 
     }
-    public function storeAdvertentie(){
+    public function store(){
         $user = auth()->user();
         $advertentie = new Advertentie();
         $advertentie->titel = request('titel');
         $advertentie->beschrijving = request('beschrijving');
         $advertentie->deelnemer_email = $user->email;
-        
+
+    }
+
+    public function view($id){
+            $advertentie = Advertentie::find($id);
+            return $advertentie;
+
     }
 }

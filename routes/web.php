@@ -20,15 +20,12 @@ Route::get('/advertenties', 'AdvertentieController@showAdvertenties');
 Route::get('/login', function () {
     return view('login');
 });
-Route::get('/advertentiePlaatsen', function () {
-    return view('advertentiePlaatsen');
-});
-Route::post('/advertentiePlaatsen', 'AdvertentieController@storeAdvertentie');
+Route::get('/advertentiePlaatsen', 'AdvertentieController@create');
+Route::post('/advertentiePlaatsen', 'AdvertentieController@store');
 
 
-Route::get('/advertentieDetails', function () {
-    return view('advertentieDetails');
-});
+Route::get('/advertentieDetails', 'AdvertentieController@view/{id}');
+
 Route::get('/activiteiten', function () {
     return view('activiteiten');
 });
@@ -43,4 +40,4 @@ Route::get('/logout', function () {
     Auth::logout();
     return view('activiteiten');
 });
-Route::get('/nicksadvertenties','AdvertentieController@showAdvertenties');
+Route::get('/nicksadvertenties','AdvertentieController@showAll');

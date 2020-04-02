@@ -51,7 +51,7 @@ home
 
         </form>
 
-        <a class="addad" href="advertentiePlaatsen.php">
+        <a class="addad" href="advertentiePlaatsen">
             Klik hier om zelf een advertentie te plaatsen
             <i class="fa fa-arrow-right"></i>
         </a>
