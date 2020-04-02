@@ -2,6 +2,9 @@
 @section('title')
 home
 @endsection
+@section('stylesheets')
+<link rel="stylesheet" href="CSS/advertentiedetails.css">
+@endsection
 @section ('content')
 
 
