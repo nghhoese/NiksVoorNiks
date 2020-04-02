@@ -59,7 +59,7 @@ home
 
     <div class="article-list">
     @foreach($advertenties as $advertentie)
-        <a class="article" href="#" id="ad1">
+        <a class="article" href="/advertentieDetails/{{ $advertentie->id }}" id="ad1">
             <img src="{{ $advertentie->foto }}" alt="placeholder">
             <div class="addetails">
                 <p class="adtype">Aangeboden</p><br>
