@@ -17,8 +17,8 @@
             <nav class="nav">
 
                 <a href="#">Over ons</a>
-                <a href="advertenties">Advertenties</a>
-                <a href="activiteiten">Activiteiten</a>
+                <a href="/advertenties">Advertenties</a>
+                <a href="/activiteiten">Activiteiten</a>
                 <a href="#">Deelnemer worden</a>
                 <a href="#">Contact</a>
 
