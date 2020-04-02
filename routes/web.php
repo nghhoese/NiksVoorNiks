@@ -16,13 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/advertenties', 'Advertentie@showAdvertenties');
+Route::get('/advertenties', 'AdvertentieController@showAdvertenties');
 Route::get('/login', function () {
     return view('login');
 });
 Route::get('/advertentiePlaatsen', function () {
     return view('advertentiePlaatsen');
 });
+Route::post('/advertentiePlaatsen', 'AdvertentieController@storeAdvertentie');
+
+
 Route::get('/advertentieDetails', function () {
     return view('advertentieDetails');
 });
@@ -40,4 +43,4 @@ Route::get('/logout', function () {
     Auth::logout();
     return view('activiteiten');
 });
-Route::get('/nicksadvertenties','Advertentie@showAdvertenties');
+Route::get('/nicksadvertenties','AdvertentieController@showAdvertenties');
