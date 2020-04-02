@@ -25,7 +25,7 @@ class AdvertentieController extends Controller
 
     public function view($id){
             $advertentie = Advertentie::find($id);
-            return view('advertentieDeatils',['advertentie' =>$advertentie]);
+            return view('advertentieDetails',['advertentie' =>$advertentie]);
 
     }
 }
