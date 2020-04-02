@@ -8,20 +8,14 @@ home
 <div class="content">
         <div class="flex-container">
             <div class="main-content">
-                <h1 class="title">Vers gebakken pannekoeken, taarten en brood.</h1>
+                <h1 class="title">{{$advertentie->titel}}</h1>
                 <img src="Resources/csm_Bakken.nl_Q2_Batch1_Pannenkoeken_Origineel_3b4e9665a9.png" >
                 <div class="stats">
                     <div>Koetshuis 16, Den Bosch</div>
                 </div>
                 <div class="description">
                     <b>Beschrijving <br/></b>
-                    Koop nu snel een bakproduct bij Terry! Ze zijn vers gebakken, smaken heerlijk en je krijgt er een gratis kopje koffie bij! Maak je geen zorgen, je mag ook lekker even blijven zitten voor de gezelligheid.<br/>
-                    <br/>
-                    Er zijn appeltaarten, kersentaarten, chocoladetaarten en peertaarten beschikbaar.<br/>
-                    <br/>
-                    Qua brood hebben we: Rogge, tarwe, gehaktbrood, krentenbollen en peperkoek.<br/>
-                    <br/>
-                    En denk eraan, alles is vers bij Terry. Niemand zegt ooit gedverderrie!
+                    <p>{{$advertentie->bechrijving}}</p>
                 </div>
             </div>
 
