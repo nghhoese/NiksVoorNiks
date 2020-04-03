@@ -18,8 +18,6 @@ class CreateActiviteitHeeftDeelnemersTable extends Migration
             $table->unsignedInteger('activiteit_id');
             $table->foreign('activiteit_id')->references('id')->on('activiteit');
             $table->foreign('deelnemer_email')->references('email')->on('deelnemer');
-
-
         });
     }
 
