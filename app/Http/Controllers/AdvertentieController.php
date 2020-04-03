@@ -12,6 +12,7 @@ class AdvertentieController extends Controller
         return view('advertenties',['advertenties' => $advertentie]);
     }
     public function create(){
+        return view('advertentiePlaatsen');
 
     }
     public function store(){
