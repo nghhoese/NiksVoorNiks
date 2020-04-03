@@ -10,30 +10,67 @@ home
 
 <div class="articles">
     <div class="filters">
-        <form>
-            {{ Form::open(['route'=>'advertenties.index', 'method'=>'POST'] ) }}
-                {{ Form::label('categorie', 'Categorie:') }}
-                {{ Form::select('categorie', $categorieen, '', [ 'placeholder'=> 'Kies een categorie' ]) }}; <br>
+{{--        {{ Form::open(['route'=>'advertenties.index', 'method'=>'POST'] ) }}--}}
+{{--            {{ Form::label('categorie', 'Categorie:') }}--}}
+{{--            {{ Form::select('categorie', $categorieen, '', [ 'placeholder'=> 'Kies een categorie' ]) }}; <br>--}}
 
-                {{ Form::label('vraagaanbod', 'Vraag en aanbod:') }} <br>
-                {{ Form::select('vraagaanbod', ['Geen voorkeur', 'Gevraagd', 'Aangeboden'], '', [ 'placeholder'=>'Gevraagd of aangeboden' ]) }}; <br>
+{{--            {{ Form::label('vraagaanbod', 'Vraag en aanbod:') }} <br>--}}
+{{--            {{ Form::select('vraagaanbod', ['Geen voorkeur', 'Gevraagd', 'Aangeboden'], '', [ 'placeholder'=>'Gevraagd of aangeboden' ]) }}; <br>--}}
 
-                {{ Form::label('locatie', 'Locatie:')}} <br>
-                {{ Form::text('locatie', 'Locatie')}} <br>
+{{--            {{ Form::label('locatie', 'Locatie:')}} <br>--}}
+{{--            {{ Form::text('locatie', 'Locatie')}} <br>--}}
 
-                {{ Form::label('prijs', 'Prijs:')}} <br>
-                {{ Form::label('minprijs', 'Min.')}}
-                {{ Form::text('minprijs', '')}}
+{{--            {{ Form::label('prijs', 'Prijs:')}} <br>--}}
+{{--            {{ Form::label('minprijs', 'Min.')}}--}}
+{{--            {{ Form::text('minprijs', '')}}--}}
 
-                {{ Form::label('maxprijs', 'Max.')}}
-                {{ Form::text('maxprijs', '')}} <br>
+{{--            {{ Form::label('maxprijs', 'Max.')}}--}}
+{{--            {{ Form::text('maxprijs', '')}} <br>--}}
 
-                {{ Form::select('groep', $groepen, '', [ 'placeholder'=>'Kies een groep' ]) }} <br>
+{{--            {{ Form::select('groep', $groepen, '', [ 'placeholder'=>'Kies een groep' ]) }} <br>--}}
 
-                {{ Form::submit('Filteren!')}} <br>
-            {{ Form::close() }}
+{{--            {{ Form::submit('Filteren!')}} <br>--}}
+{{--        {{ Form::close() }}--}}
 
+        <form method="post" action="/filter">
+            <label class="title" for="categorie">Categorie:</label><br>
+            <select>
+                <option value="" disabled selected hidden>Kies een categorie...</option>
+                <option value="">Geen categorie</option>
+                <option value="eten">Eten</option>
+                <option value="techniek">Techniek</option>
+            </select><br>
+
+            <label class="title">Vraag en Aanbod:</label><br>
+            <input type="checkbox" id="gevraagd" name="gevraagd">
+            <label for="gevraagd">Gevraagd</label>
+
+            <input type="checkbox" id="aangeboden" name="aangeboden">
+            <label for="aangeboden">Aangeboden</label><br>
+
+            <label class="title" for="locatie">Locatie:</label><br>
+            <input type="text" id="locatie" name="locatie" placeholder="Typ hier een plaats of postcode..."><br>
+
+            <label class="title">Prijs:</label><br>
+            <label for="minprijs">Min.</label>
+            <input type="number" id="minprijs" name="minprijs">
+
+            <label for="maxprijs">Max.</label>
+            <input type="number" id="maxprijs" name="maxprijs"><br>
+
+
+            <label class="title" for="groep">Groep:</label><br>
+            <select>
+                <option value="" disabled selected hidden>Kies een groep...</option>
+                <option value="">Geen groep</option>
+                <option value="boxtel">Boxtel</option>
+                <option value="rosmalen">Rosmalen</option>
+                <option value="centrum">'s-Hertogenbosch Centrum</option>
+            </select><br>
         </form>
+
+
+
 
         <a class="addad" href="advertentiePlaatsen">
             Klik hier om zelf een advertentie te plaatsen
