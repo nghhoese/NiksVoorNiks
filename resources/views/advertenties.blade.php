@@ -11,43 +11,27 @@ home
 <div class="articles">
     <div class="filters">
         <form>
-            <label class="title" for="categorie">Categorie:</label><br>
-            <select>
-                <option value="" disabled selected hidden>Kies een categorie...</option>
-                <option value="">Geen categorie</option>
-                <option value="eten">Eten</option>
-                <option value="techniek">Techniek</option>
-            </select><br>
+            {{ Form::open(['route'=>'advertenties.index', 'method'=>'POST'] ) }}
+                {{ Form::label('categorie', 'Categorie:') }}
+                {{ Form::select('categorie', $categorieen, '', [ 'placeholder'=> 'Kies een categorie' ]) }}; <br>
 
+                {{ Form::label('vraagaanbod', 'Vraag en aanbod:') }} <br>
+                {{ Form::select('vraagaanbod', ['Geen voorkeur', 'Gevraagd', 'Aangeboden'], '', [ 'placeholder'=>'Gevraagd of aangeboden' ]) }}; <br>
 
-            <label class="title">Vraag en Aanbod:</label><br>
-            <input type="checkbox" id="gevraagd" name="gevraagd">
-            <label for="gevraagd">Gevraagd</label>
+                {{ Form::label('locatie', 'Locatie:')}} <br>
+                {{ Form::text('locatie', 'Locatie')}} <br>
 
-            <input type="checkbox" id="aangeboden" name="aangeboden">
-            <label for="aangeboden">Aangeboden</label><br>
+                {{ Form::label('prijs', 'Prijs:')}} <br>
+                {{ Form::label('minprijs', 'Min.')}}
+                {{ Form::text('minprijs', '')}}
 
+                {{ Form::label('maxprijs', 'Max.')}}
+                {{ Form::text('maxprijs', '')}} <br>
 
-            <label class="title" for="locatie">Locatie:</label><br>
-            <input type="text" id="locatie" name="locatie" placeholder="Typ hier een plaats of postcode..."><br>
+                {{ Form::select('groep', $groepen, '', [ 'placeholder'=>'Kies een groep' ]) }} <br>
 
-
-            <label class="title">Prijs:</label><br>
-            <label for="minprijs">Min.</label>
-            <input type="number" id="minprijs" name="minprijs">
-
-            <label for="maxprijs">Max.</label>
-            <input type="number" id="maxprijs" name="maxprijs"><br>
-
-
-            <label class="title" for="groep">Groep:</label><br>
-            <select>
-                <option value="" disabled selected hidden>Kies een groep...</option>
-                <option value="">Geen groep</option>
-                <option value="boxtel">Boxtel</option>
-                <option value="rosmalen">Rosmalen</option>
-                <option value="centrum">'s-Hertogenbosch Centrum</option>
-            </select><br>
+                {{ Form::submit('Filteren!')}} <br>
+            {{ Form::close() }}
 
         </form>
 
@@ -74,9 +58,9 @@ home
     </div>
 </div>
 
-        
-      
-     
 
-   
+
+
+
+
 @endsection

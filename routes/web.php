@@ -16,13 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/advertenties', 'Advertentie@showAdvertenties');
+
+Route::get('/advertenties', 'Advertentie@showAdvertenties')->name('advertenties.index');
+Route::post('/advertenties', 'Advertentie@showAdvertenties')->name('advertenties.index');
+
+
 Route::get('/login', function () {
     return view('login');
 });
+
 Route::get('/advertentiePlaatsen', function () {
     return view('advertentiePlaatsen');
 });
+
 Route::get('/advertentieDetails', function () {
     return view('advertentieDetails');
 });
