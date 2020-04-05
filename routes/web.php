@@ -40,4 +40,4 @@ Route::get('/logout', function () {
     Auth::logout();
     return view('activiteiten');
 });
-Route::get('/nicksadvertenties','AdvertentieController@showAll');
+Route::get('/nicksadvertenties', 'AdvertentieController@showAll');
