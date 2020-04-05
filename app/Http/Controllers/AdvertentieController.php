@@ -13,7 +13,7 @@ class AdvertentieController extends Controller
 {
     public function showAll()
     {
-        $advertentie = Advertentie::paginate(1);
+        $advertentie = Advertentie::paginate(4);
         return view('advertenties', ['advertenties' => $advertentie]);
     }
 
@@ -36,14 +36,18 @@ class AdvertentieController extends Controller
             'housenumber' => 'required|max:10',
             'asked' => 'required',
             'price-type' => 'required',
-            'img' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+            'img' => 'mimes:jpeg,jpg,png,gif|max:10000',
         ]);
         $advertentie = new Advertentie();
+        if($request->file != null) {
+            $fileName = time().'_'.$request->file->getClientOriginalName();
+            $request->file->move(public_path('uploads'), $fileName);
+            $advertentie->foto = "/uploads/".$fileName;
+        }
         $advertentie->titel = request('title');
         $advertentie->beschrijving = request('beschrijving');
         $advertentie->categorie = request('category');
         $advertentie->prijs = request('price');
-        $advertentie->foto = request('img');
         $advertentie->postcode = request('locatie');
         $advertentie->vraag = request('asked');
         $advertentie->bieden = request('price-type');

@@ -14,7 +14,7 @@
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
-                </div><br />
+                </div><br/>
             @endif
             <h2>Nieuwe advertentie plaatsen</h2><br><br>
             <form method="post" action="/advertentiePlaatsen" enctype="multipart/form-data">
@@ -23,14 +23,14 @@
                 <select id="category" name="category">
                     @foreach($categories as $category)
                         <option value={{$category->naam}}>{{$category->naam}}</option>
-                        @endforeach
+                    @endforeach
                 </select><br><br>
 
                 <label for="group">Kies een groep(optioneel)</label><br>
                 <select id="group" name="group">
                     @foreach($groups as $group)
                         <option value={{$group->naam}}>{{$group->naam}}</option>
-                        @endforeach
+                    @endforeach
                 </select><br><br>
 
                 <label for="title">Titel advertentie</label><br>
@@ -62,8 +62,10 @@
                 <input name="housenumber" type="text">
                 <br><br>
 
-                <label for="img">Voeg eventueel foto's toe</label><br>
-                <input type="file" id="img" name="img" accept="image/*"><br><br>
+                <label for="img">Voeg eventueel een foto toe:</label><br>
+                <input type="file" name="file" class="form-control">
+                <br><br>
+
 
                 <label for="locatie">Locatie(postcode)</label><br>
                 <input type="text" id="locatie" name="locatie"><br><br>

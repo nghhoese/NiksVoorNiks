@@ -28,8 +28,6 @@ class CreateAdvertentiesTable extends Migration
             $table->string('huisnummer',10);
             $table->string('categorie',50);
             $table->foreign('categorie')->references('naam')->on('categorie');
-
-
         });
     }
 

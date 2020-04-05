@@ -62,7 +62,13 @@ home
         <a class="article" href="/advertentieDetails/{{ $advertentie->id }}" id="ad1">
             <img src="{{$advertentie->foto ?? 'https://i.imgur.com/LM7EA7m.jpg'}}">
             <div class="addetails">
-                <p class="adtype">Aangeboden</p><br>
+                <p class="adtype">
+                    @if($advertentie->vraag == 0)
+                     Aangeboden
+                     @else
+                    Gevraagd
+                        @endif
+                </p><br>
                 <h3 class="adtitle">{{ $advertentie->titel }}</h3>
                 <p class="addescr">{{ $advertentie->beschrijving }}</p>
                 <i class="fa fa-map-marker adloc"><label> Rosmalen</label></i>
