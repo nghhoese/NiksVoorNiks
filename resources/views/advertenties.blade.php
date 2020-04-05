@@ -60,7 +60,7 @@ home
     <div class="article-list">
     @foreach($advertenties as $advertentie)
         <a class="article" href="/advertentieDetails/{{ $advertentie->id }}" id="ad1">
-            <img src="{{ $advertentie->foto }}" alt="placeholder">
+            <img src="{{$advertentie->foto ?? 'https://i.imgur.com/LM7EA7m.jpg'}}">
             <div class="addetails">
                 <p class="adtype">Aangeboden</p><br>
                 <h3 class="adtitle">{{ $advertentie->titel }}</h3>
@@ -74,9 +74,9 @@ home
     </div>
 </div>
 
-        
-      
-     
 
-   
+
+
+
+
 @endsection

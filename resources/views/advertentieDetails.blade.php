@@ -12,7 +12,7 @@ home
         <div class="flex-container">
             <div class="main-content">
                 <h1 class="title">{{$advertentie->titel}}</h1>
-                <img src="{{$advertentie->foto}}" >
+                <img src="{{$advertentie->foto ?? 'https://i.imgur.com/HxdPz7Q.jpg'}}">
                 <div class="stats">
                     <div><p>{{$advertentie->postcode}}</p></div>
                 </div>
@@ -32,13 +32,13 @@ home
                 <button class="btn">Koop nu voor 5 Niks!</button>
             </div>
         </div>
- 
 
-        
 
-        
-      
-     
 
-   
+
+
+
+
+
+
 @endsection

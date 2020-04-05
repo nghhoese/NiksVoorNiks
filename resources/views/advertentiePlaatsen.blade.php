@@ -6,16 +6,16 @@
 @section ('content')
 
     <div class="plaatsadvertentie">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div><br />
-        @endif
         <div class="createForm">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div><br />
+            @endif
             <h2>Nieuwe advertentie plaatsen</h2><br><br>
             <form method="post" action="/advertentiePlaatsen" enctype="multipart/form-data">
                 @csrf
@@ -42,6 +42,24 @@
 
                 <label for="price">Prijs(Niks)</label><br>
                 <input type="number" id="price" name="price" min="0" max="200">
+                <br><br>
+
+                <label>Soort advertentie:</label>
+                <select name="asked">
+                    <option value="0">Aangeboden</option>
+                    <option value="1">Gevraagd</option>
+                </select>
+                <br><br>
+
+                <label>Prijs type:</label>
+                <select name="price-type">
+                    <option value="0">Vaste prijs</option>
+                    <option value="1">Bieden</option>
+                </select>
+                <br><br>
+
+                <label>Huisnummer:</label>
+                <input name="housenumber" type="text">
                 <br><br>
 
                 <label for="img">Voeg eventueel foto's toe</label><br>

@@ -33,6 +33,9 @@ class AdvertentieController extends Controller
             'title' => 'required|max:100',
             'beschrijving' => 'required|max:255',
             'price' => 'required|numeric|digits_between:0,200',
+            'housenumber' => 'required|max:10',
+            'asked' => 'required',
+            'price-type' => 'required',
             'img' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
         ]);
         $advertentie = new Advertentie();
@@ -42,12 +45,13 @@ class AdvertentieController extends Controller
         $advertentie->prijs = request('price');
         $advertentie->foto = request('img');
         $advertentie->postcode = request('locatie');
-        $advertentie->vraag = 0;
-        $advertentie->bieden = 0;
+        $advertentie->vraag = request('asked');
+        $advertentie->bieden = request('price-type');
         $advertentie->aanmaakdatum = $date;
-        $advertentie->huisnummer = 1;
+        $advertentie->huisnummer = request('housenumber');
         $advertentie->deelnemer_email = $user->email;
         $advertentie->save();
+        return redirect('/advertentieDetails/'.$advertentie->id);
     }
 
     public function view($id)
