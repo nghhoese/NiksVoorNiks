@@ -66,6 +66,7 @@ class RegisterController extends Controller
             'voornaam' => $data['voornaam'],
             'tussenvoegsel' => $data['tussenvoegsel'],
             'geboortedatum' => $data['geboortedatum'],
+            /*->format('Y-m-d')*/
             'telefoonnummer' => $data['telefoonnummer'],
             'postcode' => $data['postcode'],
             'huisnummer' => $data['huisnummer'],
