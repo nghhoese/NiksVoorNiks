@@ -27,7 +27,7 @@ class AdvertentieController extends Controller
 
     public function store(Request $request)
     {
-        $date = date('d-m-y h:i:s');
+               $date = date('d-m-y h:i:s');
         $user = auth()->user();
         $validatedData = $request->validate([
             'title' => 'required|max:100',

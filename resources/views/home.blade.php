@@ -38,7 +38,7 @@ home
                 <p>Wij zijn ruilkring Den Bosch, ook wel bekend als Niks voor Niks. Wij zijn een hechte groep van allemaal verschillende mensen die graag diensten of waren van anderen in huis nemen, maar hier liever toch niet voor betalen, vandaar dat wij de niks hebben gemaakt.</p><br>
                 <p>Op dit moment telt de ruilkring ongeveer 100 leden, een aardig aantal. Toch kennen de meeste mensen elkaar erg goed, we zijn bekend met mekaar en kunnen daarom ook altijd zonder problemen even op de koffie of leuk wat gaan doen.</p><br>
                 <p>We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de optie om deze passie te uiten en tot bloei te laten komen.</p>
-                <a class="link">Lees meer</a>
+                <a href="/overons" class="link">Lees meer</a>
             </div>
 
             <div class="preview-aanbod">

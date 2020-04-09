@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/advertenties', 'AdvertentieController@showAll');
+
 Route::get('/login', function () {
     return view('login');
 });
@@ -29,7 +29,8 @@ Route::get('/advertentieDetails/{id}', 'AdvertentieController@view');
 Route::get('/activiteiten', function () {
     return view('activiteiten');
 });
-Route::get('/overons', 'HomeController@index')->name('overons');
+
+Route::get('/overons', 'HomeController@overOns')->name('overons');
 
 
 Auth::routes();
@@ -38,6 +39,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', function () {
     Auth::logout();
-    return view('activiteiten');
+    return view('home');
 });
 Route::get('/nicksadvertenties', 'AdvertentieController@showAll');
+
+Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
+    Route::match(['get', 'post'], '/advertenties', 'AdvertentieController@showAll');
+});
