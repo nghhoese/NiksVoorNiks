@@ -11,7 +11,8 @@
                 <button>Nieuw wachtwoord aanvragen</button>
                 <p class="message">Al een account? <a href="#">Log in</a></p>
             </form>
-            <form class="login-form" method="POST" action="{{ route('login') }}">
+            <form class="login-form" role="form" method="POST" action="{{ url('/register') }}">
+
                 @csrf
                 <input id="firstname" placeholder="Voornaam" type="text"
                        class="form-control @error('firstname') is-invalid @enderror" name="firstname"
@@ -79,7 +80,16 @@
                        class="form-control" name="role"
                        value="administrator" required>
 
-                @error('housenumber')
+                @error('role')
+                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                @enderror
+                <input id="email" placeholder="E-mailadres" type="email"
+                       class="form-control @error('email') is-invalid @enderror" name="email"
+                       value="{{ old('email') }}" required>
+
+                @error('email')
                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -63,19 +63,19 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return Deelnemer::create([
-            'voornaam' => $data['voornaam'],
-            'tussenvoegsel' => $data['tussenvoegsel'],
-            'geboortedatum' => $data['geboortedatum'],
+            'voornaam' => $data['firstname'],
+            'tussenvoegsel' => $data['affix'],
+            'geboortedatum' => $data['dateofbirth'],
             /*->format('Y-m-d')*/
-            'telefoonnummer' => $data['telefoonnummer'],
-            'postcode' => $data['postcode'],
-            'huisnummer' => $data['huisnummer'],
-            'rol_naam' => $data['rol_naam'],
-            'achternaam' => $data['achternaam'],
+            'telefoonnummer' => $data['phonenumber'],
+            'postcode' => $data['postalcode'],
+            'huisnummer' => $data['housenumber'],
+            'rol_naam' => $data['role'],
+            'achternaam' => $data['lastname'],
             'niksen' => 0,
             'beschrijving' => '',
             'email' => $data['email'],
-            'wachtwoord' => Hash::make($data['wachtwoord']),
+            'wachtwoord' => Hash::make($data['password']),
         ]);
     }
 }
