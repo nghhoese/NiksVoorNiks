@@ -50,7 +50,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-
+            'firstname' => ['required', 'string', 'max:255'],
+            'affix' => ['nullable', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'dateofbirth' => ['required', 'date', 'before:tomorrow'],
+            'phonenumber' => ['required', 'string', 'max:25'],
+            'postalcode' =>['required', 'regex:/^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i'],
+            'housenumber' =>['required', 'string', 'max:25'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:deelnemer'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -66,7 +74,6 @@ class RegisterController extends Controller
             'voornaam' => $data['firstname'],
             'tussenvoegsel' => $data['affix'],
             'geboortedatum' => $data['dateofbirth'],
-            /*->format('Y-m-d')*/
             'telefoonnummer' => $data['phonenumber'],
             'postcode' => $data['postalcode'],
             'huisnummer' => $data['housenumber'],
