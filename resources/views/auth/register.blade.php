@@ -19,7 +19,7 @@
                        value="{{ old('firstname') }}" required autofocus>
                 @error('firstname')
                 <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
+                <strong>{{ "Voornaam mag niet langer zijn dan 255 karakters" }}</strong>
                 </span>
                 @enderror
                 <input id="affix" placeholder="Tussenvoegsel" type="text"
@@ -28,7 +28,7 @@
 
                 @error('affix')
                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ "Tussenvoegsel mag niet langer zijn dan 255 karakters " }}</strong>
                                     </span>
                 @enderror
                 <input id="lastname" placeholder="Achternaam" type="text"
@@ -37,7 +37,7 @@
 
                 @error('lastname')
                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ "Geboortedatum moet voor de datum van vandaag zijn" }}</strong>
                                     </span>
                 @enderror
                 <input type="date" id="dateofbirth" placeholder="Geboortedatum"
@@ -55,7 +55,7 @@
 
                 @error('phonenumber')
                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ "Telefoonnummer mag niet langer zijn dan 25 karakters" }}</strong>
                                     </span>
                 @enderror
                 <input id="postalcode" placeholder="Postcode" type="text"
@@ -64,7 +64,7 @@
 
                 @error('postalcode')
                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ "Postcode moet bestaan uit 4 cijfers en 2 letters" }}</strong>
                                     </span>
                 @enderror
                 <input id="housenumber" placeholder="Huisnummer" type="text"
@@ -73,7 +73,7 @@
 
                 @error('housenumber')
                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ "Huisnummer mag niet langer zijn dan 25 karakters" }}</strong>
                                     </span>
                 @enderror
                 <input id="role" placeholder="Rol" type="text"
@@ -91,7 +91,7 @@
 
                 @error('email')
                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ "E-mailadres mag nog niet gebruikt zijn en mag niet langer zijn dan 255 karakters"  }}</strong>
                                     </span>
                 @enderror
                 <input id="password" type="password" placeholder="Wachtwoord"
@@ -99,7 +99,7 @@
 
                 @error('password')
                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ "Wachtwoorden moeten overeenkomen en moet minimaal uit 8 karakters bestaan"  }}</strong>
                                     </span>
                 @enderror
                 <input id="password_confirmation" type="password" placeholder="Wachtwoord bevestigen"
@@ -108,7 +108,7 @@
 
                 @error('password')
                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ "Wachtwoorden moeten overeenkomen en moet minimaal uit 8 karakters bestaan" }}</strong>
                                     </span>
                 @enderror
                 <button>Registeren</button>
