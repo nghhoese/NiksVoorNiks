@@ -50,7 +50,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-
+            'firstname' => ['required', 'string', 'max:255'],
+            'affix' => ['nullable', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'dateofbirth' => ['required', 'date', 'before:tomorrow'],
+            'phonenumber' => ['required', 'string', 'max:25'],
+            'postalcode' =>['required', 'regex:/^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i'],
+            'housenumber' =>['required', 'string', 'max:25'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:deelnemer'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -63,18 +71,18 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return Deelnemer::create([
-            'voornaam' => $data['voornaam'],
-            'tussenvoegsel' => $data['tussenvoegsel'],
-            'geboortedatum' => $data['geboortedatum'],
-            'telefoonnummer' => $data['telefoonnummer'],
-            'postcode' => $data['postcode'],
-            'huisnummer' => $data['huisnummer'],
-            'rol_naam' => $data['rol_naam'],
-            'achternaam' => $data['achternaam'],
+            'voornaam' => $data['firstname'],
+            'tussenvoegsel' => $data['affix'],
+            'geboortedatum' => $data['dateofbirth'],
+            'telefoonnummer' => $data['phonenumber'],
+            'postcode' => $data['postalcode'],
+            'huisnummer' => $data['housenumber'],
+            'rol_naam' => $data['role'],
+            'achternaam' => $data['lastname'],
             'niksen' => 0,
             'beschrijving' => '',
             'email' => $data['email'],
-            'wachtwoord' => Hash::make($data['wachtwoord']),
+            'wachtwoord' => Hash::make($data['password']),
         ]);
     }
 }

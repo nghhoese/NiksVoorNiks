@@ -1,180 +1,125 @@
-@extends('layouts.app')
+@extends('layout')
+@section('stylesheets')
+    <link rel="stylesheet" href="CSS/register.css">
 
+@endsection
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Register</div>
-                    <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
-                            {!! csrf_field() !!}
+    <div class="login-page">
+        <div class="form">
+            <form class="register-form">
+                <input type="text" placeholder="Email adres"/>
+                <button>Nieuw wachtwoord aanvragen</button>
+                <p class="message">Al een account? <a href="#">Log in</a></p>
+            </form>
+            <form class="login-form" role="form" method="POST" action="{{ url('/register') }}">
 
-                            <div class="form-group{{ $errors->has('voornaam') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Voornaam</label>
+                @csrf
+                <input id="firstname" placeholder="Voornaam" type="text"
+                       class="form-control @error('firstname') is-invalid @enderror" name="firstname"
+                       value="{{ old('firstname') }}" required autofocus>
+                @error('firstname')
+                <span class="invalid-feedback" role="alert">
+                <strong>{{ "Voornaam mag niet langer zijn dan 255 karakters" }}</strong>
+                </span>
+                @enderror
+                <input id="affix" placeholder="Tussenvoegsel" type="text"
+                       class="form-control @error('affix') is-invalid @enderror" name="affix"
+                       value="{{ old('affix') }}">
 
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="voornaam" value="{{ old('voornaam') }}">
-
-                                    @if ($errors->has('voornaam'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('voornaam') }}</strong>
+                @error('affix')
+                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ "Tussenvoegsel mag niet langer zijn dan 255 karakters " }}</strong>
                                     </span>
-                                    @endif
-                                </div>
-                            </div>
+                @enderror
+                <input id="lastname" placeholder="Achternaam" type="text"
+                       class="form-control @error('lastname') is-invalid @enderror" name="lastname"
+                       value="{{ old('lastname') }}" required>
 
-                            <div class="form-group{{ $errors->has('tussenvoegsel') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Tussenvoegsel</label>
-
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="tussenvoegsel" value="{{ old('tussenvoegsel') }}">
-
-                                    @if ($errors->has('tussenvoegsel'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('tussenvoegsel') }}</strong>
+                @error('lastname')
+                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ "Geboortedatum moet voor de datum van vandaag zijn" }}</strong>
                                     </span>
-                                    @endif
-                                </div>
-                            </div>
+                @enderror
+                <input type="date" id="dateofbirth" placeholder="Geboortedatum"
+                       class="form-control @error('dateofbirth') is-invalid @enderror" name="dateofbirth"
+                       value="{{ old('dateofbirth') }}" required>
 
-                            <div class="form-group{{ $errors->has('achternaam') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Achternaam</label>
-
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="achternaam" value="{{ old('achternaam') }}">
-
-                                    @if ($errors->has('achternaam'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('achternaam') }}</strong>
+                @error('dateofbirth')
+                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                    @endif
-                                </div>
-                            </div>
+                @enderror
+                <input type="tel" id="phonenumber" placeholder="Telefoonnummer"
+                       class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber"
+                       value="{{ old('phonenumber') }}" required>
 
-                            <div class="form-group{{ $errors->has('geboortedatum') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Geboortedatum</label>
-
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="geboortedatum" value="{{ old('geboortedatum') }}">
-
-                                    @if ($errors->has('geboortedatum'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('geboortedatum') }}</strong>
+                @error('phonenumber')
+                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ "Telefoonnummer mag niet langer zijn dan 25 karakters" }}</strong>
                                     </span>
-                                    @endif
-                                </div>
-                            </div>
+                @enderror
+                <input id="postalcode" placeholder="Postcode" type="text"
+                       class="form-control @error('postalcode') is-invalid @enderror" name="postalcode"
+                       value="{{ old('postalcode') }}" required>
 
-                            <div class="form-group{{ $errors->has('telefoonnummer') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Telefoonnummer</label>
-
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="telefoonnummer" value="{{ old('telefoonnummer') }}">
-
-                                    @if ($errors->has('telefoonnummer'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('telefoonnummer') }}</strong>
+                @error('postalcode')
+                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ "Postcode moet bestaan uit 4 cijfers en 2 letters" }}</strong>
                                     </span>
-                                    @endif
-                                </div>
-                            </div>
+                @enderror
+                <input id="housenumber" placeholder="Huisnummer" type="text"
+                       class="form-control @error('housenumber') is-invalid @enderror" name="housenumber"
+                       value="{{ old('housenumber') }}" required>
 
-                            <div class="form-group{{ $errors->has('postcode') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Postcode</label>
-
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="postcode" value="{{ old('postcode') }}">
-
-                                    @if ($errors->has('postcode'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('postcode') }}</strong>
+                @error('housenumber')
+                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ "Huisnummer mag niet langer zijn dan 25 karakters" }}</strong>
                                     </span>
-                                    @endif
-                                </div>
-                            </div>
+                @enderror
+                <input id="role" placeholder="Rol" type="text"
+                       class="form-control" name="role"
+                       value="administrator" required>
 
-                            <div class="form-group{{ $errors->has('huisnummer') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Huisnummer</label>
-
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="huisnummer" value="{{ old('huisnummer') }}">
-
-                                    @if ($errors->has('huisnummer'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('huisnummer') }}</strong>
+                @error('role')
+                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                    @endif
-                                </div>
-                            </div>
+                @enderror
+                <input id="email" placeholder="E-mailadres" type="email"
+                       class="form-control @error('email') is-invalid @enderror" name="email"
+                       value="{{ old('email') }}" required>
 
-                            <div class="form-group{{ $errors->has('rol_naam') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Rolnaam</label>
-
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="rol_naam" value="{{ old('rol_naam') }}">
-
-                                    @if ($errors->has('rol_naam'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('rol_naam') }}</strong>
+                @error('email')
+                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ "E-mailadres mag nog niet gebruikt zijn en mag niet langer zijn dan 255 karakters"  }}</strong>
                                     </span>
-                                    @endif
-                                </div>
-                            </div>
+                @enderror
+                <input id="password" type="password" placeholder="Wachtwoord"
+                       class="form-control @error('password') is-invalid @enderror" name="password" required>
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">E-Mail Address</label>
-
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                @error('password')
+                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ "Wachtwoorden moeten overeenkomen en moet minimaal uit 8 karakters bestaan"  }}</strong>
                                     </span>
-                                    @endif
-                                </div>
-                            </div>
+                @enderror
+                <input id="password_confirmation" type="password" placeholder="Wachtwoord bevestigen"
+                       class="form-control @error('password') is-invalid @enderror" name="password_confirmation"
+                       required>
 
-                            <div class="form-group{{ $errors->has('wachtwoord') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Wachtwoord</label>
-
-                                <div class="col-md-6">
-                                    <input type="password" class="form-control" name="wachtwoord">
-
-                                    @if ($errors->has('wachtwoord'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('wachtwoord') }}</strong>
+                @error('password')
+                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ "Wachtwoorden moeten overeenkomen en moet minimaal uit 8 karakters bestaan" }}</strong>
                                     </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('wachtwoord_bevestiging') ? ' has-error' : '' }}">
-                                <label class="col-md-4 control-label">Bevestig Wachtwoord</label>
-
-                                <div class="col-md-6">
-                                    <input type="password" class="form-control" name="wachtwoord_bevestiging">
-
-                                    @if ($errors->has('wachtwoord_bevestiging'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('wachtwoord_bevestiging') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-btn fa-user"></i>Register
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+                @enderror
+                <button>Registeren</button>
+            </form>
         </div>
     </div>
+@endsection
+@section('footer')
+    <script>
+        $('.message a').click(function () {
+            $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        });
+    </script>
 @endsection
