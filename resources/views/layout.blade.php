@@ -8,6 +8,7 @@
 <header class="header">
 <link rel="stylesheet" href="/CSS/style.css">
     <link rel="stylesheet" href="/CSS/login.css">
+    <link rel="stylesheet" href="/CSS/app.css">
 @yield ('stylesheets')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	 <div class="header-start">
@@ -31,7 +32,7 @@
 
             <div class="header-end">
                 <a class="biggerfont" href="#"><span style="font-size: small">A</span><span style="font-size: large">A</span></a>
-                <a href="#" class="fa fa-bell"></a>
+                <a href="/inbox" class="fa fa-bell"></a>
                 @if (!Auth::check())
                     <a href="login">Inloggen</a>
                 @else
