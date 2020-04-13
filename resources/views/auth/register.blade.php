@@ -111,7 +111,7 @@
                                         <strong>{{ "Wachtwoorden moeten overeenkomen en moet minimaal uit 8 karakters bestaan" }}</strong>
                                     </span>
                 @enderror
-                <button>Registeren</button>
+                <button id="registerButton" type="submit">Registeren</button>
             </form>
         </div>
     </div>

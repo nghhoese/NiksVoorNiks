@@ -16,7 +16,7 @@
 
             <nav class="nav">
 
-<a href="/" >Home</a>               
+<a href="/" >Home</a>
  <a href="/overons">Over ons</a>
 
 
@@ -30,12 +30,12 @@
             </nav>
 
             <div class="header-end">
-                <a class="biggerfont" href="#"><span style="font-size: small">A</span><span style="font-size: large">A</span></a>
+                <a id="biggerFont" class="biggerfont" href="#"><span style="font-size: small">A</span><span style="font-size: large">A</span></a>
                 <a href="#" class="fa fa-bell"></a>
                 @if (!Auth::check())
-                    <a href="login">Inloggen</a>
+                    <a id="loginButton" href="login">Inloggen</a>
                 @else
-                    <a href="logout">Uitloggen</a>
+                    <a id="logoutButton" href="logout">Uitloggen</a>
                 @endif
             </div>
 	<button id="menu">Menu</button>

@@ -27,7 +27,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
         @enderror
-      <button>login</button>
+      <button type="submit" id="loginButton">login</button>
       <p class="message">Wachtwoord vergeten? <a href="#">Vraag een nieuw wachtwoord aan!</a></p>
     </form>
   </div>
