@@ -37,8 +37,7 @@
                 <input type="text" id="title" name="title"><br><br>
 
                 <label for="beschrijving">Beschrijving</label><br>
-                <textarea name="beschrijving" id="beschrijving" rows="15" cols="50">
-                    </textarea><br><br>
+                <textarea name="beschrijving" id="beschrijving" rows="15" cols="50"></textarea><br><br>
 
                 <label for="price">Prijs(Niks)</label><br>
                 <input type="number" id="price" name="price" min="0" max="200">

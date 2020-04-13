@@ -10,9 +10,8 @@ class Bericht extends Model
     protected $primaryKey = 'id';
     public $incrementing = true;
 
-    public $timestamps = true;
-    const CREATED_AT = 'datum';
-    const UPDATED_AT = 'last_update';
+    public $timestamps = false;
+
     public function deelnemer(){
    
         return $this->belongsTo('App\Deelnemer');

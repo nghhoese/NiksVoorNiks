@@ -46,13 +46,20 @@ color: white;
 <div class="card" >
   <div class="card-header">
   <div class="title">
-    <p>{{$message->onderwerp}}</p>
+    <p>Niew Bericht</p>
 
  </div>
- <h3>Verzonden door: {{$message->zender_email}}</h3>
- <h3>Verzonden op: {{$message->datum}}</h3>
- <h3>Bericht: </h3>
-<p>{{$message->inhoud}}</p>
+ <form method="post" action="/inbox/verzenden">
+@csrf
+<label>Aan: </label><br>
+<input name="to" type="text"><br>
+<label>Onderwerp: </label><br>
+<input name="subject"type="text"><br>
+<label for="bericht">Bericht: </label><br>
+<textarea name="message" rows="15" cols="50"></textarea><br>
+
+<input type="submit" value="Verzend Bericht">
+ </form>
   </div>
 
 </div>

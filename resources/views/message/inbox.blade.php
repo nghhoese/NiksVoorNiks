@@ -8,93 +8,91 @@ Inbox
 @endsection
 @section ('content')
 <style>
-.card{
-  
-    margin-top:50px;
+.wrapper{
     display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    flex: 1;
-    margin-bottom: 50px;
+justify-content: space-evenly;
+flex-direction: row;
+flex: 1;
+margin: 50px;   
+font-size: 1.2em; 
+}
+.inbox a{
+text-decoration: none;
+}
+.inbox {
+    background-color: white;
+    width:100%;
+    max-width: 1405px;
+    border: 2px solid #66BB6A;
+}
 
-  
+.message-link{
+    color: grey;
 }
-.title{
-    background-color:#66BB6A;
-    display: flex;
-justify-content: space-between;
-}
-.card-header{
-    border: 1px solid #66BB6A;
-    color:white;
-    width: 100%;
-    max-width: 500px;
-    background-color:white;
-
- 
-}
-li:hover{
+tr:hover {
     background-color: #C4E9C7;
 }
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-font-size: 1em;
 
-
-
-}
-li{
-    border-bottom: 1px solid #66BB6A;
-    display: flex;
-  align-items: center;
-  justify-content: space-between;
+table#table1 th, td {
+ 
+  text-align: left;
+  border-bottom: 2px solid #66BB6A;
   
 }
+table {
+width:100%;
+border-collapse: collapse;
+}
+table#table1 th{
+    background-color:#66BB6A;
+    color: white;   
+}
 .profile-picture{
-    width: 30px;
-    height: 30px;
+    
+    
+    height: 40px;
+    width: 40px;
 }
-.message-link{
-    text-decoration: none;  
-}
-.date{
-    text-align:right
-}
-.card-header a{
-color: grey;
-
-}
-.title a{
-color:white;
-text-decoration: none;
-
-}
-.pagination1{
-    flex: 1;
-}
- 
 
 </style>
+<div class="wrapper">
+<div class="inbox" >
 
-<div class="card" >
-  <div class="card-header">
-  <div class="title">
-    <p>Inbox</p>
-    <a href=""><p>+</p></a>  
- </div>
-  <ul>
+<table id="table1">
+  <thead>
+<tr>
+<th></th>
+<th>Van</th>
+<th>Onderwerp</th>
+
+<th>Datum</th>
+<th>Verwijderen/Wijzigen</th>
+</tr>
+  </thead>
+  <tbody>
   @foreach($messages as $message)
-  <strong><a class="message-link"href="/inbox/view/{{$message->id}}"> <li><img class="profile-picture" src="{{$user->foto ?? 'https://www.isarklinikum.de/en/wp-content/uploads/sites/3/2015/07/empty_avatar.jpg'}}"><p> {{$message->onderwerp}}</p> <p>{{$message->datum}} </p></li></a></strong>
+  
+<tr>  
+  <td><a class="message-link"href="/inbox/view/{{$message->id}}"><img class="profile-picture" src="{{$message->deelnemer()->find($message->zender_email)->foto ?? 'https://www.isarklinikum.de/en/wp-content/uploads/sites/3/2015/07/empty_avatar.jpg'}}"></a></td>
+  <td><strong><a class="message-link"href="/inbox/view/{{$message->id}}"><p> {{$message->zender_email}}</p></a></td>
+
+  <td><strong><a class="message-link"href="/inbox/view/{{$message->id}}"><p> {{$message->onderwerp}}</p></a></td> 
+
+  <td><strong><a class="message-link"href="/inbox/view/{{$message->id}}"><p>{{$message->datum}} </p></a></td>
+  <td style="text-align:center;"><i class="fas fa-edit" style="color:#66BB6A;"></i> <i class="fas fa-trash-alt" style="color:#66BB6A;"></i></td>
+  </tr>
+  </strong>  
+
   @endforeach
-  </ul>
+  </tbody>
+  </table>
+  <a href="/inbox/nieuw" class="btn">Verzend een Nieuw Bericht</a>
   <div class="pagination1">
   {{$messages->links("pagination::bootstrap-4")}}
   </div>
   </div>
-
 </div>
+
 
         
       
