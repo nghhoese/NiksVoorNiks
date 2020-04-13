@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Categorie;
 use App\Category;
 use App\Groep;
+use DB;
 use Faker\Provider\ka_GE\DateTime;
 use Illuminate\Http\Request;
 use \App\Advertentie;
@@ -19,8 +20,36 @@ class AdvertentieController extends Controller
         return view('advertenties', ['advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
     }
 
-    public function filter(){
+    public function filter(Request $request){
+        DB::enableQueryLog(); // Enable query log
+        $advertentie = Advertentie::when($request->get('gevraagd'), function ($query) {
+            $query->where('vraag', 1);
+        })
+        ->when($request->get('aangeboden'), function ($query) {
+            $query->where('vraag', 0);
+        })
+        ->when($request->get('selectCategory'), function ($query) {
+            $query->where('categorie', request('selectCategory'));
+        })
+        ->when($request->get('selectGroup'), function ($query) {
+            $query->where('groep', request('selectGroup'));
+        })
+        ->when($request->get('maxPrice'), function ($query) {
+            $query->where('prijs', '<=' , request('maxPrice'));
+        })
+        ->when($request->get('minPrice'), function ($query) {
+            $query->where('prijs', '>=' , request('minPrice'));
+        })
+        ->paginate(4);
+        
 
+// Your Eloquent query executed by using get()
+
+dd(DB::getQueryLog()); // Show results of log
+        
+        $categories = Categorie::all();
+        $groups = Groep::all();
+        return view('advertenties', ['advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
     }
 
     public function create()

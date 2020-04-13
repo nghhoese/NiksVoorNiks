@@ -50,6 +50,7 @@ Route::get('/nicksadvertenties', 'AdvertentieController@showAll');
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
     Route::match(['get', 'post'], '/advertenties', 'AdvertentieController@showAll');
+    Route::match(['get', 'post'], '/advertenties1', 'AdvertentieController@filter');
     Route::match(['get', 'post'], '/inbox', 'MessageController@index');
     Route::match(['get', 'post'], '/inbox/view/{id}', 'MessageController@view');
 });

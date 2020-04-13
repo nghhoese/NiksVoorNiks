@@ -10,7 +10,8 @@
 
     <div class="articles">
         <div class="filters">
-            <form>
+            <form method="post" action="/advertenties1">
+            @csrf
                 <label class="title" for="categorie">Categorie:</label><br>
                 <select name="selectCategory" id="selectCategory">
                     <option value="" disabled selected hidden>Kies een categorie...</option>
@@ -35,10 +36,10 @@
 
                 <label class="title">Prijs:</label><br>
                 <label for="minprijs">Min.</label>
-                <input type="number" id="minprijs" name="minprijs">
+                <input type="number" id="minPrice" name="minPrice">
 
                 <label for="maxprijs">Max.</label>
-                <input type="number" id="maxprijs" name="maxprijs"><br>
+                <input type="number" id="maxPrice" name="maxPrice"><br>
 
 
                 <label class="title" for="groep">Groep:</label><br>
@@ -49,7 +50,7 @@
                         <option id="selectedGroup" value="{{$group->naam}}">{{$group->naam}}</option>
                     @endforeach
                 </select><br>
-
+            <input class="btn"type="submit" value="filter">
             </form>
 
             <a class="addad" href="advertentiePlaatsen">
