@@ -14,7 +14,13 @@ class AdvertentieController extends Controller
     public function showAll()
     {
         $advertentie = Advertentie::paginate(4);
-        return view('advertenties', ['advertenties' => $advertentie]);
+        $categories = Categorie::all();
+        $groups = Groep::all();
+        return view('advertenties', ['advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
+    }
+
+    public function filter(){
+
     }
 
     public function create()
