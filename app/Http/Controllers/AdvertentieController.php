@@ -20,33 +20,34 @@ class AdvertentieController extends Controller
         return view('advertenties', ['advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
     }
 
-    public function filter(Request $request){
+    public function filter(Request $request)
+    {
         DB::enableQueryLog(); // Enable query log
+        $request->session()->flash('category', request('selectedCategory'));
         $advertentie = Advertentie::when($request->get('gevraagd'), function ($query) {
             $query->where('vraag', 1);
         })
-        ->when($request->get('aangeboden'), function ($query) {
-            $query->where('vraag', 0);
-        })
-        ->when($request->get('selectCategory'), function ($query) {
-            $query->where('categorie', request('selectCategory'));
-        })
-        ->when($request->get('selectGroup'), function ($query) {
-            $query->where('groep', request('selectGroup'));
-        })
-        ->when($request->get('maxPrice'), function ($query) {
-            $query->where('prijs', '<=' , request('maxPrice'));
-        })
-        ->when($request->get('minPrice'), function ($query) {
-            $query->where('prijs', '>=' , request('minPrice'));
-        })
-        ->paginate(4);
-        
+            ->when($request->get('aangeboden'), function ($query) {
+                $query->where('vraag', 0);
+            })
+            ->when($request->get('selectCategory'), function ($query) {
+                $query->where('categorie', request('selectCategory'));
+            })
+            ->when($request->get('selectGroup'), function ($query) {
+                $query->where('groep', request('selectGroup'));
+            })
+            ->when($request->get('maxPrice'), function ($query) {
+                $query->where('prijs', '<=', request('maxPrice'));
+            })
+            ->when($request->get('minPrice'), function ($query) {
+                $query->where('prijs', '>=', request('minPrice'));
+            })
+            ->paginate(4);
 
-// Your Eloquent query executed by using get()
+        // Your Eloquent query executed by using get()
 
-dd(DB::getQueryLog()); // Show results of log
-        
+        //dd(DB::getQueryLog()); // Show results of log
+
         $categories = Categorie::all();
         $groups = Groep::all();
         return view('advertenties', ['advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
@@ -62,7 +63,7 @@ dd(DB::getQueryLog()); // Show results of log
 
     public function store(Request $request)
     {
-               $date = date('d-m-y h:i:s');
+        $date = date('d-m-y h:i:s');
         $user = auth()->user();
         $validatedData = $request->validate([
             'title' => 'required|max:100',
@@ -74,10 +75,10 @@ dd(DB::getQueryLog()); // Show results of log
             'img' => 'mimes:jpeg,jpg,png,gif|max:10000',
         ]);
         $advertentie = new Advertentie();
-        if($request->file != null) {
-            $fileName = time().'_'.$request->file->getClientOriginalName();
+        if ($request->file != null) {
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
             $request->file->move(public_path('uploads'), $fileName);
-            $advertentie->foto = "/uploads/".$fileName;
+            $advertentie->foto = "/uploads/" . $fileName;
         }
         $advertentie->titel = request('title');
         $advertentie->beschrijving = request('beschrijving');
@@ -90,7 +91,7 @@ dd(DB::getQueryLog()); // Show results of log
         $advertentie->huisnummer = request('housenumber');
         $advertentie->deelnemer_email = $user->email;
         $advertentie->save();
-        return redirect('/advertentieDetails/'.$advertentie->id);
+        return redirect('/advertentieDetails/' . $advertentie->id);
     }
 
     public function view($id)
