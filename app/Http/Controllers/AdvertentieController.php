@@ -21,7 +21,6 @@ class AdvertentieController extends Controller
     }
 
     public function filter(Request $request){
-        DB::enableQueryLog(); // Enable query log
         $advertentie = Advertentie::when($request->get('gevraagd'), function ($query) {
             $query->where('vraag', 1);
         })
@@ -43,9 +42,6 @@ class AdvertentieController extends Controller
         ->paginate(4);
         
 
-// Your Eloquent query executed by using get()
-
-dd(DB::getQueryLog()); // Show results of log
         
         $categories = Categorie::all();
         $groups = Groep::all();
