@@ -17,14 +17,14 @@
 
             <nav class="nav">
 
-<a href="/" >Home</a>               
+<a href="/" >Home</a>
  <a href="/overons">Over ons</a>
 
 
                 <a href="/advertenties">Advertenties</a>
                 <a href="/activiteiten">Activiteiten</a>
                 @if (!Auth::check())
-                <a href="#">Deelnemer worden</a>
+                <a href="/register">Deelnemer worden</a>
                 @endif
                 <a href="#">Contact</a>
 
