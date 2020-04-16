@@ -20,10 +20,7 @@ class AdvertentieController extends Controller
         return view('advertenties', ['advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
     }
 
-    public function filter(Request $request)
-    {
-        DB::enableQueryLog(); // Enable query log
-        $request->session()->flash('category', request('selectedCategory'));
+    public function filter(Request $request){
         $advertentie = Advertentie::when($request->get('gevraagd'), function ($query) {
             $query->where('vraag', 1);
         })
