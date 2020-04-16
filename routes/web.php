@@ -17,14 +17,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-// Kan weg, we hebben al Auth::router() die dat voor ons doet
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-// ------------------------------------------------------------------
-
 Route::get('/advertentiePlaatsen', 'AdvertentieController@create');
 Route::post('/advertentiePlaatsen', 'AdvertentieController@store');
 
@@ -36,7 +28,6 @@ Route::get('/activiteiten', function () {
 });
 
 Route::get('/overons', 'HomeController@overOns')->name('overons');
-
 
 Auth::routes();
 

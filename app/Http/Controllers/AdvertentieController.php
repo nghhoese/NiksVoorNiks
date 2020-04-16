@@ -44,10 +44,6 @@ class AdvertentieController extends Controller
             })
             ->paginate(4);
 
-        // Your Eloquent query executed by using get()
-
-        //dd(DB::getQueryLog()); // Show results of log
-
         $categories = Categorie::all();
         $groups = Groep::all();
         return view('advertenties', ['advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
