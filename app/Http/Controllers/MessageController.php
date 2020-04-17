@@ -20,15 +20,15 @@ class MessageController extends Controller
     }
     public function view($id){
         $message = Bericht::find($id);
-        $message->gelezen = 1;  
+        $message->gelezen = 1;
         $message->save();
         return view('message.view',['message'=> $message]);
 
     }
     public function create(){
-
         return view('message.create');
     }
+
     public function store(){
         $message = new Bericht();
         $message->gelezen = 0;
