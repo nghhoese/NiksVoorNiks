@@ -7,7 +7,7 @@ view
 @section ('content')
 <style>
 .card{
-  
+
     margin-top:50px;
     display: flex;
     justify-content: space-evenly;
@@ -16,7 +16,7 @@ view
     margin-bottom: 50px;
     width: 100%;
 
-  
+
 }
 .title{
     background-color:#66BB6A;
@@ -28,18 +28,12 @@ color: white;
     border: 1px solid #66BB6A;
     color: grey;
     width: 100%;
-    height: 100%;   
+    height: 100%;
     max-width: 500px;
     background-color:white;
 
- 
+
 }
-
-
-
-
-
- 
 
 </style>
 
@@ -57,16 +51,15 @@ color: white;
 <input name="subject"type="text"><br>
 <label for="bericht">Bericht: </label><br>
 <textarea name="message" rows="15" cols="50"></textarea><br>
-
 <input type="submit" value="Verzend Bericht">
  </form>
   </div>
 
 </div>
 
-        
-      
-     
 
-   
+
+
+
+
 @endsection
