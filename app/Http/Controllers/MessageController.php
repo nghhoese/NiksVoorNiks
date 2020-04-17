@@ -19,9 +19,15 @@ class MessageController extends Controller
 
     }
     public function create(){
-
         return view('message.create');
     }
+
+    public function reply(){
+        $name = request('voornaam');
+
+        return view('message.create', []);
+    }
+
     public function store(){
         $message = new Bericht();
         $message->inhoud = request('message');
