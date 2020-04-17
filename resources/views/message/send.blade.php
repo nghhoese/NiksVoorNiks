@@ -79,7 +79,7 @@ table#table1 th{
   text-align: center;
 }
 </style>
-<h1 class="inbox-title">Inbox</h1>
+<h1 class="inbox-title">Verzonden Berichten</h1>
 <div class="wrapper">
 <div class="inbox-menu">
 
@@ -95,11 +95,10 @@ table#table1 th{
   <thead>
 <tr>
 <th></th>
-<th>Van</th>
+<th>Verzonden naar</th>
 <th>Onderwerp</th>
 
 <th>Datum</th>
-<th>Verwijderen</th>
 </tr>
   </thead>
   <tbody>
@@ -108,21 +107,15 @@ table#table1 th{
   
 <tr>  
 
-  <td><a class="message-link"href="/inbox/view/{{$message->id}}"><img class="profile-picture" src="{{$message->deelnemer()->find($message->zender_email)->foto ?? 'https://www.isarklinikum.de/en/wp-content/uploads/sites/3/2015/07/empty_avatar.jpg'}}"></a></td>
-  @if($message->gelezen == 0)
-  <td><strong><a class="message-link"href="/inbox/view/{{$message->id}}"><p> {{$message->zender_email}}</p></a></td>
-
-  <td><strong><a class="message-link"href="/inbox/view/{{$message->id}}"><p> {{$message->onderwerp}}</p></a></td> 
-
-  <td><strong><a class="message-link"href="/inbox/view/{{$message->id}}"><p>{{$message->datum}} </p></a></td>
-  @else
-  <td><a class="message-link"href="/inbox/view/{{$message->id}}"><p> {{$message->zender_email}}</p></a></td>
+  <td><a class="message-link"href="/inbox/view/{{$message->id}}"><img class="profile-picture" src="{{$message->deelnemer()->find($message->ontvanger_email)->foto ?? 'https://www.isarklinikum.de/en/wp-content/uploads/sites/3/2015/07/empty_avatar.jpg'}}"></a></td>
+  
+  <td><a class="message-link"href="/inbox/view/{{$message->id}}"><p> {{$message->ontvanger_email}}</p></a></td>
 
 <td><a class="message-link"href="/inbox/view/{{$message->id}}"><p> {{$message->onderwerp}}</p></a></td> 
 
 <td><a class="message-link"href="/inbox/view/{{$message->id}}"><p>{{$message->datum}} </p></a></td>
-@endif
-  <td style="text-align:center;"> <a href="/inbox/delete/{{$message->id}}"><i class="fas fa-trash-alt" style="color:#66BB6A;"></i></a></td>
+
+
   </tr>
   </strong>  
 
@@ -130,7 +123,7 @@ table#table1 th{
   </tbody>
   </table>
   @if(count($messages) < 1)
-  <h3 style="text-align:center;">Je hebt Nog geen berichten!</h3>
+  <h3 style="text-align:center;">Je hebt Nog geen berichten verzonden! </h3>
   @endif  
   <div class="pagination1">
   {{$messages->links("pagination::bootstrap-4")}}

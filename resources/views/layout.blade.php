@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/CSS/login.css">
     <link rel="stylesheet" href="/CSS/app.css">
 @yield ('stylesheets')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   	 <div class="header-start">
                 <div class="logo"><a href="/"><img src="/Resources/favicon.png"></a></div>
             </div>
@@ -32,10 +32,16 @@
 
             <div class="header-end">
                 <a class="biggerfont" href="#"><span style="font-size: small">A</span><span style="font-size: large">A</span></a>
-                <a href="/inbox" class="fa fa-bell"></a>
+                
                 @if (!Auth::check())
+                <a href="/inbox" class="fa fa-bell"></a>
                     <a href="login">Inloggen</a>
                 @else
+                @if(count(Auth::user()->bericht1()->where('gelezen','=',0)->get())  >= 1)
+                <a href="/inbox" class="fa fa-bell">{{count(Auth::user()->bericht1()->where('gelezen','=',0)->get())}}</a>
+                @else
+                <a href="/inbox" class="fa fa-bell"></a>
+                @endif
                     <a href="logout">Uitloggen</a>
                 @endif
             </div>

@@ -22,6 +22,7 @@ class CreateBerichtsTable extends Migration
             $table->string('ontvanger_email',50);
             $table->foreign('zender_email')->references('email')->on('deelnemer');
             $table->foreign('ontvanger_email')->references('email')->on('deelnemer');
+            $table->integer('gelezen');
         });
     }
 

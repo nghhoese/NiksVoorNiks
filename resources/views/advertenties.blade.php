@@ -10,11 +10,11 @@
 
     <div class="articles">
         <div class="filters">
-            <form method="post" action="/advertenties1">
+            <form method="post" action="/advertenties">
             @csrf
                 <label class="title" for="categorie">Categorie:</label><br>
                 <select name="selectCategory" id="selectCategory">
-                    <option value="" disabled selected hidden>Kies een categorie...</option>
+                    <option value="{{$categorie ?? ''}}" selected>{{$categorie ?? 'Kies een categorie...'}}</option>
                     <option value="">Geen categorie</option>
                     @foreach($categories as $category)
                         <option name="selectedCategory" id="selectedCategory" value="{{$category->naam}}">{{$category->naam}}</option>
@@ -23,34 +23,49 @@
 
 
                 <label class="title">Vraag en Aanbod:</label><br>
+                @if($gevraagd ?? null)
+                @if($gevraagd == 1)
+                <input checked type="checkbox" id="gevraagd" name="gevraagd">
+                <label for="gevraagd">Gevraagd</label>
+
+                <input type="checkbox" id="aangeboden" name="aangeboden">
+                <label for="aangeboden">Aangeboden</label><br>
+                @elseif($gevraagd == 0)
+                <input type="checkbox" id="gevraagd" name="gevraagd">
+                <label for="gevraagd">Gevraagd</label>
+
+                <input checked type="checkbox" id="aangeboden" name="aangeboden">
+                <label for="aangeboden">Aangeboden</label><br>
+
+                @endif
+                @else
                 <input type="checkbox" id="gevraagd" name="gevraagd">
                 <label for="gevraagd">Gevraagd</label>
 
                 <input type="checkbox" id="aangeboden" name="aangeboden">
                 <label for="aangeboden">Aangeboden</label><br>
-
-
+                @endif
                 <label class="title" for="locatie">Locatie:</label><br>
                 <input type="text" id="locatie" name="locatie" placeholder="Typ hier een plaats of postcode..."><br>
 
 
                 <label class="title">Prijs:</label><br>
                 <label for="minprijs">Min.</label>
-                <input type="number" id="minPrice" name="minPrice">
+                <input type="number" id="minPrice" name="minPrice" value="{{ $minPrijs ?? ''}}">
 
                 <label for="maxprijs">Max.</label>
-                <input type="number" id="maxPrice" name="maxPrice"><br>
+                <input type="number" id="maxPrice" name="maxPrice" value="{{ $maxPrijs ?? ''}}"><br>
 
 
                 <label class="title" for="groep">Groep:</label><br>
                 <select id="selectGroup" name="selectGroup">
-                    <option value="" disabled selected hidden>Kies een groep...</option>
+                    <option value="{{$groep ?? ''}}" disabled selected hidden>{{$groep ?? 'Kies een groep...'}}</option>
                     <option value="">Geen groep</option>
                     @foreach($groups as $group)
                         <option id="selectedGroup" value="{{$group->naam}}">{{$group->naam}}</option>
                     @endforeach
                 </select><br>
-            <input class="btn"type="submit" value="filter">
+            <input style="display:none;" class="btn"type="submit" value="filter">
             </form>
 
             <a class="addad" href="advertentiePlaatsen">
@@ -86,7 +101,25 @@
     </div>
 
 
+<script>
+document.querySelector('#gevraagd').addEventListener('click', function(event) {
+    
+    document.querySelector('.btn').click();
 
+});
+document.querySelector('#aangeboden').addEventListener('click', function(event) {
+    
+    document.querySelector('.btn').click();
+
+});
+
+document.querySelector('#selectCategory').addEventListener('click', function(event) {
+if(document.querySelector('#selectCategory').selectedIndex != 0){
+    document.querySelector('.btn').click(); 
+}
+
+});
+</script>
 
 
 
