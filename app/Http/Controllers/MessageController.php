@@ -15,7 +15,7 @@ class MessageController extends Controller
     {
         $user = auth()->user();
         $messages = $user->Bericht1()->paginate(15);
-        return view('message.inbox', ['messages' => $messages, 'user' => $user]);
+        return view('message.inbox',['messages' => $messages,'user' => $user]);
     }
 
     public function view($id)
@@ -25,16 +25,22 @@ class MessageController extends Controller
 
     }
 
-    public function create()
-    {
         return view('message.create');
-
     }
 
     public function reply(){
         $name = request('voornaam');
 
         return view('message.create', []);
+    public function store(){
+        $message = new Bericht();
+        $message->inhoud = request('message');
+        $message->onderwerp = request('subject');
+        $message->ontvanger_email = request('to');
+        $message->zender_email = auth()->user()->email;
+        $message->datum = date("Y-m-d H:i:s");
+        $message->save();
+        return redirect('/inbox');
     }
 
     public function store()

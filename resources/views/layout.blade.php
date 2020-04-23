@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield ('title')</title>
-    <div class="top">
-        <header class="header">
-            <link rel="stylesheet" href="/CSS/style.css">
-            <link rel="stylesheet" href="/CSS/login.css">
-            @yield ('stylesheets')
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-
-            <div class="header-start">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@yield ('title')</title>
+<div class="top">
+<header class="header">
+<link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/login.css">
+    <link rel="stylesheet" href="/CSS/app.css">
+@yield ('stylesheets')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    
+  	 <div class="header-start">
                 <div class="logo"><a href="/"><img src="/Resources/favicon.png"></a></div>
             </div>
             <nav class="nav">
