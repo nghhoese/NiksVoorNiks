@@ -8,10 +8,9 @@
 <header class="header">
 <link rel="stylesheet" href="/CSS/style.css">
     <link rel="stylesheet" href="/CSS/login.css">
-    <link rel="stylesheet" href="/CSS/app.css">
 @yield ('stylesheets')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    
+
   	 <div class="header-start">
                 <div class="logo"><a href="/"><img src="/Resources/favicon.png"></a></div>
             </div>
@@ -32,7 +31,7 @@
             <div class="header-end">
                 <a class="biggerfont" href="#"><span style="font-size: small">A</span><span
                         style="font-size: large">A</span></a>
-                
+
                 @if (!Auth::check())
                 <a href="/inbox" class="fa fa-bell"></a>
                     <a id="loginButton" href="/login">Inloggen</a>
