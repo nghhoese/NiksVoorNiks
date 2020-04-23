@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="/CSS/app.css">
 @yield ('stylesheets')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    
+
   	 <div class="header-start">
                 <div class="logo"><a href="/"><img src="/Resources/favicon.png"></a></div>
             </div>
 
             <nav class="nav">
 
-<a href="/" >Home</a>               
+<a href="/" >Home</a>
  <a href="/overons">Over ons</a>
 
 
@@ -28,6 +28,7 @@
                 <a href="#">Deelnemer worden</a>
                 @endif
                 <a href="#">Contact</a>
+                <a href="/cms">CMS</a>
 
             </nav>
 
