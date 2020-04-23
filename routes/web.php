@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
 
 Route::get('/advertentiePlaatsen', 'AdvertentieController@create');
 Route::post('/advertentiePlaatsen', 'AdvertentieController@store');
@@ -27,23 +25,33 @@ Route::get('/activiteiten', function () {
     return view('activiteiten');
 });
 
-Route::get('/overons', 'HomeController@overOns')->name('overons');
+Route::get('/overons', 'AboutUsController@index')->name('overons');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::get('/logout', function () {
     Auth::logout();
-    return view('home');
+    return redirect('/home');
 });
 Route::get('/nicksadvertenties', 'AdvertentieController@showAll');
 
-Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function () {
+Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
+    Route::match(['get'], '/cms', 'CmsController@index')->name('cms');
+    Route::match(['get'], '/cms/edit/{name}', 'CmsController@edit')->name('editcms');
+    Route::match(['post'], '/cms/edit/{name}', 'CmsController@update')->name('editcms');
+});
+
+Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
     Route::match(['get', 'post'], '/advertenties', 'AdvertentieController@showAll');
     Route::match(['get', 'post'], '/inbox', 'MessageController@index');
+    Route::match(['get', 'post'], '/inbox/verzonden', 'MessageController@indexSend');
     Route::match(['get', 'post'], '/inbox/view/{id}', 'MessageController@view');
     Route::match(['get', 'post'], '/inbox/nieuw', 'MessageController@create');
+    Route::get('/inbox/reply/{id}', 'MessageController@reply');
     Route::match(['get', 'post'], '/inbox/verzenden', 'MessageController@store');
     Route::match(['get', 'post'], '/inbox/reageren/{email}', 'MessageController@respond');
 });

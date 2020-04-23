@@ -1,43 +1,12 @@
 @extends ('layout')
 @section('title')
-    view
+nieuw bericht
 @endsection
 @section ('stylesheets')
+<link rel="stylesheet" href="/CSS/messageStyle.css">
 
+@endsection
 @section ('content')
-    <style>
-        .card {
-
-            margin-top: 50px;
-            display: flex;
-            justify-content: space-evenly;
-            flex-direction: row;
-            flex: 1;
-            margin-bottom: 50px;
-            width: 100%;
-
-
-        }
-
-        .title {
-            background-color: #66BB6A;
-            display: flex;
-            justify-content: space-between;
-            color: white;
-        }
-
-        .card-header {
-            border: 1px solid #66BB6A;
-            color: grey;
-            width: 100%;
-            height: 100%;
-            max-width: 500px;
-            background-color: white;
-
-
-        }
-
-    </style>
 
     <div class="card">
         <div class="card-header">
@@ -47,18 +16,20 @@
             </div>
             <form method="post" action="/inbox/verzenden">
                 @csrf
-                <label>Aan: </label><br>
-                <input name="to" type="text" value="{{$deelnemer->email ?? ''}}"><br>
-                <label>Onderwerp: </label><br>
+                <label><b>Ontvanger: </b></label><br>
+                <input name="to" type="text" value="{{$email ?? ''}}"><br>
+                <label><b>Onderwerp: </b></label><br>
                 <input name="subject" type="text" value="{{$title ?? ''}}"><br>
-                <label for="bericht">Bericht: </label><br>
-                <textarea name="message" rows="15" cols="50">Beste {{$deelnemer->voornaam ?? ''}},&#010;&#010;&#010;&#010;&#010;Met vriendelijke groet,&#010;&#010;{{$user->voornaam}}</textarea><br>
+                <label for="bericht"><b>Bericht: </b></label><br>
+                <textarea name="message" rows="15" cols="50">Beste {{$name ?? ''}},&#010;&#010;&#010;&#010;&#010;Met vriendelijke groet,&#010;&#010;{{$user->voornaam}}</textarea><br>
                 <input type="submit" value="Verzend Bericht">
             </form>
+            <div class="back">
+<a href="/inbox"><i class="fas fa-arrow-left">Terug naar inbox</i></a>
+  </div>
         </div>
 
     </div>
-
 
 
 

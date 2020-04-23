@@ -3,60 +3,23 @@
 Inbox
 @endsection
 @section ('stylesheets')
-<link rel="stylesheet" href="CSS/pagination.css">
-
+<link rel="stylesheet" href="/CSS/pagination.css">
+<link rel="stylesheet" href="/CSS/inboxStyle.css">
 @endsection
 @section ('content')
-<style>
-.wrapper{
-    display: flex;
-justify-content: space-evenly;
-flex-direction: row;
-flex: 1;
-margin: 50px;   
-font-size: 1.2em; 
-}
-.inbox a{
-text-decoration: none;
-}
-.inbox {
-    background-color: white;
-    width:100%;
-    max-width: 1405px;
-    border: 2px solid #66BB6A;
-}
+<div class="container">
 
-.message-link{
-    color: grey;
-}
-tr:hover {
-    background-color: #C4E9C7;
-}
-
-table#table1 th, td {
- 
-  text-align: left;
-  border-bottom: 2px solid #66BB6A;
-  
-}
-table {
-width:100%;
-border-collapse: collapse;
-}
-table#table1 th{
-    background-color:#66BB6A;
-    color: white;   
-}
-.profile-picture{
-    
-    
-    height: 40px;
-    width: 40px;
-}
-
-</style>
+<h1 class="inbox-title">Inbox</h1>
 <div class="wrapper">
-<div class="inbox" >
+<div class="inbox-menu">
+
+<h4>Menu</h4>
+<a href="/inbox"><p>Inbox({{count(Auth::user()->bericht1()->where('gelezen','=',0)->get())}})</p></a>
+<a href="/inbox/verzonden"><p>Verzonden Berichten</p></a>
+<a href="/inbox/nieuw"><p>Nieuw Bericht Maken <i class="fas fa-paper-plane" style="color: #66BB6A;"></i> </p></a>
+</div>
+<div class="inbox">
+
 
 <table id="table1">
   <thead>
@@ -66,29 +29,38 @@ table#table1 th{
 <th>Onderwerp</th>
 
 <th>Datum</th>
-<th>Verwijderen/Wijzigen</th>
+<th>Verwijderen</th>
 </tr>
   </thead>
   <tbody>
+
   @foreach($messages as $message)
-  
 <tr>  
-  <td><a class="message-link"href="/inbox/view/{{$message->id}}"><img class="profile-picture" src="{{$message->deelnemer()->find($message->zender_email)->foto ?? 'https://www.isarklinikum.de/en/wp-content/uploads/sites/3/2015/07/empty_avatar.jpg'}}"></a></td>
-  <td><strong><a class="message-link"href="/inbox/view/{{$message->id}}"><p> {{$message->zender_email}}</p></a></td>
+@if($message->gelezen == 1)
+  <td><a class="message-link" href="/inbox/view/{{$message->id}}"><img class="profile-picture" src="https://www.isarklinikum.de/en/wp-content/uploads/sites/3/2015/07/empty_avatar.jpg"></a></td>
+    <td><a class="message-link" href="/inbox/view/{{$message->id}}"><p> {{$message->zender_email}}</p></a></td>
 
-  <td><strong><a class="message-link"href="/inbox/view/{{$message->id}}"><p> {{$message->onderwerp}}</p></a></td> 
+<td><a class="message-link" href="/inbox/view/{{$message->id}}"><p>{{$message->onderwerp}}</p></a></td> 
 
-  <td><strong><a class="message-link"href="/inbox/view/{{$message->id}}"><p>{{$message->datum}} </p></a></td>
-  <td style="text-align:center;"><i class="fas fa-edit" style="color:#66BB6A;"></i> <i class="fas fa-trash-alt" style="color:#66BB6A;"></i></td>
+<td><a class="message-link" href="/inbox/view/{{$message->id}}"><p>{{$message->datum}}</p></a></td>
+  <td style="text-align:center;"> <a href="/inbox/delete/{{$message->id}}"><i class="fas fa-trash-alt" style="color:#66BB6A;"></i></a></td>
+  @else
+  <td><strong><a class="message-link" href="/inbox/view/{{$message->id}}"><img class="profile-picture" src="https://www.isarklinikum.de/en/wp-content/uploads/sites/3/2015/07/empty_avatar.jpg"></a></td>
+    <td><strong><a class="message-link" href="/inbox/view/{{$message->id}}"><p> {{$message->zender_email}}</p></a></td>
+
+<td><strong><a class="message-link" href="/inbox/view/{{$message->id}}"><p>{{$message->onderwerp}}</p></a></td> 
+
+<td><strong><a class="message-link" href="/inbox/view/{{$message->id}}"><p>{{$message->datum}}</p></a></td>
+  <td style="text-align:center;"> <a href="/inbox/delete/{{$message->id}}"><i class="fas fa-trash-alt" style="color:#66BB6A;"></i></a></td>
+  @endif
   </tr>
-  </strong>  
+    @endforeach
 
-  @endforeach
-  </tbody>
+    </tbody>
   </table>
-  <a href="/inbox/nieuw" class="btn">Verzend een Nieuw Bericht</a>
+    
   <div class="pagination1">
-  {{$messages->links("pagination::bootstrap-4")}}
+  
   </div>
   </div>
 </div>
