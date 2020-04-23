@@ -82,7 +82,6 @@ class RegisterController extends Controller
             'niksen' => 0,
             'beschrijving' => '',
             'email' => $data['email'],
-            'aangemaakt_op' => date("Y-m-d H:i:s"),
             'wachtwoord' => Hash::make($data['password']),
         ]);
     }

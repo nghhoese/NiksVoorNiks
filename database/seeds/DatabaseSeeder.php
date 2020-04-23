@@ -20,10 +20,6 @@ class DatabaseSeeder extends Seeder
             'naam' => 'deelnemer',
             'beschrijving' => 'Een standaard deelnemer van NiksVoorNiks'
         ]);
-        DB::table('rol')->insert([
-            'naam' => 'in behandeling',
-            'beschrijving' => 'Een standaard deelnemer van NiksVoorNiks'
-        ]);
 
         //activities
         DB::table('activiteit')->insert([
@@ -95,6 +91,82 @@ class DatabaseSeeder extends Seeder
         DB::table('groep')->insert([
             'naam' => 'Boschenaren',
             'beschrijving' => 'De echte Boschenaren!',
+        ]);
+
+        //participants
+        DB::table('deelnemer')->insert([
+            'email' => 'fhendrik1@avans.nl',
+            'wachtwoord' => 'ferran1234',
+            'voornaam' => 'Ferran',
+            'achternaam' => 'Hendriks',
+            'geboortedatum' => '1999-08-15',
+            'telefoonnummer' => '066666666',
+            'postcode' => '5211AC',
+            'huisnummer' => '473G',
+            'foto' => 'https://townsquare.media/site/366/files/2012/01/adamgontier.jpg?w=980&q=75',
+            'niksen' => '66',
+            'beschrijving' => 'Student Avans Hogeschool',
+            'rol_naam' => 'administrator',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'jonah@avans.nl',
+            'wachtwoord' => 'jonah1234',
+            'voornaam' => 'Jonah',
+            'achternaam' => 'Dirksen',
+            'geboortedatum' => '1998-1-1',
+            'telefoonnummer' => '06777777',
+            'postcode' => '3584LA',
+            'huisnummer' => '55',
+            'niksen' => '55',
+            'beschrijving' => 'Student Avans Hogeschool',
+            'rol_naam' => 'administrator',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'admin@niksvoorniks.nl',
+            'wachtwoord' => 'admin1234',
+            'voornaam' => 'Admin',
+            'achternaam' => 'Admin',
+            'geboortedatum' => '2020-04-01',
+            'telefoonnummer' => '069876543',
+            'postcode' => '5111AE',
+            'huisnummer' => '69',
+            'foto' => 'https://yt3.ggpht.com/a/AGF-l7_pLghJ9ZjJzCRmPlw512Ytx_eeIhNChP2jWw=s900-c-k-c0xffffffff-no-rj-mo',
+            'niksen' => '66',
+            'beschrijving' => 'Admin',
+            'rol_naam' => 'administrator',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'deelnemer@niksvoorniks.nl',
+            'wachtwoord' => 'deelnemer1234',
+            'voornaam' => 'Deelnemer',
+            'tussenvoegsel' => '',
+            'achternaam' => 'Deelnemer',
+            'geboortedatum' => '2020-04-01',
+            'telefoonnummer' => '061234567',
+            'postcode' => '5061PA',
+            'huisnummer' => '69',
+            'foto' => 'https://yt3.ggpht.com/a/AGF-l79nrvVuCiaaTdlZrxnAX6RTFKyXI1idCMUp5A=s900-c-k-c0xffffffff-no-rj-mo',
+            'niksen' => '66',
+            'beschrijving' => 'Deelnemer',
+            'rol_naam' => 'deelnemer',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'nick@avans.nl',
+            'wachtwoord' => 'nick1234',
+            'voornaam' => 'Nick',
+            'tussenvoegsel' => 'van',
+            'achternaam' => 'Hoesel',
+            'geboortedatum' => '1998-04-01',
+            'telefoonnummer' => '06115569',
+            'postcode' => '4817LL',
+            'huisnummer' => '69',
+            'niksen' => '180',
+            'beschrijving' => 'Heeft veel niksen',
+            'rol_naam' => 'deelnemer',
         ]);
 
         //advertisements

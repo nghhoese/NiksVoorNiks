@@ -14,14 +14,15 @@ view
     <p>{{$message->onderwerp}}</p>
 
  </div>
- <h3>Verzonden door: {{$message->zender_email}}</h3>
+ <h3>Verzonden naar: {{$message->ontvanger_email}}</h3>
  <h3>Verzonden op: {{$message->datum}}</h3>
  <h3>Bericht: </h3>
 <p>{{$message->inhoud}}</p>
 <div class="back">
 <a href="/inbox"><i class="fas fa-arrow-left">Terug naar inbox</i></a>
   </div>
-</div>
+  </div>
+
 </div>
 
         

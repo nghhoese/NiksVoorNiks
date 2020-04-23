@@ -28,7 +28,7 @@ class CreateDeelnemersTable extends Migration
             $table->string('beschrijving',500);
             $table->string('rol_naam',50);
             $table->foreign('rol_naam')->references('naam')->on('rol');
-            $table->timestamp('aangemaakt_op');
+            
         });
     }
 

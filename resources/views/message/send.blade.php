@@ -107,13 +107,13 @@ table#table1 th{
   
 <tr>  
 
-  <td><a class="message-link"href="/inbox/view/{{$message->id}}"><img class="profile-picture" src="{{$message->deelnemer()->find($message->ontvanger_email)->foto ?? 'https://www.isarklinikum.de/en/wp-content/uploads/sites/3/2015/07/empty_avatar.jpg'}}"></a></td>
+  <td><a class="message-link"href="/inbox/viewSend/{{$message->id}}"><img class="profile-picture" src="{{$message->deelnemer()->find($message->ontvanger_email)->foto ?? 'https://www.isarklinikum.de/en/wp-content/uploads/sites/3/2015/07/empty_avatar.jpg'}}"></a></td>
   
-  <td><a class="message-link"href="/inbox/view/{{$message->id}}"><p> {{$message->ontvanger_email}}</p></a></td>
+  <td><a class="message-link"href="/inbox/viewSend/{{$message->id}}"><p> {{$message->ontvanger_email}}</p></a></td>
 
-<td><a class="message-link"href="/inbox/view/{{$message->id}}"><p> {{$message->onderwerp}}</p></a></td> 
+<td><a class="message-link"href="/inbox/viewSend/{{$message->id}}"><p> {{$message->onderwerp}}</p></a></td> 
 
-<td><a class="message-link"href="/inbox/view/{{$message->id}}"><p>{{$message->datum}} </p></a></td>
+<td><a class="message-link"href="/inbox/viewSend/{{$message->id}}"><p>{{$message->datum}} </p></a></td>
 
 
   </tr>
