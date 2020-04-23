@@ -11,6 +11,7 @@ class Bericht extends Model
     public $incrementing = true;
 
     public $timestamps = false;
+
     public function deelnemer(){
    
         return $this->belongsTo('App\Deelnemer');

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Categorie;
 use App\Category;
 use App\Groep;
-use DB;
 use Faker\Provider\ka_GE\DateTime;
 use Illuminate\Http\Request;
 use \App\Advertentie;
@@ -15,43 +14,7 @@ class AdvertentieController extends Controller
     public function showAll()
     {
         $advertentie = Advertentie::paginate(4);
-        $categories = Categorie::all();
-        $groups = Groep::all();
-        return view('advertenties', ['advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
-    }
-
-    public function filter(Request $request){
-
-        $advertentie = Advertentie::when($request->get('gevraagd'), function ($query) {
-            $query->where('vraag', 1);
-        })
-        ->when($request->get('aangeboden'), function ($query) {
-            $query->where('vraag', 0);
-        })
-        ->when($request->get('selectCategory'), function ($query) {
-            $query->where('categorie', request('selectCategory'));
-        })
-        // ->when($request->get('selectGroup'), function ($query) {
-        //     $query->where('groep', request('selectGroup'));
-        // })
-        ->when($request->get('maxPrice'), function ($query) {
-            $query->where('prijs', '<=' , request('maxPrice'));
-        })
-        ->when($request->get('minPrice'), function ($query) {
-            $query->where('prijs', '>=' , request('minPrice'));
-        })
-        ->paginate(4);
-        $categorie = request('selectCategory');
-        $maxPrice = request('maxPrice');        
-        $minPrice = request('minPrice');
-        $group = request('selectGroup');
-        $gevraagd = 0;
-        if(request('gevraagd') != null){
-            $gevraagd = 1;
-        }
-        $categories = Categorie::all();
-        $groups = Groep::all();
-        return view('advertenties', ['gevraagd' => $gevraagd,'groep' => $group,'minPrijs' => $minPrice,'maxPrijs' => $maxPrice,'categorie' => $categorie, 'advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
+        return view('advertenties', ['advertenties' => $advertentie]);
     }
 
     public function create()

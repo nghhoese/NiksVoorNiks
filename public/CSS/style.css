@@ -380,8 +380,7 @@ body {
 }
 
 .article img {
-    width: 208px;
-    height: 124px;
+    width: 15%;
 }
 
 .addetails {
@@ -541,7 +540,7 @@ input[type=submit]:hover {
 }
 
 .main-content img {
-    width: 100%;
+    max-width: 70%;
 }
 
 h1.title {

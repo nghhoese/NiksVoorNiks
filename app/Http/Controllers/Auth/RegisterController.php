@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'lastname' => ['required', 'string', 'max:255'],
             'dateofbirth' => ['required', 'date', 'before:tomorrow'],
             'phonenumber' => ['required', 'string', 'max:25'],
-            'postalcode' =>['required', 'regex:/^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i', "max:6"],
+            'postalcode' =>['required', 'regex:/^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i'],
             'housenumber' =>['required', 'string', 'max:25'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:deelnemer'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],

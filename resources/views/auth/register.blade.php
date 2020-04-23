@@ -64,7 +64,7 @@
 
                 @error('postalcode')
                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ "Postcode moet bestaan uit 4 cijfers gevolgd door 2 letters en mag geen spaties bevatten" }}</strong>
+                                        <strong>{{ "Postcode moet bestaan uit 4 cijfers en 2 letters" }}</strong>
                                     </span>
                 @enderror
                 <input id="housenumber" placeholder="Huisnummer" type="text"

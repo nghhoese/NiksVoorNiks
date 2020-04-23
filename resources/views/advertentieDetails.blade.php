@@ -12,9 +12,7 @@ home
         <div class="flex-container">
             <div class="main-content">
                 <h1 class="title">{{$advertentie->titel}}</h1>
-                <div class="image-wrapper">
                 <img src="{{$advertentie->foto ?? 'https://i.imgur.com/HxdPz7Q.jpg'}}">
-                </div>
                 <div class="stats">
                     <div><p>{{$advertentie->postcode}}</p></div>
                 </div>
