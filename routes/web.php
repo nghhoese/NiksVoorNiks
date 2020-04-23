@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
 
 // Kan weg, we hebben al Auth::router() die dat voor ons doet
 
@@ -35,18 +33,31 @@ Route::get('/activiteiten', function () {
     return view('activiteiten');
 });
 
-Route::get('/overons', 'HomeController@overOns')->name('overons');
+Route::get('/overons', 'AboutUsController@index')->name('overons');
+
+/*Route::get('/cms', 'CmsController@index')->name('cms');
+
+Route::get('/cms/edit/{name}', 'CmsController@edit')->name('editcms');
+
+Route::post('/cms/edit/{name}', 'CmsController@update')->name('editcms');*/
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::get('/logout', function () {
     Auth::logout();
-    return view('home');
+    return redirect('/home');
 });
 Route::get('/nicksadvertenties', 'AdvertentieController@showAll');
+
+Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
+    Route::match(['get'], '/cms', 'CmsController@index')->name('cms');
+    Route::match(['get'], '/cms/edit/{name}', 'CmsController@edit')->name('editcms');
+    Route::match(['post'], '/cms/edit/{name}', 'CmsController@update')->name('editcms');
+});
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
     Route::match(['get', 'post'], '/advertenties', 'AdvertentieController@showAll');

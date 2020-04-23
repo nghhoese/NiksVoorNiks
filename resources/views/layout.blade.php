@@ -28,6 +28,7 @@
                 <a href="#">Deelnemer worden</a>
                 @endif
                 <a href="#">Contact</a>
+                <a href="/cms">CMS</a>
 
             </nav>
 
