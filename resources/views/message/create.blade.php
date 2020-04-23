@@ -48,17 +48,16 @@
             <form method="post" action="/inbox/verzenden">
                 @csrf
                 <label>Aan: </label><br>
-                <input name="to" type="text" value="{{$deelnemer->email ?? ''}}"><br>
+                <input name="to" type="text" value="{{$email ?? ''}}"><br>
                 <label>Onderwerp: </label><br>
                 <input name="subject" type="text" value="{{$title ?? ''}}"><br>
                 <label for="bericht">Bericht: </label><br>
-                <textarea name="message" rows="15" cols="50">Beste {{$deelnemer->voornaam ?? ''}},&#010;&#010;&#010;&#010;&#010;Met vriendelijke groet,&#010;&#010;{{$user->voornaam}}</textarea><br>
+                <textarea name="message" rows="15" cols="50">Beste {{$name ?? ''}},&#010;&#010;&#010;&#010;&#010;Met vriendelijke groet,&#010;&#010;{{$user->voornaam}}</textarea><br>
                 <input type="submit" value="Verzend Bericht">
             </form>
         </div>
 
     </div>
-
 
 
 

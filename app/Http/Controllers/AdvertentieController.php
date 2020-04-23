@@ -27,7 +27,7 @@ class AdvertentieController extends Controller
 
     public function store(Request $request)
     {
-               $date = date('d-m-y h:i:s');
+        $date = date('d-m-y h:i:s');
         $user = auth()->user();
         $validatedData = $request->validate([
             'title' => 'required|max:100',
@@ -39,10 +39,10 @@ class AdvertentieController extends Controller
             'img' => 'mimes:jpeg,jpg,png,gif|max:10000',
         ]);
         $advertentie = new Advertentie();
-        if($request->file != null) {
-            $fileName = time().'_'.$request->file->getClientOriginalName();
+        if ($request->file != null) {
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
             $request->file->move(public_path('uploads'), $fileName);
-            $advertentie->foto = "/uploads/".$fileName;
+            $advertentie->foto = "/uploads/" . $fileName;
         }
         $advertentie->titel = request('title');
         $advertentie->beschrijving = request('beschrijving');
@@ -55,7 +55,7 @@ class AdvertentieController extends Controller
         $advertentie->huisnummer = request('housenumber');
         $advertentie->deelnemer_email = $user->email;
         $advertentie->save();
-        return redirect('/advertentieDetails/'.$advertentie->id);
+        return redirect('/advertentieDetails/' . $advertentie->id);
     }
 
     public function view($id)

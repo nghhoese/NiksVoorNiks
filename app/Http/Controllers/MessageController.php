@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Advertentie;
 use App\Deelnemer;
 use Illuminate\Http\Request;
 use App\Bericht;
+use Illuminate\Support\Facades\Log;
 
 class MessageController extends Controller
 {
@@ -29,15 +31,7 @@ class MessageController extends Controller
 
     }
 
-    public function respond($email)
-    {
-        $user = auth()->user();
-        $deelnemer = Deelnemer::find($email);
-        return view('message.create', ['user' => $user, 'deelnemer' => $deelnemer]);
-    }
-
-    public function reply()
-    {
+    public function reply(){
         $name = request('voornaam');
 
         return view('message.create', []);
