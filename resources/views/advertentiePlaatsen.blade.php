@@ -1,8 +1,9 @@
 @extends ('layout')
 @section('title')
-    home
+    Advertentie plaatsen
 @endsection
 <link rel="stylesheet" href="/CSS/form.css">
+<link rel="stylesheet" href="/CSS/postAdvertisement.css">
 @section ('content')
 
     <div class="plaatsadvertentie">
@@ -16,9 +17,10 @@
                     </ul>
                 </div><br/>
             @endif
-            <h2>Nieuwe advertentie plaatsen</h2><br><br>
             <form id="form" method="post" action="/advertentiePlaatsen" enctype="multipart/form-data">
                 @csrf
+                <h2>Nieuwe advertentie plaatsen</h2><br><br>
+
                 <label for="category">Kies een rubriek</label><br>
                 <select id="category" name="category">
                     @foreach($categories as $category)

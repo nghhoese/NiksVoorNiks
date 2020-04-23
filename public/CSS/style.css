@@ -453,10 +453,6 @@ i.adloc label {
     background-color: white;
 }
 
-.plaatsadvertentie h2 {
-    margin-top: 10%;
-}
-
 input[type=submit] {
     background-color: #4CAF50;
     color: white;
@@ -506,8 +502,6 @@ input[type=submit]:hover {
     text-align: center;
     color: white;
 }
-
-
 
 
 .footer>p {
