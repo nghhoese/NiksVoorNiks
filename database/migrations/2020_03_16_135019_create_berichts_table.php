@@ -18,6 +18,9 @@ class CreateBerichtsTable extends Migration
             $table->string('inhoud',500);
             $table->string('onderwerp',50);
             $table->dateTime('datum');
+            $table->integer('gelezen');
+            $table->integer('verwijderd_door_ontvanger');
+            $table->integer('verwijderd_door_zender');
             $table->string('zender_email',50);
             $table->string('ontvanger_email',50);
             $table->foreign('zender_email')->references('email')->on('deelnemer');

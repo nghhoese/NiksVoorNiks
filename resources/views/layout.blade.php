@@ -32,10 +32,12 @@
             <div class="header-end">
                 <a class="biggerfont" href="#"><span style="font-size: small">A</span><span
                         style="font-size: large">A</span></a>
-                <a href="/inbox" class="fa fa-bell"></a>
+                
                 @if (!Auth::check())
+                <a href="/inbox" class="fa fa-bell"></a>
                     <a id="loginButton" href="/login">Inloggen</a>
                 @else
+                <a href="/inbox" class="fa fa-bell">{{count(Auth::user()->bericht1()->where('gelezen','=',0)->get())}}</a>
                     <a id="logoutButton" href="/logout">Uitloggen</a>
                 @endif
             </div>

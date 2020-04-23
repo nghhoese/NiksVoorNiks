@@ -48,6 +48,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
 Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
     Route::match(['get', 'post'], '/advertenties', 'AdvertentieController@showAll');
     Route::match(['get', 'post'], '/inbox', 'MessageController@index');
+    Route::match(['get', 'post'], '/inbox/verzonden', 'MessageController@indexSend');
     Route::match(['get', 'post'], '/inbox/view/{id}', 'MessageController@view');
     Route::match(['get', 'post'], '/inbox/nieuw', 'MessageController@create');
     Route::get('/inbox/reply/{id}', 'MessageController@reply');
