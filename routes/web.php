@@ -25,7 +25,10 @@ Route::get('/activiteiten', function () {
     return view('activiteiten');
 });
 
-Route::get('/overons', 'AboutUsController@index')->name('overons');
+Route::match(['get'], '/cms/edit/{name}', 'CmsController@edit')->name('editcms');
+
+
+Route::get('/activiteiten', 'ActivityController@showAll');
 
 
 Auth::routes();
