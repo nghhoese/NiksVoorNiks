@@ -25,43 +25,42 @@ home
                 <div class="mySlides fade">
                     <div class="numbertext">3 / 3</div>
                     <img src="Resources/appeltaart.png">
-                  <div class="text">Ruilen van diverse diensten en producten</div> 
-                
+                  <div class="text">Ruilen van diverse diensten en producten</div>
+
                 </div>
 
             </div>
-        </div>      
+        </div>
 
         <div class="homecontent">
             <div class="over-ons-small">
-                <h2>Over ons</h2>
-                <p>Wij zijn ruilkring Den Bosch, ook wel bekend als Niks voor Niks. Wij zijn een hechte groep van allemaal verschillende mensen die graag diensten of waren van anderen in huis nemen, maar hier liever toch niet voor betalen, vandaar dat wij de niks hebben gemaakt.</p><br>
-                <p>Op dit moment telt de ruilkring ongeveer 100 leden, een aardig aantal. Toch kennen de meeste mensen elkaar erg goed, we zijn bekend met mekaar en kunnen daarom ook altijd zonder problemen even op de koffie of leuk wat gaan doen.</p><br>
-                <p>We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de optie om deze passie te uiten en tot bloei te laten komen.</p>
+                <h2>{{$information->titel}}</h2>
+                <br>
+                <p style="white-space: pre-line">{{$information->informatie}}</p>
                 <a href="/overons" class="link">Lees meer</a>
             </div>
 
             <div class="preview-aanbod">
-                
+
                 <a href="#" class="aanbod">
                     <p class="type">Aangeboden</p>
-                    <h3 class="title">Titel advertentie</h3>                    
+                    <h3 class="title">Titel advertentie</h3>
                     <img src="Resources/MXsfEWs.png">
                     <p class="beschrijving">Beschrijving van de advertentie in het kort..</p>
                     <p class="price">10 Niks</p>
                 </a>
-                
+
                 <a href="#" class="aanbod">
                     <p class="type">Aangeboden</p>
-                    <h3 class="title">Titel advertentie</h3>                    
+                    <h3 class="title">Titel advertentie</h3>
                     <img src="Resources/MXsfEWs.png">
                     <p class="beschrijving">Beschrijving van de advertentie in het kort..</p>
                     <p class="price">10 Niks</p>
                 </a>
-                
+
                 <a href="#" class="aanbod">
                     <p class="type">Aangeboden</p>
-                    <h3 class="title">Titel advertentie</h3>                    
+                    <h3 class="title">Titel advertentie</h3>
                     <img src="Resources/MXsfEWs.png">
                     <p class="beschrijving">Beschrijving van de advertentie in het kort..</p>
                     <p class="price">10 Niks</p>
@@ -69,7 +68,7 @@ home
 
             </div>
         </div>
-     
+
 @endsection
 @section('footer')
 <script src="JS/slider.js"></script>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Informatie;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $information = Informatie::where('naam', 'Hoofdpagina')->first();
+        return view('home', ['information' => $information]);
     }
 
     public function overOns()
