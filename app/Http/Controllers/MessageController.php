@@ -43,9 +43,22 @@ class MessageController extends Controller
         $email = $advertisement->deelnemer_email;
         $deelnemer = Deelnemer::find($email);
         $name = $deelnemer->voornaam;
-
         return view('message.create', ['email' => $email, 'title' => $title, 'name' => $name, 'user' => $user]);
     }
+
+    public function message($id){
+        $user = auth()->user();
+        $email = Deelnemer::find($id)->email;
+        return view('message.create', ['user' => $user, 'email' => $email]);
+
+    }
+
+    public function replyOnMessage($id){
+        $message = Bericht::find($id);
+        $user = auth()->user();
+        return view('message.create',['email' => $message->zender_email,'title' => 'RE:'.$message->onderwerp,'user' => $user]);
+    }
+
     public function store(){
         $message = new Bericht();
         $message->inhoud = request('message');

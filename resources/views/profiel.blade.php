@@ -13,7 +13,7 @@
             <div class="stats">
                 <h3 id="title" class="">{{$user->voornaam}} {{$user->tussenvoegsel}} {{$user->achternaam}}</h3>
             </div>
-            <a href="/inbox/reageren/{{$user->email}}" class="btn">Bericht sturen</a>
+            <a href="/inbox/bericht/{{$user->email}}" class="btn">Bericht sturen</a>
             <div class="user-description">
                 <b>Beschrijving <br/></b>
                 <p>{{$user->beschrijving}}</p>
