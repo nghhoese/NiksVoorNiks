@@ -36,8 +36,11 @@
                 @if (!Auth::check())
                 <a href="/inbox" class="fa fa-bell"></a>
                     <a id="loginButton" href="/login">Inloggen</a>
-                @else
+                @elseif(Auth::check() && count(Auth::user()->bericht1()->where('gelezen','=',0)->get()) > 0)
                 <a href="/inbox" class="fa fa-bell">{{count(Auth::user()->bericht1()->where('gelezen','=',0)->get())}}</a>
+                    <a id="logoutButton" href="/logout">Uitloggen</a>
+                @else
+                <a href="/inbox" class="fa fa-bell"></a>
                     <a id="logoutButton" href="/logout">Uitloggen</a>
                 @endif
             </div>

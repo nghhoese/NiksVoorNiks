@@ -14,12 +14,12 @@ class MessageController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $messages = $user->Bericht1()->orderBy('datum','desc')->paginate(15);
+        $messages = $user->Bericht1()->where('verwijderd_door_ontvanger', '=' , 0)->orderBy('datum','desc')->paginate(15);
         return view('message.inbox',['messages' => $messages,'user' => $user]);
     }
     public function indexSend(){
         $user = auth()->user();
-        $messages = $user->Bericht()->orderBy('datum','desc')->paginate(15);
+        $messages = $user->Bericht()->where('verwijderd_door_zender', '=' , 0)->orderBy('datum','desc')->paginate(15);
         return view('message.send',['messages' => $messages,'user' => $user]);
     }
 
@@ -44,8 +44,35 @@ class MessageController extends Controller
         $deelnemer = Deelnemer::find($email);
         $name = $deelnemer->voornaam;
 
+
         return view('message.create', ['email' => $email, 'title' => $title, 'name' => $name, 'user' => $user]);
     }
+    public function replyOnMessage($id){
+        $message = Bericht::find($id);
+        $user = auth()->user();
+        return view('message.create',['email' => $message->zender_email,'title' => 'RE:'.$message->onderwerp,'user' => $user]);
+    }
+    public function search(Request $request)
+{
+        $search = $request->search;
+  
+        if($search == ''){
+           $employees = Deelnemer::orderby('voornaam','asc')->select('id','voornaam','tussenvoegsel','achternaam','email')->limit(5)->get();
+        }else{
+           $employees = Deelnemer::orderby('voornaam','asc')->select('id','voornaam','tussenvoegsel','achternaam','email')->where('voornaam', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+  
+        $response = array();
+        foreach($employees as $employee){
+           $response[] = array("value"=>$employee->id,"label"=>$employee->voornaam." ".$employee->tussenvoegsel." ".$employee->achternaam." ".$employee->email);
+        }
+        
+        return json_encode($response);
+        
+     }
+public function test(){
+    return view('testsearch');
+}
     public function store(){
         $message = new Bericht();
         $message->inhoud = request('message');
@@ -54,6 +81,8 @@ class MessageController extends Controller
         $message->zender_email = auth()->user()->email;
         $message->datum = date("Y-m-d H:i:s");
         $message->gelezen = 0;
+        $message->verwijderd_door_ontvanger = 0;
+        $message->verwijderd_door_zender = 0;
         $message->save();
         return redirect('/inbox');
     }
@@ -68,8 +97,26 @@ class MessageController extends Controller
 
     }
 
-    public function delete()
+    public function delete($id)
     {
-
+        $email = Bericht::find($id);
+        if($email->verwijderd_door_zender == 1){
+            $email->delete();
+        }else{
+        $email->verwijderd_door_ontvanger = 1;
+        $email->save();
+        }
+        return redirect('/inbox');
+    }
+    public function deleteSend($id)
+    {
+        $email = Bericht::find($id);
+        if($email->verwijderd_door_ontvanger == 1){
+            $email->delete();
+        }else{
+        $email->verwijderd_door_zender = 1;
+        $email->save();
+        }
+        return redirect('/inbox/verzonden');
     }
 }
