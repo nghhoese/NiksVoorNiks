@@ -17,6 +17,9 @@ class Advertentie extends Model
     public function categorie(){
         return $this->belongsTo('App\Categorie');
     }
+    public function plaats(){
+        return $this->belongsTo('App\Plaats');
+    }
     public function deelnemer(){
         return $this->belongsTo('App\Deelnemer');
     }

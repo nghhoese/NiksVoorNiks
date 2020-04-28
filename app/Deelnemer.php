@@ -62,4 +62,12 @@ class Deelnemer extends Authenticatable
     public function groep(){
         return $this->belongsToMany('App\Groep', 'deelnemer_heeft_groep', 'deelnemer_email', 'groep_naam');
     }
+    public function transactie()
+    {
+        return $this->hasMany('App\Transactie', 'zender_email', 'email');
+    }
+    public function transactie1()
+    {
+        return $this->hasMany('App\Transactie', 'ontvanger_email', 'email');
+    }
 }

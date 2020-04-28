@@ -45,8 +45,14 @@
                 <input type="checkbox" id="aangeboden" name="aangeboden">
                 <label for="aangeboden">Aangeboden</label><br>
                 @endif
-                <label class="title" for="locatie">Locatie:</label><br>
-                <input type="text" id="locatie" name="locatie" value="{{$locatie ?? ''}}" placeholder="Typ hier een plaats of postcode..."><br>
+                <label class="title" for="place">Groep:</label><br>
+                <select id="selectPlace" name="selectPlace">
+                    <option value="{{$plaats ?? ''}}" selected>{{$plaats ?? 'Kies een plaats...'}}</option>
+                    <option value="">Geen plaats</option>
+                    @foreach($places as $place)
+                        <option id="selectedPlace" value="{{$place->naam}}">{{$place->naam}}</option>
+                    @endforeach
+                </select><br>
 
 
                 <label class="title">Prijs:</label><br>
@@ -91,7 +97,7 @@
                         </p><br>
                         <h3 class="adtitle">{{ $advertentie->titel }}</h3>
                         <p class="addescr">{{ $advertentie->beschrijving }}</p>
-                        <i class="fa fa-map-marker adloc"><label> Rosmalen</label></i>
+                        <i class="fa fa-map-marker adloc"><label>{{$advertentie->plaats}}</label></i>
                         <label class="adprice" for="ad1">{{ $advertentie->prijs}} Niks</label>
                     </div>
                 </a>
@@ -117,6 +123,11 @@ if(document.querySelector('#selectCategory').selectedIndex != 0){
 });
 document.querySelector('#selectGroup').addEventListener('click', function(event) {
 if(document.querySelector('#selectGroup').selectedIndex != 0){
+    document.querySelector('.btn').click(); 
+}
+});
+document.querySelector('#selectPlace').addEventListener('click', function(event) {
+if(document.querySelector('#selectPlace').selectedIndex != 0){
     document.querySelector('.btn').click(); 
 }
 });

@@ -19,6 +19,7 @@ class MessageController extends Controller
     }
     public function indexSend(){
         $user = auth()->user();
+        
         $messages = $user->Bericht()->where('verwijderd_door_zender', '=' , 0)->orderBy('datum','desc')->paginate(15);
         return view('message.send',['messages' => $messages,'user' => $user]);
     }
@@ -33,11 +34,13 @@ class MessageController extends Controller
     }
     public function create(){
         $user = auth()->user();
-        return view('message.create',['user' => $user] );
+        $recipients = Deelnemer::all();
+        return view('message.create',['user' => $user,'recipients' => $recipients] );
     }
 
     public function reply($id){
         $user = auth()->user();
+        $recipients = Deelnemer::all();
         $advertisement = Advertentie::find($id);
         $title = $advertisement->titel;
         $email = $advertisement->deelnemer_email;
@@ -45,12 +48,14 @@ class MessageController extends Controller
         $name = $deelnemer->voornaam;
 
 
-        return view('message.create', ['email' => $email, 'title' => $title, 'name' => $name, 'user' => $user]);
+        return view('message.create', ['email' => $email, 'title' => $title, 'name' => $name, 'user' => $user,'recipients' => $recipients]);
     }
     public function replyOnMessage($id){
+        
         $message = Bericht::find($id);
+        $recipients = Deelnemer::all();
         $user = auth()->user();
-        return view('message.create',['email' => $message->zender_email,'title' => 'RE:'.$message->onderwerp,'user' => $user]);
+        return view('message.create',['email' => $message->zender_email,'title' => 'RE:'.$message->onderwerp,'user' => $user,'recipients' => $recipients]);
     }
     public function search(Request $request)
 {
@@ -85,16 +90,6 @@ public function test(){
         $message->verwijderd_door_zender = 0;
         $message->save();
         return redirect('/inbox');
-    }
-
-    public function edit()
-    {
-
-    }
-
-    public function update()
-    {
-
     }
 
     public function delete($id)
