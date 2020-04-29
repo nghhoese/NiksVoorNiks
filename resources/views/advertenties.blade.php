@@ -3,7 +3,8 @@
     home
 @endsection
 @section ('stylesheets')
-    <link rel="stylesheet" href="CSS/pagination.css">
+    <link rel="stylesheet" href="/CSS/pagination.css">
+    <link rel="stylesheet" href="/CSS/advertenties.css">
 
 @endsection
 @section ('content')
@@ -56,11 +57,15 @@
 
 
                 <label class="title">Prijs:</label><br>
-                <label for="minprijs">Min.</label>
-                <input type="number" id="minPrice" name="minPrice" value="{{ $minPrijs ?? ''}}">
+                <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="{{ $minPrijs ?? '1'}}" class="slider" id="minPrice" name="minPrice">
+                 <p>Min: <span id="valueMin"></span> Niksen</p>
+                </div>
+                <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="{{ $maxPrijs ?? '100'}}" class="slider" name="maxPrice" id="maxPrice">
+                <p>Max: <span id="valueMax"></span> Niksen</p>
+                </div>
 
-                <label for="maxprijs">Max.</label>
-                <input type="number" id="maxPrice" name="maxPrice" value="{{ $maxPrijs ?? ''}}"><br>
 
 
                 <label class="title" for="groep">Groep:</label><br>
@@ -71,7 +76,7 @@
                         <option id="selectedGroup" value="{{$group->naam}}">{{$group->naam}}</option>
                     @endforeach
                 </select><br>
-            <input class="btn"type="submit" value="filter">
+            <input style="display:none;"class="btn"type="submit" value="filter">
             </form>
 
             <a class="addad" href="advertentiePlaatsen">
@@ -131,7 +136,26 @@ if(document.querySelector('#selectPlace').selectedIndex != 0){
     document.querySelector('.btn').click(); 
 }
 });
-
+var slider = document.querySelector("#minPrice");
+var output = document.querySelector("#valueMin");
+output.innerHTML = slider.value;
+slider.addEventListener('mouseup', function(event) {
+    document.querySelector('.btn').click(); 
+});
+slider.oninput = function() {
+  output.innerHTML = this.value;
+  
+}
+var slider1 = document.querySelector("#maxPrice");
+var output1 = document.querySelector("#valueMax");
+output1.innerHTML = slider1.value;
+slider1.addEventListener('mouseup', function(event) {
+    document.querySelector('.btn').click(); 
+});
+slider1.oninput = function() {
+  output1.innerHTML = this.value;
+  
+}
 </script>
 
 
