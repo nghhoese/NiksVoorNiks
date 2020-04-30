@@ -19,7 +19,7 @@ class MessageController extends Controller
     }
     public function indexSend(){
         $user = auth()->user();
-        
+
         $messages = $user->Bericht()->where('verwijderd_door_zender', '=' , 0)->orderBy('datum','desc')->paginate(15);
         return view('message.send',['messages' => $messages,'user' => $user]);
     }
@@ -38,8 +38,8 @@ class MessageController extends Controller
             $message->gelezen = 1;
             $message->save();
             return view('message.viewSend', ['message' => $message]);
-    
-    
+
+
     }
     public function create(){
         $user = auth()->user();
@@ -59,30 +59,31 @@ class MessageController extends Controller
 
         return view('message.create', ['email' => $email, 'title' => $title, 'name' => $name, 'user' => $user,'recipients' => $recipients]);
     }
-    public function replyOnMessage($id){
-        
-        $message = Bericht::find($id);
-        $recipients = Deelnemer::all();
+    public function message($id){
         $user = auth()->user();
-        return view('message.create',['email' => $message->zender_email,'title' => 'RE:'.$message->onderwerp,'user' => $user,'recipients' => $recipients]);
+        $email = Deelnemer::find($id)->email;
+        $recipients = Deelnemer::all();
+
+        return view('message.create', ['user' => $user, 'email' => $email,'recipients' => $recipients]);
+
     }
     public function search(Request $request)
 {
         $search = $request->search;
-  
+
         if($search == ''){
            $employees = Deelnemer::orderby('voornaam','asc')->select('id','voornaam','tussenvoegsel','achternaam','email')->limit(5)->get();
         }else{
            $employees = Deelnemer::orderby('voornaam','asc')->select('id','voornaam','tussenvoegsel','achternaam','email')->where('voornaam', 'like', '%' .$search . '%')->limit(5)->get();
         }
-  
+
         $response = array();
         foreach($employees as $employee){
            $response[] = array("value"=>$employee->id,"label"=>$employee->voornaam." ".$employee->tussenvoegsel." ".$employee->achternaam." ".$employee->email);
         }
-        
+
         return json_encode($response);
-        
+
      }
 public function test(){
     return view('testsearch');
