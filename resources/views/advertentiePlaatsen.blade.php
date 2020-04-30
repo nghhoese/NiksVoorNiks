@@ -1,6 +1,6 @@
 @extends ('layout')
 @section('title')
-    home
+    Advertentie plaatsen
 @endsection
 @section ('stylesheets')
     <link rel="stylesheet" href="/CSS/advertentiePlaatsen.css">
@@ -17,7 +17,7 @@
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
-                </div><br />
+                </div><br/>
             @endif
            
             <form id="form" method="post" action="/advertentiePlaatsen" enctype="multipart/form-data">
@@ -36,14 +36,14 @@
                 <select id="category" name="category">
                     @foreach($categories as $category)
                         <option value={{$category->naam}}>{{$category->naam}}</option>
-                        @endforeach
+                    @endforeach
                 </select><br><br>
 
                 <label for="group">Kies een groep(optioneel)</label><br>
                 <select id="group" name="group">
                     @foreach($groups as $group)
                         <option value={{$group->naam}}>{{$group->naam}}</option>
-                        @endforeach
+                    @endforeach
                 </select><br><br>
 
                

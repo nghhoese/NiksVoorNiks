@@ -36,7 +36,7 @@
             <div class="header-end">
                 <a class="biggerfont" href="#"><span style="font-size: small">A</span><span
                         style="font-size: large">A</span></a>
-                
+
                 @if (!Auth::check())
                 <a href="/inbox" class="fa fa-bell"></a>
                     <a id="loginButton" href="/login">Inloggen</a>
