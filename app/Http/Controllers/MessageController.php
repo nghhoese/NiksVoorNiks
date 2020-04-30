@@ -30,7 +30,16 @@ class MessageController extends Controller
         $message->gelezen = 1;
         $message->save();
         return view('message.view', ['message' => $message]);
+    }
 
+    public function viewSend($id)
+    {
+            $message = Bericht::find($id);
+            $message->gelezen = 1;
+            $message->save();
+            return view('message.viewSend', ['message' => $message]);
+    
+    
     }
     public function create(){
         $user = auth()->user();
