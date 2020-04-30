@@ -24,8 +24,8 @@ class CreateAdvertentiesTable extends Migration
             $table->dateTime('aanmaakdatum');
             $table->string('foto',200)->nullable();
             $table->unsignedInteger('prijs');
-            $table->string('postcode',6);
-            $table->string('huisnummer',10);
+            $table->string('plaats',50);
+            $table->foreign('plaats')->references('naam')->on('plaats');
             $table->string('categorie',50);
             $table->foreign('categorie')->references('naam')->on('categorie');
 

@@ -17,7 +17,12 @@ nieuw bericht
             <form method="post" action="/inbox/verzenden">
                 @csrf
                 <label><b>Ontvanger: </b></label><br>
-                <input name="to" type="text" value="{{$email ?? ''}}"><br>
+                <select id="to" name="to">
+                    <option value="{{$email ?? ''}}" selected>{{$email ?? 'Kies een ontvanger...'}}</option>
+                    @foreach($recipients as $recipient)
+                        <option  value="{{$recipient->email}}">{{$recipient->voornaam}} {{$recipient->tussenvoegsel}} {{$recipient->achternaam}} ({{$recipient->email}})</option>
+                    @endforeach
+                </select><br>
                 <label><b>Onderwerp: </b></label><br>
                 <input name="subject" type="text" value="{{$title ?? ''}}"><br>
                 <label for="bericht"><b>Bericht: </b></label><br>

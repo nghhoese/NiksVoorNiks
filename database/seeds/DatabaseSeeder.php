@@ -35,7 +35,11 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
 
         Leuk dat je je misschien wil inschrijven bij onze club! We zijn altijd erg enthusiast om nieuwe deelnemers aan te mogen nemen en kijken daarom ook erg uit naar jouw bijdrage. Om deel te nemen vragen we alleen een paar simpele dingen van je en dan ben je binnen een week voolwaardig lid van onze ruilkring. Eerst vragen we je om naar de Deelnemer worden knop te navigeren op deze website. Daar vind je de mogelijkheid om een van onze leden te mailen en op die manier kun je je dan aanmelden. Na een paar dagen zul je gevraagd worden om langs te komen voor een kop koffie en een gesprek, zodat je al wat mensen kan leren kennen! Als dat allemaal gebeurt is zul je binnen dezelfde week nog horen of je mee kan doen, je krijgt dan je account voor de website en bent officieel lid! Laat het ruilen beginnen'
         ]);
-
+        //places
+        DB::table('plaats')->insert([
+            'naam' => 'Rosmalen'
+         
+        ]);
         //roles
         DB::table('rol')->insert([
             'naam' => 'administrator',
@@ -204,8 +208,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'aanmaakdatum' => '2020-04-01',
             'foto' => 'https://pbs.twimg.com/media/DdqYozVX4AA9PjC.jpg',
             'prijs' => '2',
-            'postcode' => '3011AD',
-            'huisnummer' => '180',
+            'plaats' => 'Rosmalen',
             'categorie' => 'Koken',
         ]);
 
@@ -218,8 +221,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'aanmaakdatum' => '2020-04-01',
             'foto' => 'https://www.mt.nl/wp-content/uploads/2011/05/3f595bded5d9c2387b9c6f61809d96ff-1305036995-780x448.jpg',
             'prijs' => '0',
-            'postcode' => '4817LL',
-            'huisnummer' => '180',
+            'plaats' => 'Rosmalen',
             'categorie' => 'Technologie',
         ]);
 
@@ -231,8 +233,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'beschrijving' => 'Wie wil er met mij samen eten?',
             'aanmaakdatum' => '2020-04-01',
             'prijs' => '0',
-            'postcode' => '3011AD',
-            'huisnummer' => '55',
+            'plaats' => 'Rosmalen',
             'categorie' => 'Koken',
         ]);
 
@@ -245,8 +246,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'aanmaakdatum' => '2020-04-01',
             'foto' => 'https://i.ytimg.com/vi/iD3kyTxf9Fk/hqdefault.jpg',
             'prijs' => '4',
-            'postcode' => '4817LL',
-            'huisnummer' => '180',
+            'plaats' => 'Rosmalen',
             'categorie' => 'Sport',
         ]);
 

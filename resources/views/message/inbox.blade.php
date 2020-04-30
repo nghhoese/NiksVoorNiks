@@ -43,7 +43,7 @@ Inbox
 <td><a class="message-link" href="/inbox/view/{{$message->id}}"><p>{{$message->onderwerp}}</p></a></td> 
 
 <td><a class="message-link" href="/inbox/view/{{$message->id}}"><p>{{$message->datum}}</p></a></td>
-  <td style="text-align:center;"> <a href="/inbox/delete/{{$message->id}}"><i class="fas fa-trash-alt" style="color:#66BB6A;"></i></a></td>
+  <td style="text-align:center;"> <a href="/inbox/verwijder/{{$message->id}}"><i class="fas fa-trash-alt" style="color:#66BB6A;"></i></a></td>
   @else
   <td><strong><a class="message-link" href="/inbox/view/{{$message->id}}"><img class="profile-picture" src="https://www.isarklinikum.de/en/wp-content/uploads/sites/3/2015/07/empty_avatar.jpg"></a></td>
     <td><strong><a class="message-link" href="/inbox/view/{{$message->id}}"><p> {{$message->zender_email}}</p></a></td>
@@ -51,14 +51,16 @@ Inbox
 <td><strong><a class="message-link" href="/inbox/view/{{$message->id}}"><p>{{$message->onderwerp}}</p></a></td> 
 
 <td><strong><a class="message-link" href="/inbox/view/{{$message->id}}"><p>{{$message->datum}}</p></a></td>
-  <td style="text-align:center;"> <a href="/inbox/delete/{{$message->id}}"><i class="fas fa-trash-alt" style="color:#66BB6A;"></i></a></td>
+  <td style="text-align:center;"> <a href="/inbox/verwijder/{{$message->id}}"><i class="fas fa-trash-alt" style="color:#66BB6A;"></i></a></td>
   @endif
   </tr>
     @endforeach
 
     </tbody>
   </table>
-    
+  @if(count($messages) < 1)
+  <h3 style="text-align:center;">Je hebt Nog geen berichten! </h3>
+  @endif  
   <div class="pagination1">
   
   </div>
