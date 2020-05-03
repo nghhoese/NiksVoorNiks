@@ -38,7 +38,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
         //places
         DB::table('plaats')->insert([
             'naam' => 'Rosmalen'
-         
+
         ]);
         //roles
         DB::table('rol')->insert([
@@ -48,6 +48,10 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
         DB::table('rol')->insert([
             'naam' => 'deelnemer',
             'beschrijving' => 'Een standaard deelnemer van NiksVoorNiks'
+        ]);
+        DB::table('rol')->insert([
+            'naam' => 'in afwachting',
+            'beschrijving' => 'Een potentieel toekomstige deelnemer van NiksVoorNiks'
         ]);
 
         //activities
