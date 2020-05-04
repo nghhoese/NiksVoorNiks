@@ -145,6 +145,7 @@ body {
     float: left;
     padding: 50px 20px 100px 80px;
     margin: 0px;
+    word-break: break-all;
 }
 
 .link {

@@ -121,7 +121,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
         //participants
         DB::table('deelnemer')->insert([
             'email' => 'fhendrik1@avans.nl',
-            'wachtwoord' => 'ferran1234',
+            'wachtwoord' => '$2y$10$dwvl9pwnt8UP36WFcByVNO3LaDDkXtbYHhShvRbTcwqJPi8qMNw4m',
             'voornaam' => 'Ferran',
             'achternaam' => 'Hendriks',
             'geboortedatum' => '1999-08-15',
