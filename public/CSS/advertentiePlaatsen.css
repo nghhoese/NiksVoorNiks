@@ -1,29 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-font-smoothing: antialiased;
-    -o-font-smoothing: antialiased;
-    font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
 
-.flexbox{
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    flex: 1;
-    font-size: 1.2em;
-}
 
-.plaatsadvertentie{
-    background-color: #C4E9C7 !important;
+@media screen and (max-width: 905px) {
+    #form {
+        flex-direction: column !important;     
+        margin-left: 0 !important;
+        margin-right: 0 !important;
 }
-
+}
 /*body {
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     font-weight: 100;
@@ -50,11 +34,17 @@
 }
 
 #form {
-    min-width: 500px;
-    max-width: 1000px;
+    display: flex;
+justify-content: space-evenly;
+flex-direction: row;
+flex: 1;
+margin-top: 50px;
+margin-left: 200px;
+margin-right: 200px;  
+font-size: 1.2em; 
+    
     background: #F9F9F9;
     padding: 25px;
-    margin: 150px 0;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 

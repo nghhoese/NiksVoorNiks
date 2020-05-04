@@ -34,7 +34,7 @@ home
 
         <div class="homecontent">
             <div class="over-ons-small">
-                <h2>Over ons</h2>
+                <h2>{{$information->titel}}</h2>
                 <br>
                 <p style="white-space: pre-line">{{$information->informatie}}</p>
                 <a href="/overons" class="link">Lees meer</a>

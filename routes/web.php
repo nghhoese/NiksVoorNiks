@@ -15,14 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
 
-// Kan weg, we hebben al Auth::router() die dat voor ons doet
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-// ------------------------------------------------------------------
-
 Route::get('/advertentiePlaatsen', 'AdvertentieController@create');
 Route::post('/advertentiePlaatsen', 'AdvertentieController@store');
 
@@ -33,13 +25,10 @@ Route::get('/activiteiten', function () {
     return view('activiteiten');
 });
 
-Route::get('/overons', 'AboutUsController@index')->name('overons');
+Route::match(['get'], '/cms/edit/{name}', 'CmsController@edit')->name('editcms');
 
-/*Route::get('/cms', 'CmsController@index')->name('cms');
 
-Route::get('/cms/edit/{name}', 'CmsController@edit')->name('editcms');
-
-Route::post('/cms/edit/{name}', 'CmsController@update')->name('editcms');*/
+Route::get('/activiteiten', 'ActivityController@showAll');
 
 
 Auth::routes();
@@ -60,9 +49,28 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
-    Route::match(['get', 'post'], '/advertenties', 'AdvertentieController@showAll');
+    Route::match(['get'], '/advertenties', 'AdvertentieController@showAll');
+    Route::match(['post'], '/advertenties', 'AdvertentieController@filter');
+
     Route::match(['get', 'post'], '/inbox', 'MessageController@index');
+    Route::match(['get', 'post'], '/inbox/verzonden', 'MessageController@indexSend');
     Route::match(['get', 'post'], '/inbox/view/{id}', 'MessageController@view');
+    Route::match(['get', 'post'], '/inbox/viewSend/{id}', 'MessageController@viewSend');
     Route::match(['get', 'post'], '/inbox/nieuw', 'MessageController@create');
+    Route::get('/inbox/reply/{id}', 'MessageController@reply');
+    Route::get('/inbox/reageer/{id}', 'MessageController@replyOnMessage');
     Route::match(['get', 'post'], '/inbox/verzenden', 'MessageController@store');
+    Route::match(['get', 'post'], '/inbox/verwijder/{id}', 'MessageController@delete');
+    Route::match(['get', 'post'], '/inbox/verwijder-verzonden/{id}', 'MessageController@deleteSend');
+    Route::get('/test','MessageController@test');
+    Route::post('/test1','MessageController@search');
+    Route::match(['get', 'post'], '/inbox/bericht/{id}', 'MessageController@message');
+
+
+    Route::match(['get', 'post'], '/inbox/reageren/{email}', 'MessageController@respond');
 });
+
+Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function () {
+    Route::get('/profiel/{email}', 'ProfileController@index');
+});
+

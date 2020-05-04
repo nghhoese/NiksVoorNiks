@@ -1,7 +1,6 @@
 @extends('layout')
 @section('stylesheets')
     <link rel="stylesheet" href="CSS/register.css">
-
 @endsection
 @section('content')
     <div class="login-page">
