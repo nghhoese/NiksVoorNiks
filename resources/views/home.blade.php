@@ -10,25 +10,13 @@ home
 
         <div class="content">
             <div class="slider">
-                <div class="mySlides fade">
-                    <div class="numbertext">1 / 3</div>
-                    <img src="Resources/handshake.png">
-                    <div class="text">Ruilkring Niks voor Niks</div>
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">2 / 3</div>
-                    <img src="Resources/denbosch.png">
-                    <div class="text">'S Hertogenbosch en omgeving</div>
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">3 / 3</div>
-                    <img src="Resources/appeltaart.png">
-                  <div class="text">Ruilen van diverse diensten en producten</div>
-
-                </div>
-
+                @foreach(File::glob(public_path('Resources\HomePage').'\*') as $path)
+                    <div class="mySlides fade">
+                        <div class="numbertext">2 / 3</div>
+                        <img src="{{ str_replace(public_path(), '', $path) }}">
+                        <div class="text">'S Hertogenbosch en omgeving</div>
+                    </div>
+                @endforeach
             </div>
         </div>
 

@@ -15,7 +15,7 @@
 
 @yield ('stylesheets')
 
-    
+
   	 <div class="header-start">
                 <div class="logo"><a href="/"><img src="/Resources/favicon.png"></a></div>
             </div>
@@ -29,7 +29,9 @@
                     <a href="/register">Deelnemer worden</a>
                 @endif
                 <a href="#">Contact</a>
+                @if(Auth::check() && auth()->user()->isAdmin())
                 <a href="/cms">CMS</a>
+                @endif
 
             </nav>
 
@@ -60,7 +62,7 @@
 </body>
 <footer>
     <div class="footer">
-    
+
     <script src="/JS/nav.js"></script>
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         @yield ('footer')

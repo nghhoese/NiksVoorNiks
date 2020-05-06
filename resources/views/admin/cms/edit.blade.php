@@ -1,7 +1,7 @@
 @extends ('layout')
 @section('stylesheets')
     <link rel="stylesheet" href="/CSS/aboutUs.css">
-    <link rel="stylesheet" href="/CSS/form.css"
+    <link rel="stylesheet" href="/CSS/form.css">
 
 @endsection
 @section('title')
