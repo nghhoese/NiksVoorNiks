@@ -67,8 +67,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
     Route::get('/test','MessageController@test');
     Route::post('/test1','MessageController@search');
     Route::match(['get', 'post'], '/inbox/bericht/{id}', 'MessageController@message');
-
-
+    Route::match(['get', 'post'], '/transactie/{id}', 'TransactionController@index');
     Route::match(['get', 'post'], '/inbox/reageren/{email}', 'MessageController@respond');
 });
 

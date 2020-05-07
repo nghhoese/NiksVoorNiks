@@ -97,8 +97,10 @@ class MessageController extends Controller
     {
         $recipients = Deelnemer::all();
         $user = auth()->user();
-        $receiver = Deelnemer::find($id)->email;
-        return view('message.create', ['user' => $user, 'recipients' => $recipients, 'email' => $receiver]);
+        $receiveremail = Deelnemer::find($id)->email;
+        $receivername = Deelnemer::find($id)->voornaam;
+
+        return view('message.create', ['user' => $user, 'recipients' => $recipients, 'email' => $receiveremail, 'name' => $receivername]);
     }
 
     public function search(Request $request)
