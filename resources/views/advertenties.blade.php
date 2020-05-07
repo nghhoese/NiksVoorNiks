@@ -26,25 +26,33 @@
                 <label class="title">Vraag en Aanbod:</label><br>
                 @if($gevraagd ?? null)
                 @if($gevraagd == 1)
-                <input checked type="checkbox" id="gevraagd" name="gevraagd">
+                <input checked type="radio" id="radio" value="1" name="radio">
                 <label for="gevraagd">Gevraagd</label>
 
-                <input type="checkbox" id="aangeboden" name="aangeboden">
+                <input type="radio" id="radio" value="0" name="radio">
                 <label for="aangeboden">Aangeboden</label><br>
+                <input type="radio" id="radio" value="" name="radio">
+                <label for="aangeboden">Aangeboden en Gevraagd</label><br>
                 @elseif($gevraagd == 0)
-                <input type="checkbox" id="gevraagd" name="gevraagd">
+                <input type="radio" id="radio" value="1" name="radio">
                 <label for="gevraagd">Gevraagd</label>
 
-                <input checked type="checkbox" id="aangeboden" name="aangeboden">
+                <input checked type="radio" id="radio" value="0" name="radio">
                 <label for="aangeboden">Aangeboden</label><br>
+
+                <input type="radio" id="radio" value="" name="radio">
+                <label for="aangeboden">Aangeboden en Gevraagd</label><br>
 
                 @endif
                 @else
-                <input type="checkbox" id="gevraagd" name="gevraagd">
+                <input type="radio" id="radio" value="1" name="radio">
                 <label for="gevraagd">Gevraagd</label>
 
-                <input type="checkbox" id="aangeboden" name="aangeboden">
+                <input type="radio" id="radio" value="0" name="radio">
                 <label for="aangeboden">Aangeboden</label><br>
+
+                <input checked type="radio" id="radio" value="" name="radio">
+                <label for="aangeboden">Aangeboden en Gevraagd</label><br>
                 @endif
                 <label class="title" for="place">Groep:</label><br>
                 <select id="selectPlace" name="selectPlace">
@@ -113,14 +121,15 @@
 
 
 <script>
-document.querySelector('#gevraagd').addEventListener('click', function(event) {
+let radioButtons = document.querySelectorAll('#radio');
+
+    radioButtons.forEach(function(item, index){
+        item.addEventListener('click', function(event) {
+        document.querySelector('.btn').click();
+        });
+    });
     
-    document.querySelector('.btn').click();
-});
-document.querySelector('#aangeboden').addEventListener('click', function(event) {
-    
-    document.querySelector('.btn').click();
-});
+
 document.querySelector('#selectCategory').addEventListener('click', function(event) {
 if(document.querySelector('#selectCategory').selectedIndex != 0){
     document.querySelector('.btn').click(); 

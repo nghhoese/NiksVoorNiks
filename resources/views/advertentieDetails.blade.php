@@ -1,11 +1,11 @@
-@extends ('layout')
+@extends('layout')
 @section('title')
     advertentie
 @endsection
 @section('stylesheets')
     <link rel="stylesheet" href="/CSS/advertentiedetails.css">
 @endsection
-@section ('content')
+@section('content')
 
     <div class="flex-container">
             <div class="main-content">

@@ -23,7 +23,31 @@ class MessageController extends Controller
         $messages = $user->Bericht()->where('verwijderd_door_zender', '=' , 0)->orderBy('datum','desc')->paginate(15);
         return view('message.send',['messages' => $messages,'user' => $user]);
     }
-
+    public function indexSearch()
+    {
+        $user = auth()->user();
+        $messages = $user->Bericht1()
+        ->where('verwijderd_door_ontvanger', '=' , 0)
+        ->where(function($query) {
+            $query->where('zender_email', 'like','%' . Request('search') . '%')
+                ->orWhere('onderwerp', 'like','%' . Request('search') . '%');
+        })->orderBy('datum', 'desc')
+        ->paginate(15);
+        return view('message.inbox',['messages' => $messages,'user' => $user]);
+    }
+    public function indexSendSearch(){
+        $user = auth()->user();
+        
+        $messages = $user->Bericht()
+        ->where('verwijderd_door_zender', '=' , 0)
+        ->where(function($query) {
+            $query->where('ontvanger_email', 'like','%' . Request('search') . '%')
+                ->orWhere('onderwerp', 'like','%' . Request('search') . '%');
+        })->orderBy('datum', 'desc')
+        ->paginate(15);
+      
+        return view('message.send',['messages' => $messages,'user' => $user]);
+    }
     public function view($id)
     {
         $message = Bericht::find($id);

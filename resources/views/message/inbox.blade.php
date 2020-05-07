@@ -10,6 +10,11 @@ Inbox
 <div class="container">
 
 <h1 class="inbox-title">Inbox</h1>
+<form class="search-form" action="/inbox/zoeken" method="POST">
+@csrf
+<input type="text" name="search" placeholder="onderwerpen/afzenders">
+<input type="submit" value="zoeken">
+</form>
 <div class="wrapper">
 <div class="inbox-menu">
 

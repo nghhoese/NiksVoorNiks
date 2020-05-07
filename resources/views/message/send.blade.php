@@ -9,6 +9,11 @@ Inbox
 @section ('content')
 
 <h1 class="inbox-title">Verzonden Berichten</h1>
+<form class="search-form" action="/inbox/verzonden/zoeken" method="POST">
+@csrf
+<input type="text" name="search" placeholder="onderwerpen/afzenders">
+<input type="submit" value="zoeken">
+</form>
 <div class="wrapper">
 <div class="inbox-menu">
 

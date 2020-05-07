@@ -17,7 +17,7 @@ view
  <h3>Verzonden naar: {{$message->ontvanger_email}}</h3>
  <h3>Verzonden op: {{$message->datum}}</h3>
  <h3>Bericht: </h3>
-<p>{{$message->inhoud}}</p>
+<p style="white-space: pre-line">{{$message->inhoud}}</p>
 <div class="back">
 <a href="/inbox"><i class="fas fa-arrow-left">Terug naar inbox</i></a>
   </div>

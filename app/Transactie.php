@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transactie extends Model
 {
-    protected $table = 'transactie';
+
     protected $primaryKey = 'id';
     public $incrementing = true;
     const CREATED_AT = 'datum';

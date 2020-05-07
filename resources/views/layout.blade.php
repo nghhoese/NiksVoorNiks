@@ -1,11 +1,11 @@
-<script src="/JS/pace.js"></script>
-<link rel="stylesheet" href="/CSS/loader.css">
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+    <script src="/JS/pace.js"></script>
+<link rel="stylesheet" href="/CSS/loader.css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>@yield ('title')</title>
+<title>@yield('title')</title>
 <div class="top">
 <header class="header">
 
@@ -13,7 +13,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="/CSS/login.css">
 
-@yield ('stylesheets')
+
+@yield('stylesheets')
 
     
   	 <div class="header-start">
@@ -42,9 +43,12 @@
                     <a id="loginButton" href="/login">Inloggen</a>
                 @elseif(Auth::check() && count(Auth::user()->bericht1()->where('gelezen','=',0)->get()) > 0)
                 <a href="/inbox" class="fa fa-bell">{{count(Auth::user()->bericht1()->where('gelezen','=',0)->get())}}</a>
+                <a style="font-size:1.3em;"class="fas fa-coins"></a>
                     <a id="logoutButton" href="/logout">Uitloggen</a>
+                    
                 @else
                 <a href="/inbox" class="fa fa-bell"></a>
+                <a class="fas fa-coins"></a>
                     <a id="logoutButton" href="/logout">Uitloggen</a>
                 @endif
             </div>
@@ -63,6 +67,7 @@
     
     <script src="/JS/nav.js"></script>
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        
         @yield ('footer')
         <div id="innerfooter">
             <div class="contact">
@@ -71,7 +76,7 @@
                 <p> +316123456789</p>
             </div>
             <div class="copyright">
-                <p> &#169 2020 Niks voor Niks</p>
+                <p> 2020 Niks voor Niks</p>
             </div>
         </div>
     </div>

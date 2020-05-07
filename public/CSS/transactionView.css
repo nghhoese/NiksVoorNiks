@@ -1,0 +1,13 @@
+.transactionWrapper {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex: 1;
+    margin-top: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
+    font-size: 1.2em;
+    background: #F9F9F9;
+    padding: 25px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}

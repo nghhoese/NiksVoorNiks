@@ -6,6 +6,7 @@ use App\Categorie;
 use App\Category;
 use App\Groep;
 use App\Plaats;
+use DB;
 use Faker\Provider\ka_GE\DateTime;
 use Illuminate\Http\Request;
 use \App\Advertentie;
@@ -70,14 +71,10 @@ class AdvertentieController extends Controller
     }
     
     public function filter(Request $request){
+       
 $group = request('selectGroup');
 if($group == null){
-        $advertentie = Advertentie::when($request->get('gevraagd'), function ($query) {
-            $query->where('vraag', 1);
-        })
-        ->when($request->get('aangeboden'), function ($query) {
-            $query->where('vraag', 0);
-        })
+        $advertentie = Advertentie::where('vraag', request('radio')?? 'not is null')
         ->when($request->get('selectCategory'), function ($query) {
             $query->where('categorie', request('selectCategory'));
         })
@@ -93,11 +90,8 @@ if($group == null){
 
         ->paginate(4);
     }else{
-        $advertentie = Groep::find($group)->advertentie()->when($request->get('gevraagd'), function ($query) {
-            $query->where('vraag', 1);
-        })
-        ->when($request->get('aangeboden'), function ($query) {
-            $query->where('vraag', 0);
+        $advertentie = Groep::find($group)->advertentie()->when($request->get('radio'), function ($query) {
+            $query->where('vraag', request('radio') ?? 'not is null');
         })
         ->when($request->get('selectCategory'), function ($query) {
             $query->where('categorie', request('selectCategory'));
@@ -119,10 +113,10 @@ if($group == null){
         $minPrice = request('minPrice');
         $group = request('selectGroup');
         $location = request('selectPlace');
-        $gevraagd = 0;
-        if(request('gevraagd') != null){
-            $gevraagd = 1;
-        }
+        $gevraagd = request('radio');
+     
+
+
        
         $categories = Categorie::all();
         $groups = Groep::all();

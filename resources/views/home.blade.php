@@ -1,4 +1,4 @@
-@extends ('layout')
+@extends('layout')
 @section('title')
 home
 @endsection
@@ -6,7 +6,7 @@ home
 <link rel="stylesheet" href="CSS/slider.css">
 
 @endsection
-@section ('content')
+@section('content')
 
         <div class="content">
             <div class="slider">
