@@ -68,3 +68,7 @@ table#table1 th{
   margin-top:10px;
   text-align: center;
 }
+.search-form{
+  text-align: center;
+height: 30px;
+}
