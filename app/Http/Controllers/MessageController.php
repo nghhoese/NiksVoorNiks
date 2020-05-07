@@ -93,20 +93,12 @@ class MessageController extends Controller
         return view('message.create', ['email' => $email, 'title' => $title, 'name' => $name, 'user' => $user, 'recipients' => $recipients]);
     }
 
-    public function replyOnMessage($id)
-    {
-
-        $message = Bericht::find($id);
-        $recipients = Deelnemer::all();
-        $user = auth()->user();
-        return view('message.create', ['email' => $message->zender_email, 'title' => 'RE:' . $message->onderwerp, 'user' => $user, 'recipients' => $recipients]);
-    }
-
     public function message($id)
     {
         $recipients = Deelnemer::all();
         $user = auth()->user();
-        return view('message.create', ['user' => $user, 'recipients' => $recipients]);
+        $receiver = Deelnemer::find($id)->email;
+        return view('message.create', ['user' => $user, 'recipients' => $recipients, 'email' => $receiver]);
     }
 
     public function search(Request $request)
