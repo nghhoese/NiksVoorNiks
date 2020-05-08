@@ -25,6 +25,12 @@ Route::get('/activiteiten', function () {
     return view('activiteiten');
 });
 
+Route::get('/activiteitPlaatsen', 'ActivityController@create');
+Route::post('/activiteitPlaatsen', 'ActivityController@store');
+
+
+Route::get('/advertentieDetails/{id}', 'AdvertentieController@view');
+
 Route::match(['get'], '/cms/edit/{name}', 'CmsController@edit')->name('editcms');
 
 

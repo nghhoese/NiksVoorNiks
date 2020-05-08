@@ -10,7 +10,7 @@
     <div class="articles">
         <div class="filters">
 
-            <a class="addad" href="advertentiePlaatsen">
+            <a class="addad" href="activiteitPlaatsen">
                 Klik hier om zelf een activiteit te plaatsen
                 <i class="fa fa-arrow-right"></i>
             </a>
