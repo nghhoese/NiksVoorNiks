@@ -24,7 +24,8 @@
                         <h3 class="adtitle">{{ $activity->naam }}</h3>
                         <p class="addescr">{{ $activity->beschrijving }}</p>
                         {{--                        <i class="fa fa-map-marker adloc"><label> Rosmalen</label></i>--}}
-                        <label class="adprice" for="ad1">{{ $activity->datum}}</label>
+                        <label class="activity-date">{{$activity->datum}}</label>
+                        <label class="adprice" for="ad1">Deelnemen? Klik hier!</label>
                     </div>
                 </a>
             @endforeach
