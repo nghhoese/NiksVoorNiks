@@ -143,8 +143,9 @@ body {
     height: 100%;
     background-color: white;
     float: left;
-    padding: 50px 20px 100px 80px;
+    padding: 50px 20px 30px 80px;
     margin: 0px;
+    word-break: break-all;
 }
 
 .link {
@@ -423,6 +424,16 @@ i.adloc label {
     cursor: pointer;
 }
 
+.activity-date{
+    font-size: 1.3em;
+    position: relative;
+    bottom: 10px;
+
+    background-color: #66BB6A;
+    color: white;
+    padding: 5px;
+}
+
 @media screen and (max-width: 905px) {
     .articles {
         flex-wrap: wrap;
@@ -433,6 +444,7 @@ i.adloc label {
     }
     .addad {
         width: 100%;
+        padding: 0px;
     }
     .article-list {
         width: 100%;
@@ -447,15 +459,13 @@ i.adloc label {
 
 .plaatsadvertentie {
     display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-    flex: 1;
-    background-color: white;
+    flex-direction: column;
+    min-height: 87.3vh;
+    background-color: #C4E9C7;
+
 }
 
-.plaatsadvertentie h2 {
-    margin-top: 10%;
-}
+
 
 input[type=submit] {
     background-color: #4CAF50;
@@ -506,8 +516,6 @@ input[type=submit]:hover {
     text-align: center;
     color: white;
 }
-
-
 
 
 .footer>p {

@@ -35,7 +35,11 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
 
         Leuk dat je je misschien wil inschrijven bij onze club! We zijn altijd erg enthusiast om nieuwe deelnemers aan te mogen nemen en kijken daarom ook erg uit naar jouw bijdrage. Om deel te nemen vragen we alleen een paar simpele dingen van je en dan ben je binnen een week voolwaardig lid van onze ruilkring. Eerst vragen we je om naar de Deelnemer worden knop te navigeren op deze website. Daar vind je de mogelijkheid om een van onze leden te mailen en op die manier kun je je dan aanmelden. Na een paar dagen zul je gevraagd worden om langs te komen voor een kop koffie en een gesprek, zodat je al wat mensen kan leren kennen! Als dat allemaal gebeurt is zul je binnen dezelfde week nog horen of je mee kan doen, je krijgt dan je account voor de website en bent officieel lid! Laat het ruilen beginnen'
         ]);
+        //places
+        DB::table('plaats')->insert([
+            'naam' => 'Rosmalen'
 
+        ]);
         //roles
         DB::table('rol')->insert([
             'naam' => 'administrator',
@@ -121,7 +125,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
         //participants
         DB::table('deelnemer')->insert([
             'email' => 'fhendrik1@avans.nl',
-            'wachtwoord' => 'ferran1234',
+            'wachtwoord' => '$2y$10$dwvl9pwnt8UP36WFcByVNO3LaDDkXtbYHhShvRbTcwqJPi8qMNw4m',
             'voornaam' => 'Ferran',
             'achternaam' => 'Hendriks',
             'geboortedatum' => '1999-08-15',
@@ -204,8 +208,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'aanmaakdatum' => '2020-04-01',
             'foto' => 'https://pbs.twimg.com/media/DdqYozVX4AA9PjC.jpg',
             'prijs' => '2',
-            'postcode' => '3011AD',
-            'huisnummer' => '180',
+            'plaats' => 'Rosmalen',
             'categorie' => 'Koken',
         ]);
 
@@ -218,8 +221,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'aanmaakdatum' => '2020-04-01',
             'foto' => 'https://www.mt.nl/wp-content/uploads/2011/05/3f595bded5d9c2387b9c6f61809d96ff-1305036995-780x448.jpg',
             'prijs' => '0',
-            'postcode' => '4817LL',
-            'huisnummer' => '180',
+            'plaats' => 'Rosmalen',
             'categorie' => 'Technologie',
         ]);
 
@@ -231,8 +233,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'beschrijving' => 'Wie wil er met mij samen eten?',
             'aanmaakdatum' => '2020-04-01',
             'prijs' => '0',
-            'postcode' => '3011AD',
-            'huisnummer' => '55',
+            'plaats' => 'Rosmalen',
             'categorie' => 'Koken',
         ]);
 
@@ -245,8 +246,31 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'aanmaakdatum' => '2020-04-01',
             'foto' => 'https://i.ytimg.com/vi/iD3kyTxf9Fk/hqdefault.jpg',
             'prijs' => '4',
-            'postcode' => '4817LL',
-            'huisnummer' => '180',
+            'plaats' => 'Rosmalen',
+            'categorie' => 'Sport',
+        ]);
+        DB::table('advertentie')->insert([
+            'deelnemer_email' => 'jonah@avans.nl',
+            'titel' => 'Laptop repareren',
+            'vraag' => 0,
+            'bieden' => 0,
+            'beschrijving' => 'Ik maak je laptop voor bijna niks',
+            'aanmaakdatum' => '2020-04-01',
+            'foto' => 'https://i.ytimg.com/vi/iD3kyTxf9Fk/hqdefault.jpg',
+            'prijs' => '20',
+            'plaats' => 'Rosmalen',
+            'categorie' => 'Technologie',
+        ]);
+        DB::table('advertentie')->insert([
+            'deelnemer_email' => 'nick@avans.nl',
+            'titel' => 'Motor rijles',
+            'vraag' => 1,
+            'bieden' => 0,
+            'beschrijving' => 'Ik help je met de les',
+            'aanmaakdatum' => '2020-04-01',
+            'foto' => 'https://i.ytimg.com/vi/iD3kyTxf9Fk/hqdefault.jpg',
+            'prijs' => '40',
+            'plaats' => 'Rosmalen',
             'categorie' => 'Sport',
         ]);
 

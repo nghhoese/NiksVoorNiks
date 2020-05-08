@@ -12,4 +12,6 @@ class ProfileController extends Controller
         $user = Deelnemer::where('email', '=', $email)->first();
         return view('profiel', ['user' => $user]);
     }
+
+
 }

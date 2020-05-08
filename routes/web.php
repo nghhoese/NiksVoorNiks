@@ -25,7 +25,16 @@ Route::get('/activiteiten', function () {
     return view('activiteiten');
 });
 
-Route::get('/overons', 'AboutUsController@index')->name('overons');
+Route::get('/activiteitPlaatsen', 'ActivityController@create');
+Route::post('/activiteitPlaatsen', 'ActivityController@store');
+
+
+Route::get('/advertentieDetails/{id}', 'AdvertentieController@view');
+
+Route::match(['get'], '/cms/edit/{name}', 'CmsController@edit')->name('editcms');
+
+
+Route::get('/activiteiten', 'ActivityController@showAll');
 
 
 Auth::routes();
@@ -46,13 +55,25 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
-    Route::match(['get', 'post'], '/advertenties', 'AdvertentieController@showAll');
+    Route::match(['get'], '/advertenties', 'AdvertentieController@showAll');
+    Route::match(['post'], '/advertenties', 'AdvertentieController@filter');
+
     Route::match(['get', 'post'], '/inbox', 'MessageController@index');
     Route::match(['get', 'post'], '/inbox/verzonden', 'MessageController@indexSend');
     Route::match(['get', 'post'], '/inbox/view/{id}', 'MessageController@view');
+    Route::match(['get', 'post'], '/inbox/zoeken', 'MessageController@indexSearch');
+    Route::match(['get', 'post'], '/inbox/verzonden/zoeken', 'MessageController@indexSendSearch');
+    Route::match(['get', 'post'], '/inbox/viewSend/{id}', 'MessageController@viewSend');
     Route::match(['get', 'post'], '/inbox/nieuw', 'MessageController@create');
     Route::get('/inbox/reply/{id}', 'MessageController@reply');
+    Route::get('/inbox/reageer/{id}', 'MessageController@replyOnMessage');
     Route::match(['get', 'post'], '/inbox/verzenden', 'MessageController@store');
+    Route::match(['get', 'post'], '/inbox/verwijder/{id}', 'MessageController@delete');
+    Route::match(['get', 'post'], '/inbox/verwijder-verzonden/{id}', 'MessageController@deleteSend');
+    Route::get('/test','MessageController@test');
+    Route::post('/test1','MessageController@search');
+    Route::match(['get', 'post'], '/inbox/bericht/{id}', 'MessageController@message');
+    Route::match(['get', 'post'], '/transactie/{id}', 'TransactionController@index');
     Route::match(['get', 'post'], '/inbox/reageren/{email}', 'MessageController@respond');
 });
 

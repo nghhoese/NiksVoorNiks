@@ -9,6 +9,11 @@ Inbox
 @section ('content')
 
 <h1 class="inbox-title">Verzonden Berichten</h1>
+<form class="search-form" action="/inbox/verzonden/zoeken" method="POST">
+@csrf
+<input type="text" name="search" placeholder="onderwerpen/afzenders">
+<input type="submit" value="zoeken">
+</form>
 <div class="wrapper">
 <div class="inbox-menu">
 
@@ -28,6 +33,7 @@ Inbox
 <th>Onderwerp</th>
 
 <th>Datum</th>
+<th>Verwijderen</th>
 </tr>
   </thead>
   <tbody>
@@ -43,6 +49,7 @@ Inbox
 <td><a class="message-link"href="/inbox/viewSend/{{$message->id}}"><p> {{$message->onderwerp}}</p></a></td> 
 
 <td><a class="message-link"href="/inbox/viewSend/{{$message->id}}"><p>{{$message->datum}} </p></a></td>
+<td style="text-align:center;"> <a href="/inbox/verwijder-verzonden/{{$message->id}}"><i class="fas fa-trash-alt" style="color:#66BB6A;"></i></a></td>
 
 
   </tr>

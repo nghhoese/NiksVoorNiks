@@ -1,8 +1,11 @@
 @extends ('layout')
 @section('title')
-    home
+    Advertentie plaatsen
 @endsection
+@section ('stylesheets')
+    <link rel="stylesheet" href="/CSS/advertentiePlaatsen.css">
 
+@endsection
 @section ('content')
 
     <div class="plaatsadvertentie">
@@ -14,34 +17,37 @@
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>
-                </div><br />
+                </div><br/>
             @endif
-            <h2>Nieuwe advertentie plaatsen</h2><br><br>
-            <form method="post" action="/advertentiePlaatsen" enctype="multipart/form-data">
+           
+            <form id="form" method="post" action="/advertentiePlaatsen" enctype="multipart/form-data">
                 @csrf
+                <div class="plaatsAdvertentie1">
+                <h2>Nieuwe advertentie plaatsen</h2><br>
+                <label for="title">Titel advertentie</label><br>
+                <input type="text" id="title" name="title"><br><br>
+
+                <label for="beschrijving">Beschrijving</label><br>
+                <textarea name="beschrijving" id="beschrijving" rows="15" cols="50"></textarea><br><br>
+                
+</div>
+                <div class="plaatsAdvertentie2">
                 <label for="category">Kies een rubriek</label><br>
                 <select id="category" name="category">
                     @foreach($categories as $category)
                         <option value={{$category->naam}}>{{$category->naam}}</option>
-                        @endforeach
+                    @endforeach
                 </select><br><br>
 
                 <label for="group">Kies een groep(optioneel)</label><br>
                 <select id="group" name="group">
                     @foreach($groups as $group)
                         <option value={{$group->naam}}>{{$group->naam}}</option>
-                        @endforeach
+                    @endforeach
                 </select><br><br>
 
-                <label for="title">Titel advertentie</label><br>
-                <input type="text" id="title" name="title"><br><br>
-
-                <label for="beschrijving">Beschrijving</label><br>
-                <textarea name="beschrijving" id="beschrijving" rows="15" cols="50"></textarea><br><br>
-
-                <label for="price">Prijs(Niks)</label><br>
-                <input type="number" id="price" name="price" min="0" max="200">
-                <br><br>
+               
+        
 
                 <label>Soort advertentie:</label>
                 <select name="asked">
@@ -56,19 +62,26 @@
                     <option value="1">Bieden</option>
                 </select>
                 <br><br>
-
-                <label>Huisnummer:</label>
-                <input name="housenumber" type="text">
+                <label for="price">Prijs(Niks)</label><br>
+                <input type="number" id="price" name="price" min="0" max="200">
                 <br><br>
+
+                <label for="location">Kies een locatie</label><br>
+                <select id="location" name="location">
+                    @foreach($places as $place)
+                        <option value={{$place->naam}}>{{$place->naam}}</option>
+                        @endforeach
+                </select><br><br>
 
                       <label for="img">Voeg eventueel een foto toe:</label><br>
                 <input type="file" name="file" class="form-control">
                 <br><br>
-
-                <label for="locatie">Locatie(postcode)</label><br>
-                <input type="text" id="locatie" name="locatie"><br><br>
-
                 <input type="submit" value="Plaats advertentie">
+</div>
+
+
+
+                
 
             </form>
         </div>
