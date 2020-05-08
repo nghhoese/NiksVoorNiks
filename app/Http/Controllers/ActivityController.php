@@ -20,7 +20,7 @@ class ActivityController extends Controller
     {
         $categories = Categorie::all();
         $groups = Groep::all();
-        return view('advertentiePlaatsen', ['categories' => $categories, 'groups' => $groups]);
+        return view('activiteitPlaatsen', ['categories' => $categories, 'groups' => $groups]);
 
     }
 
@@ -31,34 +31,19 @@ class ActivityController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:100',
             'beschrijving' => 'required|max:255',
-            'price' => 'required|numeric|digits_between:0,200',
-            'housenumber' => 'required|max:10',
-            'asked' => 'required',
-            'price-type' => 'required',
-            'img' => 'mimes:jpeg,jpg,png,gif|max:10000',
+            'date' => ['required', 'date', 'after:tomorrow'],
         ]);
-        $advertentie = new Advertentie();
-        if ($request->file != null) {
-            $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $request->file->move(public_path('uploads'), $fileName);
-            $advertentie->foto = "/uploads/" . $fileName;
-        }
-        $advertentie->titel = request('title');
-        $advertentie->beschrijving = request('beschrijving');
-        $advertentie->categorie = request('category');
-        $advertentie->prijs = request('price');
-        $advertentie->postcode = request('locatie');
-        $advertentie->vraag = request('asked');
-        $advertentie->bieden = request('price-type');
-        $advertentie->aanmaakdatum = $date;
-        $advertentie->huisnummer = request('housenumber');
-        $advertentie->deelnemer_email = $user->email;
-        $advertentie->save();
-        return redirect('/advertentieDetails/' . $advertentie->id);
+        $activiteit = new Activiteit();
+        $activiteit->naam = request('title');
+        $activiteit->beschrijving = request('beschrijving');
+        $activiteit->datum = request('date');
+        $activiteit->save();
+        return redirect('/activiteiten');
     }
+}
 
-    public function view($id)
-    {
-        $advertentie = Advertentie::find($id);
-        return view('advertentieDetails', ['advertentie' => $advertentie]);
-    }}
+//    public function view($id)
+//    {
+//        $advertentie = Advertentie::find($id);
+//        return view('advertentieDetails', ['advertentie' => $advertentie]);
+//    }}

@@ -68,7 +68,7 @@ class AdvertentieController extends Controller
         return view('advertentieDetails', ['advertentie' => $advertentie]);
 
     }
-    
+
     public function filter(Request $request){
 $group = request('selectGroup');
 if($group == null){
@@ -115,7 +115,7 @@ if($group == null){
         ->paginate(4);
     }
         $categorie = request('selectCategory');
-        $maxPrice = request('maxPrice');        
+        $maxPrice = request('maxPrice');
         $minPrice = request('minPrice');
         $group = request('selectGroup');
         $location = request('selectPlace');
@@ -123,7 +123,7 @@ if($group == null){
         if(request('gevraagd') != null){
             $gevraagd = 1;
         }
-       
+
         $categories = Categorie::all();
         $groups = Groep::all();
         $places = Plaats::all();
