@@ -8,13 +8,13 @@
 @endsection
 @section ('content')
     <div class="articles">
-{{--        <div class="filters">--}}
+        <div class="filters">
 
-{{--            <a class="addad" href="activiteitPlaatsen">--}}
-{{--                Klik hier om zelf een activiteit te plaatsen--}}
-{{--                <i class="fa fa-arrow-right"></i>--}}
-{{--            </a>--}}
-{{--        </div>--}}
+            <a class="addad" href="/activiteitPlaatsen">
+                Klik hier om zelf een activiteit te plaatsen
+                <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
 
         <div class="article-list">
             @foreach($activities as $activity)
