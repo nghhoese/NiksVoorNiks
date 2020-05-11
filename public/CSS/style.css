@@ -424,6 +424,16 @@ i.adloc label {
     cursor: pointer;
 }
 
+.activity-date{
+    font-size: 1.3em;
+    position: relative;
+    bottom: 10px;
+
+    background-color: #66BB6A;
+    color: white;
+    padding: 5px;
+}
+
 @media screen and (max-width: 905px) {
     .articles {
         flex-wrap: wrap;

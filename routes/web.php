@@ -25,6 +25,14 @@ Route::get('/activiteiten', function () {
     return view('activiteiten');
 });
 
+Route::get('/activiteitPlaatsen', 'ActivityController@create');
+Route::post('/activiteitPlaatsen', 'ActivityController@store');
+
+
+Route::get('/advertentieDetails/{id}', 'AdvertentieController@view');
+
+Route::match(['get'], '/cms/edit/{name}', 'CmsController@edit')->name('editcms');
+
 
 Route::get('/activiteiten', 'ActivityController@showAll');
 
@@ -54,6 +62,8 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
     Route::match(['get', 'post'], '/inbox', 'MessageController@index');
     Route::match(['get', 'post'], '/inbox/verzonden', 'MessageController@indexSend');
     Route::match(['get', 'post'], '/inbox/view/{id}', 'MessageController@view');
+    Route::match(['get', 'post'], '/inbox/zoeken', 'MessageController@indexSearch');
+    Route::match(['get', 'post'], '/inbox/verzonden/zoeken', 'MessageController@indexSendSearch');
     Route::match(['get', 'post'], '/inbox/viewSend/{id}', 'MessageController@viewSend');
     Route::match(['get', 'post'], '/inbox/nieuw', 'MessageController@create');
     Route::get('/inbox/reply/{id}', 'MessageController@reply');
@@ -64,8 +74,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
     Route::get('/test','MessageController@test');
     Route::post('/test1','MessageController@search');
     Route::match(['get', 'post'], '/inbox/bericht/{id}', 'MessageController@message');
-
-
+    Route::match(['get', 'post'], '/transactie/{id}', 'TransactionController@index');
     Route::match(['get', 'post'], '/inbox/reageren/{email}', 'MessageController@respond');
 });
 

@@ -14,14 +14,44 @@ class MessageController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $messages = $user->Bericht1()->where('verwijderd_door_ontvanger', '=' , 0)->orderBy('datum','desc')->paginate(15);
-        return view('message.inbox',['messages' => $messages,'user' => $user]);
+        $messages = $user->Bericht1()->where('verwijderd_door_ontvanger', '=', 0)->orderBy('datum', 'desc')->paginate(15);
+        return view('message.inbox', ['messages' => $messages, 'user' => $user]);
     }
-    public function indexSend(){
+
+    public function indexSend()
+    {
         $user = auth()->user();
 
-        $messages = $user->Bericht()->where('verwijderd_door_zender', '=' , 0)->orderBy('datum','desc')->paginate(15);
-        return view('message.send',['messages' => $messages,'user' => $user]);
+        $messages = $user->Bericht()->where('verwijderd_door_zender', '=', 0)->orderBy('datum', 'desc')->paginate(15);
+        return view('message.send', ['messages' => $messages, 'user' => $user]);
+    }
+
+    public function indexSearch()
+    {
+        $user = auth()->user();
+        $messages = $user->Bericht1()
+            ->where('verwijderd_door_ontvanger', '=', 0)
+            ->where(function ($query) {
+                $query->where('zender_email', 'like', '%' . Request('search') . '%')
+                    ->orWhere('onderwerp', 'like', '%' . Request('search') . '%');
+            })->orderBy('datum', 'desc')
+            ->paginate(15);
+        return view('message.inbox', ['messages' => $messages, 'user' => $user]);
+    }
+
+    public function indexSendSearch()
+    {
+        $user = auth()->user();
+
+        $messages = $user->Bericht()
+            ->where('verwijderd_door_zender', '=', 0)
+            ->where(function ($query) {
+                $query->where('ontvanger_email', 'like', '%' . Request('search') . '%')
+                    ->orWhere('onderwerp', 'like', '%' . Request('search') . '%');
+            })->orderBy('datum', 'desc')
+            ->paginate(15);
+
+        return view('message.send', ['messages' => $messages, 'user' => $user]);
     }
 
     public function view($id)
@@ -34,20 +64,23 @@ class MessageController extends Controller
 
     public function viewSend($id)
     {
-            $message = Bericht::find($id);
-            $message->gelezen = 1;
-            $message->save();
-            return view('message.viewSend', ['message' => $message]);
+        $message = Bericht::find($id);
+        $message->gelezen = 1;
+        $message->save();
+        return view('message.viewSend', ['message' => $message]);
 
 
     }
-    public function create(){
+
+    public function create()
+    {
         $user = auth()->user();
         $recipients = Deelnemer::all();
-        return view('message.create',['user' => $user,'recipients' => $recipients] );
+        return view('message.create', ['user' => $user, 'recipients' => $recipients]);
     }
 
-    public function reply($id){
+    public function reply($id)
+    {
         $user = auth()->user();
         $recipients = Deelnemer::all();
         $advertisement = Advertentie::find($id);
@@ -57,38 +90,45 @@ class MessageController extends Controller
         $name = $deelnemer->voornaam;
 
 
-        return view('message.create', ['email' => $email, 'title' => $title, 'name' => $name, 'user' => $user,'recipients' => $recipients]);
+        return view('message.create', ['email' => $email, 'title' => $title, 'name' => $name, 'user' => $user, 'recipients' => $recipients]);
     }
-    public function message($id){
-        $user = auth()->user();
-        $email = Deelnemer::find($id)->email;
+
+    public function message($id)
+    {
         $recipients = Deelnemer::all();
+        $user = auth()->user();
+        $receiveremail = Deelnemer::find($id)->email;
+        $receivername = Deelnemer::find($id)->voornaam;
 
-        return view('message.create', ['user' => $user, 'email' => $email,'recipients' => $recipients]);
-
+        return view('message.create', ['user' => $user, 'recipients' => $recipients, 'email' => $receiveremail, 'name' => $receivername]);
     }
+
     public function search(Request $request)
-{
+    {
         $search = $request->search;
 
-        if($search == ''){
-           $employees = Deelnemer::orderby('voornaam','asc')->select('id','voornaam','tussenvoegsel','achternaam','email')->limit(5)->get();
-        }else{
-           $employees = Deelnemer::orderby('voornaam','asc')->select('id','voornaam','tussenvoegsel','achternaam','email')->where('voornaam', 'like', '%' .$search . '%')->limit(5)->get();
+        if ($search == '') {
+            $employees = Deelnemer::orderby('voornaam', 'asc')->select('id', 'voornaam', 'tussenvoegsel', 'achternaam', 'email')->limit(5)->get();
+        } else {
+            $employees = Deelnemer::orderby('voornaam', 'asc')->select('id', 'voornaam', 'tussenvoegsel', 'achternaam', 'email')->where('voornaam', 'like', '%' . $search . '%')->limit(5)->get();
         }
 
         $response = array();
-        foreach($employees as $employee){
-           $response[] = array("value"=>$employee->id,"label"=>$employee->voornaam." ".$employee->tussenvoegsel." ".$employee->achternaam." ".$employee->email);
+        foreach ($employees as $employee) {
+            $response[] = array("value" => $employee->id, "label" => $employee->voornaam . " " . $employee->tussenvoegsel . " " . $employee->achternaam . " " . $employee->email);
         }
 
         return json_encode($response);
 
-     }
-public function test(){
-    return view('testsearch');
-}
-    public function store(){
+    }
+
+    public function test()
+    {
+        return view('testsearch');
+    }
+
+    public function store()
+    {
         $message = new Bericht();
         $message->inhoud = request('message');
         $message->onderwerp = request('subject');
@@ -105,22 +145,23 @@ public function test(){
     public function delete($id)
     {
         $email = Bericht::find($id);
-        if($email->verwijderd_door_zender == 1){
+        if ($email->verwijderd_door_zender == 1) {
             $email->delete();
-        }else{
-        $email->verwijderd_door_ontvanger = 1;
-        $email->save();
+        } else {
+            $email->verwijderd_door_ontvanger = 1;
+            $email->save();
         }
         return redirect('/inbox');
     }
+
     public function deleteSend($id)
     {
         $email = Bericht::find($id);
-        if($email->verwijderd_door_ontvanger == 1){
+        if ($email->verwijderd_door_ontvanger == 1) {
             $email->delete();
-        }else{
-        $email->verwijderd_door_zender = 1;
-        $email->save();
+        } else {
+            $email->verwijderd_door_zender = 1;
+            $email->save();
         }
         return redirect('/inbox/verzonden');
     }

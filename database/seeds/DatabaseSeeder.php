@@ -38,7 +38,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
         //places
         DB::table('plaats')->insert([
             'naam' => 'Rosmalen'
-         
+
         ]);
         //roles
         DB::table('rol')->insert([
@@ -246,6 +246,30 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'aanmaakdatum' => '2020-04-01',
             'foto' => 'https://i.ytimg.com/vi/iD3kyTxf9Fk/hqdefault.jpg',
             'prijs' => '4',
+            'plaats' => 'Rosmalen',
+            'categorie' => 'Sport',
+        ]);
+        DB::table('advertentie')->insert([
+            'deelnemer_email' => 'jonah@avans.nl',
+            'titel' => 'Laptop repareren',
+            'vraag' => 0,
+            'bieden' => 0,
+            'beschrijving' => 'Ik maak je laptop voor bijna niks',
+            'aanmaakdatum' => '2020-04-01',
+            'foto' => 'https://i.ytimg.com/vi/iD3kyTxf9Fk/hqdefault.jpg',
+            'prijs' => '20',
+            'plaats' => 'Rosmalen',
+            'categorie' => 'Technologie',
+        ]);
+        DB::table('advertentie')->insert([
+            'deelnemer_email' => 'nick@avans.nl',
+            'titel' => 'Motor rijles',
+            'vraag' => 1,
+            'bieden' => 0,
+            'beschrijving' => 'Ik help je met de les',
+            'aanmaakdatum' => '2020-04-01',
+            'foto' => 'https://i.ytimg.com/vi/iD3kyTxf9Fk/hqdefault.jpg',
+            'prijs' => '40',
             'plaats' => 'Rosmalen',
             'categorie' => 'Sport',
         ]);

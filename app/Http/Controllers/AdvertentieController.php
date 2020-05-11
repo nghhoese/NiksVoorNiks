@@ -38,7 +38,7 @@ class AdvertentieController extends Controller
             'title' => 'required|max:100',
             'beschrijving' => 'required|max:255',
             'price' => 'required|numeric|digits_between:0,200',
-            'locatie' => 'required',
+            'location' => 'required',
             'asked' => 'required',
             'price-type' => 'required',
             'img' => 'mimes:jpeg,jpg,png,gif|max:10000',

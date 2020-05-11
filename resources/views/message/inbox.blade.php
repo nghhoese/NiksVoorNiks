@@ -10,6 +10,11 @@
     <div class="container">
 
         <h1 class="inbox-title">Inbox</h1>
+        <form class="search-form" action="/inbox/zoeken" method="POST">
+            @csrf
+            <input type="text" name="search" placeholder="onderwerpen/afzenders">
+            <input type="submit" value="zoeken">
+        </form>
         <div class="wrapper">
             <div class="inbox-menu">
 
@@ -20,6 +25,8 @@
                     </p></a>
             </div>
             <div class="inbox">
+
+
                 <table id="table1">
                     <thead>
                     <tr>
@@ -48,7 +55,7 @@
 
                                 <td><a class="message-link" href="/inbox/view/{{$message->id}}">
                                         <p>{{$message->datum}}</p></a></td>
-                                <td style="text-align:center;"><a href="/inbox/delete/{{$message->id}}"><i
+                                <td style="text-align:center;"><a href="/inbox/verwijder/{{$message->id}}"><i
                                             class="fas fa-trash-alt" style="color:#66BB6A;"></i></a></td>
                             @else
                                 <td><strong><a class="message-link" href="/inbox/view/{{$message->id}}"><img
@@ -61,30 +68,22 @@
                                 <td><strong><a class="message-link" href="/inbox/view/{{$message->id}}">
                                             <p>{{$message->onderwerp}}</p></a></td>
 
-<td><a class="message-link" href="/inbox/view/{{$message->id}}"><p>{{$message->datum}}</p></a></td>
-  <td style="text-align:center;"> <a href="/inbox/verwijder/{{$message->id}}"><i class="fas fa-trash-alt" style="color:#66BB6A;"></i></a></td>
-  @else
-  <td><strong><a class="message-link" href="/inbox/view/{{$message->id}}"><img class="profile-picture" src="https://www.isarklinikum.de/en/wp-content/uploads/sites/3/2015/07/empty_avatar.jpg"></a></td>
-    <td><strong><a class="message-link" href="/inbox/view/{{$message->id}}"><p> {{$message->zender_email}}</p></a></td>
+                                <td><strong><a class="message-link" href="/inbox/view/{{$message->id}}">
+                                            <p>{{$message->datum}}</p></a></td>
+                                <td style="text-align:center;"><a href="/inbox/verwijder/{{$message->id}}"><i
+                                            class="fas fa-trash-alt" style="color:#66BB6A;"></i></a></td>
+                            @endif
+                        </tr>
+                    @endforeach
 
                     </tbody>
                 </table>
+                @if(count($messages) < 1)
+                    <h3 style="text-align:center;">Je hebt Nog geen berichten! </h3>
+                @endif
+                <div class="pagination1">
 
-<td><strong><a class="message-link" href="/inbox/view/{{$message->id}}"><p>{{$message->datum}}</p></a></td>
-  <td style="text-align:center;"> <a href="/inbox/verwijder/{{$message->id}}"><i class="fas fa-trash-alt" style="color:#66BB6A;"></i></a></td>
-  @endif
-  </tr>
-    @endforeach
-
-    </tbody>
-  </table>
-  @if(count($messages) < 1)
-  <h3 style="text-align:center;">Je hebt Nog geen berichten! </h3>
-  @endif  
-  <div class="pagination1">
-  
-  </div>
-  </div>
-</div>
-
+                </div>
+            </div>
+        </div>
 @endsection
