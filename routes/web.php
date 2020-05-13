@@ -30,6 +30,8 @@ Route::post('/activiteitPlaatsen', 'ActivityController@store');
 
 
 Route::get('/activiteitDetails/{id}', 'ActivityController@view');
+Route::get('/activiteit/deelnemen/{id}', 'ActivityController@deelnemen');
+
 
 Route::match(['get'], '/cms/edit/{name}', 'CmsController@edit')->name('editcms');
 

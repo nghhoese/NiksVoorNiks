@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Activiteit;
-use App\Activiteit_heeft_deelnemer;
-use App\Advertentie;
 use App\Categorie;
-use App\Deelnemer_heeft_groep;
 use App\Groep;
+use App\Deelnemer;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -28,12 +26,11 @@ class ActivityController extends Controller
 
     public function store(Request $request)
     {
-        $date = date('d-m-y h:i:s');
-        $user = auth()->user();
         $validatedData = $request->validate([
             'title' => 'required|max:100',
             'beschrijving' => 'required|max:255',
             'date' => ['required', 'date', 'after:tomorrow'],
+            'max_deelnemers' => 'required|numeric|digits_between:0,100',
         ]);
         $activiteit = new Activiteit();
         $activiteit->naam = request('title');
@@ -47,5 +44,16 @@ class ActivityController extends Controller
     {
         $activity = Activiteit::find($id);
         $participants = count($activity->deelnemer()->get());
-        return view('activiteitDetails', ['activity' => $activity, 'participants' => $participants]);
-    }}
+        $user = auth()->user();
+        return view('activiteitDetails', ['activity' => $activity, 'participants' => $participants, 'user' => $user]);
+    }
+
+    public function deelnemen($id)
+    {
+        $activity = Activiteit::find($id);
+        $activity->deelnemer()->attach(Deelnemer::find(auth()->user()->email));
+        $activity->save();
+        return redirect('/activiteitDetails/' . $id);
+    }
+
+}

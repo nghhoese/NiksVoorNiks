@@ -21,5 +21,4 @@ class Activiteit extends Model
     public function deelnemer(){
         return $this->belongsToMany('App\Deelnemer', 'activiteit_heeft_deelnemer', 'activiteit_id', 'deelnemer_email');
     }
-
 }

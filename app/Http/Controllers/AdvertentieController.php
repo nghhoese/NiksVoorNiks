@@ -66,7 +66,6 @@ class AdvertentieController extends Controller
     {
         $advertentie = Advertentie::find($id);
         return view('advertentieDetails', ['advertentie' => $advertentie]);
-
     }
 
     public function filter(Request $request)

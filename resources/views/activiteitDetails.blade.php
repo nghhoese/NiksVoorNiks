@@ -24,9 +24,13 @@
         <div class="main-content">
             <p>Beschikbare plekken: {{$activity->max_deelnemers - $participants}}</p>
             <p>{{$participants}} / {{$activity->max_deelnemers}}</p>
-            <a href="/activity/deelnemen/{{$activity->id}}">
-                <button class="btn">Deelnemen</button>
-            </a>
+            @if($activity->deelnemer()->find($user->email) == null)
+                <a href="/activiteit/deelnemen/{{$activity->id}}">
+                    <button class="btn">Deelnemen</button>
+                </a>
+            @else
+                <p>U neemt al deel aan de activiteit</p>
+            @endif
         </div>
     </div>
 
