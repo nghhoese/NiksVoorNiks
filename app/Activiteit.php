@@ -19,8 +19,7 @@ class Activiteit extends Model
     public $timestamps = false;
 
     public function deelnemer(){
-        return $this->belongsToMany('App\Deelnemer', 'activiteit_heeft_deelnemer', 'deelnemer_email', 'activiteit_id');
+        return $this->belongsToMany('App\Deelnemer', 'activiteit_heeft_deelnemer', 'activiteit_id', 'deelnemer_email');
     }
-
 
 }

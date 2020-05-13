@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Activiteit;
+use App\Activiteit_heeft_deelnemer;
 use App\Advertentie;
 use App\Categorie;
+use App\Deelnemer_heeft_groep;
 use App\Groep;
 use Illuminate\Http\Request;
 
@@ -40,10 +42,10 @@ class ActivityController extends Controller
         $activiteit->save();
         return redirect('/activiteiten');
     }
-}
 
-//    public function view($id)
-//    {
-//        $advertentie = Advertentie::find($id);
-//        return view('advertentieDetails', ['advertentie' => $advertentie]);
-//    }}
+    public function view($id)
+    {
+        $activity = Activiteit::find($id);
+        $participants = count($activity->deelnemer()->get());
+        return view('activiteitDetails', ['activity' => $activity, 'participants' => $participants]);
+    }}

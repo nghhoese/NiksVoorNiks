@@ -3,35 +3,46 @@
     activiteit
 @endsection
 @section('stylesheets')
-    <link rel="stylesheet" href="/CSS/activiteitdetails.css">
+    <link rel="stylesheet" href="/CSS/activityDetails.css">
+    <link rel="stylesheet" href="/CSS/activity.css">
 @endsection
 @section ('content')
 
     <div class="flex-container">
         <div class="main-content">
-            <h1 id="title" class="title">{{$activiteit->titel}}</h1>
+            <h1 id="title" class="title">{{$activity->naam}}</h1>
             <div class="stats">
-                <div><p>{{$activiteit->postcode}}</p></div>
+                <p>{{$activity->beschrijving}}</p>
+                <br>
+                <br>
+                <label class="activity-date">{{$activity->datum}}</label>
             </div>
-
-        </div>
-
-        <div class="info">
-            <img
-                src="{{$activiteit->deelnemer->foto ?? 'https://www.isarklinikum.de/en/wp-content/uploads/sites/3/2015/07/empty_avatar.jpg'}}">
-            <div class="naam">
-                <b id="name">{{$activiteit->deelnemer->voornaam}} {{$activiteit->deelnemer->tussenvoegsel}} {{$activiteit->deelnemer->achternaam}}</b>
-            </div>
-            <div class="Persoonsbeschrijving">
-                <p>{{$activiteit->deelnemer->beschrijving}}</p>
-            </div>
-            <div>
-                <a href="/profiel/{{$activiteit->deelnemer->email}}">
-                    <button class="btn">Bekijk profiel</button>
-                </a>
-            </div>
-            <input hidden id="email"{{$activiteit->deelnemer->email}}/>
         </div>
     </div>
+
+    <div class="flex-container">
+        <div class="main-content">
+            <p>Beschikbare plekken: {{$activity->max_deelnemers - $participants}}</p>
+            <p>{{$participants}} / {{$activity->max_deelnemers}}</p>
+            <a href="/activity/deelnemen/{{$activity->id}}">
+                <button class="btn">Deelnemen</button>
+            </a>
+        </div>
+    </div>
+
+    {{--        <div class="info">--}}
+    {{--            <div class="naam">--}}
+    {{--                <b id="name">{{$advertentie->deelnemer->voornaam}} {{$advertentie->deelnemer->tussenvoegsel}} {{$advertentie->deelnemer->achternaam}}</b>--}}
+    {{--            </div>--}}
+    {{--            <div class="Persoonsbeschrijving">--}}
+    {{--                <p>{{$advertentie->deelnemer->beschrijving}}</p>--}}
+    {{--            </div>--}}
+    {{--            <div>--}}
+    {{--                <a href="/profiel/{{$advertentie->deelnemer->email}}">--}}
+    {{--                    <button class="btn">Bekijk profiel</button>--}}
+    {{--                </a>--}}
+    {{--            </div>--}}
+    {{--            <input hidden id="email"{{$advertentie->deelnemer->email}}/>--}}
+    {{--        </div>--}}
 
 @endsection

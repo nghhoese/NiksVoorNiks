@@ -8,17 +8,17 @@
 @endsection
 @section ('content')
     <div class="articles">
-        <div class="filters">
+{{--        <div class="filters">--}}
 
-            <a class="addad" href="/activiteitPlaatsen">
-                Klik hier om zelf een activiteit te plaatsen
-                <i class="fa fa-arrow-right"></i>
-            </a>
-        </div>
+{{--            <a class="addad" href="/activiteitPlaatsen">--}}
+{{--                Klik hier om zelf een activiteit te plaatsen--}}
+{{--                <i class="fa fa-arrow-right"></i>--}}
+{{--            </a>--}}
+{{--        </div>--}}
 
         <div class="article-list">
             @foreach($activities as $activity)
-                <a class="article" href="/advertentieDetails/{{ $activity->id }}" id="ad1">
+                <a class="article" href="/activiteitDetails/{{ $activity->id }}" id="ad1">
                     {{-- Activiteit heeft geen foto --}}
                     {{-- <img src="{{$activity->foto ?? 'https://lh3.googleusercontent.com/proxy/57DtuXp4Ii7bGtFLht81AMAPB-y859OKGnyRf24YnXuaJahdHgjOC_zIwFjL6TXm2LMuvswnD6iL_1WtkPtNkMaIMDj5aR2mv83Md92RLEejIqHZj-JAta9ncWZoiBrZhViqB6Xhy29CW1zVGt5KhNSFPkLgd-WMBQ4pj6uqAje-U8OGtPz_EOKKSWT3MeJ_1I468cSylWSH-_2iUchESkVknSe5V_p2FStTdYfoNR8olzKDrVg6KES42ckyHiev'}}">--}}
                     <div class="addetails">

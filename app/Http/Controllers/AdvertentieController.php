@@ -69,64 +69,63 @@ class AdvertentieController extends Controller
 
     }
 
-    public function filter(Request $request){
-$group = request('selectGroup');
-if($group == null){
-        $advertentie = Advertentie::when($request->get('gevraagd'), function ($query) {
-            $query->where('vraag', 1);
-        })
-        ->when($request->get('aangeboden'), function ($query) {
-            $query->where('vraag', 0);
-        })
-        ->when($request->get('selectCategory'), function ($query) {
-            $query->where('categorie', request('selectCategory'));
-        })
-        ->when($request->get('selectPlace'), function ($query) {
-            $query->where('plaats', '=' , request('selectPlace'));
-        })
-        ->when($request->get('minPrice'), function ($query) {
-            $query->where('prijs', '>=' , request('minPrice'));
-        })
-        ->when($request->get('maxPrice'), function ($query) {
-            $query->where('prijs', '<=' , request('maxPrice'));
-        })
-
-        ->paginate(4);
-    }else{
-        $advertentie = Groep::find($group)->advertentie()->when($request->get('gevraagd'), function ($query) {
-            $query->where('vraag', 1);
-        })
-        ->when($request->get('aangeboden'), function ($query) {
-            $query->where('vraag', 0);
-        })
-        ->when($request->get('selectCategory'), function ($query) {
-            $query->where('categorie', request('selectCategory'));
-        })
-        ->when($request->get('selectPlace'), function ($query) {
-            $query->where('plaats', '=' , request('selectPlace'));
-        })
-
-        ->when($request->get('minPrice'), function ($query) {
-            $query->where('prijs', '>=' , request('minPrice'));
-        })
-        ->when($request->get('maxPrice'), function ($query) {
-            $query->where('prijs', '<=' , request('maxPrice'));
-        })
-        ->paginate(4);
-    }
+    public function filter(Request $request)
+    {
+        $group = request('selectGroup');
+        if ($group == null) {
+            $advertentie = Advertentie::when($request->get('gevraagd'), function ($query) {
+                $query->where('vraag', 1);
+            })
+                ->when($request->get('aangeboden'), function ($query) {
+                    $query->where('vraag', 0);
+                })
+                ->when($request->get('selectCategory'), function ($query) {
+                    $query->where('categorie', request('selectCategory'));
+                })
+                ->when($request->get('selectPlace'), function ($query) {
+                    $query->where('plaats', '=', request('selectPlace'));
+                })
+                ->when($request->get('minPrice'), function ($query) {
+                    $query->where('prijs', '>=', request('minPrice'));
+                })
+                ->when($request->get('maxPrice'), function ($query) {
+                    $query->where('prijs', '<=', request('maxPrice'));
+                })
+                ->paginate(4);
+        } else {
+            $advertentie = Groep::find($group)->advertentie()->when($request->get('gevraagd'), function ($query) {
+                $query->where('vraag', 1);
+            })
+                ->when($request->get('aangeboden'), function ($query) {
+                    $query->where('vraag', 0);
+                })
+                ->when($request->get('selectCategory'), function ($query) {
+                    $query->where('categorie', request('selectCategory'));
+                })
+                ->when($request->get('selectPlace'), function ($query) {
+                    $query->where('plaats', '=', request('selectPlace'));
+                })
+                ->when($request->get('minPrice'), function ($query) {
+                    $query->where('prijs', '>=', request('minPrice'));
+                })
+                ->when($request->get('maxPrice'), function ($query) {
+                    $query->where('prijs', '<=', request('maxPrice'));
+                })
+                ->paginate(4);
+        }
         $categorie = request('selectCategory');
         $maxPrice = request('maxPrice');
         $minPrice = request('minPrice');
         $group = request('selectGroup');
         $location = request('selectPlace');
         $gevraagd = 0;
-        if(request('gevraagd') != null){
+        if (request('gevraagd') != null) {
             $gevraagd = 1;
         }
 
         $categories = Categorie::all();
         $groups = Groep::all();
         $places = Plaats::all();
-        return view('advertenties', ['plaats'=>$location, 'places' => $places,'locatie'=>$location,'gevraagd' => $gevraagd,'groep' => $group,'minPrijs' => $minPrice,'maxPrijs' => $maxPrice,'categorie' => $categorie, 'advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
+        return view('advertenties', ['plaats' => $location, 'places' => $places, 'locatie' => $location, 'gevraagd' => $gevraagd, 'groep' => $group, 'minPrijs' => $minPrice, 'maxPrijs' => $maxPrice, 'categorie' => $categorie, 'advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
     }
 }

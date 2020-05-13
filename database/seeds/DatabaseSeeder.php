@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -196,6 +197,65 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'niksen' => '180',
             'beschrijving' => 'Heeft veel niksen',
             'rol_naam' => 'deelnemer',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'niks@niksvoorniks.nl',
+            'wachtwoord' => Hash::make('niksvoorniks'),
+            'voornaam' => 'Niks',
+            'tussenvoegsel' => 'voor',
+            'achternaam' => 'Niks',
+            'geboortedatum' => '2020-05-13',
+            'telefoonnummer' => '0616666666',
+            'postcode' => '1234AB',
+            'huisnummer' => '69',
+            'niksen' => '69',
+            'beschrijving' => 'Developer account',
+            'rol_naam' => 'administrator',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'nick@niksvoorniks.cf',
+            'wachtwoord' => Hash::make('Welkom01'),
+            'voornaam' => 'Nick',
+            'tussenvoegsel' => 'van',
+            'achternaam' => 'Hoesel',
+            'geboortedatum' => '2020-05-13',
+            'telefoonnummer' => '0616666666',
+            'postcode' => '1234AB',
+            'huisnummer' => '69',
+            'niksen' => '69',
+            'beschrijving' => 'Developer account',
+            'rol_naam' => 'administrator',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'maarten@niksvoorniks.nl',
+            'wachtwoord' => Hash::make('maarten1234'),
+            'voornaam' => 'Maarten',
+            'tussenvoegsel' => 'van',
+            'achternaam' => 'Mensvoort',
+            'geboortedatum' => '2020-05-13',
+            'telefoonnummer' => '0616666666',
+            'postcode' => '1234AB',
+            'huisnummer' => '69',
+            'niksen' => '69',
+            'beschrijving' => 'Developer account',
+            'rol_naam' => 'administrator',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'jonah@niksvoorniks.nl',
+            'wachtwoord' => Hash::make('jonah1234'),
+            'voornaam' => 'Jonah',
+            'achternaam' => 'Dirksen',
+            'geboortedatum' => '2020-05-13',
+            'telefoonnummer' => '0616666666',
+            'postcode' => '1234AB',
+            'huisnummer' => '69',
+            'niksen' => '69',
+            'beschrijving' => 'Developer account',
+            'rol_naam' => 'administrator',
         ]);
 
         //advertisements
