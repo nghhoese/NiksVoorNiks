@@ -30,7 +30,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'titel' => 'Ruilen zonder geld? Hoe gaat dat?',
             'informatie' =>
 
-        'We ruilen onderling onze diensten en goederen. Nancy doet de boekhouding voor Mark. Mark verft het plafond voor Robin. Robin poetst het huis voor Petra. Petra verstelt een broek voor Yvonne. En Yvonne geeft een massage aan Nancy. Het bijzondere van een ruilkring is dat je voor de diensten en goederen zonder geld betaalt. We betalen onze diensten en goederen met een eigen ruilmiddel. In Den Bosch en omstreken is dat de Niks. Dat is geen tastbaar voorwerp of een munt, maar een administratieve manier om de waarde van diensten of goederen vast te leggen. We ruilen dus met Niksen!
+                'We ruilen onderling onze diensten en goederen. Nancy doet de boekhouding voor Mark. Mark verft het plafond voor Robin. Robin poetst het huis voor Petra. Petra verstelt een broek voor Yvonne. En Yvonne geeft een massage aan Nancy. Het bijzondere van een ruilkring is dat je voor de diensten en goederen zonder geld betaalt. We betalen onze diensten en goederen met een eigen ruilmiddel. In Den Bosch en omstreken is dat de Niks. Dat is geen tastbaar voorwerp of een munt, maar een administratieve manier om de waarde van diensten of goederen vast te leggen. We ruilen dus met Niksen!
 
         Onze ruilkring startte in 1995. In onze kring ontmoeten de deelnemers elkaar tijdens maandelijkse activiteiten. Daarbij kun je diensten en goederen ruilen. Dat kan ook via onze speciale Niksmail. Dat is een gebruikersgroep op internet, waaraan bijna alle deelnemers meedoen. De ruilkring heeft een sociale functie. We vormen een regionaal, duurzaam en zelfstandig economisch systeem. Door te ruilen zonder geld stellen we mensen in staat om zowel hun talenten te benutten en diensten, kennis en goederen aan te schaffen zonder euros.
 
@@ -55,32 +55,39 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
         DB::table('activiteit')->insert([
             'naam' => 'Spelletjes avond',
             'beschrijving' => 'Spelletjes avond met bordspellen',
-            'datum' => '2020-4-1'
+            'datum' => '2020-4-1',
+            'max_deelnemers' => 8
         ]);
         DB::table('activiteit')->insert([
             'naam' => 'Bakpartij',
             'beschrijving' => 'Samen gezellig bakken #taartjes',
-            'datum' => '2020-05-12'
+            'datum' => '2020-05-12',
+            'max_deelnemers' => 8
+
         ]);
         DB::table('activiteit')->insert([
             'naam' => 'Schilderen',
             'beschrijving' => 'Wees de kunstenaar die je altijd al wilde zijn! Leuk!',
-            'datum' => '2020-05-12'
+            'datum' => '2020-05-12',
+            'max_deelnemers' => 12
         ]);
         DB::table('activiteit')->insert([
             'naam' => 'Pannenkoeken bakken',
             'beschrijving' => 'Oom berend en zuster Suzan maken samen met jou de lekkerste Pfannkuchen',
-            'datum' => '2021-01-05'
+            'datum' => '2021-01-05',
+            'max_deelnemers' => 8
         ]);
         DB::table('activiteit')->insert([
             'naam' => 'Skypen',
             'beschrijving' => 'Gezellig met de meiden',
-            'datum' => '2021-01-05'
+            'datum' => '2021-01-05',
+            'max_deelnemers' => 8
         ]);
         DB::table('activiteit')->insert([
             'naam' => 'Boswandeling',
             'beschrijving' => 'Wandeling om het Sint Pieters bos',
-            'datum' => '2021-01-05'
+            'datum' => '2021-01-05',
+            'max_deelnemers' => 6
         ]);
 
         //categories
