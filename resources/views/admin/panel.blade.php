@@ -10,15 +10,6 @@
 
     <div class="panel">
         <b>Nieuwe deelnemers</b>
-        <br>
-        <br>
-        @foreach($users as $user)
-            <div class="participant">
-                <p>{{$user->voornaam}}</p>
-                <a class="btn" href="/panel/accepteren/{{$user->email}}">Accepteren</a>
-            </div>
-            <br>
-        @endforeach
 
         <div class="inbox">
             <table id="table1">
@@ -36,9 +27,20 @@
                 @foreach($users as $user)
                     <tr>
                         <td>
-                            <div class="participant">
-                                <p>{{$user->voornaam}}</p>
-                            </div>
+                            <p>{{$user->voornaam}} {{$user->tussenvoegsel}} {{$user->achternaam}}</p>
+                        </td>
+                        <td>
+                            <p>{{$user->email}}</p>
+
+                        </td>
+                        <td>
+                            <p>{{$user->telefoonnummer}}</p>
+
+                        </td>
+                        <td style="text-align:center;"><a href="/panel/verwijder/{{$user->email}}"><i
+                                    class="fas fa-trash-alt" style="color:#66BB6A;"></i></a>
+                        </td>
+                        <td style="text-align:center;"><a href="/panel/accepteren/{{$user->email}}"><i class="far fa-check-square" style="color:#66BB6A;"></i></a>
                         </td>
                     </tr>
                 @endforeach
