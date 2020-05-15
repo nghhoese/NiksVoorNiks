@@ -50,6 +50,10 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'naam' => 'deelnemer',
             'beschrijving' => 'Een standaard deelnemer van NiksVoorNiks'
         ]);
+        DB::table('rol')->insert([
+            'naam' => 'in_afwachting',
+            'beschrijving' => 'Een afwachtende deelnemer van NiksVoorNiks'
+        ]);
 
         //activities
         DB::table('activiteit')->insert([

@@ -12,7 +12,7 @@ class ActivityController extends Controller
 {
     public function showAll()
     {
-        $activities = Activiteit::paginate(4);
+        $activities = Activiteit::orderby('datum', 'desc')->paginate(4);
         return view('activiteiten', ['activities' => $activities]);
     }
 

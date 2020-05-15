@@ -56,6 +56,10 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
     Route::match(['post'], '/cms/edit/{name}', 'CmsController@update')->name('editcms');
 });
 
+Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
+    Route::match(['get'], '/admin', 'AdminController@index')->name('admin');
+});
+
 Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
     Route::match(['get'], '/advertenties', 'AdvertentieController@showAll');
     Route::match(['post'], '/advertenties', 'AdvertentieController@filter');
