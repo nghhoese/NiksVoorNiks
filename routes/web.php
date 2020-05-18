@@ -57,7 +57,12 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
-    Route::match(['get'], '/admin', 'AdminController@index')->name('admin');
+    Route::match(['get'], '/panel', 'AdminController@index')->name('admin');
+    Route::match(['get'], '/users/panel', 'AdminController@userPanel');
+    Route::match(['get'], '/panel/verwijder/{email}', 'AdminController@deleteUser');
+    Route::match(['get'], '/panel/accepteren/{email}', 'AdminController@acceptUser');
+    Route::match(['get'], '/panel/makeAdmin/{email}', 'AdminController@makeAdmin');
+    Route::match(['get'], '/panel/removeAdmin/{email}', 'AdminController@removeAdmin');
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {

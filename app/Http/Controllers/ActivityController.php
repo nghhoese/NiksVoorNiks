@@ -12,8 +12,9 @@ class ActivityController extends Controller
 {
     public function showAll()
     {
+        $user = auth()->user();
         $activities = Activiteit::orderby('datum', 'desc')->paginate(4);
-        return view('activiteiten', ['activities' => $activities]);
+        return view('activiteiten', ['activities' => $activities, 'user' => $user]);
     }
 
     public function create()

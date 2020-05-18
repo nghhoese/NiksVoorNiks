@@ -1,6 +1,6 @@
 @extends ('layout')
 @section('stylesheets')
-    <link rel="stylesheet" href="CSS/panel.css">
+    <link rel="stylesheet" href="/CSS/adminpanel.css">
 @endsection
 @section('title')
     Panel
@@ -9,51 +9,12 @@
 
 
     <div class="panel">
-        <b>Nieuwe deelnemers</b>
+        <h1>Administratiepaneel</h1>
 
-        <div class="inbox">
-            <table id="table1">
-                <thead>
-                <tr>
-                    <th>Naam</th>
-                    <th>email</th>
-                    <th>Telefoonnummer</th>
-                    <th>Verwijderen</th>
-                    <th>Accepteren</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                @foreach($users as $user)
-                    <tr>
-                        <td>
-                            <p>{{$user->voornaam}} {{$user->tussenvoegsel}} {{$user->achternaam}}</p>
-                        </td>
-                        <td>
-                            <p>{{$user->email}}</p>
-
-                        </td>
-                        <td>
-                            <p>{{$user->telefoonnummer}}</p>
-
-                        </td>
-                        <td style="text-align:center;"><a href="/panel/verwijder/{{$user->email}}"><i
-                                    class="fas fa-trash-alt" style="color:#66BB6A;"></i></a>
-                        </td>
-                        <td style="text-align:center;"><a href="/panel/accepteren/{{$user->email}}"><i class="far fa-check-square" style="color:#66BB6A;"></i></a>
-                        </td>
-                    </tr>
-                @endforeach
-
-                </tbody>
-            </table>
-            @if(count($users) < 1)
-                <h3 style="text-align:center;">Er zijn geen nieuwe deelnemers </h3>
-            @endif
-            <div class="pagination1">
-
-            </div>
-        </div>
+        <a href="/users/panel" class="btn">Deelnemers beheren</a>
+        <a href="/cms" class="btn">CMS</a>
+        <a href="/home" class="btn">Activiteiten</a>
+        <a href="/home" class="btn">Foo bar</a>
     </div>
 
 @endsection

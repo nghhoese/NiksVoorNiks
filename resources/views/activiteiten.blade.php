@@ -8,18 +8,18 @@
 @endsection
 @section ('content')
     <div class="articles">
-{{--        <div class="filters">--}}
-
-{{--            <a class="addad" href="/activiteitPlaatsen">--}}
-{{--                Klik hier om zelf een activiteit te plaatsen--}}
-{{--                <i class="fa fa-arrow-right"></i>--}}
-{{--            </a>--}}
-{{--        </div>--}}
-
+        @if($user->rol_naam == "administrator")
+            <div class="filters">
+                <a class="addad" href="/activiteitPlaatsen">
+                    Klik hier om een activiteit te plaatsen
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+        @endif
         <div class="article-list">
             @foreach($activities as $activity)
                 <a class="article" href="/activiteitDetails/{{ $activity->id }}" id="ad1">
-                     <div class="addetails">
+                    <div class="addetails">
                         <h3 class="adtitle">{{ $activity->naam }}</h3>
                         <p class="addescr">{{ $activity->beschrijving }}</p>
                         <label class="activity-date">{{$activity->datum}}</label>

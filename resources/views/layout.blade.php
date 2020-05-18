@@ -6,17 +6,12 @@
     <title>@yield ('title')</title>
     <script src="/JS/pace.js"></script>
     <link rel="stylesheet" href="/CSS/loader.css">
-
     <link rel="stylesheet" href="/CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="/CSS/login.css">
     <div class="top">
         <header class="header">
-
-
             @yield ('stylesheets')
-
-
             <div class="header-start">
                 <div class="logo"><a href="/"><img src="/Resources/favicon.png"></a></div>
             </div>
@@ -30,8 +25,9 @@
                     <a href="/register">Deelnemer worden</a>
                 @endif
                 <a href="#">Contact</a>
-                <a href="/admin">Admin</a>
-
+                @if (!Auth::check())
+                    <a href="/panel">Admin</a>
+                @endif
             </nav>
 
             <div class="header-end">
