@@ -14,38 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/advertentiePlaatsen', 'AdvertentieController@create');
-Route::post('/advertentiePlaatsen', 'AdvertentieController@store');
-Route::get('/advertentieDetails/{id}', 'AdvertentieController@view');
+Route::get('/activiteiten', 'ActivityController@showAll');
 
-Route::get('/activiteiten', function () {
-    return view('activiteiten');
-});
-Route::get('/activiteitPlaatsen', 'ActivityController@create');
-Route::post('/activiteitPlaatsen', 'ActivityController@store');
-Route::get('/activiteitDetails/{id}', 'ActivityController@view');
-Route::get('/activiteit/deelnemen/{id}', 'ActivityController@deelnemen');
 Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
-    Route::post('/activiteit/verwijderen/{id}', 'ActivityController@delete');
+    Route::get('/activiteit/verwijderen/{id}', 'ActivityController@delete');
+    Route::get('/activiteit/aanpassen/{id}', 'ActivityController@edit');
+    Route::post('/activiteit/aanpassen/{id}', 'ActivityController@update');
 });
 
 Route::match(['get'], '/cms/edit/{name}', 'CmsController@edit')->name('editcms');
 
-
-Route::get('/activiteiten', 'ActivityController@showAll');
-
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/home');
 });
-Route::get('/nicksadvertenties', 'AdvertentieController@showAll');
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
     Route::match(['get'], '/cms', 'CmsController@index')->name('cms');
@@ -64,8 +50,16 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
     Route::match(['get'], '/advertenties', 'AdvertentieController@showAll');
+    Route::get('/profiel/{email}', 'ProfileController@index');
+    Route::get('/activiteitPlaatsen', 'ActivityController@create');
+    Route::post('/activiteitPlaatsen', 'ActivityController@store');
+    Route::get('/activiteitDetails/{id}', 'ActivityController@view');
+    Route::get('/activiteit/deelnemen/{id}', 'ActivityController@deelnemen');
+    Route::match(['get'], '/advertenties', 'AdvertentieController@showAll');
     Route::match(['post'], '/advertenties', 'AdvertentieController@filter');
-
+    Route::get('/advertentiePlaatsen', 'AdvertentieController@create');
+    Route::post('/advertentiePlaatsen', 'AdvertentieController@store');
+    Route::get('/advertentieDetails/{id}', 'AdvertentieController@view');
     Route::match(['get', 'post'], '/inbox', 'MessageController@index');
     Route::match(['get', 'post'], '/inbox/verzonden', 'MessageController@indexSend');
     Route::match(['get', 'post'], '/inbox/view/{id}', 'MessageController@view');
@@ -83,9 +77,5 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
     Route::match(['get', 'post'], '/inbox/bericht/{id}', 'MessageController@message');
     Route::match(['get', 'post'], '/transactie/{id}', 'TransactionController@index');
     Route::match(['get', 'post'], '/inbox/reageren/{email}', 'MessageController@respond');
-});
-
-Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function () {
-    Route::get('/profiel/{email}', 'ProfileController@index');
 });
 

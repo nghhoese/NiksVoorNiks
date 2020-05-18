@@ -34,19 +34,4 @@
         </div>
     </div>
 
-    {{--        <div class="info">--}}
-    {{--            <div class="naam">--}}
-    {{--                <b id="name">{{$advertentie->deelnemer->voornaam}} {{$advertentie->deelnemer->tussenvoegsel}} {{$advertentie->deelnemer->achternaam}}</b>--}}
-    {{--            </div>--}}
-    {{--            <div class="Persoonsbeschrijving">--}}
-    {{--                <p>{{$advertentie->deelnemer->beschrijving}}</p>--}}
-    {{--            </div>--}}
-    {{--            <div>--}}
-    {{--                <a href="/profiel/{{$advertentie->deelnemer->email}}">--}}
-    {{--                    <button class="btn">Bekijk profiel</button>--}}
-    {{--                </a>--}}
-    {{--            </div>--}}
-    {{--            <input hidden id="email"{{$advertentie->deelnemer->email}}/>--}}
-    {{--        </div>--}}
-
 @endsection

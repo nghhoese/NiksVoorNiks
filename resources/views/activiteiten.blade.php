@@ -8,7 +8,7 @@
 @endsection
 @section ('content')
     <div class="articles">
-        @if($user->rol_naam == "administrator")
+        @if(Auth::check() && auth()->user()->isAdmin())
             <div class="filters">
                 <a class="addad" href="/activiteitPlaatsen">
                     Klik hier om een activiteit te plaatsen
@@ -18,19 +18,28 @@
         @endif
         <div class="article-list">
             @foreach($activities as $activity)
-                <a class="article" href="/activiteitDetails/{{ $activity->id }}" id="ad1">
+                <div class="article" id="ad1">
                     <div class="addetails">
                         <h3 class="adtitle">{{ $activity->naam }}</h3>
                         <p class="addescr">{{ $activity->beschrijving }}</p>
+                        <div class="participants">
+                            <p>Beschikbare
+                                plekken: {{$activity->max_deelnemers - count($activity->deelnemer()->get())}}</p>
+                            <p>Deelnemers: {{count($activity->deelnemer()->get())}} / {{$activity->max_deelnemers}}</p>
+                        </div>
                         <label class="activity-date">{{$activity->datum}}</label>
-                        @if($user->rol_naam == "administrator")
-                            <label href="/activiteiten/delete/{{$activity->id}}"><i
-                                    class="btn">Verwijderen</i></label>
-                        @else
-                            <label class="adprice" for="ad1">Deelnemen? Klik hier!</label>
+
+                        @if(Auth::check() && auth()->user()->isAdmin())
+                            <a href="/activiteit/aanpassen/{{$activity->id}}"><i
+                                    class="btn">Aanpassen</i></a>
+                        @elseif(Auth::check())
+                            <a href="/activiteitDetails/{{ $activity->id }}" class="adprice" for="ad1">Deelnemen? Klik
+                                hier!</a>
                         @endif
+                        <br>
+                        <br>
                     </div>
-                </a>
+                </div>
 
             @endforeach
             {{$activities->links("pagination::bootstrap-4")}}

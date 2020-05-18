@@ -41,6 +41,29 @@ class ActivityController extends Controller
         return redirect('/activiteiten');
     }
 
+    public function update(Request $request)
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|max:100',
+            'beschrijving' => 'required|max:255',
+            'date' => ['required', 'date', 'after:tomorrow'],
+            'max_deelnemers' => 'required|numeric|digits_between:0,100',
+        ]);
+        $activiteit = new Activiteit();
+        $activiteit->naam = request('title');
+        $activiteit->beschrijving = request('beschrijving');
+        $activiteit->datum = request('date');
+        $activiteit->save();
+        return redirect('/activiteiten');
+    }
+
+    public function edit($id)
+    {
+        $activity = Activiteit::find($id);
+        return view('activity.edit', ['activity' => $activity]);
+
+    }
+
     public function view($id)
     {
         $activity = Activiteit::find($id);
@@ -59,6 +82,7 @@ class ActivityController extends Controller
 
     public function delete($id){
         $activity = Activiteit::find($id);
+        $activity->deelnemer()->detach();
         $activity->delete();
         return redirect('/activiteiten');
     }
