@@ -5,3 +5,15 @@
 .addetails{
     float: none;
 }
+
+.addescr {
+    margin-bottom: 15px !important;
+}
+
+.btn {
+    float: right; !important;
+}
+
+.activity-date {
+    bottom: 0 !important;
+}

@@ -57,4 +57,10 @@ class ActivityController extends Controller
         return redirect('/activiteitDetails/' . $id);
     }
 
+    public function delete($id){
+        $activity = Activiteit::find($id);
+        $activity->delete();
+        return redirect('/activiteiten');
+    }
+
 }

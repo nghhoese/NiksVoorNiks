@@ -17,21 +17,18 @@ Route::get('/', 'HomeController@index');
 
 Route::get('/advertentiePlaatsen', 'AdvertentieController@create');
 Route::post('/advertentiePlaatsen', 'AdvertentieController@store');
-
-
 Route::get('/advertentieDetails/{id}', 'AdvertentieController@view');
 
 Route::get('/activiteiten', function () {
     return view('activiteiten');
 });
-
 Route::get('/activiteitPlaatsen', 'ActivityController@create');
 Route::post('/activiteitPlaatsen', 'ActivityController@store');
-
-
 Route::get('/activiteitDetails/{id}', 'ActivityController@view');
 Route::get('/activiteit/deelnemen/{id}', 'ActivityController@deelnemen');
-
+Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
+    Route::post('/activiteit/verwijderen/{id}', 'ActivityController@delete');
+});
 
 Route::match(['get'], '/cms/edit/{name}', 'CmsController@edit')->name('editcms');
 

@@ -13,7 +13,7 @@
 
         <a href="/users/panel" class="btn">Deelnemers beheren</a>
         <a href="/cms" class="btn">CMS</a>
-        <a href="/home" class="btn">Activiteiten</a>
+        <a href="/activiteiten" class="btn">Activiteiten</a>
         <a href="/home" class="btn">Foo bar</a>
     </div>
 
