@@ -26,8 +26,10 @@
                     <h2>Nieuwe activiteit plaatsen</h2><br>
                     <label for="title">Titel activiteit</label><br>
                     <input type="text" id="title" name="title"><br><br>
-                    <label for="beschrijving">Beschrijving</label><br>
-                    <textarea name="beschrijving" id="beschrijving" rows="15" cols="50"></textarea><br><br>
+                    <label for="description">Beschrijving</label><br>
+                    <textarea name="description" id="description" rows="15" cols="50"></textarea>
+                    <label for="max_participants">Max aantal deelnemers:</label><br>
+                    <input name="max_participants" id="max_participants" type="number" min="0" max="100"><br><br>
                 </div>
                 <div class="plaatsActiviteit2">
                     <label for="date">Kies een datum</label><br>

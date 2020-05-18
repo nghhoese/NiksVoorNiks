@@ -29,31 +29,33 @@ class ActivityController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:100',
-            'beschrijving' => 'required|max:255',
+            'description' => 'required|max:255',
             'date' => ['required', 'date', 'after:tomorrow'],
-            'max_deelnemers' => 'required|numeric|digits_between:0,100',
+            'max_participants' => 'required|numeric|digits_between:0,100',
         ]);
         $activiteit = new Activiteit();
         $activiteit->naam = request('title');
-        $activiteit->beschrijving = request('beschrijving');
+        $activiteit->beschrijving = request('description');
         $activiteit->datum = request('date');
+        $activiteit->max_deelnemers = request('max_participants');
         $activiteit->save();
         return redirect('/activiteiten');
     }
 
-    public function update(Request $request)
+    public function update($id, Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'title' => 'required|max:100',
-            'beschrijving' => 'required|max:255',
+            'description' => 'required|max:255',
             'date' => ['required', 'date', 'after:tomorrow'],
-            'max_deelnemers' => 'required|numeric|digits_between:0,100',
+            'max_participants' => 'required|numeric|digits_between:0,100',
         ]);
-        $activiteit = new Activiteit();
-        $activiteit->naam = request('title');
-        $activiteit->beschrijving = request('beschrijving');
-        $activiteit->datum = request('date');
-        $activiteit->save();
+        $activity = Activiteit::find($id);
+        $activity->naam = request('title');
+        $activity->beschrijving = request('description');
+        $activity->datum = request('date');
+        $activity->max_deelnemers = request('max_participants');
+        $activity->save();
         return redirect('/activiteiten');
     }
 
