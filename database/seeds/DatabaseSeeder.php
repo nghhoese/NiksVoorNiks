@@ -43,6 +43,10 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
         ]);
         //roles
         DB::table('rol')->insert([
+            'naam' => 'in_afwachting',
+            'beschrijving' => 'Een afwachtende deelnemer van NiksVoorNiks'
+        ]);
+        DB::table('rol')->insert([
             'naam' => 'administrator',
             'beschrijving' => 'Een beheerder van NiksVoorNiks'
         ]);

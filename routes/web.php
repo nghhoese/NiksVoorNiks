@@ -76,6 +76,16 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
     Route::post('/test1','MessageController@search');
     Route::match(['get', 'post'], '/inbox/bericht/{id}', 'MessageController@message');
     Route::match(['get', 'post'], '/transactie/{id}', 'TransactionController@index');
+    Route::match(['get', 'post'], '/transacties', 'TransactionController@showAll');
+    Route::match(['get'], '/transacties/maken/nieuw', 'TransactionController@create');
+    Route::match(['post'], '/transacties/maken/nieuw', 'TransactionController@store');
+    Route::match(['get', 'post'], '/transactie/accepteer/{id}', 'TransactionController@accept');
+
+
     Route::match(['get', 'post'], '/inbox/reageren/{email}', 'MessageController@respond');
+    //maybe another middleware?
+    Route::match(['get'], '/advertentie/verwijderen/{id}', 'AdvertentieController@delete');
+    Route::match(['get'], '/advertentie/wijzigen/{id}', 'AdvertentieController@edit');
+    Route::match(['post'], '/advertentie/wijzigen/{id}', 'AdvertentieController@update');
 });
 
