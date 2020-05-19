@@ -23,6 +23,9 @@ body {
 /* HEADER */
 
 @media screen and (max-width: 905px) {
+    .logo{
+        margin-left: 0px; 
+    }
     header.header {
         height: 100%;
     }

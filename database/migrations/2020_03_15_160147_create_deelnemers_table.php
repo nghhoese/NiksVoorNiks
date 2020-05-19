@@ -24,7 +24,7 @@ class CreateDeelnemersTable extends Migration
             $table->string('postcode',6);
             $table->string('huisnummer',10);
             $table->string('foto',200)->nullable();
-            $table->unsignedInteger('niksen');
+            $table->integer('niksen');
             $table->string('beschrijving',500);
             $table->string('rol_naam',50);
             $table->foreign('rol_naam')->references('naam')->on('rol');

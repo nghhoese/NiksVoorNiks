@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Categorie;
 use App\Category;
 use App\Groep;
+use Illuminate\Support\Facades\File; 
 use App\Plaats;
 use Faker\Provider\ka_GE\DateTime;
 use Illuminate\Http\Request;
 use \App\Advertentie;
+use DB;
 
 class AdvertentieController extends Controller
 {
@@ -18,6 +20,7 @@ class AdvertentieController extends Controller
         $categories = Categorie::all();
         $groups = Groep::all();
         $places = Plaats::all();
+       
         return view('advertenties', ['advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups, 'places' => $places]);
     }
 
@@ -64,20 +67,92 @@ class AdvertentieController extends Controller
 
     public function view($id)
     {
+        $user = auth()->user();
         $advertentie = Advertentie::find($id);
-        return view('advertentieDetails', ['advertentie' => $advertentie]);
+        return view('advertentieDetails', ['advertentie' => $advertentie,'email' => $user->email]);
+
+    }
+    public function edit($id){
+        $user = auth()->user();
+        $ad = Advertentie::find($id);
+        if($user->email != $ad->deelnemer_email){
+            return redirect('/');
+        }
+        $categories = Categorie::all();
+        $groups = Groep::all();
+        $places = Plaats::all();
+        return view('advertentieWijzigen', ['ad' => $ad,'categories' => $categories, 'groups' => $groups, 'places' => $places]);
+
+
+        
+    }
+    public function update($id,Request $request){
+        $user = auth()->user();
+        $ad = Advertentie::find($id);
+        if($user->email != $ad->deelnemer_email){
+            return redirect('/');
+        }
+        $date = date('d-m-y h:i:s');
+
+        $validatedData = $request->validate([
+            'title' => 'required|max:100',
+            'beschrijving' => 'required|max:255',
+            'price' => 'required|numeric|digits_between:0,200',
+            'location' => 'required',
+            'asked' => 'required',
+            'price-type' => 'required',
+            'img' => 'mimes:jpeg,jpg,png,gif|max:10000',
+        ]);
+    
+        if ($request->file != null) {
+            $file_path = substr($ad->foto,1);
+            unlink($file_path);
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
+            $request->file->move(public_path('uploads'), $fileName);
+            $ad->foto = "/uploads/" . $fileName;
+        }
+        $ad->titel = request('title');
+        $ad->beschrijving = request('beschrijving');
+        $ad->categorie = request('category');
+        $ad->prijs = request('price');
+        $ad->plaats = request('location');
+        $ad->vraag = request('asked');
+        $ad->bieden = request('price-type');
+        $ad->aanmaakdatum = $date;
+        $ad->save();
+        return redirect('/advertentieDetails/' . $ad->id);
+
+    }
+    public function delete($id){
+        $user = auth()->user();
+        $ad = Advertentie::find($id);
+        if($user->email != $ad->deelnemer_email){
+            return redirect('/');
+        }
+        $file_path = substr($ad->foto,1);
+        unlink($file_path);
+        $ad->delete();
+        return redirect('/profiel/'.$user->email);
 
     }
     
     public function filter(Request $request){
+   
+        if(request('gevraagd') != null && request('aangeboden') != null){
+            $request->offsetUnset('gevraagd');
+            $request->offsetUnset('aangeboden');
+        }
 $group = request('selectGroup');
 if($group == null){
-        $advertentie = Advertentie::when($request->get('gevraagd'), function ($query) {
-            $query->where('vraag', 1);
-        })
-        ->when($request->get('aangeboden'), function ($query) {
-            $query->where('vraag', 0);
-        })
+    $advertentie = Advertentie::when($request->get('gevraagd'), function ($query) {
+        $query->where('vraag', 1);
+    })
+    ->when($request->get('aangeboden'), function ($query) {
+        $query->where('vraag', 0);
+    })
+    ->when($request->get('selectCategory'), function ($query) {
+        $query->where('categorie', request('selectCategory'));
+    })  
         ->when($request->get('selectCategory'), function ($query) {
             $query->where('categorie', request('selectCategory'));
         })
@@ -114,19 +189,19 @@ if($group == null){
         })
         ->paginate(4);
     }
-        $categorie = request('selectCategory');
-        $maxPrice = request('maxPrice');        
-        $minPrice = request('minPrice');
-        $group = request('selectGroup');
-        $location = request('selectPlace');
-        $gevraagd = 0;
-        if(request('gevraagd') != null){
-            $gevraagd = 1;
-        }
-       
+
+    $categorie = request('selectCategory');
+    $maxPrice = request('maxPrice');        
+    $minPrice = request('minPrice');
+    $group = request('selectGroup');
+    $location = request('selectPlace');
+    $gevraagd = request('gevraagd');
+    $aangeboden = request('aangeboden');
+    
+
         $categories = Categorie::all();
         $groups = Groep::all();
         $places = Plaats::all();
-        return view('advertenties', ['plaats'=>$location, 'places' => $places,'locatie'=>$location,'gevraagd' => $gevraagd,'groep' => $group,'minPrijs' => $minPrice,'maxPrijs' => $maxPrice,'categorie' => $categorie, 'advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
+        return view('advertenties', ['plaats'=>$location, 'places' => $places,'locatie'=>$location,'aangeboden'=>$aangeboden,'gevraagd' => $gevraagd,'groep' => $group,'minPrijs' => $minPrice,'maxPrijs' => $maxPrice,'categorie' => $categorie, 'advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
     }
 }

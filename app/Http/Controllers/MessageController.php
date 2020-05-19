@@ -129,6 +129,11 @@ class MessageController extends Controller
 
     public function store()
     {
+        $validatedData = $request->validate([
+            'subject' => 'required|max:50',
+            'message' => 'required|max:255',
+            'to' => 'required',
+        ]);
         $message = new Bericht();
         $message->inhoud = request('message');
         $message->onderwerp = request('subject');

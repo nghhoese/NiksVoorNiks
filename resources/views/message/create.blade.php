@@ -11,7 +11,7 @@ nieuw bericht
     <div class="card">
         <div class="card-header">
             <div class="title">
-                <p>Niew Bericht</p>
+                <p>Nieuw Bericht</p>
 
             </div>
             <form method="post" action="/inbox/verzenden">

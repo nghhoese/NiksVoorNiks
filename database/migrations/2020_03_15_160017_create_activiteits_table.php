@@ -18,6 +18,7 @@ class CreateActiviteitsTable extends Migration
             $table->string('naam',50);
             $table->string('beschrijving',500);
             $table->date('datum');
+            $table->unsignedInteger('max_deelnemers')->nullable();
         });
     }
 

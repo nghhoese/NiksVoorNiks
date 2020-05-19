@@ -9,17 +9,21 @@
 
     <div class="flex-container">
         <div class="main-content">
-            <h1 id="title" class="title">{{$advertentie->titel}}</h1>
+        @if($email == $advertentie->deelnemer_email)
+        <a href="/advertentie/wijzigen/{{$advertentie->id}}"class="btn">Aanpassen</a>
+        <a href="/advertentie/verwijderen/{{$advertentie->id}}"class="btn">Verwijderen</a>
+        @endif
+            <h1 id="title" class="title">{{$advertentie->titel}} , {{$advertentie->prijs}} Niksen</h1>
             <img src="{{$advertentie->foto ?? 'https://i.imgur.com/HxdPz7Q.jpg'}}">
             <div class="stats">
                 <div><p>{{$advertentie->postcode}}</p></div>
             </div>
             <div class="description">
                 <b>Beschrijving <br/></b>
-                <p>{{$advertentie->beschrijving}}</p>
+                <p style="white-space: pre-line">{{$advertentie->beschrijving}}</p>
             </div>
             <a href="/inbox/reply/{{$advertentie->id}}">
-                <button class="btn">Koop nu voor 5 Niks!</button>
+                <button class="btn">Reageer op advertentie</button>
             </a>
         </div>
 
