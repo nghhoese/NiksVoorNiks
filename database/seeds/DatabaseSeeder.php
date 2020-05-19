@@ -269,6 +269,34 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'rol_naam' => 'administrator',
         ]);
 
+        DB::table('deelnemer')->insert([
+            'email' => 'inafwachting@avans.nl',
+            'wachtwoord' => 'jonah1234',
+            'voornaam' => 'Jonah',
+            'achternaam' => 'Dirksen',
+            'geboortedatum' => '1998-1-1',
+            'telefoonnummer' => '06777777',
+            'postcode' => '3584LA',
+            'huisnummer' => '55',
+            'niksen' => '55',
+            'beschrijving' => 'Student Avans Hogeschool',
+            'rol_naam' => 'in_afwachting',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'inafwachting2@avans.nl',
+            'wachtwoord' => 'jonah1234',
+            'voornaam' => 'Jonah',
+            'achternaam' => 'Dirksen',
+            'geboortedatum' => '1998-1-1',
+            'telefoonnummer' => '06777777',
+            'postcode' => '3584LA',
+            'huisnummer' => '55',
+            'niksen' => '55',
+            'beschrijving' => 'Student Avans Hogeschool',
+            'rol_naam' => 'in_afwachting',
+        ]);
+
         //advertisements
         DB::table('advertentie')->insert([
             'deelnemer_email' => 'nick@avans.nl',

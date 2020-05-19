@@ -77,6 +77,11 @@ class ActivityController extends Controller
     public function deelnemen($id)
     {
         $activity = Activiteit::find($id);
+        $participants = count($activity->deelnemer()->get());
+        $user = auth()->user();
+        if($activity->max_deelnemers == count($activity->deelnemer()->get())) {
+            return view('activiteitDetails', ['activity' => $activity, 'participants' => $participants, 'user' => $user, 'error' => 'Deze activiteit zit vol']);
+        }
         $activity->deelnemer()->attach(Deelnemer::find(auth()->user()->email));
         $activity->save();
         return redirect('/activiteitDetails/' . $id);

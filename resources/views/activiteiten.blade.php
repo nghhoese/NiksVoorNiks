@@ -29,12 +29,8 @@
                         </div>
                         <label class="activity-date">{{$activity->datum}}</label>
 
-                        @if(Auth::check() && auth()->user()->isAdmin())
-                            <a href="/activiteit/aanpassen/{{$activity->id}}"><i
-                                    class="btn">Aanpassen</i></a>
-                        @elseif(Auth::check())
-                            <a href="/activiteitDetails/{{ $activity->id }}" class="adprice" for="ad1">Deelnemen? Klik
-                                hier!</a>
+                        @if(Auth::check())
+                            <a href="/activiteitDetails/{{ $activity->id }}" class="adprice" for="ad1">Bekijken</a>
                         @endif
                         <br>
                         <br>

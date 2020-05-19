@@ -38,8 +38,7 @@
                         <td style="text-align:center;"><a href="/panel/verwijder/{{$user->email}}"><i
                                     class="fas fa-trash-alt" style="color:#66BB6A;"></i></a>
                         </td>
-                        <td style="text-align:center;"><a href="/panel/accepteren/{{$user->email}}"><i
-                                    class="far fa-check-square" style="color:#66BB6A;"></i></a>
+                        <td style="text-align:center;"><a href="/panel/accepteren/{{$user->email}}"><i class="far fa-square" style="color:#66BB6A;"></i></a>
                         </td>
                     </tr>
                 @endforeach

@@ -41,7 +41,7 @@ class AdminController extends Controller
     {
         $deelnemer = Deelnemer::find($email);
         $deelnemer->delete();
-        return redirect('/admin');
+        return redirect('/users/panel');
     }
 
     public function acceptUser($email)
@@ -49,7 +49,7 @@ class AdminController extends Controller
         $deelnemer = Deelnemer::find($email);
         $deelnemer->rol_naam = "deelnemer";
         $deelnemer->save();
-        return redirect('/admin');
+        return redirect('/users/panel');
     }
 
     public function makeAdmin($email)
@@ -57,7 +57,7 @@ class AdminController extends Controller
         $deelnemer = Deelnemer::find($email);
         $deelnemer->rol_naam = "administrator";
         $deelnemer->save();
-        return redirect('/admin');
+        return redirect('/users/panel');
     }
 
     public function removeAdmin($email)
@@ -65,6 +65,6 @@ class AdminController extends Controller
         $deelnemer = Deelnemer::find($email);
         $deelnemer->rol_naam = "deelnemer";
         $deelnemer->save();
-        return redirect('/admin');
+        return redirect('/users/panel');
     }
 }
