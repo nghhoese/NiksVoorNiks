@@ -8,28 +8,37 @@
 @endsection
 @section ('content')
     <div class="articles">
-        <div class="filters">
-
-            <a class="addad" href="activiteitPlaatsen">
-                Klik hier om zelf een activiteit te plaatsen
-                <i class="fa fa-arrow-right"></i>
-            </a>
-        </div>
-
+        @if(Auth::check() && auth()->user()->isAdmin())
+            <div class="filters">
+                <a class="addad" href="/activiteitPlaatsen">
+                    Klik hier om een activiteit te plaatsen
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+        @endif
         <div class="article-list">
             @foreach($activities as $activity)
-                <a class="article" href="/advertentieDetails/{{ $activity->id }}" id="ad1">
-                    <img src="{{$activity->foto ?? 'https://lh3.googleusercontent.com/proxy/57DtuXp4Ii7bGtFLht81AMAPB-y859OKGnyRf24YnXuaJahdHgjOC_zIwFjL6TXm2LMuvswnD6iL_1WtkPtNkMaIMDj5aR2mv83Md92RLEejIqHZj-JAta9ncWZoiBrZhViqB6Xhy29CW1zVGt5KhNSFPkLgd-WMBQ4pj6uqAje-U8OGtPz_EOKKSWT3MeJ_1I468cSylWSH-_2iUchESkVknSe5V_p2FStTdYfoNR8olzKDrVg6KES42ckyHiev'}}">
+                <div class="article" id="ad1">
                     <div class="addetails">
                         <h3 class="adtitle">{{ $activity->naam }}</h3>
                         <p class="addescr">{{ $activity->beschrijving }}</p>
-                        {{--                        <i class="fa fa-map-marker adloc"><label> Rosmalen</label></i>--}}
+                        <div class="participants">
+                            <p>Beschikbare
+                                plekken: {{$activity->max_deelnemers - count($activity->deelnemer()->get())}}</p>
+                            <p>Deelnemers: {{count($activity->deelnemer()->get())}} / {{$activity->max_deelnemers}}</p>
+                        </div>
                         <label class="activity-date">{{$activity->datum}}</label>
-                        <label class="adprice" for="ad1">Deelnemen? Klik hier!</label>
+
+                        @if(Auth::check())
+                            <a href="/activiteitDetails/{{ $activity->id }}" class="adprice" for="ad1">Bekijken</a>
+                        @endif
+                        <br>
+                        <br>
                     </div>
-                </a>
+                </div>
+
             @endforeach
-{{--            {{$activity->links("pagination::bootstrap-4")}}--}}
+            {{$activities->links("pagination::bootstrap-4")}}
         </div>
     </div>
 @endsection

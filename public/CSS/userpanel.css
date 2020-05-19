@@ -1,0 +1,109 @@
+.panel{
+    background-color: white;
+    margin-left:20%;
+    width:60%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    padding:2.5%;
+    font-size: 1.2em;
+    border-radius:25px;
+    text-decoration:none;
+    word-break: break-all;
+}
+
+.panel a{
+    text-decoration:none;
+}
+
+.panel2{
+    background-color: white;
+    margin-left:20%;
+    width:60%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    padding:2.5%;
+    font-size: 1.2em;
+    border-radius:25px;
+    text-decoration:none;
+    word-break: break-all;
+}
+
+.panel2 a{
+    text-decoration:none;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex: 1;
+    margin: 50px;
+    font-size: 1.2em;
+}
+.inbox a{
+    text-decoration: none;
+}
+.inbox {
+    overflow-x:auto;
+    background-color: white;
+    width:100%;
+    max-width: 1405px;
+    border: 2px solid #66BB6A;
+    max-height: 420px;
+}
+
+.message-link{
+    color: grey;
+}
+tr:hover {
+    background-color: #C4E9C7;
+}
+
+table#table1 th, td {
+
+    text-align: left;
+    border-bottom: 2px solid #66BB6A;
+
+}
+table {
+    width:100%;
+    border-collapse: collapse;
+}
+table#table1 th{
+    background-color:#66BB6A;
+    color: white;
+}
+.profile-picture{
+
+
+    height: 40px;
+    width: 40px;
+}
+.inbox-menu{
+    border: 2px solid #66BB6A;
+    background-color: white;
+    height: 100%;
+}
+.inbox-menu a{
+    text-decoration: none;
+    color: black;
+    margin-bottom: 10px;
+}
+.inbox-menu p:hover{
+    background-color: grey;
+    color: white;
+}
+.inbox-menu h4{
+    background-color: #66BB6A;
+    color: white;
+}
+
+.inbox-title{
+    color: grey;
+    margin-top:10px;
+    text-align: center;
+}
+.search-form{
+    text-align: center;
+    height: 30px;
+}

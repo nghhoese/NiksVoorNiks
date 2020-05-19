@@ -1,7 +1,6 @@
 @extends ('layout')
 @section('stylesheets')
     <link rel="stylesheet" href="CSS/aboutUs.css">
-
 @endsection
 @section('title')
     CMS

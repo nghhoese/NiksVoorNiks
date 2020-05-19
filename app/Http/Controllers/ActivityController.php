@@ -3,62 +3,95 @@
 namespace App\Http\Controllers;
 
 use App\Activiteit;
-use App\Advertentie;
 use App\Categorie;
 use App\Groep;
+use App\Deelnemer;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
     public function showAll()
     {
-        $activities = Activiteit::paginate(4);
-        return view('activiteiten', ['activities' => $activities]);
+        $user = auth()->user();
+        $activities = Activiteit::orderby('datum', 'desc')->paginate(4);
+        return view('activiteiten', ['activities' => $activities, 'user' => $user]);
     }
 
     public function create()
     {
         $categories = Categorie::all();
         $groups = Groep::all();
-        return view('advertentiePlaatsen', ['categories' => $categories, 'groups' => $groups]);
+        return view('activiteitPlaatsen', ['categories' => $categories, 'groups' => $groups]);
 
     }
 
     public function store(Request $request)
     {
-        $date = date('d-m-y h:i:s');
-        $user = auth()->user();
         $validatedData = $request->validate([
             'title' => 'required|max:100',
-            'beschrijving' => 'required|max:255',
-            'price' => 'required|numeric|digits_between:0,200',
-            'housenumber' => 'required|max:10',
-            'asked' => 'required',
-            'price-type' => 'required',
-            'img' => 'mimes:jpeg,jpg,png,gif|max:10000',
+            'description' => 'required|max:255',
+            'date' => ['required', 'date', 'after:tomorrow'],
+            'max_participants' => 'required|numeric|digits_between:0,100',
         ]);
-        $advertentie = new Advertentie();
-        if ($request->file != null) {
-            $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $request->file->move(public_path('uploads'), $fileName);
-            $advertentie->foto = "/uploads/" . $fileName;
-        }
-        $advertentie->titel = request('title');
-        $advertentie->beschrijving = request('beschrijving');
-        $advertentie->categorie = request('category');
-        $advertentie->prijs = request('price');
-        $advertentie->postcode = request('locatie');
-        $advertentie->vraag = request('asked');
-        $advertentie->bieden = request('price-type');
-        $advertentie->aanmaakdatum = $date;
-        $advertentie->huisnummer = request('housenumber');
-        $advertentie->deelnemer_email = $user->email;
-        $advertentie->save();
-        return redirect('/advertentieDetails/' . $advertentie->id);
+        $activiteit = new Activiteit();
+        $activiteit->naam = request('title');
+        $activiteit->beschrijving = request('description');
+        $activiteit->datum = request('date');
+        $activiteit->max_deelnemers = request('max_participants');
+        $activiteit->save();
+        return redirect('/activiteiten');
+    }
+
+    public function update($id, Request $request)
+    {
+        $request->validate([
+            'title' => 'required|max:100',
+            'description' => 'required|max:255',
+            'date' => ['required', 'date', 'after:tomorrow'],
+            'max_participants' => 'required|numeric|digits_between:0,100',
+        ]);
+        $activity = Activiteit::find($id);
+        $activity->naam = request('title');
+        $activity->beschrijving = request('description');
+        $activity->datum = request('date');
+        $activity->max_deelnemers = request('max_participants');
+        $activity->save();
+        return redirect('/activiteiten');
+    }
+
+    public function edit($id)
+    {
+        $activity = Activiteit::find($id);
+        return view('activity.edit', ['activity' => $activity]);
+
     }
 
     public function view($id)
     {
-        $advertentie = Advertentie::find($id);
-        return view('advertentieDetails', ['advertentie' => $advertentie]);
-    }}
+        $activity = Activiteit::find($id);
+        $participants = count($activity->deelnemer()->get());
+        $user = auth()->user();
+        return view('activiteitDetails', ['activity' => $activity, 'participants' => $participants, 'user' => $user]);
+    }
+
+    public function deelnemen($id)
+    {
+        $activity = Activiteit::find($id);
+        $participants = count($activity->deelnemer()->get());
+        $user = auth()->user();
+        if($activity->max_deelnemers == count($activity->deelnemer()->get())) {
+            return view('activiteitDetails', ['activity' => $activity, 'participants' => $participants, 'user' => $user, 'error' => 'Deze activiteit zit vol']);
+        }
+        $activity->deelnemer()->attach(Deelnemer::find(auth()->user()->email));
+        $activity->save();
+        return redirect('/activiteitDetails/' . $id);
+    }
+
+    public function delete($id){
+        $activity = Activiteit::find($id);
+        $activity->deelnemer()->detach();
+        $activity->delete();
+        return redirect('/activiteiten');
+    }
+
+}

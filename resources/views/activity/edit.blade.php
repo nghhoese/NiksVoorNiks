@@ -20,22 +20,23 @@
                 </div><br/>
             @endif
 
-            <form id="form" method="post" action="/activiteitPlaatsen" enctype="multipart/form-data">
+            <form id="form" method="post" action="/activiteit/aanpassen/{{$activity->id}}" enctype="multipart/form-data">
                 @csrf
                 <div class="plaatsActiviteit1">
-                    <h2>Nieuwe activiteit plaatsen</h2><br>
+                    <h2>Activiteit bewerken</h2><br>
                     <label for="title">Titel activiteit</label><br>
-                    <input type="text" id="title" name="title"><br><br>
+                    <input type="text" id="title" name="title" value="{{$activity->naam}}"><br><br>
                     <label for="description">Beschrijving</label><br>
-                    <textarea name="description" id="description" rows="15" cols="50"></textarea>
+                    <textarea name="description" id="description" rows="15" cols="50" value="{{$activity->beschrijving}}">{{$activity->beschrijving}}</textarea>
                     <label for="max_participants">Max aantal deelnemers:</label><br>
-                    <input name="max_participants" id="max_participants" type="number" min="0" max="100"><br><br>
+                    <input name="max_participants" id="max_participants" type="number" min="0" max="100" value="{{$activity->max_deelnemers}}">
+                    <br><br>
                 </div>
                 <div class="plaatsActiviteit2">
                     <label for="date">Kies een datum</label><br>
                     <input type="date" id="date" placeholder="Activiteit datum"
-                           class="form-control @error('date') is-invalid @enderror" name="date"
-                           value="{{ old('date') }}" required>
+                           class="form-control" name="date"
+                           value="{{$activity->datum}}" required>
 
                     @error('dateofbirth')
                     <span class="invalid-feedback" role="alert">
@@ -43,7 +44,8 @@
                                     </span>
                     @enderror
                     <br><br><br>
-                    <input type="submit" value="Plaats activiteit">
+                    <input class="btn" type="submit" value="Plaats activiteit">
+                    <a class="trashcan" href="/activiteit/verwijderen/{{$activity->id}}"><i style="color:#66BB6A; font-size: 3em" class="fas fa-trash-alt"></i></a>
                 </div>
             </form>
         </div>
