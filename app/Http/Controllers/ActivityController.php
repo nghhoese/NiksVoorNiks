@@ -70,8 +70,9 @@ class ActivityController extends Controller
     {
         $activity = Activiteit::find($id);
         $participants = count($activity->deelnemer()->get());
+        $users = $activity->deelnemer()->get();
         $user = auth()->user();
-        return view('activiteitDetails', ['activity' => $activity, 'participants' => $participants, 'user' => $user]);
+        return view('activiteitDetails', ['activity' => $activity, 'participants' => $participants, 'user' => $user, 'users' => $users]);
     }
 
     public function deelnemen($id)
