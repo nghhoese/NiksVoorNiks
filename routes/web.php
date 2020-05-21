@@ -19,6 +19,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/activiteiten', 'ActivityController@showAll');
 
 Route::get('/nieuws', 'NewsController@showAll');
+Route::get('/nieuws/details/{id}', 'NewsController@view');
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
     Route::get('/activiteit/verwijderen/{id}', 'ActivityController@delete');

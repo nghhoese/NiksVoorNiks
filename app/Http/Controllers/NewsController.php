@@ -58,14 +58,13 @@ class NewsController extends Controller
 //        return view('news.edit', ['news' => $nieuws]);
 //
 //    }
-//
-//    public function view($id)
-//    {
-//        $news = Nieuws::find($id);
-//        $user = auth()->user();
-//        return view('news.view', ['news' => $news]);
-//    }
-//
+
+    public function view($id)
+    {
+        $nieuws = Nieuws::find($id);
+        return view('news.view', ['news' => $nieuws]);
+    }
+
 //    public function delete($id){
 //        $news = Nieuws::find($id);
 //        $news->delete();
