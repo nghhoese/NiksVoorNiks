@@ -198,6 +198,21 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'rol_naam' => 'deelnemer',
         ]);
 
+        DB::table('deelnemer')->insert([
+            'email' => 'stef@avans.nl',
+            'wachtwoord' => 'stef1234',
+            'voornaam' => 'Stef',
+            'tussenvoegsel' => 'van',
+            'achternaam' => 'Osch',
+            'geboortedatum' => '2001-04-06',
+            'telefoonnummer' => '0687654321',
+            'postcode' => '6677PC',
+            'huisnummer' => '23',
+            'niksen' => '80',
+            'beschrijving' => 'Vind het altijd bedtijd',
+            'rol_naam' => 'deelnemer',
+        ]);
+
         //advertisements
         DB::table('advertentie')->insert([
             'deelnemer_email' => 'nick@avans.nl',

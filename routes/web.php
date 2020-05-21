@@ -36,7 +36,7 @@ Route::match(['get'], '/cms/edit/{name}', 'CmsController@edit')->name('editcms')
 
 Route::get('/activiteiten', 'ActivityController@showAll');
 
-Route::get('/nieuws', 'NewsController@view');
+Route::get('/nieuws', 'NewsController@showAll');
 
 
 Auth::routes();
