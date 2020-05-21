@@ -21,6 +21,7 @@
                 <a href="/overons">Over ons</a>
                 <a href="/advertenties">Advertenties</a>
                 <a href="/activiteiten">Activiteiten</a>
+                <a href="/nieuws">Nieuws</a>
                 @if (!Auth::check())
                     <a href="/register">Deelnemer worden</a>
                 @endif

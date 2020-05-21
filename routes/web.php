@@ -18,6 +18,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/activiteiten', 'ActivityController@showAll');
 
+Route::get('/nieuws', 'NewsController@showAll');
+Route::get('/nieuws/details/{id}', 'NewsController@view');
+
 Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
     Route::get('/activiteit/verwijderen/{id}', 'ActivityController@delete');
     Route::get('/activiteit/aanpassen/{id}', 'ActivityController@edit');
@@ -46,7 +49,17 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
     Route::match(['get'], '/panel/accepteren/{email}', 'AdminController@acceptUser');
     Route::match(['get'], '/panel/makeAdmin/{email}', 'AdminController@makeAdmin');
     Route::match(['get'], '/panel/removeAdmin/{email}', 'AdminController@removeAdmin');
+
+    Route::match(['get'],'/nieuws/verwijderen/{id}', 'NewsController@delete');
+    Route::match(['get'],'/nieuws/wijzigen/{id}', 'NewsController@edit');
+    Route::match(['post'],'/nieuws/wijzigen/{id}', 'NewsController@update');
+
+    Route::match(['get'],'/nieuws/nieuw', 'NewsController@create');
+    Route::match(['post'],'/nieuws/nieuw', 'NewsController@store');
 });
+
+
+
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
     Route::match(['get'], '/advertenties', 'AdController@showAll');
