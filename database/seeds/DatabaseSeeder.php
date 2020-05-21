@@ -297,6 +297,22 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'rol_naam' => 'in_afwachting',
         ]);
 
+        DB::table('deelnemer')->insert([
+            'email' => 'stef@avans.nl',
+            'wachtwoord' => '$2y$12$03NiMiIFnwWG.d9NHkxXZu6UQcCOoTs30wgYd.SanWufURvr6.1Fe',
+            'voornaam' => 'Stef',
+            'tussenvoegsel' => 'van',
+            'achternaam' => 'Osch',
+            'geboortedatum' => '2001-4-6',
+            'telefoonnummer' => '0687654321',
+            'postcode' => '6677PC',
+            'huisnummer' => '23',
+            'niksen' => '80',
+            'beschrijving' => 'Student Avans Hogeschool Informatica SO',
+            'rol_naam' => 'administrator',
+        ]);
+
+
         //advertisements
         DB::table('advertentie')->insert([
             'deelnemer_email' => 'nick@avans.nl',
@@ -448,5 +464,12 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'activiteit_id' => 4,
         ]);
 
+
+        //News
+        DB::table('nieuws')->insert([
+            'naam' => 'Nieuwe website!',
+            'beschrijving' => 'De ruilkring Den Bosch heeft een nieuwe website. Nu is er één plek voor al uw advertenties, transacties en communicatie bij elkaar',
+            'foto' => 'https://picjumbo.com/wp-content/uploads/diamond-beach-indonesia-2210x1300.jpg',
+        ]);
     }
 }

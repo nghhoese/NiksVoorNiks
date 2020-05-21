@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nieuws extends Model
 {
-    public $table = 'news';
+    public $table = 'nieuws';
     protected $primaryKey = 'id';
     public $incrementing = true;
 

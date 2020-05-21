@@ -9,15 +9,13 @@ class NewsController extends Controller
 {
     public function showAll()
     {
-        $user = auth()->user();
-        $newsitems = News::orderby('datum', 'desc')->paginate(4);
-        return view('nieuws', ['news' => $news]);
+        $nieuwsitems = Nieuws::orderby('id', 'desc')->paginate(4);
+        return view('news.index', ['nieuws' => $nieuwsitems]);
     }
 
     public function create()
     {
-        return view('nieuwsPlaatsen');
-
+        return view('news.create');
     }
 
     public function store(Request $request)
@@ -25,49 +23,52 @@ class NewsController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:100',
             'description' => 'required|max:255',
-            'date' => ['required', 'date', 'after:tomorrow'],
+            'img' => 'mimes:jpeg,jpg,png,gif|max:10000',
         ]);
+
         $nieuws = new Nieuws();
+        if ($request->file != null) {
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
+            $request->file->move(public_path('uploads'), $fileName);
+            $nieuws->foto = "/uploads/" . $fileName;
+        }
         $nieuws->naam = request('title');
         $nieuws->beschrijving = request('description');
-        $nieuws->datum = request('date');
         $nieuws->save();
         return redirect('/nieuws');
     }
 
-    public function update($id, Request $request)
-    {
-        $request->validate([
-            'title' => 'required|max:100',
-            'description' => 'required|max:255',
-            'date' => ['required', 'date', 'after:tomorrow'],
-        ]);
-        $news = Nieuws::find($id);
-        $news->naam = request('title');
-        $news->beschrijving = request('description');
-        $news->datum = request('date');
-        $news->max_deelnemers = request('max_participants');
-        $news->save();
-        return redirect('/nieuws');
-    }
-
-    public function edit($id)
-    {
-        $news = Nieuws::find($id);
-        return view('news.edit', ['news' => $news]);
-
-    }
-
-    public function view($id)
-    {
-        $news = Nieuws::find($id);
-        $user = auth()->user();
-        return view('nieuwsDetails', ['news' => $news, 'user' => $user]);
-    }
-
-    public function delete($id){
-        $news = Nieuws::find($id);
-        $news->delete();
-        return redirect('/nieuws');
-    }
+//    public function update($id, Request $request)
+//    {
+//        $request->validate([
+//            'title' => 'required|max:100',
+//            'description' => 'required|max:255',
+//            'date' => ['required', 'date', 'after:tomorrow'],
+//        ]);
+//        $nieuws = Nieuws::find($id);
+//        $nieuws->naam = request('title');
+//        $nieuws->beschrijving = request('description');
+//        $nieuws->save();
+//        return redirect('/nieuws');
+//    }
+//
+//    public function edit($id)
+//    {
+//        $nieuws = Nieuws::find($id);
+//        return view('news.edit', ['news' => $nieuws]);
+//
+//    }
+//
+//    public function view($id)
+//    {
+//        $news = Nieuws::find($id);
+//        $user = auth()->user();
+//        return view('news.view', ['news' => $news]);
+//    }
+//
+//    public function delete($id){
+//        $news = Nieuws::find($id);
+//        $news->delete();
+//        return redirect('/nieuws');
+//    }
 }

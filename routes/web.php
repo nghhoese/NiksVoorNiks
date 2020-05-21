@@ -48,9 +48,13 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
     Route::match(['get'], '/panel/accepteren/{email}', 'AdminController@acceptUser');
     Route::match(['get'], '/panel/makeAdmin/{email}', 'AdminController@makeAdmin');
     Route::match(['get'], '/panel/removeAdmin/{email}', 'AdminController@removeAdmin');
-    Route::get('/nieuws/verwijderen/{id}', 'NewsController@delete');
-    Route::get('/nieuws/aanpassen/{id}', 'NewsController@edit');
-    Route::post('/nieuws/aanpassen/{id}', 'NewsController@update');
+
+    Route::match(['get'],'/nieuws/verwijderen/{id}', 'NewsController@delete');
+    Route::match(['get'],'/nieuws/aanpassen/{id}', 'NewsController@edit');
+    Route::match(['post'],'/nieuws/aanpassen/{id}', 'NewsController@update');
+
+    Route::match(['get'],'/nieuws/nieuw', 'NewsController@create');
+    Route::match(['post'],'/nieuws/nieuw', 'NewsController@store');
 });
 
 
