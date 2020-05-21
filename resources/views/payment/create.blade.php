@@ -30,16 +30,16 @@ nieuwe transactie
             <form method="post" action="/transacties/maken/nieuw">
                 @csrf
                 <label><b>Ontvanger: </b></label><br>
-                <select id="to" name="to">
+                <select id="ontvanger" name="ontvanger">
                     <option value="" selected>Kies een ontvanger...</option>
                     @foreach($recipients as $recipient)
                         <option  value="{{$recipient->email}}">{{$recipient->voornaam}} {{$recipient->tussenvoegsel}} {{$recipient->achternaam}} ({{$recipient->email}})</option>
                     @endforeach
                 </select><br>
                 <label><b>Onderwerp: </b></label><br>
-                <input name="description" type="text" value=""><br>
+                <input name="beschrijving" type="text" value=""><br>
                 <label><b>Bedrag: </b></label><br>
-                <input name="amount" type="number" value=""><br>
+                <input name="bedrag" type="number" value=""><br>
                 <label><b>Betaalverzoek: </b></label><br>
                 <input name="ask" type="checkbox">
                 <br>
