@@ -16,17 +16,26 @@ nieuw bericht
             </div>
             <form method="post" action="/inbox/verzenden">
                 @csrf
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    
+                        @foreach ($errors->all() as $error)
+                            <strong style="color:red;">{{ $error }}</strong>
+                        @endforeach
+                   
+                </div><br/>
+            @endif
                 <label><b>Ontvanger: </b></label><br>
-                <select id="to" name="to">
+                <select id="to" name="ontvanger">
                     <option value="{{$email ?? ''}}" selected>{{$email ?? 'Kies een ontvanger...'}}</option>
                     @foreach($recipients as $recipient)
                         <option  value="{{$recipient->email}}">{{$recipient->voornaam}} {{$recipient->tussenvoegsel}} {{$recipient->achternaam}} ({{$recipient->email}})</option>
                     @endforeach
                 </select><br>
                 <label><b>Onderwerp: </b></label><br>
-                <input name="subject" type="text" value="{{$title ?? ''}}"><br>
+                <input name="onderwerp" type="text" value="{{$title ?? ''}}"><br>
                 <label for="bericht"><b>Bericht: </b></label><br>
-                <textarea name="message" rows="15" cols="50">Beste {{$name ?? ''}},&#010;&#010;&#010;&#010;&#010;Met vriendelijke groet,&#010;&#010;{{$user->voornaam}}</textarea><br>
+                <textarea name="bericht" rows="15" cols="50">Beste {{$name ?? ''}},&#010;&#010;&#010;&#010;&#010;Met vriendelijke groet,&#010;&#010;{{$user->voornaam}}</textarea><br>
                 <input type="submit" value="Verzend Bericht">
             </form>
             <div class="back">

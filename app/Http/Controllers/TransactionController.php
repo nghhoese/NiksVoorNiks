@@ -11,6 +11,9 @@ class TransactionController extends Controller
     public function index($id){
         $user = auth()->user();
        $transaction = Transactie::find($id);
+       if($transaction == null){
+           return redirect('/');
+       }
        return view('payment.view',['transaction' => $transaction,'user'=> $user]);
     }
     public function showAll(){
@@ -27,17 +30,17 @@ class TransactionController extends Controller
 
         $user = auth()->user();
         $validatedData = $request->validate([
-            'to' => 'required',
+            'ontvanger' => 'required',
         ]);
-        $user1 = Deelnemer::find(request('to'));
+        $user1 = Deelnemer::find(request('ontvanger'));
 
         $transaction = new Transactie();
      
         if(request('ask') != null){
             $validatedData = $request->validate([
-                'description' => 'required|max:50',
-                'amount' => 'required|numeric|between:0,300',
-                'to' => 'required',
+                'beschrijving' => 'required|max:50',
+                'bedrag' => 'required|numeric|between:0,300',
+                'ontvanger' => 'required',
             ]);
             $transaction->betaalverzoek = 1;
             $transaction->geaccepteerd = 0;
@@ -57,23 +60,23 @@ class TransactionController extends Controller
                 
             }
             $validatedData = $request->validate([
-                'description' => 'required|max:50',
-                'amount' => 'required|numeric|between:0,'.min($bedrag,$bedrag1),
-                'to' => 'required',
+                'beschrijving' => 'required|max:50',
+                'bedrag' => 'required|numeric|between:0,'.min($bedrag,$bedrag1),
+                'ontvanger' => 'required',
             ]);
             $transaction->betaalverzoek = 0;
             $transaction->geaccepteerd = 1;
-            $user->niksen = $user->niksen - request('amount');
-            $user1->niksen = $user1->niksen + request('amount');
+            $user->niksen = $user->niksen - request('bedrag');
+            $user1->niksen = $user1->niksen + request('bedrag');
             $user->save();
             $user1->save();
         }
-        $transaction->ontvanger_email = request('to');
+        $transaction->ontvanger_email = request('ontvanger');
         $transaction->zender_email = $user->email;
         $transaction->verstuurd = 1;
         $transaction->datum = date("Y-m-d H:i:s");
-        $transaction->bedrag = request('amount');
-        $transaction->beschrijving = request('description');
+        $transaction->bedrag = request('bedrag');
+        $transaction->beschrijving = request('beschrijving');
         $transaction->save();
         return redirect('/transactie/'.$transaction->id);
         

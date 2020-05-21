@@ -49,17 +49,17 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
-    Route::match(['get'], '/advertenties', 'AdvertentieController@showAll');
+    Route::match(['get'], '/advertenties', 'AdController@showAll');
     Route::get('/profiel/{email}', 'ProfileController@index');
     Route::get('/activiteitPlaatsen', 'ActivityController@create');
     Route::post('/activiteitPlaatsen', 'ActivityController@store');
     Route::get('/activiteitDetails/{id}', 'ActivityController@view');
     Route::get('/activiteit/deelnemen/{id}', 'ActivityController@deelnemen');
-    Route::match(['get'], '/advertenties', 'AdvertentieController@showAll');
-    Route::match(['post'], '/advertenties', 'AdvertentieController@filter');
-    Route::get('/advertentiePlaatsen', 'AdvertentieController@create');
-    Route::post('/advertentiePlaatsen', 'AdvertentieController@store');
-    Route::get('/advertentieDetails/{id}', 'AdvertentieController@view');
+    Route::match(['get'], '/advertenties', 'AdController@showAll');
+    Route::match(['post'], '/advertenties', 'AdController@filter');
+    Route::get('/advertentiePlaatsen', 'AdController@create');
+    Route::post('/advertentiePlaatsen', 'AdController@store');
+    Route::get('/advertentieDetails/{id}', 'AdController@view');
     Route::match(['get', 'post'], '/inbox', 'MessageController@index');
     Route::match(['get', 'post'], '/inbox/verzonden', 'MessageController@indexSend');
     Route::match(['get', 'post'], '/inbox/view/{id}', 'MessageController@view');
@@ -84,8 +84,8 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
 
     Route::match(['get', 'post'], '/inbox/reageren/{email}', 'MessageController@respond');
     //maybe another middleware?
-    Route::match(['get'], '/advertentie/verwijderen/{id}', 'AdvertentieController@delete');
-    Route::match(['get'], '/advertentie/wijzigen/{id}', 'AdvertentieController@edit');
-    Route::match(['post'], '/advertentie/wijzigen/{id}', 'AdvertentieController@update');
+    Route::match(['get'], '/advertentie/verwijderen/{id}', 'AdController@delete');
+    Route::match(['get'], '/advertentie/wijzigen/{id}', 'AdController@edit');
+    Route::match(['post'], '/advertentie/wijzigen/{id}', 'AdController@update');
 });
 

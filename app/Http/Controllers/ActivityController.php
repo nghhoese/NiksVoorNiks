@@ -14,14 +14,14 @@ class ActivityController extends Controller
     {
         $user = auth()->user();
         $activities = Activiteit::orderby('datum', 'desc')->paginate(4);
-        return view('activiteiten', ['activities' => $activities, 'user' => $user]);
+        return view('activity.index', ['activities' => $activities, 'user' => $user]);
     }
 
     public function create()
     {
         $categories = Categorie::all();
         $groups = Groep::all();
-        return view('activiteitPlaatsen', ['categories' => $categories, 'groups' => $groups]);
+        return view('activity.create', ['categories' => $categories, 'groups' => $groups]);
 
     }
 
@@ -69,10 +69,13 @@ class ActivityController extends Controller
     public function view($id)
     {
         $activity = Activiteit::find($id);
+        if($activity == null){
+            return redirect('/');
+        }
         $participants = count($activity->deelnemer()->get());
         $users = $activity->deelnemer()->get();
         $user = auth()->user();
-        return view('activiteitDetails', ['activity' => $activity, 'participants' => $participants, 'user' => $user, 'users' => $users]);
+        return view('activity.details', ['activity' => $activity, 'participants' => $participants, 'user' => $user, 'users' => $users]);
     }
 
     public function deelnemen($id)
@@ -81,7 +84,7 @@ class ActivityController extends Controller
         $participants = count($activity->deelnemer()->get());
         $user = auth()->user();
         if($activity->max_deelnemers == count($activity->deelnemer()->get())) {
-            return view('activiteitDetails', ['activity' => $activity, 'participants' => $participants, 'user' => $user, 'error' => 'Deze activiteit zit vol']);
+            return view('activity.details', ['activity' => $activity, 'participants' => $participants, 'user' => $user, 'error' => 'Deze activiteit zit vol']);
         }
         $activity->deelnemer()->attach(Deelnemer::find(auth()->user()->email));
         $activity->save();

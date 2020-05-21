@@ -24,8 +24,8 @@
                 @csrf
                 <div class="plaatsAdvertentie1">
                 <h2>Nieuwe advertentie plaatsen</h2><br>
-                <label for="title">Titel advertentie</label><br>
-                <input type="text" id="title" name="title"><br><br>
+                <label for="titel">Titel advertentie</label><br>
+                <input type="text" id="titel" name="titel"><br><br>
 
                 <label for="beschrijving">Beschrijving</label><br>
                 <textarea name="beschrijving" id="beschrijving" rows="15" cols="50"></textarea><br><br>
@@ -36,13 +36,6 @@
                 <select id="category" name="category">
                     @foreach($categories as $category)
                         <option value={{$category->naam}}>{{$category->naam}}</option>
-                    @endforeach
-                </select><br><br>
-
-                <label for="group">Kies een groep(optioneel)</label><br>
-                <select id="group" name="group">
-                    @foreach($groups as $group)
-                        <option value={{$group->naam}}>{{$group->naam}}</option>
                     @endforeach
                 </select><br><br>
 
@@ -62,8 +55,8 @@
                     <option value="1">Bieden</option>
                 </select>
                 <br><br>
-                <label for="price">Prijs(Niks)</label><br>
-                <input type="number" id="price" name="price" min="0" max="200">
+                <label for="prijs">Prijs(Niks)</label><br>
+                <input type="number" id="prijs" name="prijs" min="0" max="200">
                 <br><br>
 
                 <label for="location">Kies een locatie</label><br>

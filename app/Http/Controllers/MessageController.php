@@ -56,7 +56,15 @@ class MessageController extends Controller
 
     public function view($id)
     {
+        $user = auth()->user();
+
         $message = Bericht::find($id);
+        if($message == null){
+            return redirect('/');
+        }
+        if($user->email != $message->zender_email && $user->email != $message->ontvanger_email){
+            return redirect('/');
+        }
         $message->gelezen = 1;
         $message->save();
         return view('message.view', ['message' => $message]);
@@ -64,7 +72,15 @@ class MessageController extends Controller
 
     public function viewSend($id)
     {
+        $user = auth()->user();
+
         $message = Bericht::find($id);
+        if($message == null){
+            return redirect('/');
+        }
+        if($user->email != $message->zender_email && $user->email != $message->ontvanger_email){
+            return redirect('/');
+        }
         $message->gelezen = 1;
         $message->save();
         return view('message.viewSend', ['message' => $message]);
@@ -121,23 +137,35 @@ class MessageController extends Controller
         return json_encode($response);
 
     }
+    public function replyOnMessage($id)
+    {
+
+        $message = Bericht::find($id);
+        $user = auth()->user();
+        if($user->email != $message->zender_email && $user->email != $message->ontvanger_email){
+            return redirect('/');
+        }
+        $recipients = Deelnemer::all();
+        $user = auth()->user();
+        return view('message.create', ['email' => $message->zender_email, 'title' => 'RE:' . $message->onderwerp, 'user' => $user, 'recipients' => $recipients]);
+    }
 
     public function test()
     {
         return view('testsearch');
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'subject' => 'required|max:50',
-            'message' => 'required|max:255',
-            'to' => 'required',
+            'onderwerp' => 'required|max:50',
+            'bericht' => 'required|max:255',
+            'ontvanger' => 'required',
         ]);
         $message = new Bericht();
-        $message->inhoud = request('message');
-        $message->onderwerp = request('subject');
-        $message->ontvanger_email = request('to');
+        $message->inhoud = request('bericht');
+        $message->onderwerp = request('onderwerp');
+        $message->ontvanger_email = request('ontvanger');
         $message->zender_email = auth()->user()->email;
         $message->datum = date("Y-m-d H:i:s");
         $message->gelezen = 0;
@@ -148,8 +176,12 @@ class MessageController extends Controller
     }
 
     public function delete($id)
-    {
+    {   
+        $user = auth()->user();
         $email = Bericht::find($id);
+        if($user->email != $email->zender_email && $user->email != $email->ontvanger_email){
+            return redirect('/');
+        }
         if ($email->verwijderd_door_zender == 1) {
             $email->delete();
         } else {
@@ -161,7 +193,11 @@ class MessageController extends Controller
 
     public function deleteSend($id)
     {
+        $user = auth()->user();
         $email = Bericht::find($id);
+        if($user->email != $email->zender_email && $user->email != $email->ontvanger_email){
+            return redirect('/');
+        }
         if ($email->verwijderd_door_ontvanger == 1) {
             $email->delete();
         } else {
