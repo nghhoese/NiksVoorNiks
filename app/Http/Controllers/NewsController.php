@@ -45,7 +45,19 @@ class NewsController extends Controller
             'description' => 'required|max:500',
             'img' => 'mimes:jpeg,jpg,png,gif|max:10000',
         ]);
+
         $nieuws = Nieuws::find($id);
+
+        if ($request->file != null) {
+            $file_path = substr($nieuws->foto,1);
+            if($nieuws->foto != null){
+                unlink($file_path);
+            }
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
+            $request->file->move(public_path('uploads'), $fileName);
+            $nieuws->foto = "/uploads/" . $fileName;
+        }
+
         $nieuws->naam = request('title');
         $nieuws->beschrijving = request('description');
         $nieuws->save();
@@ -56,7 +68,6 @@ class NewsController extends Controller
     {
         $nieuws = Nieuws::find($id);
         return view('news.edit', ['nieuws' => $nieuws]);
-
     }
 
     public function view($id)
@@ -67,6 +78,8 @@ class NewsController extends Controller
 
     public function delete($id){
         $news = Nieuws::find($id);
+        $file_path = substr($news->foto,1);
+        unlink($file_path);
         $news->delete();
         return redirect('/nieuws');
     }
