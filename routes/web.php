@@ -51,8 +51,8 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
     Route::match(['get'], '/panel/removeAdmin/{email}', 'AdminController@removeAdmin');
 
     Route::match(['get'],'/nieuws/verwijderen/{id}', 'NewsController@delete');
-    Route::match(['get'],'/nieuws/aanpassen/{id}', 'NewsController@edit');
-    Route::match(['post'],'/nieuws/aanpassen/{id}', 'NewsController@update');
+    Route::match(['get'],'/nieuws/wijzigen/{id}', 'NewsController@edit');
+    Route::match(['post'],'/nieuws/wijzigen/{id}', 'NewsController@update');
 
     Route::match(['get'],'/nieuws/nieuw', 'NewsController@create');
     Route::match(['post'],'/nieuws/nieuw', 'NewsController@store');

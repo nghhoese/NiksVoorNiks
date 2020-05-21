@@ -15,9 +15,9 @@ class CreateNieuwsTable extends Migration
     {
         Schema::create('nieuws', function (Blueprint $table) {
             $table->id();
-            $table->string('naam');
-            $table->string('beschrijving');
-            $table->string('foto');
+            $table->string('naam', 50);
+            $table->string('beschrijving', 500);
+            $table->string('foto', 200)->nullable();;
             $table->timestamps();
         });
     }
