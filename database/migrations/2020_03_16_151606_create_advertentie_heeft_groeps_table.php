@@ -18,8 +18,6 @@ class CreateAdvertentieHeeftGroepsTable extends Migration
             $table->foreign('groep_naam')->references('naam')->on('groep');
             $table->unsignedInteger('advertentie_id');
             $table->foreign('advertentie_id')->references('id')->on('advertentie');
-
-
         });
     }
 
