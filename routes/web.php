@@ -38,6 +38,12 @@ Route::get('/activiteiten', 'ActivityController@showAll');
 
 Route::get('/nieuws', 'NewsController@showAll');
 
+Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
+    Route::get('/nieuws/verwijderen/{id}', 'NewsController@delete');
+    Route::get('/nieuws/aanpassen/{id}', 'NewsController@edit');
+    Route::post('/nieuws/aanpassen/{id}', 'NewsController@update');
+});
+
 
 Auth::routes();
 
