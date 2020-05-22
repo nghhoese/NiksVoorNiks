@@ -129,37 +129,26 @@ class AdController extends Controller
         $ad->aanmaakdatum = $date;
         $ad->save();
         return redirect('/advertentieDetails/' . $ad->id);
-
     }
 
     public function delete($id)
     {
         $user = auth()->user();
         $ad = Advertentie::find($id);
-        if ($user->isAdmin()) {
-//            $file_path = substr($ad->foto, 1);
-//            if ($ad->foto != null) {
-//                unlink($file_path);
-//            }
+        if ($user->isAdmin() || $user->email == $ad->deelnemer_email) {
+            $file_path = substr($ad->foto, 1);
+            if ($ad->foto != null) {
+                unlink($file_path);
+            }
             $ad->delete();
-            $advertentie = Advertentie::paginate(4);
-            $categories = Categorie::all();
-            $places = Plaats::all();
             return redirect('/advertenties');
-        } elseif ($user->email != $ad->deelnemer_email) {
+        } else {
             return redirect('/');
         }
-//        $file_path = substr($ad->foto, 1);
-//        if ($ad->foto != null) {
-//            unlink($file_path);
-//        }
-        $ad->delete();
-        return redirect('/profiel/' . $user->email);
     }
 
     public function filter(Request $request)
     {
-
         if (request('gevraagd') != null && request('aangeboden') != null) {
             $request->offsetUnset('gevraagd');
             $request->offsetUnset('aangeboden');

@@ -14,8 +14,6 @@ class Activiteit extends Model
         $this->attributes['datum'] = (new Carbon($value))->format('d/m/y');
     }
 
-    //timestamps kan wel op true, mochten we het ooit ergens nodig voor hebben.
-    // Maar kans is zo klein, dat hij van mij ook op false mag blijven
     public $timestamps = false;
 
     public function deelnemer(){

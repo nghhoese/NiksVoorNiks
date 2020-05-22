@@ -39,7 +39,6 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
         //places
         DB::table('plaats')->insert([
             'naam' => 'Rosmalen'
-
         ]);
         //roles
         DB::table('rol')->insert([
@@ -110,28 +109,6 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
         DB::table('categorie')->insert([
             'naam' => 'Sport',
             'beschrijving' => 'Alles met beweging',
-        ]);
-
-        //groups
-        DB::table('groep')->insert([
-            'naam' => 'De Ijzeren vrouw',
-            'beschrijving' => 'Voor leden die zich vaak bevinden bij de Ijzeren vrouw',
-        ]);
-        DB::table('groep')->insert([
-            'naam' => 'Knutselaars',
-            'beschrijving' => 'Voor alle creatieve leden onder ons',
-        ]);
-        DB::table('groep')->insert([
-            'naam' => 'Gamers',
-            'beschrijving' => 'Voor de fanatieke woordzoekers en puzzelaars',
-        ]);
-        DB::table('groep')->insert([
-            'naam' => 'Filmfanaten',
-            'beschrijving' => 'Voor alle Marvel en DC fans!',
-        ]);
-        DB::table('groep')->insert([
-            'naam' => 'Boschenaren',
-            'beschrijving' => 'De echte Boschenaren!',
         ]);
 
         //participants
@@ -312,7 +289,6 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'rol_naam' => 'administrator',
         ]);
 
-
         //advertisements
         DB::table('advertentie')->insert([
             'deelnemer_email' => 'nick@avans.nl',
@@ -321,7 +297,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'bieden' => 1,
             'beschrijving' => 'Wie wil er met mij koken?',
             'aanmaakdatum' => '2020-04-01',
-            'foto' => 'https://pbs.twimg.com/media/DdqYozVX4AA9PjC.jpg',
+            'foto' => 'uploads\3f595bded5d9c2387b9c6f61809d96ff-1305036995-780x448.jpg',
             'prijs' => '2',
             'plaats' => 'Rosmalen',
             'categorie' => 'Koken',
@@ -334,7 +310,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'bieden' => 0,
             'beschrijving' => 'Wie wil er met mij skypen?',
             'aanmaakdatum' => '2020-04-01',
-            'foto' => 'https://www.mt.nl/wp-content/uploads/2011/05/3f595bded5d9c2387b9c6f61809d96ff-1305036995-780x448.jpg',
+            'foto' => '\uploads\3f595bded5d9c2387b9c6f61809d96ff-1305036995-780x448.jpg',
             'prijs' => '0',
             'plaats' => 'Rosmalen',
             'categorie' => 'Technologie',
@@ -359,7 +335,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'bieden' => 0,
             'beschrijving' => 'Ik maak je fiets voor bijna niks',
             'aanmaakdatum' => '2020-04-01',
-            'foto' => 'https://i.ytimg.com/vi/iD3kyTxf9Fk/hqdefault.jpg',
+            'foto' => '\uploads\DdqYozVX4AA9PjC.jpg',
             'prijs' => '4',
             'plaats' => 'Rosmalen',
             'categorie' => 'Sport',
@@ -371,7 +347,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'bieden' => 0,
             'beschrijving' => 'Ik maak je laptop voor bijna niks',
             'aanmaakdatum' => '2020-04-01',
-            'foto' => 'https://i.ytimg.com/vi/iD3kyTxf9Fk/hqdefault.jpg',
+            'foto' => '\uploads\DdqYozVX4AA9PjC.jpg',
             'prijs' => '20',
             'plaats' => 'Rosmalen',
             'categorie' => 'Technologie',
@@ -383,7 +359,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'bieden' => 0,
             'beschrijving' => 'Ik help je met de les',
             'aanmaakdatum' => '2020-04-01',
-            'foto' => 'https://i.ytimg.com/vi/iD3kyTxf9Fk/hqdefault.jpg',
+            'foto' => '\uploads\hqdefault.jpg',
             'prijs' => '40',
             'plaats' => 'Rosmalen',
             'categorie' => 'Sport',
@@ -405,38 +381,6 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'zender_email' => 'nick@avans.nl',
             'ontvanger_email' => 'jonah@avans.nl',
         ]);
-
-        //participant has group
-        DB::table('deelnemer_heeft_groep')->insert([
-            'deelnemer_email' => 'jonah@avans.nl',
-            'groep_naam' => 'Knutselaars',
-        ]);
-        DB::table('deelnemer_heeft_groep')->insert([
-            'deelnemer_email' => 'nick@avans.nl',
-            'groep_naam' => 'Knutselaars',
-        ]);
-        DB::table('deelnemer_heeft_groep')->insert([
-            'deelnemer_email' => 'jonah@avans.nl',
-            'groep_naam' => 'Gamers',
-        ]);
-        DB::table('deelnemer_heeft_groep')->insert([
-            'deelnemer_email' => 'jonah@avans.nl',
-            'groep_naam' => 'Filmfanaten',
-        ]);
-
-        //advertisement has group
-//        DB::table('advertentie_heeft_groep')->insert([
-//            'groep_naam' => 'Boschenaren',
-//            'advertentie_id' => 1,
-//        ]);
-//        DB::table('advertentie_heeft_groep')->insert([
-//            'groep_naam' => 'Boschenaren',
-//            'advertentie_id' => 2,
-//        ]);
-//        DB::table('advertentie_heeft_groep')->insert([
-//            'groep_naam' => 'Boschenaren',
-//            'advertentie_id' => 3,
-//        ]);
 
         //activity has participant
         DB::table('activiteit_heeft_deelnemer')->insert([
@@ -463,7 +407,6 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'deelnemer_email' => 'nick@avans.nl',
             'activiteit_id' => 4,
         ]);
-
 
         //News
         DB::table('nieuws')->insert([

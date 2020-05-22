@@ -10,8 +10,8 @@
     <div class="flex-container">
         <div class="main-content">
 
-            <h1 id="title" class="title">{{$advertentie->titel}} , {{$advertentie->prijs}} Niksen</h1>
-            <img src="{{$advertentie->foto ?? 'https://i.imgur.com/HxdPz7Q.jpg'}}">
+            <h1 id="title" class="title">{{$advertentie->titel}}, {{$advertentie->prijs}} Niksen</h1>
+            <img src="{{$advertentie->foto ?? '\uploads\HxdPz7Q.jpg'}}">
             <div class="stats">
                 <div><p>{{$advertentie->postcode}}</p></div>
             </div>

@@ -106,7 +106,7 @@
         <div class="article-list">
             @foreach($advertenties as $advertentie)
                 <a class="article" href="/advertentieDetails/{{ $advertentie->id }}" id="ad1">
-                    <img src="{{$advertentie->foto ?? 'https://i.imgur.com/LM7EA7m.jpg'}}">
+                    <img src="{{$advertentie->foto ?? '\uploads\LM7EA7m.jpg'}}">
                     <div class="addetails">
                         <p class="adtype">
 
