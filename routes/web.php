@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/overons', 'AboutUsController@index')->name('overons');
+Route::get('/activiteiten', 'ActivityController@showAll');
+Route::get('/contact', 'ContactController@index');
+Route::get('/nieuws', 'NewsController@showAll');
+Route::get('/nieuws/details/{id}', 'NewsController@view');
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
     Route::get('/activiteit/verwijderen/{id}', 'ActivityController@delete');
@@ -29,6 +34,14 @@ Auth::routes();
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/home');
+});
+
+Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
+    Route::match(['get'], '/cms', 'CmsController@index')->name('cms');
+    Route::match(['get'], '/cms_overons', 'CmsController@overonsindex')->name('overonscms');
+    Route::match(['get'], '/cms_contact', 'CmsController@contactindex')->name('contactcms');
+    Route::match(['get'], '/cms/edit/{name}', 'CmsController@edit')->name('editcms');
+    Route::match(['post'], '/cms/edit/{name}', 'CmsController@update')->name('editcms');
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){

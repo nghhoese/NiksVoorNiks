@@ -10,25 +10,13 @@ home
 
         <div class="content">
             <div class="slider">
-                <div class="mySlides fade">
-                    <div class="numbertext">1 / 3</div>
-                    <img src="Resources/handshake.png">
-                    <div class="text">Ruilkring Niks voor Niks</div>
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">2 / 3</div>
-                    <img src="Resources/denbosch.png">
-                    <div class="text">'S Hertogenbosch en omgeving</div>
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">3 / 3</div>
-                    <img src="Resources/appeltaart.png">
-                  <div class="text">Ruilen van diverse diensten en producten</div>
-
-                </div>
-
+                @foreach(File::glob(public_path('Resources\HomePage').'\*') as $path)
+                    <div class="mySlides fade">
+                        <div class="numbertext">2 / 3</div>
+                        <img src="{{ str_replace(public_path(), '', $path) }}">
+                        <div class="text">’s-Hertogenbosch en omgeving</div>
+                    </div>
+                @endforeach
             </div>
         </div>
 
@@ -44,26 +32,26 @@ home
 
                 <a href="#" class="aanbod">
                     <p class="type">Aangeboden</p>
-                    <h3 class="title">Titel advertentie</h3>
-                    <img src="Resources/MXsfEWs.png">
-                    <p class="beschrijving">Beschrijving van de advertentie in het kort..</p>
-                    <p class="price">10 Niks</p>
+                    <h3 class="title">{{$advertisements->where('vraag', 0)->first()->titel}}</h3>
+                    <div class="aanbod-image"><img src="{{$advertisements->where('vraag', 0)->first()->foto ?? 'https://i.imgur.com/LM7EA7m.jpg'}}"></div>
+                    <p class="beschrijving">{{$advertisements->where('vraag', 0)->first()->beschrijving}}</p>
+                    <p class="price">{{$advertisements->where('vraag', 0)->first()->prijs}} Niksen</p>
+                </a>
+
+                <a href="#" class="aanbod">
+                    <p class="type">Gevraagd</p>
+                    <h3 class="title">{{$advertisements->where('vraag', 1)->first()->titel}}</h3>
+                    <div class="aanbod-image"><img src="{{$advertisements->where('vraag', 1)->first()->foto ?? 'https://i.imgur.com/LM7EA7m.jpg'}}"></div>
+                    <p class="beschrijving">{{$advertisements->where('vraag', 1)->first()->beschrijving}}</p>
+                    <p class="price">{{$advertisements->where('vraag', 1)->first()->prijs}} Niksen</p>
                 </a>
 
                 <a href="#" class="aanbod">
                     <p class="type">Aangeboden</p>
-                    <h3 class="title">Titel advertentie</h3>
-                    <img src="Resources/MXsfEWs.png">
-                    <p class="beschrijving">Beschrijving van de advertentie in het kort..</p>
-                    <p class="price">10 Niks</p>
-                </a>
-
-                <a href="#" class="aanbod">
-                    <p class="type">Aangeboden</p>
-                    <h3 class="title">Titel advertentie</h3>
-                    <img src="Resources/MXsfEWs.png">
-                    <p class="beschrijving">Beschrijving van de advertentie in het kort..</p>
-                    <p class="price">10 Niks</p>
+                    <h3 class="title">{{$advertisements->where('vraag', 0)->skip(1)->first()->titel}}</h3>
+                    <div class="aanbod-image"><img src="{{$advertisements->where('vraag', 0)->skip(1)->first()->foto ?? 'https://i.imgur.com/LM7EA7m.jpg'}}"></div>
+                    <p class="beschrijving">{{$advertisements->where('vraag', 0)->skip(1)->first()->beschrijving}}</p>
+                    <p class="price">{{$advertisements->where('vraag', 0)->skip(1)->first()->prijs}} Niksen</p>
                 </a>
 
             </div>
