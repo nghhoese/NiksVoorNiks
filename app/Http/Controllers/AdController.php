@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Categorie;
 use App\Category;
 use App\Groep;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
 use App\Plaats;
 use Faker\Provider\ka_GE\DateTime;
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class AdController extends Controller
         $categories = Categorie::all();
         $groups = Groep::all();
         $places = Plaats::all();
-       
+
         return view('ad.index', ['advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups, 'places' => $places]);
     }
 
@@ -87,7 +87,7 @@ class AdController extends Controller
         return view('ad.edit', ['ad' => $ad,'categories' => $categories, 'groups' => $groups, 'places' => $places]);
 
 
-        
+
     }
     public function update($id,Request $request){
         $user = auth()->user();
@@ -106,7 +106,7 @@ class AdController extends Controller
             'price-type' => 'required',
             'file' => 'mimes:jpeg,jpg,png,gif|max:5000',
         ]);
-    
+
         if ($request->file != null) {
             $file_path = substr($ad->foto,1);
             if($ad->foto != null){
@@ -138,11 +138,22 @@ class AdController extends Controller
         unlink($file_path);
         $ad->delete();
         return redirect('/profiel/'.$user->email);
-
     }
-    
+
+    public function deleteAsAdmin($id){
+        $user = auth()->user();
+        $ad = Advertentie::find($id);
+        if($user->email != $ad->deelnemer_email){
+            return redirect('/');
+        }
+        $file_path = substr($ad->foto,1);
+        unlink($file_path);
+        $ad->delete();
+        return redirect('/profiel/'.$user->email);
+    }
+
     public function filter(Request $request){
-   
+
         if(request('gevraagd') != null && request('aangeboden') != null){
             $request->offsetUnset('gevraagd');
             $request->offsetUnset('aangeboden');
@@ -157,7 +168,7 @@ if($group == null){
     })
     ->when($request->get('selectCategory'), function ($query) {
         $query->where('categorie', request('selectCategory'));
-    })  
+    })
         ->when($request->get('selectCategory'), function ($query) {
             $query->where('categorie', request('selectCategory'));
         })
@@ -196,13 +207,13 @@ if($group == null){
     }
 
     $categorie = request('selectCategory');
-    $maxPrice = request('maxPrice');        
+    $maxPrice = request('maxPrice');
     $minPrice = request('minPrice');
     $group = request('selectGroup');
     $location = request('selectPlace');
     $gevraagd = request('gevraagd');
     $aangeboden = request('aangeboden');
-    
+
 
         $categories = Categorie::all();
         $groups = Groep::all();
