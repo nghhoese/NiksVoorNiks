@@ -7,8 +7,7 @@
         <div class="form">
             <form class="register-form">
                 <input type="text" placeholder="Email adres"/>
-                <button>Nieuw wachtwoord aanvragen</button>
-                <p class="message">Al een account? <a href="#">Log in</a></p>
+                <p class="message">Al een account? <a href="/login">Log in</a></p>
             </form>
             <form class="login-form" role="form" method="POST" action="{{ url('/register') }}">
 
@@ -73,15 +72,6 @@
                 @error('housenumber')
                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ "Huisnummer mag niet langer zijn dan 25 karakters" }}</strong>
-                                    </span>
-                @enderror
-                <input id="role" placeholder="Rol" type="text"
-                       class="form-control" name="role"
-                       value="administrator" required>
-
-                @error('role')
-                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
                                     </span>
                 @enderror
                 <input id="email" placeholder="E-mailadres" type="email"
