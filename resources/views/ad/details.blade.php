@@ -23,12 +23,13 @@
                 <button class="btn">Reageer op advertentie</button>
             </a>
             @if($email == $advertentie->deelnemer_email)
-                <a href="/advertentie/wijzigen/{{$advertentie->id}}"class="btn">Aanpassen</a>
-                @if(Auth::check() && ((auth()->user()->isAdmin()) || (auth()->user()->email == $advertentie->deelnemer->email)))
-                    <a href="/advertentie/verwijderen/{{$advertentie->id}}">
-                        <button class="btn">Verwijderen</button>
-                    </a>
-                @endif            @endif
+                <a href="/advertentie/wijzigen/{{$advertentie->id}}" class="btn">Aanpassen</a>
+            @endif
+            @if(Auth::check() && ((auth()->user()->isAdmin()) || (auth()->user()->email == $advertentie->deelnemer->email)))
+                <a href="/advertentie/verwijderen/{{$advertentie->id}}">
+                    <button class="btn">Verwijderen</button>
+                </a>
+            @endif
 
         </div>
 

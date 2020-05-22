@@ -425,18 +425,18 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
         ]);
 
         //advertisement has group
-        DB::table('advertentie_heeft_groep')->insert([
-            'groep_naam' => 'Boschenaren',
-            'advertentie_id' => 1,
-        ]);
-        DB::table('advertentie_heeft_groep')->insert([
-            'groep_naam' => 'Boschenaren',
-            'advertentie_id' => 2,
-        ]);
-        DB::table('advertentie_heeft_groep')->insert([
-            'groep_naam' => 'Boschenaren',
-            'advertentie_id' => 3,
-        ]);
+//        DB::table('advertentie_heeft_groep')->insert([
+//            'groep_naam' => 'Boschenaren',
+//            'advertentie_id' => 1,
+//        ]);
+//        DB::table('advertentie_heeft_groep')->insert([
+//            'groep_naam' => 'Boschenaren',
+//            'advertentie_id' => 2,
+//        ]);
+//        DB::table('advertentie_heeft_groep')->insert([
+//            'groep_naam' => 'Boschenaren',
+//            'advertentie_id' => 3,
+//        ]);
 
         //activity has participant
         DB::table('activiteit_heeft_deelnemer')->insert([

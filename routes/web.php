@@ -98,7 +98,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
 
     Route::match(['get', 'post'], '/inbox/reageren/{email}', 'MessageController@respond');
     //maybe another middleware?
-    Route::match(['get'], '/advertentie/verwijderen/{id}', 'AdController@delete');
+    Route::match(['get', 'post'], '/advertentie/verwijderen/{id}', 'AdController@delete');
     Route::match(['get'], '/advertentie/wijzigen/{id}', 'AdController@edit');
     Route::match(['post'], '/advertentie/wijzigen/{id}', 'AdController@update');
 });
