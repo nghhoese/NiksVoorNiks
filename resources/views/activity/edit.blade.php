@@ -45,7 +45,7 @@
                     @enderror
                     <br><br><br>
                     <input class="btn" type="submit" value="Plaats activiteit">
-                    <a class="trashcan" href="/activiteit/verwijderen/{{$activity->id}}"><i style="color:#66BB6A; font-size: 3em" class="fas fa-trash-alt"></i></a>
+                    <a class="trashcan" onclick="return confirm('Weet u het zeker?')" href="/activiteit/verwijderen/{{$activity->id}}"><i style="color:#66BB6A; font-size: 3em" class="fas fa-trash-alt"></i></a>
                 </div>
             </form>
         </div>

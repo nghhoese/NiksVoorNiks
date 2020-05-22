@@ -9,12 +9,9 @@
 
     <div class="flex-container">
         <div class="main-content">
-        @if($email == $advertentie->deelnemer_email)
-        <a href="/advertentie/wijzigen/{{$advertentie->id}}"class="btn">Aanpassen</a>
-        <a href="/advertentie/verwijderen/{{$advertentie->id}}"class="btn">Verwijderen</a>
-        @endif
-            <h1 id="title" class="title">{{$advertentie->titel}} , {{$advertentie->prijs}} Niksen</h1>
-            <img src="{{$advertentie->foto ?? 'https://i.imgur.com/HxdPz7Q.jpg'}}">
+
+            <h1 id="title" class="title">{{$advertentie->titel}}, {{$advertentie->prijs}} Niksen</h1>
+            <img src="{{$advertentie->foto ?? '\uploads\HxdPz7Q.jpg'}}">
             <div class="stats">
                 <div><p>{{$advertentie->postcode}}</p></div>
             </div>
@@ -25,6 +22,15 @@
             <a href="/inbox/reply/{{$advertentie->id}}">
                 <button class="btn">Reageer op advertentie</button>
             </a>
+            @if($email == $advertentie->deelnemer_email)
+                <a href="/advertentie/wijzigen/{{$advertentie->id}}" class="btn">Aanpassen</a>
+            @endif
+            @if(Auth::check() && ((auth()->user()->isAdmin()) || (auth()->user()->email == $advertentie->deelnemer->email)))
+                <a onclick="return confirm('Weet u het zeker?')" href="/advertentie/verwijderen/{{$advertentie->id}}">
+                    <button class="btn">Verwijderen</button>
+                </a>
+            @endif
+
         </div>
 
         <div class="info">

@@ -35,10 +35,10 @@
                             <p>{{$user->telefoonnummer}}</p>
 
                         </td>
-                        <td style="text-align:center;"><a href="/panel/verwijder/{{$user->email}}"><i
+                        <td style="text-align:center;"><a onclick="return confirm('Weet u het zeker?')" href="/panel/verwijder/{{$user->email}}"><i
                                     class="fas fa-trash-alt" style="color:#66BB6A;"></i></a>
                         </td>
-                        <td style="text-align:center;"><a href="/panel/accepteren/{{$user->email}}"><i class="far fa-square" style="color:#66BB6A;"></i></a>
+                        <td style="text-align:center;"><a onclick="return confirm('Weet u het zeker?')" href="/panel/accepteren/{{$user->email}}"><i class="far fa-square" style="color:#66BB6A;"></i></a>
                         </td>
                     </tr>
                 @endforeach
@@ -78,15 +78,15 @@
                             <p>{{$user->telefoonnummer}}</p>
 
                         </td>
-                        <td style="text-align:center;"><a href="/panel/verwijder/{{$user->email}}"><i
+                        <td style="text-align:center;"><a onclick="return confirm('Weet u het zeker?')" href="/panel/verwijder/{{$user->email}}"><i
                                     class="fas fa-trash-alt" style="color:#66BB6A;"></i></a>
                         </td>
                         @if($user->rol_naam == "administrator")
-                            <td style="text-align:center;"><a href="/panel/removeAdmin/{{$user->email}}"><i
+                            <td style="text-align:center;"><a onclick="return confirm('Weet u het zeker?')" href="/panel/removeAdmin/{{$user->email}}"><i
                                         class="far fa-check-square" style="color:#66BB6A;"></i></a>
                             </td>
                         @else
-                            <td style="text-align:center;"><a href="/panel/makeAdmin/{{$user->email}}"><i class="far fa-square" style="color:#66BB6A;"></i></a>
+                            <td style="text-align:center;"><a onclick="return confirm('Weet u het zeker?')" href="/panel/makeAdmin/{{$user->email}}"><i class="far fa-square" style="color:#66BB6A;"></i></a>
                             </td>
                         @endif
                     </tr>

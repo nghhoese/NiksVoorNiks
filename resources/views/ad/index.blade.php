@@ -1,6 +1,6 @@
 @extends ('layout')
 @section('title')
-    home
+    Advertenties
 @endsection
 @section ('stylesheets')
     <link rel="stylesheet" href="/CSS/pagination.css">
@@ -22,7 +22,7 @@
                                 value="{{$category->naam}}">{{$category->naam}}</option>
                     @endforeach
                 </select><br>
-    <hr>
+                <hr>
 
                 <label class="title">Vraag en Aanbod:</label><br>
 
@@ -67,7 +67,6 @@
                 <hr>
 
 
-
                 <label class="title">Prijs:</label><br>
                 <div id="priceContainer">
                     <div class="slidecontainer">
@@ -94,7 +93,7 @@
                     </div>
                     <a id="manualInput" href="#">Handmatig invoeren</a>
                 </div>
-           <br>
+                <br>
                 <input style="display:none;" class="btn" type="submit" value="filter">
             </form>
 
@@ -107,7 +106,7 @@
         <div class="article-list">
             @foreach($advertenties as $advertentie)
                 <a class="article" href="/advertentieDetails/{{ $advertentie->id }}" id="ad1">
-                    <img src="{{$advertentie->foto ?? 'https://i.imgur.com/LM7EA7m.jpg'}}">
+                    <img src="{{$advertentie->foto ?? '\uploads\LM7EA7m.jpg'}}">
                     <div class="addetails">
                         <p class="adtype">
 
@@ -131,8 +130,8 @@
     </div>
 
 
-    @section('footer')
+@section('footer')
     <script src="/JS/adFilter.js"></script>
-    @endsection
+@endsection
 
 @endsection

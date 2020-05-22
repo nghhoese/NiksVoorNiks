@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Categorie;
 use App\Category;
 use App\Groep;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
 use App\Plaats;
 use Faker\Provider\ka_GE\DateTime;
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class AdController extends Controller
         $categories = Categorie::all();
         $groups = Groep::all();
         $places = Plaats::all();
-       
+
         return view('ad.index', ['advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups, 'places' => $places]);
     }
 
@@ -69,30 +69,33 @@ class AdController extends Controller
     {
         $user = auth()->user();
         $advertentie = Advertentie::find($id);
-        if($advertentie == null){
+        if ($advertentie == null) {
             return redirect('/');
         }
-        return view('ad.details', ['advertentie' => $advertentie,'email' => $user->email]);
+        return view('ad.details', ['advertentie' => $advertentie, 'email' => $user->email]);
 
     }
-    public function edit($id){
+
+    public function edit($id)
+    {
         $user = auth()->user();
         $ad = Advertentie::find($id);
-        if($user->email != $ad->deelnemer_email){
+        if ($user->email != $ad->deelnemer_email) {
             return redirect('/');
         }
         $categories = Categorie::all();
         $groups = Groep::all();
         $places = Plaats::all();
-        return view('ad.edit', ['ad' => $ad,'categories' => $categories, 'groups' => $groups, 'places' => $places]);
+        return view('ad.edit', ['ad' => $ad, 'categories' => $categories, 'groups' => $groups, 'places' => $places]);
 
 
-        
     }
-    public function update($id,Request $request){
+
+    public function update($id, Request $request)
+    {
         $user = auth()->user();
         $ad = Advertentie::find($id);
-        if($user->email != $ad->deelnemer_email){
+        if ($user->email != $ad->deelnemer_email) {
             return redirect('/');
         }
         $date = date('d-m-y h:i:s');
@@ -106,11 +109,11 @@ class AdController extends Controller
             'price-type' => 'required',
             'file' => 'mimes:jpeg,jpg,png,gif|max:5000',
         ]);
-    
+
         if ($request->file != null) {
-            $file_path = substr($ad->foto,1);
-            if($ad->foto != null){
-            unlink($file_path);
+            $file_path = substr($ad->foto, 1);
+            if ($ad->foto != null) {
+                unlink($file_path);
             }
             $fileName = time() . '_' . $request->file->getClientOriginalName();
             $request->file->move(public_path('uploads'), $fileName);
@@ -126,87 +129,88 @@ class AdController extends Controller
         $ad->aanmaakdatum = $date;
         $ad->save();
         return redirect('/advertentieDetails/' . $ad->id);
-
     }
-    public function delete($id){
+
+    public function delete($id)
+    {
         $user = auth()->user();
         $ad = Advertentie::find($id);
-        if($user->email != $ad->deelnemer_email){
+        if ($user->isAdmin() || $user->email == $ad->deelnemer_email) {
+            $file_path = substr($ad->foto, 1);
+            if ($ad->foto != null) {
+                unlink($file_path);
+            }
+            $ad->delete();
+            return redirect('/advertenties');
+        } else {
             return redirect('/');
         }
-        $file_path = substr($ad->foto,1);
-        unlink($file_path);
-        $ad->delete();
-        return redirect('/profiel/'.$user->email);
-
     }
-    
-    public function filter(Request $request){
-   
-        if(request('gevraagd') != null && request('aangeboden') != null){
+
+    public function filter(Request $request)
+    {
+        if (request('gevraagd') != null && request('aangeboden') != null) {
             $request->offsetUnset('gevraagd');
             $request->offsetUnset('aangeboden');
         }
-$group = request('selectGroup');
-if($group == null){
-    $advertentie = Advertentie::when($request->get('gevraagd'), function ($query) {
-        $query->where('vraag', 1);
-    })
-    ->when($request->get('aangeboden'), function ($query) {
-        $query->where('vraag', 0);
-    })
-    ->when($request->get('selectCategory'), function ($query) {
-        $query->where('categorie', request('selectCategory'));
-    })  
-        ->when($request->get('selectCategory'), function ($query) {
-            $query->where('categorie', request('selectCategory'));
-        })
-        ->when($request->get('selectPlace'), function ($query) {
-            $query->where('plaats', '=' , request('selectPlace'));
-        })
-        ->when($request->get('minPrice'), function ($query) {
-            $query->where('prijs', '>=' , request('minPrice'));
-        })
-        ->when($request->get('maxPrice'), function ($query) {
-            $query->where('prijs', '<=' , request('maxPrice'));
-        })
+        $group = request('selectGroup');
+        if ($group == null) {
+            $advertentie = Advertentie::when($request->get('gevraagd'), function ($query) {
+                $query->where('vraag', 1);
+            })
+                ->when($request->get('aangeboden'), function ($query) {
+                    $query->where('vraag', 0);
+                })
+                ->when($request->get('selectCategory'), function ($query) {
+                    $query->where('categorie', request('selectCategory'));
+                })
+                ->when($request->get('selectCategory'), function ($query) {
+                    $query->where('categorie', request('selectCategory'));
+                })
+                ->when($request->get('selectPlace'), function ($query) {
+                    $query->where('plaats', '=', request('selectPlace'));
+                })
+                ->when($request->get('minPrice'), function ($query) {
+                    $query->where('prijs', '>=', request('minPrice'));
+                })
+                ->when($request->get('maxPrice'), function ($query) {
+                    $query->where('prijs', '<=', request('maxPrice'));
+                })
+                ->paginate(4);
+        } else {
+            $advertentie = Groep::find($group)->advertentie()->when($request->get('gevraagd'), function ($query) {
+                $query->where('vraag', 1);
+            })
+                ->when($request->get('aangeboden'), function ($query) {
+                    $query->where('vraag', 0);
+                })
+                ->when($request->get('selectCategory'), function ($query) {
+                    $query->where('categorie', request('selectCategory'));
+                })
+                ->when($request->get('selectPlace'), function ($query) {
+                    $query->where('plaats', '=', request('selectPlace'));
+                })
+                ->when($request->get('minPrice'), function ($query) {
+                    $query->where('prijs', '>=', request('minPrice'));
+                })
+                ->when($request->get('maxPrice'), function ($query) {
+                    $query->where('prijs', '<=', request('maxPrice'));
+                })
+                ->paginate(4);
+        }
 
-        ->paginate(4);
-    }else{
-        $advertentie = Groep::find($group)->advertentie()->when($request->get('gevraagd'), function ($query) {
-            $query->where('vraag', 1);
-        })
-        ->when($request->get('aangeboden'), function ($query) {
-            $query->where('vraag', 0);
-        })
-        ->when($request->get('selectCategory'), function ($query) {
-            $query->where('categorie', request('selectCategory'));
-        })
-        ->when($request->get('selectPlace'), function ($query) {
-            $query->where('plaats', '=' , request('selectPlace'));
-        })
+        $categorie = request('selectCategory');
+        $maxPrice = request('maxPrice');
+        $minPrice = request('minPrice');
+        $group = request('selectGroup');
+        $location = request('selectPlace');
+        $gevraagd = request('gevraagd');
+        $aangeboden = request('aangeboden');
 
-        ->when($request->get('minPrice'), function ($query) {
-            $query->where('prijs', '>=' , request('minPrice'));
-        })
-        ->when($request->get('maxPrice'), function ($query) {
-            $query->where('prijs', '<=' , request('maxPrice'));
-        })
-        ->paginate(4);
-    }
-
-    $categorie = request('selectCategory');
-    $maxPrice = request('maxPrice');        
-    $minPrice = request('minPrice');
-    $group = request('selectGroup');
-    $location = request('selectPlace');
-    $gevraagd = request('gevraagd');
-    $aangeboden = request('aangeboden');
-    
 
         $categories = Categorie::all();
         $groups = Groep::all();
         $places = Plaats::all();
-        return view('ad.index', ['plaats'=>$location, 'places' => $places,'locatie'=>$location,'aangeboden'=>$aangeboden,'gevraagd' => $gevraagd,'groep' => $group,'minPrijs' => $minPrice,'maxPrijs' => $maxPrice,'categorie' => $categorie, 'advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
+        return view('ad.index', ['plaats' => $location, 'places' => $places, 'locatie' => $location, 'aangeboden' => $aangeboden, 'gevraagd' => $gevraagd, 'groep' => $group, 'minPrijs' => $minPrice, 'maxPrijs' => $maxPrice, 'categorie' => $categorie, 'advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
     }
 }

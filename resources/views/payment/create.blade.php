@@ -10,21 +10,14 @@ nieuwe transactie
 
     <div class="card">
         <div class="card-header">
-
-                
-              
-                
             <div class="title">
                 <p>Nieuwe Transactie</p>
-
             </div>
             @if ($errors->any())
                 <div class="alert alert-danger">
-                    
                         @foreach ($errors->all() as $error)
                             <strong style="color:red;">{{ $error }}</strong>
                         @endforeach
-                   
                 </div><br/>
             @endif
             <form method="post" action="/transacties/maken/nieuw">
