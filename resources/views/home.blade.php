@@ -14,7 +14,7 @@ home
                     <div class="mySlides fade">
                         <div class="numbertext">2 / 3</div>
                         <img src="{{ str_replace(public_path(), '', $path) }}">
-                        <div class="text">'S Hertogenbosch en omgeving</div>
+                        <div class="text">’s-Hertogenbosch en omgeving</div>
                     </div>
                 @endforeach
             </div>

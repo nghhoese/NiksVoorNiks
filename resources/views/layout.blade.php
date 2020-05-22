@@ -25,7 +25,7 @@
                 @if (!Auth::check())
                     <a href="/register">Deelnemer worden</a>
                 @endif
-                <a href="#">Contact</a>
+                <a href="/contact">Contact</a>
                 @if(Auth::check() && auth()->user()->isAdmin())
                     <a href="/panel">Admin</a>
                 @endif

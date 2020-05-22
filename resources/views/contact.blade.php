@@ -16,19 +16,41 @@
         </div>
         <div class="right-information">
             <div class="title-cards">
-                @foreach($contacts as $contact)
+
                     <div class="outer-card">
                         <div class="card">
-                            <img src="Resources/MXsfEWs.png" alt="{{$contact->naam}}" style="width:100%">
-                            <h1>{{$contact->naam}}</h1>
-                            <p class="title">{{$contact->titel}}</p>
-                            <p class="telefoonnummer">{{$contact->telefoonnummer}}</p>
+                            <img src="Resources/MXsfEWs.png" alt="" style="width:100%">
+                            <h1></h1>
+                            <p class="title"></p>
+                            <p class="telefoonnummer"></p>
                         </div>
                         <div class="info-block">
                             Haha ik ben kut
                         </div>
                     </div>
-                @endforeach
+                <div class="outer-card">
+                    <div class="card">
+                        <img src="Resources/MXsfEWs.png" alt="" style="width:100%">
+                        <h1></h1>
+                        <p class="title"></p>
+                        <p class="telefoonnummer"></p>
+                    </div>
+                    <div class="info-block">
+                        Haha ik ben kut
+                    </div>
+                </div>
+                <div class="outer-card">
+                    <div class="card">
+                        <img src="Resources/MXsfEWs.png" alt="" style="width:100%">
+                        <h1></h1>
+                        <p class="title"></p>
+                        <p class="telefoonnummer"></p>
+                    </div>
+                    <div class="info-block">
+                        Haha ik ben kut
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
