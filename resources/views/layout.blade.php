@@ -29,7 +29,7 @@
                 @if (!Auth::check())
                     <a href="/register">Deelnemer worden</a>
                 @endif
-                <a href="#">Contact</a>
+                <a href="/contact">Contact</a>
                 @if(Auth::check() && auth()->user()->isAdmin())
                 <a href="/cms">CMS</a>
                 @endif
@@ -69,12 +69,15 @@
         @yield ('footer')
         <div id="innerfooter">
             <div class="contact">
-                <p> CONTACT:</p>
-                <p> info@email.nl</p>
-                <p> +316123456789</p>
+                 CONTACT:
+                <br>
+                 info@email.nl
+                <br>
+                 +316123456789
+                <br>
             </div>
             <div class="copyright">
-                <p> &#169 2020 Niks voor Niks</p>
+                &#169 2020 Niks voor Niks
             </div>
         </div>
     </div>

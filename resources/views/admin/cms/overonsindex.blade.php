@@ -11,6 +11,8 @@
         <div class="sidemenu">
             <a class="btn" href="/cms">Hoofdpagina</a>
             <a class="btn" href="/cms_overons">Over ons</a>
+            <a class="btn" href="/cms_contact">Contact</a>
+
         </div>
 
 

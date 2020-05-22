@@ -18,6 +18,11 @@ class CmsController extends Controller
         return view('admin.cms.overonsindex', ['information' => $information]);
     }
 
+    public function contactindex(){
+        $information = Informatie::all();
+        return view('admin.cms.contactindex', ['information' => $information]);
+    }
+
     public function edit($name)
     {
         $information = Informatie::find($name);
