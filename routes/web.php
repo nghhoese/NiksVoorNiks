@@ -53,6 +53,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
     Route::match(['get'],'/nieuws/verwijderen/{id}', 'NewsController@delete');
     Route::match(['get'],'/nieuws/wijzigen/{id}', 'NewsController@edit');
     Route::match(['post'],'/nieuws/wijzigen/{id}', 'NewsController@update');
+//    Route::match(['get'], '/advertentie/verwijderen/{id}', 'AdController@deleteAsAdmin');
 
     Route::match(['get'],'/nieuws/nieuw', 'NewsController@create');
     Route::match(['post'],'/nieuws/nieuw', 'NewsController@store');

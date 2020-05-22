@@ -22,7 +22,7 @@
                                 value="{{$category->naam}}">{{$category->naam}}</option>
                     @endforeach
                 </select><br>
-    <hr>
+                <hr>
 
                 <label class="title">Vraag en Aanbod:</label><br>
 
@@ -67,7 +67,6 @@
                 <hr>
 
 
-
                 <label class="title">Prijs:</label><br>
                 <div id="priceContainer">
                     <div class="slidecontainer">
@@ -94,7 +93,7 @@
                     </div>
                     <a id="manualInput" href="#">Handmatig invoeren</a>
                 </div>
-           <br>
+                <br>
                 <input style="display:none;" class="btn" type="submit" value="filter">
             </form>
 
@@ -131,8 +130,8 @@
     </div>
 
 
-    @section('footer')
+@section('footer')
     <script src="/JS/adFilter.js"></script>
-    @endsection
+@endsection
 
 @endsection
