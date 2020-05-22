@@ -77,7 +77,7 @@ class RegisterController extends Controller
             'telefoonnummer' => $data['phonenumber'],
             'postcode' => $data['postalcode'],
             'huisnummer' => $data['housenumber'],
-            'rol_naam' => $data['role'],
+            'rol_naam' => 'in_afwachting',
             'achternaam' => $data['lastname'],
             'niksen' => 0,
             'beschrijving' => '',
