@@ -24,8 +24,8 @@
                 @csrf
                 <div class="plaatsAdvertentie1">
                 <h2>Advertentie Wijzigen</h2><br>
-                <label for="title">Titel advertentie</label><br>
-                <input type="text" id="title" name="title" value="{{$ad->titel}}"><br><br>
+                <label for="titel">Titel advertentie</label><br>
+                <input type="text" id="titel" name="titel" value="{{$ad->titel}}"><br><br>
 
                 <label for="beschrijving">Beschrijving</label><br>
                 <textarea value="{{$ad->beschrijving}}" name="beschrijving" id="beschrijving" rows="15" cols="50">{{$ad->beschrijving}}</textarea><br><br>
@@ -37,15 +37,6 @@
                 <option checked value="{{$ad->categorie}}">{{$ad->categorie}}</option>
                     @foreach($categories as $category)
                         <option value={{$category->naam}}>{{$category->naam}}</option>
-                    @endforeach
-                </select><br><br>
-
-                <label for="group">wijzig groep(optioneel)</label><br>
-                <select id="group" name="group">
-                <option checked value="{{$ad->groep()->first()->naam ?? 'kies een groep'}}">{{$ad->groep()->first()->naam ?? 'Kies een groep'}}</option>
-
-                    @foreach($groups as $group)
-                        <option value={{$group->naam}}>{{$group->naam}}</option>
                     @endforeach
                 </select><br><br>
 
@@ -75,8 +66,8 @@
                 @endif
                 </select>
                 <br><br>
-                <label for="price">Prijs(Niks)</label><br>
-                <input type="number" value="{{$ad->prijs}}"id="price" name="price" min="0" max="200">
+                <label for="prijs">Prijs(Niks)</label><br>
+                <input type="number" value="{{$ad->prijs}}"id="prijs" name="prijs" min="0" max="200">
                 <br><br>
 
                 <label for="location">Wijzig locatie</label><br>

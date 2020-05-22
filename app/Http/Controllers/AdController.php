@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use \App\Advertentie;
 use DB;
 
-class AdvertentieController extends Controller
+class AdController extends Controller
 {
     public function showAll()
     {
@@ -21,7 +21,7 @@ class AdvertentieController extends Controller
         $groups = Groep::all();
         $places = Plaats::all();
        
-        return view('advertenties', ['advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups, 'places' => $places]);
+        return view('ad.index', ['advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups, 'places' => $places]);
     }
 
     public function create()
@@ -29,7 +29,7 @@ class AdvertentieController extends Controller
         $categories = Categorie::all();
         $groups = Groep::all();
         $places = Plaats::all();
-        return view('advertentiePlaatsen', ['categories' => $categories, 'groups' => $groups, 'places' => $places]);
+        return view('ad.create', ['categories' => $categories, 'groups' => $groups, 'places' => $places]);
 
     }
 
@@ -38,13 +38,13 @@ class AdvertentieController extends Controller
         $date = date('d-m-y h:i:s');
         $user = auth()->user();
         $validatedData = $request->validate([
-            'title' => 'required|max:100',
+            'titel' => 'required|max:100',
             'beschrijving' => 'required|max:255',
-            'price' => 'required|numeric|digits_between:0,200',
+            'prijs' => 'required|numeric|digits_between:0,200',
             'location' => 'required',
             'asked' => 'required',
             'price-type' => 'required',
-            'img' => 'mimes:jpeg,jpg,png,gif|max:10000',
+            'file' => 'mimes:jpeg,jpg,png,gif|max:10000',
         ]);
         $advertentie = new Advertentie();
         if ($request->file != null) {
@@ -52,10 +52,10 @@ class AdvertentieController extends Controller
             $request->file->move(public_path('uploads'), $fileName);
             $advertentie->foto = "/uploads/" . $fileName;
         }
-        $advertentie->titel = request('title');
+        $advertentie->titel = request('titel');
         $advertentie->beschrijving = request('beschrijving');
         $advertentie->categorie = request('category');
-        $advertentie->prijs = request('price');
+        $advertentie->prijs = request('prijs');
         $advertentie->plaats = request('location');
         $advertentie->vraag = request('asked');
         $advertentie->bieden = request('price-type');
@@ -69,7 +69,10 @@ class AdvertentieController extends Controller
     {
         $user = auth()->user();
         $advertentie = Advertentie::find($id);
-        return view('advertentieDetails', ['advertentie' => $advertentie,'email' => $user->email]);
+        if($advertentie == null){
+            return redirect('/');
+        }
+        return view('ad.details', ['advertentie' => $advertentie,'email' => $user->email]);
 
     }
     public function edit($id){
@@ -81,7 +84,7 @@ class AdvertentieController extends Controller
         $categories = Categorie::all();
         $groups = Groep::all();
         $places = Plaats::all();
-        return view('advertentieWijzigen', ['ad' => $ad,'categories' => $categories, 'groups' => $groups, 'places' => $places]);
+        return view('ad.edit', ['ad' => $ad,'categories' => $categories, 'groups' => $groups, 'places' => $places]);
 
 
         
@@ -95,26 +98,28 @@ class AdvertentieController extends Controller
         $date = date('d-m-y h:i:s');
 
         $validatedData = $request->validate([
-            'title' => 'required|max:100',
+            'titel' => 'required|max:100',
             'beschrijving' => 'required|max:255',
-            'price' => 'required|numeric|digits_between:0,200',
+            'prijs' => 'required|numeric|digits_between:0,200',
             'location' => 'required',
             'asked' => 'required',
             'price-type' => 'required',
-            'img' => 'mimes:jpeg,jpg,png,gif|max:10000',
+            'file' => 'mimes:jpeg,jpg,png,gif|max:5000',
         ]);
     
         if ($request->file != null) {
             $file_path = substr($ad->foto,1);
+            if($ad->foto != null){
             unlink($file_path);
+            }
             $fileName = time() . '_' . $request->file->getClientOriginalName();
             $request->file->move(public_path('uploads'), $fileName);
             $ad->foto = "/uploads/" . $fileName;
         }
-        $ad->titel = request('title');
+        $ad->titel = request('titel');
         $ad->beschrijving = request('beschrijving');
         $ad->categorie = request('category');
-        $ad->prijs = request('price');
+        $ad->prijs = request('prijs');
         $ad->plaats = request('location');
         $ad->vraag = request('asked');
         $ad->bieden = request('price-type');
@@ -202,6 +207,6 @@ if($group == null){
         $categories = Categorie::all();
         $groups = Groep::all();
         $places = Plaats::all();
-        return view('advertenties', ['plaats'=>$location, 'places' => $places,'locatie'=>$location,'aangeboden'=>$aangeboden,'gevraagd' => $gevraagd,'groep' => $group,'minPrijs' => $minPrice,'maxPrijs' => $maxPrice,'categorie' => $categorie, 'advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
+        return view('ad.index', ['plaats'=>$location, 'places' => $places,'locatie'=>$location,'aangeboden'=>$aangeboden,'gevraagd' => $gevraagd,'groep' => $group,'minPrijs' => $minPrice,'maxPrijs' => $maxPrice,'categorie' => $categorie, 'advertenties' => $advertentie, 'categories' => $categories, 'groups' => $groups]);
     }
 }

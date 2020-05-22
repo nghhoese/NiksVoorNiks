@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,7 +30,7 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'titel' => 'Ruilen zonder geld? Hoe gaat dat?',
             'informatie' =>
 
-        'We ruilen onderling onze diensten en goederen. Nancy doet de boekhouding voor Mark. Mark verft het plafond voor Robin. Robin poetst het huis voor Petra. Petra verstelt een broek voor Yvonne. En Yvonne geeft een massage aan Nancy. Het bijzondere van een ruilkring is dat je voor de diensten en goederen zonder geld betaalt. We betalen onze diensten en goederen met een eigen ruilmiddel. In Den Bosch en omstreken is dat de Niks. Dat is geen tastbaar voorwerp of een munt, maar een administratieve manier om de waarde van diensten of goederen vast te leggen. We ruilen dus met Niksen!
+                'We ruilen onderling onze diensten en goederen. Nancy doet de boekhouding voor Mark. Mark verft het plafond voor Robin. Robin poetst het huis voor Petra. Petra verstelt een broek voor Yvonne. En Yvonne geeft een massage aan Nancy. Het bijzondere van een ruilkring is dat je voor de diensten en goederen zonder geld betaalt. We betalen onze diensten en goederen met een eigen ruilmiddel. In Den Bosch en omstreken is dat de Niks. Dat is geen tastbaar voorwerp of een munt, maar een administratieve manier om de waarde van diensten of goederen vast te leggen. We ruilen dus met Niksen!
 
         Onze ruilkring startte in 1995. In onze kring ontmoeten de deelnemers elkaar tijdens maandelijkse activiteiten. Daarbij kun je diensten en goederen ruilen. Dat kan ook via onze speciale Niksmail. Dat is een gebruikersgroep op internet, waaraan bijna alle deelnemers meedoen. De ruilkring heeft een sociale functie. We vormen een regionaal, duurzaam en zelfstandig economisch systeem. Door te ruilen zonder geld stellen we mensen in staat om zowel hun talenten te benutten en diensten, kennis en goederen aan te schaffen zonder euros.
 
@@ -58,32 +59,39 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
         DB::table('activiteit')->insert([
             'naam' => 'Spelletjes avond',
             'beschrijving' => 'Spelletjes avond met bordspellen',
-            'datum' => '2020-4-1'
+            'datum' => '2020-4-1',
+            'max_deelnemers' => 8
         ]);
         DB::table('activiteit')->insert([
             'naam' => 'Bakpartij',
             'beschrijving' => 'Samen gezellig bakken #taartjes',
-            'datum' => '2020-05-12'
+            'datum' => '2020-05-12',
+            'max_deelnemers' => 8
+
         ]);
         DB::table('activiteit')->insert([
             'naam' => 'Schilderen',
             'beschrijving' => 'Wees de kunstenaar die je altijd al wilde zijn! Leuk!',
-            'datum' => '2020-05-12'
+            'datum' => '2020-05-12',
+            'max_deelnemers' => 12
         ]);
         DB::table('activiteit')->insert([
             'naam' => 'Pannenkoeken bakken',
             'beschrijving' => 'Oom berend en zuster Suzan maken samen met jou de lekkerste Pfannkuchen',
-            'datum' => '2021-01-05'
+            'datum' => '2021-01-05',
+            'max_deelnemers' => 8
         ]);
         DB::table('activiteit')->insert([
             'naam' => 'Skypen',
             'beschrijving' => 'Gezellig met de meiden',
-            'datum' => '2021-01-05'
+            'datum' => '2021-01-05',
+            'max_deelnemers' => 8
         ]);
         DB::table('activiteit')->insert([
             'naam' => 'Boswandeling',
             'beschrijving' => 'Wandeling om het Sint Pieters bos',
-            'datum' => '2021-01-05'
+            'datum' => '2021-01-05',
+            'max_deelnemers' => 6
         ]);
 
         //categories
@@ -201,6 +209,109 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'beschrijving' => 'Heeft veel niksen',
             'rol_naam' => 'deelnemer',
         ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'niks@niksvoorniks.nl',
+            'wachtwoord' => Hash::make('niksvoorniks'),
+            'voornaam' => 'Niks',
+            'tussenvoegsel' => 'voor',
+            'achternaam' => 'Niks',
+            'geboortedatum' => '2020-05-13',
+            'telefoonnummer' => '0616666666',
+            'postcode' => '1234AB',
+            'huisnummer' => '69',
+            'niksen' => '69',
+            'beschrijving' => 'Developer account',
+            'rol_naam' => 'administrator',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'nick@niksvoorniks.cf',
+            'wachtwoord' => Hash::make('Welkom01'),
+            'voornaam' => 'Nick',
+            'tussenvoegsel' => 'van',
+            'achternaam' => 'Hoesel',
+            'geboortedatum' => '2020-05-13',
+            'telefoonnummer' => '0616666666',
+            'postcode' => '1234AB',
+            'huisnummer' => '69',
+            'niksen' => '69',
+            'beschrijving' => 'Developer account',
+            'rol_naam' => 'administrator',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'maarten@niksvoorniks.nl',
+            'wachtwoord' => Hash::make('maarten1234'),
+            'voornaam' => 'Maarten',
+            'tussenvoegsel' => 'van',
+            'achternaam' => 'Mensvoort',
+            'geboortedatum' => '2020-05-13',
+            'telefoonnummer' => '0616666666',
+            'postcode' => '1234AB',
+            'huisnummer' => '69',
+            'niksen' => '69',
+            'beschrijving' => 'Developer account',
+            'rol_naam' => 'administrator',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'jonah@niksvoorniks.nl',
+            'wachtwoord' => Hash::make('jonah1234'),
+            'voornaam' => 'Jonah',
+            'achternaam' => 'Dirksen',
+            'geboortedatum' => '2020-05-13',
+            'telefoonnummer' => '0616666666',
+            'postcode' => '1234AB',
+            'huisnummer' => '69',
+            'niksen' => '69',
+            'beschrijving' => 'Developer account',
+            'rol_naam' => 'administrator',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'inafwachting@avans.nl',
+            'wachtwoord' => 'jonah1234',
+            'voornaam' => 'Jonah',
+            'achternaam' => 'Dirksen',
+            'geboortedatum' => '1998-1-1',
+            'telefoonnummer' => '06777777',
+            'postcode' => '3584LA',
+            'huisnummer' => '55',
+            'niksen' => '55',
+            'beschrijving' => 'Student Avans Hogeschool',
+            'rol_naam' => 'in_afwachting',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'inafwachting2@avans.nl',
+            'wachtwoord' => 'jonah1234',
+            'voornaam' => 'Jonah',
+            'achternaam' => 'Dirksen',
+            'geboortedatum' => '1998-1-1',
+            'telefoonnummer' => '06777777',
+            'postcode' => '3584LA',
+            'huisnummer' => '55',
+            'niksen' => '55',
+            'beschrijving' => 'Student Avans Hogeschool',
+            'rol_naam' => 'in_afwachting',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'stef@avans.nl',
+            'wachtwoord' => '$2y$12$03NiMiIFnwWG.d9NHkxXZu6UQcCOoTs30wgYd.SanWufURvr6.1Fe',
+            'voornaam' => 'Stef',
+            'tussenvoegsel' => 'van',
+            'achternaam' => 'Osch',
+            'geboortedatum' => '2001-4-6',
+            'telefoonnummer' => '0687654321',
+            'postcode' => '6677PC',
+            'huisnummer' => '23',
+            'niksen' => '80',
+            'beschrijving' => 'Student Avans Hogeschool Informatica SO',
+            'rol_naam' => 'administrator',
+        ]);
+
 
         //advertisements
         DB::table('advertentie')->insert([
@@ -353,5 +464,12 @@ We hebben allemaal een passie voor iets anders, maar Niks voor Niks geeft ons de
             'activiteit_id' => 4,
         ]);
 
+
+        //News
+        DB::table('nieuws')->insert([
+            'naam' => 'Nieuwe website!',
+            'beschrijving' => 'De ruilkring Den Bosch heeft een nieuwe website. Nu is er één plek voor al uw advertenties, transacties en communicatie bij elkaar',
+            'foto' => 'https://picjumbo.com/wp-content/uploads/diamond-beach-indonesia-2210x1300.jpg',
+        ]);
     }
 }

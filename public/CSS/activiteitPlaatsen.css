@@ -9,6 +9,7 @@
 }
 }
 
+
 #form input[type="text"],
 #form input[type="email"],
 #form input[type="tel"],
@@ -19,10 +20,7 @@
 }
 
 #form {
-    display: flex;
 justify-content: space-evenly;
-flex-direction: row;
-flex: 1;
 margin-top: 50px;
 margin-left: 200px;
 margin-right: 200px;

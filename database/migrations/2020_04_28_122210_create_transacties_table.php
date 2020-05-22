@@ -25,8 +25,6 @@ class CreateTransactiesTable extends Migration
             $table->integer('verstuurd')->nullable();
             $table->integer('geaccepteerd')->nullable();
             $table->integer('betaalverzoek')->nullable();
-
-            
         });
     }
 

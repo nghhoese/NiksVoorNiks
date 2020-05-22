@@ -14,7 +14,7 @@ class CreateActiviteitsTable extends Migration
     public function up()
     {
         Schema::create('activiteit', function (Blueprint $table) {
-            $table->increments('id'); 
+            $table->increments('id');
             $table->string('naam',50);
             $table->string('beschrijving',500);
             $table->date('datum');

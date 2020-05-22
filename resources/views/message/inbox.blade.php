@@ -25,8 +25,6 @@
                     </p></a>
             </div>
             <div class="inbox">
-
-
                 <table id="table1">
                     <thead>
                     <tr>
