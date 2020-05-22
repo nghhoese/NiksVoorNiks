@@ -148,7 +148,7 @@ body {
     float: left;
     padding: 50px 20px 30px 80px;
     margin: 0px;
-    word-break: break-all;
+    word-wrap: break-word;
 }
 
 .link {
@@ -175,9 +175,21 @@ body {
     transition-duration: 200ms;
     position: relative;
     min-width: 300px;
-    max-width: 300px;
 }
 
+.preview-aanbod img {
+    max-width: 350px;
+    max-height: 150px;
+}
+
+.aanbod-image{
+    max-height: 200px;
+    min-height: 200px;
+}
+
+.preview-aanbod{
+    text-decoration: none;
+}
 
 .aanbod:link,
 .aanbod:visited {

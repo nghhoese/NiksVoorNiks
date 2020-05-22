@@ -38,6 +38,8 @@ Route::get('/logout', function () {
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
     Route::match(['get'], '/cms', 'CmsController@index')->name('cms');
+    Route::match(['get'], '/cms_overons', 'CmsController@overonsindex')->name('overonscms');
+    Route::match(['get'], '/cms_contact', 'CmsController@contactindex')->name('contactcms');
     Route::match(['get'], '/cms/edit/{name}', 'CmsController@edit')->name('editcms');
     Route::match(['post'], '/cms/edit/{name}', 'CmsController@update')->name('editcms');
 });

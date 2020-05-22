@@ -65,12 +65,15 @@
         @yield ('footer')
         <div id="innerfooter">
             <div class="contact">
-                <p> CONTACT:</p>
-                <p> info@email.nl</p>
-                <p> +316123456789</p>
+                 CONTACT:
+                <br>
+                 info@email.nl
+                <br>
+                 +316123456789
+                <br>
             </div>
             <div class="copyright">
-                <p> &#169 2020 Niks voor Niks</p>
+                &#169 2020 Niks voor Niks
             </div>
         </div>
     </div>
