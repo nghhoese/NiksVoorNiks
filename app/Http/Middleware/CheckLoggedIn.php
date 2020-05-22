@@ -21,7 +21,7 @@ class CheckLoggedIn
         if (!Auth::check()) {
             return new Response(view('auth.login'));
         }
-        if ($user->rol_naam == 'in afwachting'){
+        if ($user->rol_naam == 'in_afwachting'){
             return new Response(view('auth.inProgress'));
         }
         return $next($request);
