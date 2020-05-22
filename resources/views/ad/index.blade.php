@@ -1,6 +1,6 @@
 @extends ('layout')
 @section('title')
-    home
+    Advertenties
 @endsection
 @section ('stylesheets')
     <link rel="stylesheet" href="/CSS/pagination.css">

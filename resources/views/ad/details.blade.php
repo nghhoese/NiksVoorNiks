@@ -26,7 +26,7 @@
                 <a href="/advertentie/wijzigen/{{$advertentie->id}}" class="btn">Aanpassen</a>
             @endif
             @if(Auth::check() && ((auth()->user()->isAdmin()) || (auth()->user()->email == $advertentie->deelnemer->email)))
-                <a href="/advertentie/verwijderen/{{$advertentie->id}}">
+                <a onclick="return confirm('Weet u het zeker?')" href="/advertentie/verwijderen/{{$advertentie->id}}">
                     <button class="btn">Verwijderen</button>
                 </a>
             @endif

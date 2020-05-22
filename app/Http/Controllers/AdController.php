@@ -138,17 +138,21 @@ class AdController extends Controller
         $ad = Advertentie::find($id);
         if ($user->isAdmin()) {
 //            $file_path = substr($ad->foto, 1);
-//            unlink($file_path);
+//            if ($ad->foto != null) {
+//                unlink($file_path);
+//            }
             $ad->delete();
             $advertentie = Advertentie::paginate(4);
             $categories = Categorie::all();
             $places = Plaats::all();
-            return view('ad.index', ['advertenties' => $advertentie, 'categories' => $categories, 'places' => $places]);
+            return redirect('/advertenties');
         } elseif ($user->email != $ad->deelnemer_email) {
             return redirect('/');
         }
 //        $file_path = substr($ad->foto, 1);
-//        unlink($file_path);
+//        if ($ad->foto != null) {
+//            unlink($file_path);
+//        }
         $ad->delete();
         return redirect('/profiel/' . $user->email);
     }
