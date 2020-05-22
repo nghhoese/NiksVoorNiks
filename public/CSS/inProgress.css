@@ -1,0 +1,10 @@
+.inProgress-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+.inProgress-form > h2 {
+    color: darkgreen;
+}
+
