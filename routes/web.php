@@ -64,9 +64,6 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
     Route::match(['post'],'/plaats/nieuw', 'PlaceController@store');
 });
 
-
-
-
 Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
 
     //get
