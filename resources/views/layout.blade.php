@@ -25,6 +25,9 @@
                 @if (!Auth::check())
                     <a href="/register">Deelnemer worden</a>
                 @endif
+                if(Auth::check())
+                <a href="/transacties">Niksen</a>
+                @endif
                 <a href="/contact">Contact</a>
                 @if(Auth::check() && auth()->user()->isAdmin())
                     <a href="/panel">Admin</a>
@@ -42,6 +45,8 @@
                     <a href="/inbox"
                        class="fa fa-bell">{{count(Auth::user()->bericht1()->where('gelezen','=',0)->get())}}</a>
                     <a id="logoutButton" href="/logout">Uitloggen</a>
+                    
+                    
                 @else
                     <a href="/inbox" class="fa fa-bell"></a>
                     <a id="logoutButton" href="/logout">Uitloggen</a>
