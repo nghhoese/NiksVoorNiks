@@ -25,8 +25,8 @@
                 @if (!Auth::check())
                     <a href="/register">Deelnemer worden</a>
                 @endif
-                if(Auth::check())
-                <a href="/transacties">Niksen</a>
+                @if(Auth::check())
+                    <a href="/transacties">Niksen</a>
                 @endif
                 <a href="/contact">Contact</a>
                 @if(Auth::check() && auth()->user()->isAdmin())
@@ -45,8 +45,8 @@
                     <a href="/inbox"
                        class="fa fa-bell">{{count(Auth::user()->bericht1()->where('gelezen','=',0)->get())}}</a>
                     <a id="logoutButton" href="/logout">Uitloggen</a>
-                    
-                    
+
+
                 @else
                     <a href="/inbox" class="fa fa-bell"></a>
                     <a id="logoutButton" href="/logout">Uitloggen</a>
@@ -70,11 +70,11 @@
         @yield ('footer')
         <div id="innerfooter">
             <div class="contact">
-                 CONTACT:
+                CONTACT:
                 <br>
-                 info@email.nl
+                info@email.nl
                 <br>
-                 +316123456789
+                +316123456789
                 <br>
             </div>
             <div class="copyright">
