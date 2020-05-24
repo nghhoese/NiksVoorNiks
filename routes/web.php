@@ -49,6 +49,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
     Route::match(['get'], '/activiteit/deelnemer/verwijderen/{id}/{email}', 'ActivityController@removeUser');
     Route::match(['get'], '/plaats', 'PlaceController@index');
     Route::match(['get'], '/users/panel', 'AdminController@userPanel');
+    Route::match(['post'], '/users/wijzigen/{email}', 'AdminController@updateUser');
     Route::match(['get'], '/panel/verwijder/{email}', 'AdminController@deleteUser');
     Route::match(['get'], '/panel/wijzig/{email}', 'AdminController@editUser');
     Route::match(['get'], '/panel/accepteren/{email}', 'AdminController@acceptUser');

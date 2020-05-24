@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Activiteit;
 use App\Bericht;
 use App\Deelnemer;
 use Illuminate\Http\Request;
@@ -49,6 +50,48 @@ class AdminController extends Controller
     {
         $participant = Deelnemer::find($email);
         return view('admin.users.edit', ['user' => $participant]);
+    }
+
+    public function updateUser($email, Request $request)
+    {
+        $validatedData = $request->validate([
+            'voornaam' => ['required', 'string', 'max:255'],
+            'tussenvoegsel' => ['nullable', 'string', 'max:255'],
+            'achternaam' => ['required', 'string', 'max:255'],
+            'date' => ['required', 'date', 'before:tomorrow'],
+            'telefoonnummer' => ['required', 'string', 'max:25'],
+            'postcode' => ['required', 'regex:/^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i'],
+            'huisnummer' => ['required', 'string', 'max:25'],
+            'niksen' => 'required|numeric|between:-150,150',
+        ]);
+
+        if (request('changedEmail')) {
+            $validatedData = $request->validate([
+                'email' => ['string', 'email', 'max:255', 'unique:deelnemer'],
+            ]);
+        }
+        if (request('changedPassword')) {
+            $validatedData = $request->validate([
+                'wachtwoord' => ['string', 'min:8', 'confirmed'],
+            ]);
+        }
+
+        $participant = Deelnemer::find($email);
+        if (request('changedEmail')) {
+            $participant->email = request('email');
+        }
+        if (request('changedPassword')) {
+            $participant->wachtwoord = request('wachtwoord');
+        }
+        $participant->voornaam = request('voornaam');
+        $participant->tussenvoegsel = request('tussenvoegsel');
+        $participant->achternaam = request('achternaam');
+        $participant->telefoonnummer = request('telefoonnummer');
+        $participant->postcode = request('postcode');
+        $participant->huisnummer = request('huisnummer');
+        $participant->niksen = request('niksen');
+        $participant->save();
+        return redirect('/users/panel');
     }
 
     public function acceptUser($email)

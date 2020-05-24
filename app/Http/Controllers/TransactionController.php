@@ -35,7 +35,7 @@ class TransactionController extends Controller
         $user1 = Deelnemer::find(request('ontvanger'));
 
         $transaction = new Transactie();
-     
+
         if(request('ask') != null){
             $validatedData = $request->validate([
                 'beschrijving' => 'required|max:50',
@@ -51,13 +51,13 @@ class TransactionController extends Controller
                 $bedrag = $balanceUser + 150;
             }else{
                 $bedrag = 150 - ($balanceUser * -1);
-               
+
             }
             if($balanceReceiver >= 0){
                 $bedrag1 = 150 - $balanceReceiver;
             }else{
-                $bedrag1 = ($balanceReciver * -1) + 150;
-                
+                $bedrag1 = ($balanceReceiver * -1) + 150;
+
             }
             $validatedData = $request->validate([
                 'beschrijving' => 'required|max:50',
@@ -79,7 +79,7 @@ class TransactionController extends Controller
         $transaction->beschrijving = request('beschrijving');
         $transaction->save();
         return redirect('/transactie/'.$transaction->id);
-        
+
     }
     public function accept($id){
         $user = auth()->user();

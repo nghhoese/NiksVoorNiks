@@ -20,7 +20,7 @@
                 </div><br/>
             @endif
 
-            <form id="form" method="post" action="/advertentie/wijzigen/{{$user->email}}" enctype="multipart/form-data">
+            <form id="form" method="post" action="/users/wijzigen/{{$user->email}}" enctype="multipart/form-data">
                 @csrf
                 <div class="plaatsAdvertentie1">
                     <h2>Deelnemer bewerken</h2><br>
@@ -32,9 +32,13 @@
                     <label>Achternaam</label><br>
                     <input type="text" id="achternaam" name="achternaam" value="{{$user->achternaam}}"><br>
                     <label>E-mailadress</label><br>
-                    <input type="text" id="email" name="email" value="{{$user->email}}"><br>
+                    <input type="text" id="email" name="email" value="{{$user->email}}">
+                    <input type="checkbox" id="changedEmail" name="changedEmail">Email gewijzigd
+                    <br>
                     <label>Wachtwoord</label><br>
-                    <input type="text" id="wachtwoord" name="wachtwoord" value=" "><br>
+                    <input type="text" id="wachtwoord" name="wachtwoord" value="">
+                    <input type="checkbox" id="changedPassword" name="changedPassword">Wachtwoord gewijzigd
+                    <br>
                 </div>
                 <div>
                     <label>Telefoonnummer</label><br>
@@ -52,11 +56,11 @@
                     <label>Postcode</label><br>
                     <input type="text" id="postcode" name="postcode" value="{{$user->postcode}}">
                     <label>Huisnummer</label><br>
-                    <input type="text" id="huisnummer" name="huisnummer" value="{{$user->postcode}}">
+                    <input type="text" id="huisnummer" name="huisnummer" value="{{$user->huisnummer}}">
                     <label>Niksen</label><br>
                     <input type="number" min="-150" max="150" id="niksen" name="niksen" value="{{$user->niksen}}">
                     <br> <br>
-                    <input type="submit" value="Advertentie Wijzigen">
+                    <input type="submit" value="Wijzigingen opslaan">
                     <br>
                 </div>
                 <br>
