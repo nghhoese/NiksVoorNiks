@@ -46,6 +46,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
 
 Route::group(['middleware' => 'App\Http\Middleware\CheckIfAdmin'], function(){
     Route::match(['get'], '/panel', 'AdminController@index')->name('admin');
+    Route::match(['get'], '/activiteit/deelnemer/verwijderen/{id}/{email}', 'ActivityController@removeUser');
     Route::match(['get'], '/plaats', 'PlaceController@index');
     Route::match(['get'], '/users/panel', 'AdminController@userPanel');
     Route::match(['get'], '/panel/verwijder/{email}', 'AdminController@deleteUser');
@@ -72,7 +73,7 @@ Route::group(['middleware' => 'App\Http\Middleware\CheckLoggedIn'], function() {
     Route::get('/profiel/{email}', 'ProfileController@index');
     Route::get('/activiteitPlaatsen', 'ActivityController@create');
     Route::get('/activiteitDetails/{id}', 'ActivityController@view');
-    Route::get('/activiteit/deelnemen/{id}', 'ActivityController@deelnemen');
+    Route::get('/activiteit/deelnemen/{id}', 'ActivityController@participate');
     Route::get('/advertentieDetails/{id}', 'AdController@view');
     Route::get('/advertentiePlaatsen', 'AdController@create');
     Route::get('/activiteiten', 'ActivityController@showAll');

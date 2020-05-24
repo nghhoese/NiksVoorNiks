@@ -23,8 +23,8 @@ class CreateBerichtsTable extends Migration
             $table->integer('verwijderd_door_zender')->nullable();
             $table->string('zender_email',50);
             $table->string('ontvanger_email',50);
-            $table->foreign('zender_email')->references('email')->on('deelnemer');
-            $table->foreign('ontvanger_email')->references('email')->on('deelnemer');
+            $table->foreign('zender_email')->references('email')->on('deelnemer')->onDelete('cascade');
+            $table->foreign('ontvanger_email')->references('email')->on('deelnemer')->onDelete('cascade');
         });
     }
 

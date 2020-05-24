@@ -15,7 +15,7 @@ class CreateDeelnemerHeeftGroepsTable extends Migration
     {
         Schema::create('deelnemer_heeft_groep', function (Blueprint $table) {
             $table->string('deelnemer_email',50);
-            $table->foreign('deelnemer_email')->references('email')->on('deelnemer');
+            $table->foreign('deelnemer_email')->references('email')->on('deelnemer')->onDelete('cascade');;
             $table->string('groep_naam',50);
             $table->foreign('groep_naam')->references('naam')->on('groep');
         });

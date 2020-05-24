@@ -78,7 +78,7 @@ class ActivityController extends Controller
         return view('activity.details', ['activity' => $activity, 'participants' => $participants, 'user' => $user, 'users' => $users]);
     }
 
-    public function deelnemen($id)
+    public function participate($id)
     {
         $activity = Activiteit::find($id);
         $participants = count($activity->deelnemer()->get());
@@ -89,6 +89,12 @@ class ActivityController extends Controller
         $activity->deelnemer()->attach(Deelnemer::find(auth()->user()->email));
         $activity->save();
         return redirect('/activiteitDetails/' . $id);
+    }
+
+    public function removeUser($id, $email){
+        $activity = Activiteit::find($id);
+        $activity->deelnemer()->detach($email);
+        return redirect('/activiteiten');
     }
 
     public function delete($id){

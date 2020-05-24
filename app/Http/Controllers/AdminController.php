@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('admin.panel');
     }
 
@@ -39,8 +40,9 @@ class AdminController extends Controller
 
     public function deleteUser($email)
     {
-        $deelnemer = Deelnemer::find($email);
-        $deelnemer->delete();
+        $participant = Deelnemer::find($email);
+//        $participant->rol->detach();
+        $participant->delete();
         return redirect('/users/panel');
     }
 

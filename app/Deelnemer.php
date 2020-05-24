@@ -57,7 +57,6 @@ class Deelnemer extends Authenticatable
     }
     public function advertentie()
     {
-
         return $this->hasMany('App\Advertentie', 'deelnemer_email', 'email');
     }
     public function rol(){

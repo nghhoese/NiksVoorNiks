@@ -17,7 +17,7 @@ class CreateActiviteitHeeftDeelnemersTable extends Migration
             $table->string('deelnemer_email',50);
             $table->unsignedInteger('activiteit_id');
             $table->foreign('activiteit_id')->references('id')->on('activiteit');
-            $table->foreign('deelnemer_email')->references('email')->on('deelnemer');
+            $table->foreign('deelnemer_email')->references('email')->on('deelnemer')->onDelete('cascade');
         });
     }
 

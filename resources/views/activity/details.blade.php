@@ -65,7 +65,7 @@
                                     <p>{{$user->telefoonnummer}}</p>
 
                                 </td>
-                                <td style="text-align:center;"><a href="/panel/verwijder/{{$user->email}}"><i
+                                <td style="text-align:center;"><a href="/activiteit/deelnemer/verwijderen/{{$activity->id}}/{{$user->email}}"><i
                                             class="fas fa-trash-alt" style="color:#66BB6A;"></i></a>
                                 </td>
                             </tr>

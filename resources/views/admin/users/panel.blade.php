@@ -60,6 +60,7 @@
                     <th>Naam</th>
                     <th>email</th>
                     <th>Telefoonnummer</th>
+                    <th>Wijzigen</th>
                     <th>Verwijderen</th>
                     <th>Admin</th>
                 </tr>
@@ -77,6 +78,9 @@
                         <td>
                             <p>{{$user->telefoonnummer}}</p>
 
+                        </td>
+                        <td style="text-align:center;"><a href="/panel/wijzig/{{$user->email}}"><i
+                                    class="fas fa-trash-alt" style="color:#66BB6A;"></i></a>
                         </td>
                         <td style="text-align:center;"><a onclick="return confirm('Weet u het zeker?')" href="/panel/verwijder/{{$user->email}}"><i
                                     class="fas fa-trash-alt" style="color:#66BB6A;"></i></a>

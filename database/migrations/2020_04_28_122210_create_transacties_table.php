@@ -17,8 +17,8 @@ class CreateTransactiesTable extends Migration
             $table->increments('id');
             $table->string('zender_email',50);
             $table->string('ontvanger_email',50);
-            $table->foreign('zender_email')->references('email')->on('deelnemer');
-            $table->foreign('ontvanger_email')->references('email')->on('deelnemer');
+            $table->foreign('zender_email')->references('email')->on('deelnemer')->onDelete('cascade');;
+            $table->foreign('ontvanger_email')->references('email')->on('deelnemer')->onDelete('cascade');;
             $table->integer('bedrag')->nullable();
             $table->dateTime('datum');
             $table->string('beschrijving');

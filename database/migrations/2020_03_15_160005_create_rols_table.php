@@ -16,7 +16,6 @@ class CreateRolsTable extends Migration
         Schema::create('rol', function (Blueprint $table) {
             $table->string('naam',50)->primary();
             $table->string('beschrijving',500);
-
         });
     }
 
