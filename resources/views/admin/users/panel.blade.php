@@ -1,6 +1,6 @@
 @extends ('layout')
 @section('stylesheets')
-    <link rel="stylesheet" href="/CSS/userpanel.css">
+    <link rel="stylesheet" href="/CSS/userPanel.css">
 @endsection
 @section('title')
     Panel
@@ -80,7 +80,7 @@
 
                         </td>
                         <td style="text-align:center;"><a href="/panel/wijzig/{{$user->email}}"><i
-                                    class="fas fa-trash-alt" style="color:#66BB6A;"></i></a>
+                                    class="fas fa-edit" style="color:#66BB6A;"></i></a>
                         </td>
                         <td style="text-align:center;"><a onclick="return confirm('Weet u het zeker?')" href="/panel/verwijder/{{$user->email}}"><i
                                     class="fas fa-trash-alt" style="color:#66BB6A;"></i></a>

@@ -41,9 +41,14 @@ class AdminController extends Controller
     public function deleteUser($email)
     {
         $participant = Deelnemer::find($email);
-//        $participant->rol->detach();
         $participant->delete();
         return redirect('/users/panel');
+    }
+
+    public function editUser($email)
+    {
+        $participant = Deelnemer::find($email);
+        return view('admin.users.edit', ['user' => $participant]);
     }
 
     public function acceptUser($email)
