@@ -25,7 +25,6 @@
                             <p class="telefoonnummer"></p>
                         </div>
                         <div class="info-block">
-                            Haha ik ben kut
                         </div>
                     </div>
                 <div class="outer-card">
@@ -36,7 +35,6 @@
                         <p class="telefoonnummer"></p>
                     </div>
                     <div class="info-block">
-                        Haha ik ben kut
                     </div>
                 </div>
                 <div class="outer-card">
@@ -47,7 +45,6 @@
                         <p class="telefoonnummer"></p>
                     </div>
                     <div class="info-block">
-                        Haha ik ben kut
                     </div>
                 </div>
 

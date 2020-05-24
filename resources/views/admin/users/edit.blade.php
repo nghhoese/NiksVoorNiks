@@ -1,6 +1,6 @@
 @extends ('layout')
 @section('title')
-    Advertentie plaatsen
+    Deelnemer bewerken
 @endsection
 @section ('stylesheets')
     <link rel="stylesheet" href="/CSS/userEdit.css">
