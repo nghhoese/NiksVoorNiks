@@ -30,7 +30,7 @@
                     <label for="category">Kies een rubriek</label><br>
                     <select id="category" name="category">
                         @foreach($categories as $category)
-                            <option value={{$category->naam}}>{{$category->naam}}</option>
+                            <option value="{{$category->naam}}">{{$category->naam}}</option>
                         @endforeach
                     </select><br><br>
                     <label>Soort advertentie:</label>
@@ -51,7 +51,7 @@
                     <label for="location">Kies een locatie</label><br>
                     <select id="location" name="location">
                         @foreach($places as $place)
-                            <option value={{$place->naam}}>{{$place->naam}}</option>
+                            <option value="{{$place->naam}}">{{$place->naam}}</option>
                         @endforeach
                     </select><br><br>
                     <label for="img">Voeg eventueel een foto toe:</label><br>
