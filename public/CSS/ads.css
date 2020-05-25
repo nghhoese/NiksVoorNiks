@@ -20,7 +20,7 @@
   .slider:hover {
     opacity: 1;
   }
-.img{
+img{
   max-height: 121px;
 }
   .slider::-webkit-slider-thumb {
