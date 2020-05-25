@@ -34,6 +34,8 @@ nieuw bericht
                 </select><br>
                 <label><b>Onderwerp: </b></label><br>
                 <input name="onderwerp" type="text" value="{{$title ?? ''}}"><br>
+                <label><b>transactie nummer(betaalverzoek): </b></label><br>
+                <input name="transactie" type="text"><br>
                 <label for="bericht"><b>Bericht: </b></label><br>
                 <textarea name="bericht" rows="15" cols="50">Beste {{$name ?? ''}},&#010;&#010;&#010;&#010;&#010;Met vriendelijke groet,&#010;&#010;{{$user->voornaam}}</textarea><br>
                 <input type="submit" value="Verzend Bericht">
