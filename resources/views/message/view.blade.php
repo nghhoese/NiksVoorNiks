@@ -8,9 +8,10 @@
     <div class="card">
         <div class="card-header">
             <div class="title">
-            <div class="message">
+            
                 <p>{{$message->onderwerp}}</p>
             </div>
+            <div class="message">
             <h3>Verzonden door: {{$message->zender_email}}</h3>
             <h3>Verzonden op: {{$message->datum}}</h3>
             <h3>Bericht: </h3>
