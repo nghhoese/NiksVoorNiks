@@ -17,8 +17,8 @@
                 <b>Beschrijving <br/></b>
                 <p style="white-space: pre-line">{{$advertentie->beschrijving}}</p>
             </div>
-            <a href="/inbox/reply/{{$advertentie->id}}">
-                <button class="btn">Reageer op advertentie</button>
+            <a class="btn" href="/inbox/reply/{{$advertentie->id}}">
+                Reageer op advertentie
             </a>
             @if($email == $advertentie->deelnemer_email)
                 <a href="/advertentie/wijzigen/{{$advertentie->id}}" class="btn">Aanpassen</a>

@@ -38,10 +38,10 @@ class AdController extends Controller
         $date = date('d-m-y h:i:s');
         $user = auth()->user();
         $validatedData = $request->validate([
-            'titel' => 'required|max:100',
+            'titel' => 'required|max:50',
             'beschrijving' => 'required|max:255',
             'prijs' => 'required|numeric|digits_between:0,200',
-            'location' => 'required',
+            'location' => 'required|max:50',
             'asked' => 'required',
             'price-type' => 'required',
             'file' => 'mimes:jpeg,jpg,png,gif|max:10000',
@@ -101,10 +101,10 @@ class AdController extends Controller
         $date = date('d-m-y h:i:s');
 
         $validatedData = $request->validate([
-            'titel' => 'required|max:100',
+            'titel' => 'required|max:50',
             'beschrijving' => 'required|max:255',
             'prijs' => 'required|numeric|digits_between:0,200',
-            'location' => 'required',
+            'location' => 'required|max:50',
             'asked' => 'required',
             'price-type' => 'required',
             'file' => 'mimes:jpeg,jpg,png,gif|max:5000',

@@ -27,6 +27,7 @@
     cursor: pointer;
     display: inline-block;
     color: white;
+    text-decoration: none !important;
 }
 
 .btn:hover {
@@ -79,7 +80,7 @@ button{
 img{
     max-width: 100%;
     max-height: 121px;
-      
+
 }
 
 b{
