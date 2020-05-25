@@ -8,6 +8,7 @@
     <div class="card">
         <div class="card-header">
             <div class="title">
+            <div class="message">
                 <p>{{$message->onderwerp}}</p>
             </div>
             <h3>Verzonden door: {{$message->zender_email}}</h3>
@@ -21,6 +22,7 @@
             <a href="/inbox/reageer/{{$message->id}}" class="btn">Reageer op dit bericht</a>
             <div class="back">
                 <a href="/inbox"><i class="fas fa-arrow-left">Terug naar inbox</i></a>
+            </div>
             </div>
         </div>
     </div>
