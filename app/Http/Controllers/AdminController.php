@@ -18,7 +18,7 @@ class AdminController extends Controller
     {
         $allUsers = Deelnemer::orderBy('voornaam', 'asc')->get();
         $newUsers = Deelnemer::where('rol_naam', '=', 'in_afwachting')->orderBy('voornaam', 'asc')->get();
-        return view('admin.users.panel', ['users' => $newUsers, 'allUsers' => $allUsers]);
+        return view('admin.users.index', ['users' => $newUsers, 'allUsers' => $allUsers]);
     }
 
     public function edit($name)
@@ -96,25 +96,25 @@ class AdminController extends Controller
 
     public function acceptUser($email)
     {
-        $deelnemer = Deelnemer::find($email);
-        $deelnemer->rol_naam = "deelnemer";
-        $deelnemer->save();
+        $participant = Deelnemer::find($email);
+        $participant->rol_naam = "deelnemer";
+        $participant->save();
         return redirect('/users/panel');
     }
 
     public function makeAdmin($email)
     {
-        $deelnemer = Deelnemer::find($email);
-        $deelnemer->rol_naam = "administrator";
-        $deelnemer->save();
+        $participant = Deelnemer::find($email);
+        $participant->rol_naam = "administrator";
+        $participant->save();
         return redirect('/users/panel');
     }
 
     public function removeAdmin($email)
     {
-        $deelnemer = Deelnemer::find($email);
-        $deelnemer->rol_naam = "deelnemer";
-        $deelnemer->save();
+        $participant = Deelnemer::find($email);
+        $participant->rol_naam = "deelnemer";
+        $participant->save();
         return redirect('/users/panel');
     }
 }
