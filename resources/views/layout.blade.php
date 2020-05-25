@@ -56,15 +56,16 @@
 <div class="container">
     @yield ('content')
 </div>
-    <div class="footer">
-        <script src="/JS/nav.js"></script>
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        @yield ('footer')
-            <div class="contact">
-                <p>Contact: info.letsdb@gmail.com</p>
-                <p>06-22899114</p>
-                <p>&#169 2020 Niks voor Niks</p>
-            </div>
+<div class="footer">
+    <script src="/JS/nav.js"></script>
+    <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    @yield ('footer')
+    <div class="contact">
+        <p>Contact: info.letsdb@gmail.com</p>
+        <p>06-22899114</p>
+        <p>&#169 2020 Niks voor Niks</p>
     </div>
+</div>
+
 </body>
 </html>
