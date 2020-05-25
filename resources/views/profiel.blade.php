@@ -19,7 +19,6 @@
                 <p>{{$user->beschrijving}}</p>
             </div>
         </div>
-
             <div class="profile-advertisements">
                 <div class="advertisements-description">
                     <h3>Advertenties van {{$user->voornaam}}: <br/></h3>
@@ -34,7 +33,5 @@
                     </div>
                 @endforeach
             </div>
-
     </div>
-
 @endsection

@@ -1,6 +1,6 @@
 @extends('layout')
 @section('stylesheets')
-    <link rel="stylesheet" href="CSS/inProgress.css">
+    <link rel="stylesheet" href="/CSS/inProgress.css">
 @endsection
 @section('content')
     <div class="inProgress-page">

@@ -7,9 +7,6 @@
     Nieuws
 @endsection
 @section ('content')
-
-
-
         <div class="articles">
             @if(Auth::check() && auth()->user()->isAdmin())
                 <div class="filters">
@@ -19,7 +16,6 @@
                     </a>
                 </div>
             @endif
-
                 <div class="article-list">
                     @foreach($nieuws as $nieuwsbericht)
                         <div class="article" id="ad1">
@@ -32,13 +28,8 @@
                                 <br>
                             </div>
                         </div>
-
                     @endforeach
 {{--                    {{$nieuwsbericht->links("pagination::bootstrap-4")}}--}}
                 </div>
-
         </div>
-
-
-
 @endsection

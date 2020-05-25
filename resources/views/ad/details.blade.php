@@ -3,13 +3,11 @@
     advertentie
 @endsection
 @section('stylesheets')
-    <link rel="stylesheet" href="/CSS/advertentiedetails.css">
+    <link rel="stylesheet" href="/CSS/adDetails.css">
 @endsection
 @section ('content')
-
     <div class="flex-container">
         <div class="main-content">
-
             <h1 id="title" class="title">{{$advertentie->titel}}, {{$advertentie->prijs}} Niksen</h1>
             <img src="{{$advertentie->foto ?? '\uploads\HxdPz7Q.jpg'}}">
             <div class="stats">
@@ -30,9 +28,7 @@
                     <button class="btn">Verwijderen</button>
                 </a>
             @endif
-
         </div>
-
         <div class="info">
             <img
                 src="{{$advertentie->deelnemer->foto ?? 'https://www.isarklinikum.de/en/wp-content/uploads/sites/3/2015/07/empty_avatar.jpg'}}">
@@ -50,5 +46,4 @@
             <input hidden id="email"{{$advertentie->deelnemer->email}}/>
         </div>
     </div>
-
 @endsection

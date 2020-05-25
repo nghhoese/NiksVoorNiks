@@ -16,7 +16,6 @@
                 <div class="logo"><a href="/"><img src="/Resources/favicon.png"></a></div>
             </div>
             <nav class="nav">
-
                 <a href="/">Home</a>
                 <a href="/overons">Over ons</a>
                 <a href="/advertenties">Advertenties</a>
@@ -33,11 +32,9 @@
                     <a href="/panel">Admin</a>
                 @endif
             </nav>
-
             <div class="header-end">
                 <a class="biggerfont" href="#"><span style="font-size: small">A</span><span
                         style="font-size: large">A</span></a>
-
                 @if (!Auth::check())
                     <a href="/inbox" class="fa fa-bell"></a>
                     <a id="loginButton" href="/login">Inloggen</a>
@@ -45,8 +42,6 @@
                     <a href="/inbox"
                        class="fa fa-bell">{{count(Auth::user()->bericht1()->where('gelezen','=',0)->get())}}</a>
                     <a id="logoutButton" href="/logout">Uitloggen</a>
-
-
                 @else
                     <a href="/inbox" class="fa fa-bell"></a>
                     <a id="logoutButton" href="/logout">Uitloggen</a>
@@ -56,14 +51,12 @@
         </header>
     </div>
 </head>
-
 <body>
 <div class="container">
     @yield ('content')
 </div>
 <footer>
     <div class="footer">
-
         <script src="/JS/nav.js"></script>
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         @yield ('footer')
@@ -77,5 +70,4 @@
     </div>
 </footer>
 </body>
-
 </html>

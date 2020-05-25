@@ -161,7 +161,7 @@ class MessageController extends Controller
             'onderwerp' => 'required|max:50',
             'bericht' => 'required|max:500',
             'ontvanger' => 'required',
-            'transactie' => 'numeric',
+            'transactie' => 'numeric|nullable',
         ]);
         $message = new Bericht();
         $message->inhoud = request('bericht');

@@ -3,21 +3,17 @@
     nieuwsbericht
 @endsection
 @section('stylesheets')
-    <link rel="stylesheet" href="/CSS/advertentiedetails.css">
+    <link rel="stylesheet" href="/CSS/adDetails.css">
 @endsection
 @section ('content')
-
     <div class="flex-container">
         <div class="main-content">
-
             <h1 id="title" class="title">{{$news->naam}}</h1>
             <img src="{{$news->foto ?? 'https://i.imgur.com/HxdPz7Q.jpg'}}">
-
             <div class="description">
                 <b>Beschrijving <br/></b>
                 <p style="white-space: pre-line">{{$news->beschrijving}}</p>
             </div>
-
             <div class="info">
                 <div>
                 @if(Auth::check())
@@ -26,7 +22,6 @@
                 @endif
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

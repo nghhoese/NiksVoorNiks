@@ -1,35 +1,33 @@
 @extends ('layout')
 @section('title')
-nieuw bericht
+    nieuw bericht
 @endsection
 @section ('stylesheets')
-<link rel="stylesheet" href="/CSS/messageStyle.css">
-
+    <link rel="stylesheet" href="/CSS/message.css">
 @endsection
 @section ('content')
-
     <div class="card">
         <div class="card-header">
             <div class="title">
                 <p>Nieuw Bericht</p>
-
             </div>
             <form method="post" action="/inbox/verzenden">
                 @csrf
                 @if ($errors->any())
-                <div class="alert alert-danger">
-                    
+                    <div class="alert alert-danger">
                         @foreach ($errors->all() as $error)
                             <strong style="color:red;">{{ $error }}</strong>
                         @endforeach
-                   
-                </div><br/>
-            @endif
+                    </div><br/>
+                @endif
                 <label><b>Ontvanger: </b></label><br>
                 <select id="to" name="ontvanger">
                     <option value="{{$email ?? ''}}" selected>{{$email ?? 'Kies een ontvanger...'}}</option>
                     @foreach($recipients as $recipient)
-                        <option  value="{{$recipient->email}}">{{$recipient->voornaam}} {{$recipient->tussenvoegsel}} {{$recipient->achternaam}} ({{$recipient->email}})</option>
+                        <option
+                            value="{{$recipient->email}}">{{$recipient->voornaam}} {{$recipient->tussenvoegsel}} {{$recipient->achternaam}}
+                            ({{$recipient->email}})
+                        </option>
                     @endforeach
                 </select><br>
                 <label><b>Onderwerp: </b></label><br>
@@ -41,13 +39,8 @@ nieuw bericht
                 <input type="submit" value="Verzend Bericht">
             </form>
             <div class="back">
-<a href="/inbox"><i class="fas fa-arrow-left">Terug naar inbox</i></a>
-  </div>
+                <a href="/inbox"><i class="fas fa-arrow-left">Terug naar inbox</i></a>
+            </div>
         </div>
-
     </div>
-
-
-
-
 @endsection

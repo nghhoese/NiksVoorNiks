@@ -4,11 +4,9 @@
 @endsection
 @section ('stylesheets')
     <link rel="stylesheet" href="/CSS/pagination.css">
-    <link rel="stylesheet" href="/CSS/advertenties.css">
-
+    <link rel="stylesheet" href="/CSS/ads.css">
 @endsection
 @section ('content')
-
     <div class="articles">
         <div class="filters">
             <form method="post" action="/advertenties">
@@ -23,38 +21,29 @@
                     @endforeach
                 </select><br>
                 <hr>
-
                 <label class="title">Vraag en Aanbod:</label><br>
-
-
                 @if(!empty($aangeboden) && !empty($gevraagd))
                     <input checked type="checkbox" id="gevraagd" name="gevraagd">
                     <label for="gevraagd">Gevraagd</label>
-
                     <input checked type="checkbox" id="aangeboden" name="aangeboden">
                     <label for="aangeboden">Aangeboden</label><br>
                 @elseif(!empty($gevraagd))
                     <input checked type="checkbox" id="gevraagd" name="gevraagd">
                     <label for="gevraagd">Gevraagd</label>
-
                     <input type="checkbox" id="aangeboden" name="aangeboden">
                     <label for="aangeboden">Aangeboden</label><br>
                 @elseif(!empty($aangeboden))
                     <input type="checkbox" id="gevraagd" name="gevraagd">
                     <label for="gevraagd">Gevraagd</label>
-
                     <input checked type="checkbox" id="aangeboden" name="aangeboden">
                     <label for="aangeboden">Aangeboden</label><br>
                 @else
                     <input checked type="checkbox" id="gevraagd" name="gevraagd">
                     <label for="gevraagd">Gevraagd</label>
-
                     <input checked type="checkbox" id="aangeboden" name="aangeboden">
                     <label for="aangeboden">Aangeboden</label><br>
                 @endif
-
                 <hr>
-
                 <label class="title" for="place">Plaats:</label><br>
                 <select id="selectPlace" name="selectPlace">
                     <option value="{{$plaats ?? ''}}" selected>{{$plaats ?? 'Kies een plaats...'}}</option>
@@ -63,10 +52,7 @@
                         <option id="selectedPlace" value="{{$place->naam}}">{{$place->naam}}</option>
                     @endforeach
                 </select><br>
-
                 <hr>
-
-
                 <label class="title">Prijs:</label><br>
                 <div id="priceContainer">
                     <div class="slidecontainer">
@@ -79,8 +65,6 @@
                                name="maxPrice" id="maxPrice">
                         <p>Max: <span id="valueMax"></span> Niksen</p>
                     </div>
-
-
                     <div id="manualInputContainer">
                         <label for="minPrice">Vanaf:</label>
                         <input name="minPriceOld" id="minPriceOld" class="minPriceHand" value="{{ $minPrijs ?? '1'}}"
@@ -96,27 +80,22 @@
                 <br>
                 <input style="display:none;" class="btn" type="submit" value="filter">
             </form>
-
             <a class="addad" href="advertentiePlaatsen">
                 Klik hier om zelf een advertentie te plaatsen
                 <i class="fa fa-arrow-right"></i>
             </a>
         </div>
-
         <div class="article-list">
             @foreach($advertenties as $advertentie)
                 <a class="article" href="/advertentieDetails/{{ $advertentie->id }}" id="ad1">
                     <img src="{{$advertentie->foto ?? '\uploads\LM7EA7m.jpg'}}">
                     <div class="addetails">
                         <p class="adtype">
-
-
                             @if($advertentie->vraag == 0)
                                 Aangeboden
                             @else
                                 Gevraagd
                             @endif
-
                         </p><br>
                         <h3 class="adtitle">{{ $advertentie->titel }}</h3>
                         <p class="addescr">{{ $advertentie->beschrijving }}</p>
@@ -128,10 +107,7 @@
             {{$advertenties->links("pagination::bootstrap-4")}}
         </div>
     </div>
-
-
 @section('footer')
     <script src="/JS/adFilter.js"></script>
 @endsection
-
 @endsection

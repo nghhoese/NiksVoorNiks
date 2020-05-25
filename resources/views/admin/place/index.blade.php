@@ -16,9 +16,7 @@
             <br>
         @endforeach
         <br>
-
         <p style="color:red;">{{$error ?? ''}}</p>
-
         @if ($errors->any())
             <div class="alert alert-danger">
                 @foreach ($errors->all() as $error)

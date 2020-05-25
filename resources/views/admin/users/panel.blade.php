@@ -6,7 +6,6 @@
     Panel
 @endsection
 @section ('content')
-
     <div class="panel">
         <b>Nieuwe deelnemers</b>
         <div class="inbox">
@@ -21,7 +20,6 @@
                 </tr>
                 </thead>
                 <tbody>
-
                 @foreach($users as $user)
                     <tr>
                         <td>
@@ -29,11 +27,9 @@
                         </td>
                         <td>
                             <p>{{$user->email}}</p>
-
                         </td>
                         <td>
                             <p>{{$user->telefoonnummer}}</p>
-
                         </td>
                         <td style="text-align:center;"><a onclick="return confirm('Weet u het zeker?')" href="/panel/verwijder/{{$user->email}}"><i
                                     class="fas fa-trash-alt" style="color:#66BB6A;"></i></a>
@@ -49,10 +45,8 @@
             @endif
         </div>
     </div>
-
     <div class="panel2">
         <b>Alle deelnemers</b>
-
         <div class="inbox">
             <table id="table1">
                 <thead>
@@ -73,11 +67,9 @@
                         </td>
                         <td>
                             <p>{{$user->email}}</p>
-
                         </td>
                         <td>
                             <p>{{$user->telefoonnummer}}</p>
-
                         </td>
                         <td style="text-align:center;"><a href="/panel/wijzig/{{$user->email}}"><i
                                     class="fas fa-edit" style="color:#66BB6A;"></i></a>
@@ -99,5 +91,4 @@
             </table>
         </div>
     </div>
-
 @endsection

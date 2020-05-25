@@ -3,20 +3,17 @@
     Contact
 @endsection
 @section('stylesheets')
-    <link rel="stylesheet" href="CSS/contact.css">
+    <link rel="stylesheet" href="/CSS/contact.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @endsection
 @section ('content')
-
     <div class="all-information">
-
         <div class="left-information">
             <h1>{{$information->titel}}</h1>
             <p style="white-space: pre-line">{{$information->informatie}}</p>
         </div>
         <div class="right-information">
             <div class="title-cards">
-
                     <div class="outer-card">
                         <div class="card">
                             <img src="Resources/MXsfEWs.png" alt="" style="width:100%">
@@ -47,12 +44,7 @@
                     <div class="info-block">
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-
-
-
-
 @endsection

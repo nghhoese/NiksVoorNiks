@@ -3,11 +3,9 @@
 nieuwe transactie
 @endsection
 @section ('stylesheets')
-<link rel="stylesheet" href="/CSS/createPaymentStyle.css">
-
+<link rel="stylesheet" href="/CSS/createPayment.css">
 @endsection
 @section ('content')
-
     <div class="card">
         <div class="card-header">
             <div class="title">
@@ -42,10 +40,5 @@ nieuwe transactie
 <a href="/transacties"><i class="fas fa-arrow-left">Terug naar transacties</i></a>
   </div>
         </div>
-
     </div>
-
-
-
-
 @endsection

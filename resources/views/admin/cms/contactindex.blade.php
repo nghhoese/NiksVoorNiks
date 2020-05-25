@@ -1,7 +1,6 @@
 @extends ('layout')
 @section('stylesheets')
     <link rel="stylesheet" href="CSS/aboutUs.css">
-
 @endsection
 @section('title')
     CMS
@@ -12,10 +11,7 @@
             <a class="btn" href="/cms">Hoofdpagina</a>
             <a class="btn" href="/cms_overons">Over ons</a>
             <a class="btn" href="/cms_contact">Contact</a>
-
         </div>
-
-
         <div class="aboutUs">
             <h1>Contact Pagina</h1>
             <br>
@@ -27,8 +23,4 @@
             <a class="btn" href="/cms/edit/{{$information->where('naam', 'Contact')->first()->naam}}">Aanpassen</a>
         </div>
     </div>
-
-
-
-
 @endsection

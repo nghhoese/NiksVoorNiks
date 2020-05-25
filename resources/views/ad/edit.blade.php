@@ -3,11 +3,9 @@
     Advertentie plaatsen
 @endsection
 @section ('stylesheets')
-    <link rel="stylesheet" href="/CSS/advertentiePlaatsen.css">
-
+    <link rel="stylesheet" href="/CSS/createAd.css">
 @endsection
 @section ('content')
-
     <div class="plaatsadvertentie">
         <div class="createForm">
             @if ($errors->any())
@@ -19,14 +17,12 @@
                     </ul>
                 </div><br/>
             @endif
-
             <form id="form" method="post" action="/advertentie/wijzigen/{{$ad->id}}" enctype="multipart/form-data">
                 @csrf
                 <div class="plaatsAdvertentie1">
                     <h2>Advertentie Wijzigen</h2><br>
                     <label for="titel">Titel advertentie</label><br>
                     <input type="text" id="titel" name="titel" value="{{$ad->titel}}"><br><br>
-
                     <label for="beschrijving">Beschrijving</label><br>
                     <textarea value="{{$ad->beschrijving}}" name="beschrijving" id="beschrijving" rows="15"
                               cols="50">{{$ad->beschrijving}}</textarea><br><br>
@@ -50,7 +46,6 @@
                         @endif
                     </select>
                     <br><br>
-
                     <label>Prijs type:</label>
                     <select name="price-type">
                         @if($ad->bieden == 1)
@@ -65,7 +60,6 @@
                     <label for="prijs">Prijs(Niks)</label><br>
                     <input type="number" value="{{$ad->prijs}}" id="prijs" name="prijs" min="0" max="200">
                     <br><br>
-
                     <label for="location">Wijzig locatie</label><br>
                     <select id="location" name="location">
                         <option checked value="{{$ad->plaats}}">{{$ad->plaats}}</option>
@@ -73,7 +67,6 @@
                             <option value={{$place->naam}}>{{$place->naam}}</option>
                         @endforeach
                     </select><br><br>
-
                     <label for="img">wijzig eventueel de foto:</label><br>
                     <input type="file" name="file" class="form-control">
                     <img style="width:400px;" src="{{$ad->foto}}">

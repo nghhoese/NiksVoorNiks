@@ -3,11 +3,9 @@
     Advertentie plaatsen
 @endsection
 @section ('stylesheets')
-    <link rel="stylesheet" href="/CSS/activiteitPlaatsen.css">
-
+    <link rel="stylesheet" href="/CSS/createActivity.css">
 @endsection
 @section ('content')
-
     <div class="plaatsactiviteit">
         <div class="createForm">
             @if ($errors->any())
@@ -19,7 +17,6 @@
                     </ul>
                 </div><br/>
             @endif
-
             <form id="form" method="post" action="/activiteitPlaatsen" enctype="multipart/form-data">
                 @csrf
                 <div class="plaatsActiviteit1">
@@ -36,7 +33,6 @@
                     <input type="date" id="date" placeholder="Activiteit datum"
                            class="form-control @error('date') is-invalid @enderror" name="date"
                            value="{{ old('date') }}" required>
-
                     @error('dateofbirth')
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

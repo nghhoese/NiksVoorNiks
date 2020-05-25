@@ -3,8 +3,7 @@
     bekijk
 @endsection
 @section('stylesheets')
-    <link rel="stylesheet" href="/CSS/transactionView.css">
-
+    <link rel="stylesheet" href="/CSS/transaction.css">
 @endsection
 @section ('content')
     <div class="transactionWrapper">
@@ -28,19 +27,9 @@
                 <p>Bedrag betaald door: {{$transaction->ontvanger_email}}: <strong>{{$transaction->bedrag}}
                         niksen</strong></p><br>
                 <p>Transactie status: <strong>geaccepteerd</strong></p><br>
-
             @endif
-
-
             <p>Transactie beschrijving: <strong>{{$transaction->beschrijving}}</strong></p><br>
-
             <h3>Transactie Datum: {{$transaction->datum}}</h3>
         </div>
     </div>
-
-
-
-
-
-
 @endsection

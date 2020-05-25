@@ -4,10 +4,8 @@
 @endsection
 @section ('stylesheets')
     <link rel="stylesheet" href="/CSS/userEdit.css">
-
 @endsection
 @section ('content')
-
     <div class="plaatsadvertentie">
         <div class="createForm">
             @if ($errors->any())
@@ -19,7 +17,6 @@
                     </ul>
                 </div><br/>
             @endif
-
             <form id="form" method="post" action="/users/wijzigen/{{$user->email}}" enctype="multipart/form-data">
                 @csrf
                 <div class="plaatsAdvertentie1">

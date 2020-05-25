@@ -28,7 +28,6 @@
                             <p>Deelnemers: {{count($activity->deelnemer()->get())}} / {{$activity->max_deelnemers}}</p>
                         </div>
                         <label class="activity-date">{{$activity->datum}}</label>
-
                         @if(Auth::check())
                             <a href="/activiteitDetails/{{ $activity->id }}" class="adprice" for="ad1">Bekijken</a>
                         @endif
@@ -36,7 +35,6 @@
                         <br>
                     </div>
                 </div>
-
             @endforeach
             {{$activities->links("pagination::bootstrap-4")}}
         </div>
