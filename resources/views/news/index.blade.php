@@ -34,7 +34,7 @@
                         </div>
 
                     @endforeach
-{{--                    {{$nieuwsbericht->links("pagination::bootstrap-4")}}--}}
+                    {{$nieuws->links("pagination::bootstrap-4")}}
                 </div>
 
         </div>
