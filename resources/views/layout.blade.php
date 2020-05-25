@@ -61,7 +61,6 @@
 <div class="container">
     @yield ('content')
 </div>
-</body>
 <footer>
     <div class="footer">
 
@@ -70,17 +69,13 @@
         @yield ('footer')
         <div id="innerfooter">
             <div class="contact">
-                CONTACT:
-                <br>
-                info@email.nl
-                <br>
-                +316123456789
-                <br>
-            </div>
-            <div class="copyright">
-                &#169 2020 Niks voor Niks
+                <p>Contact: info.letsdb@gmail.com</p>
+                <p>06-22899114</p>
+                <p>&#169 2020 Niks voor Niks</p>
             </div>
         </div>
     </div>
 </footer>
+</body>
+
 </html>

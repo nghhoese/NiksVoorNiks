@@ -1,7 +1,11 @@
 .slidecontainer {
     width: 98%;
   }
-  
+
+.btn{
+    text-decoration: none !important;
+}
+
   .slider {
     -webkit-appearance: none;
     width: 100%;
@@ -12,11 +16,11 @@
     -webkit-transition: .2s;
     transition: opacity .2s;
   }
-  
+
   .slider:hover {
     opacity: 1;
   }
-  
+
   .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -25,7 +29,7 @@
     background: #4CAF50;
     cursor: pointer;
   }
-  
+
   .slider::-moz-range-thumb {
     width: 25px;
     height: 25px;

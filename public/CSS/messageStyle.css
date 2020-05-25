@@ -1,6 +1,6 @@
-.card{
+.card {
 
-    margin-top:50px;
+    margin-top: 50px;
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
@@ -9,41 +9,41 @@
     width: 100%;
 
 
+}
 
-}
-.title{
-    background-color:#66BB6A;
+.title {
+    background-color: #66BB6A;
     display: flex;
-justify-content: space-between;
-color: white;
+    justify-content: space-between;
+    color: white;
     padding: 5px;
-    padding-left: 10px;
 }
-.card-header{
+
+.card-header {
     border: 1px solid #66BB6A;
     color: grey;
     width: 100%;
     height: 100%;
     max-width: 700px;
-    background-color:white;
-
-
+    background-color: white;
 }
-.back{
-    margin-top:15px;
-    padding: 5px;
-    padding-left: 10px;
 
+.back {
+    margin-top: 15px;
+    padding: 5px;
     font-size: 1.2em;
 }
-.back a{
+
+.back a {
     text-decoration: none;
     color: grey;
 }
-.back a:hover{
+
+.back a:hover {
     text-decoration: none;
     background-color: lightgray;
 }
-form{
+
+form {
     margin-left: 11%;
 }

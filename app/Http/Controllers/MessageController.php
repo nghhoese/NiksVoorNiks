@@ -159,7 +159,7 @@ class MessageController extends Controller
     {
         $validatedData = $request->validate([
             'onderwerp' => 'required|max:50',
-            'bericht' => 'required|max:255',
+            'bericht' => 'required|max:500',
             'ontvanger' => 'required',
         ]);
         $message = new Bericht();
@@ -176,7 +176,7 @@ class MessageController extends Controller
     }
 
     public function delete($id)
-    {   
+    {
         $user = auth()->user();
         $email = Bericht::find($id);
         if($user->email != $email->zender_email && $user->email != $email->ontvanger_email){

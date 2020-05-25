@@ -543,10 +543,11 @@ input[type=submit]:hover {
 /* FOOTER */
 
 .footer {
+padding: 15px;
     bottom: 0;
     width: 100%;
     background-color: #66BB6A;
-    border-top: 1px solid #eee;
+    justify-content: space-between;
     text-align: center;
     color: white;
 }
@@ -554,7 +555,6 @@ input[type=submit]:hover {
 
 .footer>p {
     display: flex;
-    justify-items: center;
     flex-direction: row;
     border-top: 1px solid #eee;
     padding: 5px;
@@ -571,6 +571,16 @@ input[type=submit]:hover {
     height: 100%;
     border: 1px black;
     background-color: #C4E9C7;
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.contact p{
+    font-size: 1.2em;
 }
 
 .main-content {
