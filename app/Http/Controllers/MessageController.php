@@ -161,6 +161,7 @@ class MessageController extends Controller
             'onderwerp' => 'required|max:50',
             'bericht' => 'required|max:255',
             'ontvanger' => 'required',
+            'transactie' => 'numeric',
         ]);
         $message = new Bericht();
         $message->inhoud = request('bericht');
@@ -169,6 +170,9 @@ class MessageController extends Controller
         $message->zender_email = auth()->user()->email;
         $message->datum = date("Y-m-d H:i:s");
         $message->gelezen = 0;
+        if(request('transactie') != null){
+            $message->betaalverzoek_link = request('transactie');
+        }
         $message->verwijderd_door_ontvanger = 0;
         $message->verwijderd_door_zender = 0;
         $message->save();
