@@ -1,5 +1,5 @@
 .card{
-  
+
     margin-top:50px;
     display: flex;
     justify-content: space-evenly;
@@ -9,27 +9,31 @@
     width: 100%;
 
 
-  
+
 }
 .title{
     background-color:#66BB6A;
     display: flex;
 justify-content: space-between;
 color: white;
+    padding: 5px;
+    padding-left: 10px;
 }
 .card-header{
     border: 1px solid #66BB6A;
     color: grey;
     width: 100%;
-    height: 100%;   
+    height: 100%;
     max-width: 700px;
     background-color:white;
 
- 
+
 }
 .back{
     margin-top:15px;
-    
+    padding: 5px;
+    padding-left: 10px;
+
     font-size: 1.2em;
 }
 .back a{

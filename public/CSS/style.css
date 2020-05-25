@@ -24,7 +24,7 @@ body {
 
 @media screen and (max-width: 905px) {
     .logo{
-        margin-left: 0px; 
+        margin-left: 0px;
     }
     header.header {
         height: 100%;
@@ -175,6 +175,25 @@ body {
     transition-duration: 200ms;
     position: relative;
     min-width: 300px;
+}
+
+.aanbod .title{
+    max-width: 290px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+body{
+    background-color: #66BB6A;
+}
+
+
+.aanbod .beschrijving{
+    max-width: 290px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .preview-aanbod img {
