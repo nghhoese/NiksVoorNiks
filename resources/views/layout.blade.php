@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/CSS/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="/CSS/login.css">
+    <link rel="shortcut icon" type="image/png" href="/Resources/favicon.png"/>
     <div class="top">
         <header class="header">
             @yield ('stylesheets')
