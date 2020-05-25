@@ -91,7 +91,7 @@
                         <input class="btn" type="submit" value="herlaad">
                         <br>
                     </div>
-                    <a id="manualInput" href="#">Handmatig invoeren</a>
+                    <a id="manualInput" class="btn" href="#">Handmatig invoeren</a>
                 </div>
                 <br>
                 <input style="display:none;" class="btn" type="submit" value="filter">
