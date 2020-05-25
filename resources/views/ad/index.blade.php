@@ -99,7 +99,7 @@
                         </p><br>
                         <h3 class="adtitle">{{ $advertentie->titel }}</h3>
                         <p class="addescr">{{ $advertentie->beschrijving }}</p>
-                        <i class="fa fa-map-marker adloc"><label>{{$advertentie->plaats}}</label></i>
+                        <i class="fa fa-map-marker-alt adloc"><label> {{$advertentie->plaats}}</label></i>
                         <label class="adprice" for="ad1">{{ $advertentie->prijs}} Niks</label>
                     </div>
                 </a>

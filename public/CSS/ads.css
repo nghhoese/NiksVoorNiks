@@ -36,3 +36,7 @@
     background: #4CAF50;
     cursor: pointer;
   }
+
+input[type='checkbox']{
+    filter: invert(75%) hue-rotate(60deg) brightness(1.3);
+}
