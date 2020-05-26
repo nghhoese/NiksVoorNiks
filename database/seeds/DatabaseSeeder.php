@@ -175,6 +175,34 @@ class DatabaseSeeder extends Seeder
 
         //participants
         DB::table('deelnemer')->insert([
+            'email' => 'jan@niksvoorniks.cf',
+            'wachtwoord' => Hash::make('janniksvoorniks'),
+            'voornaam' => 'Jan',
+            'achternaam' => 'Jol',
+            'geboortedatum' => '1947-01-01',
+            'telefoonnummer' => '069876543',
+            'postcode' => '5211AC',
+            'huisnummer' => '12',
+            'niksen' => '20',
+            'beschrijving' => 'Jan Jol',
+            'rol_naam' => 'administrator',
+        ]);
+
+        DB::table('deelnemer')->insert([
+            'email' => 'rik@niksvoorniks.cf',
+            'wachtwoord' => Hash::make('rikniksvoorniks'),
+            'voornaam' => 'Rik',
+            'achternaam' => 'Meijer',
+            'geboortedatum' => '1985-01-01',
+            'telefoonnummer' => '069812543',
+            'postcode' => '5211AC',
+            'huisnummer' => '12',
+            'niksen' => '20',
+            'beschrijving' => 'Docent Avans',
+            'rol_naam' => 'administrator',
+        ]);
+
+        DB::table('deelnemer')->insert([
             'email' => 'fhendrik1@avans.nl',
             'wachtwoord' => '$2y$10$dwvl9pwnt8UP36WFcByVNO3LaDDkXtbYHhShvRbTcwqJPi8qMNw4m',
             'voornaam' => 'Ferran',
