@@ -16,34 +16,35 @@
             <div class="title-cards">
                     <div class="outer-card">
                         <div class="card">
-                            <img src="Resources/MXsfEWs.png" alt="" style="width:100%">
-                            <h1></h1>
-                            <p class="title"></p>
-                            <p class="telefoonnummer"></p>
+                            <img src="Resources/Contact/IMG_4359.JPG" alt="" style="width:100%">
+                            <h2>Lisette van Schijndel</h2>
+                            <p class="title">Lid secretariaat</p>
+                            <p class="telefoonnummer">06-22899114</p>
                         </div>
                         <div class="info-block">
+                            <h3>Hallo mijn naam is Lisette, ik ben onderdeel <br> van het secretariaat binnen de ruilkring Niks voor Niks.</h3>
                         </div>
                     </div>
-                <div class="outer-card">
-                    <div class="card">
-                        <img src="Resources/MXsfEWs.png" alt="" style="width:100%">
-                        <h1></h1>
-                        <p class="title"></p>
-                        <p class="telefoonnummer"></p>
-                    </div>
-                    <div class="info-block">
-                    </div>
-                </div>
-                <div class="outer-card">
-                    <div class="card">
-                        <img src="Resources/MXsfEWs.png" alt="" style="width:100%">
-                        <h1></h1>
-                        <p class="title"></p>
-                        <p class="telefoonnummer"></p>
-                    </div>
-                    <div class="info-block">
-                    </div>
-                </div>
+{{--                <div class="outer-card">--}}
+{{--                    <div class="card">--}}
+{{--                        <img src="Resources/MXsfEWs.png" alt="" style="width:100%">--}}
+{{--                        <h1></h1>--}}
+{{--                        <p class="title"></p>--}}
+{{--                        <p class="telefoonnummer"></p>--}}
+{{--                    </div>--}}
+{{--                    <div class="info-block">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="outer-card">--}}
+{{--                    <div class="card">--}}
+{{--                        <img src="Resources/MXsfEWs.png" alt="" style="width:100%">--}}
+{{--                        <h1></h1>--}}
+{{--                        <p class="title"></p>--}}
+{{--                        <p class="telefoonnummer"></p>--}}
+{{--                    </div>--}}
+{{--                    <div class="info-block">--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>
