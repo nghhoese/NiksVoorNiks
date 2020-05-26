@@ -25,7 +25,6 @@
                                     </span>
         @enderror
       <button>login</button>
-      <p class="message">Wachtwoord vergeten? <a href="#">Vraag een nieuw wachtwoord aan!</a></p>
     </form>
   </div>
 </div>
