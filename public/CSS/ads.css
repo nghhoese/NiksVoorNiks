@@ -1,9 +1,21 @@
+@media screen and (max-width: 905px) {
+    .btn ss{
+        display: block !important;
+        hidden: false !important;
+    }
+}
+
 .slidecontainer {
     width: 98%;
   }
 
 .btn{
     text-decoration: none !important;
+}
+
+.btn ss{
+    display: none !important;
+    hidden: true !important;
 }
 
   .slider {

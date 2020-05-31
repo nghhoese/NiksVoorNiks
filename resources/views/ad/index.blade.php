@@ -78,7 +78,7 @@
                     <a id="manualInput" class="btn" href="#">Handmatig invoeren</a>
                 </div>
                 <br>
-                <input style="display:none;" class="btn" type="submit" value="filter">
+                <input class="btn ss" type="submit" value="filter">
             </form>
             <a class="addad" href="advertentiePlaatsen">
                 Klik hier om zelf een advertentie te plaatsen
