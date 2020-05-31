@@ -1,0 +1,31 @@
+.aboutUs{
+    background-color: white;
+    margin-left:20%;
+    width:60%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    padding:2.5%;
+    font-size: 1.5em;
+    border-radius:25px;
+    text-decoration:none;
+    word-wrap: break-word;
+}
+.aboutUs a{
+    text-decoration:none;
+}
+.cms{
+    display: flex;
+    maxwidth:10%;
+}
+.sidemenu a:hover{
+    width:150%;
+}
+.sidemenu{
+ padding-top:5%;
+}
+.sidemenu a{
+    display: block;
+    transition: width 3s;
+    width:100%;
+    text-decoration:none;
+}

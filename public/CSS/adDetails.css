@@ -1,0 +1,92 @@
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    margin: 5px auto;
+    width: 100%;
+    height: 100%;
+    border: 1px black;
+}
+
+.main-content{
+    margin: 20px;
+    margin-left: 10%;
+    padding: 20px;
+    align-content: center;
+    max-width: 60%;
+    height: 100%;
+    border: 20px black;
+    background-color: white;
+}
+
+.btn{
+    margin-top: 20px;
+    border: none;
+    background-color: #66BB6A;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+    text-decoration: none !important;
+}
+
+.btn:hover {
+    background: #eee;
+    color:black;
+}
+
+.info{
+    margin: 20px;
+    margin-right: 10%;
+    padding: 20px;
+    max-width: 20%;
+    height: 100%;
+    border: 1px black;
+    background-color: white;
+}
+
+.naam{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.locatie{
+    margin-bottom: 10px;
+}
+
+.persoonsbeschrijving{
+    max-width: 100%;
+    margin-top: 40px;
+}
+
+.stats{
+    margin-top: 10px;
+    margin-bot: 10px;
+}
+
+.description{
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+.details{
+    margin-top: 5%;
+}
+
+button{
+    size: 20px 20px;
+}
+
+img{
+    max-width: 100%;
+    max-height: 400px;
+
+}
+
+b{
+    font-size: 1.5em;
+}
+
+h1{
+    font-size: 4em;
+}

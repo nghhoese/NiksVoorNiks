@@ -1,0 +1,686 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open sans', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 14px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+    background-color: #C4E9C7;
+}
+
+
+/* HEADER */
+
+@media screen and (max-width: 905px) {
+    .logo{
+        margin-left: 0px;
+    }
+    header.header {
+        height: 100%;
+    }
+    .header-end {
+        display: block!important;
+    }
+    .nav,
+    .nav a {
+        float: none;
+        display: none;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+    #menu {
+        display: block!important;
+    }
+    .toggleshow {
+        display: block;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 51px;
+    background-color: #66BB6A;
+    font-family: 'Roboto', sans-serif;
+    z-index: 10;
+    position: sticky;
+    top: 0px;
+}
+
+.header-start {
+    align-items: center;
+}
+
+.header-end {
+    display: flex;
+    align-items: center;
+}
+
+.header-end a {
+    text-decoration: none;
+    color: white;
+    float: left;
+    padding: 10px 12px;
+}
+
+.nav {
+    overflow: hidden;
+    background-color: #66BB6A;
+}
+
+.nav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.fa-bell {
+    font-size: 24px;
+}
+
+#menu {
+    display: none;
+    background-color: #66BB6A;
+    color: white;
+    width: 100px;
+}
+
+
+/* NAV */
+
+
+/* LOGO */
+
+.logo {
+    margin-left: 1rem;
+    height: 50px;
+}
+
+.logo img {
+    height: 100%;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.logo img:hover {
+    position: relative;
+    -webkit-animation-name: downup;
+    animation-name: downup;
+}
+
+
+/* CONTENT */
+
+.content {
+    height: 100%;
+    background-color: white;
+}
+
+.homecontent {
+    overflow: auto;
+    height: 100%;
+}
+
+.over-ons-small {
+    position: relative;
+    width: 30%;
+    flex: 1;
+    height: 100%;
+    background-color: white;
+    float: left;
+    padding: 50px 20px 30px 80px;
+    margin: 0px;
+    word-wrap: break-word;
+}
+
+.link {
+    color: #bbb;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.preview-aanbod {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 1%;
+}
+
+.aanbod {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    transition-duration: 200ms;
+    position: relative;
+    min-width: 300px;
+}
+
+.aanbod .title{
+    max-width: 290px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+body{
+    background-color: #C4E9C7;
+}
+
+
+.aanbod .beschrijving{
+    max-width: 290px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.preview-aanbod img {
+    max-width: 350px;
+    max-height: 150px;
+}
+
+.aanbod-image{
+    max-height: 200px;
+    min-height: 200px;
+}
+
+.preview-aanbod{
+    text-decoration: none;
+}
+
+.aanbod:link,
+.aanbod:visited {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.aanbod:link:active,
+.aanbod:visited:active {
+    color: black;
+}
+
+.aanbod:link:hover,
+.aanbod:visited:hover {
+    background-color: #bbb;
+}
+
+.aanbod img {
+    display: block;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title {
+    font-size: 2em;
+}
+
+.price,
+.type {
+    font-size: 1.2em;
+    background-color: #66BB6A;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.price {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.type {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.beschrijving {
+    font-size: 1.4em;
+}
+
+@media screen and (max-width: 905px) {
+    .homecontent {
+        display: inline;
+    }
+    .over-ons-small {
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .preview-aanbod {
+        width: 100%;
+        flex-direction: column;
+    }
+    .aanbod {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* AD Overview */
+
+.articles {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    height: 100%;
+    flex: 1;
+}
+
+
+/* Filters */
+
+.filters {
+    background-color: #C4E9C7;
+    width: 25%;
+    height: 100%;
+    display: inline-block;
+}
+
+.filters form {
+    margin: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2);
+    background-color: white;
+}
+
+.filters form>* {
+    margin: 2% 2% 2% 2%;
+}
+
+.filters form label.title {
+    font-size: 1.5em;
+}
+
+.filters form label {
+    font-size: 1em;
+}
+
+.filters form select {
+    width: 96%;
+    border-color: #66BB6A;
+    border-width: 2px;
+    padding: 5px;
+}
+
+.filters form input {
+    border-color: #66BB6A;
+    border-width: 2px;
+    padding: 5px;
+}
+
+.filters form input[type=number] {
+    width: 20%;
+}
+
+.filters form input[type=text] {
+    width: 96%;
+}
+
+.filters form input[type=checkbox] {
+    margin-left: 50px;
+    margin-right: 0;
+    height: 20px;
+    width: 20px;
+}
+
+
+/* Article list */
+
+.addad {
+    font-size: 1.7em;
+    position: absolute;
+    align-content: center;
+    width: 25%;
+    padding: 15px;
+    background-color: #66BB6A;
+    color: white;
+    cursor: pointer;
+}
+
+.addad:link,
+.addad:visited {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.addad:link:hover,
+.addad:visited:hover {
+    background-color: #bbb;
+}
+
+.article-list {
+    background-color: white;
+    width: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.article {
+    margin: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    transition-duration: 200ms;
+    position: relative;
+}
+
+.article:link,
+.article:visited {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.article:link:active,
+.article:visited:active {
+    color: black;
+}
+
+.article:link:hover,
+.article:visited:hover {
+    background-color: #C4E9C7;
+}
+
+.adtype {
+    font-size: 1.7em;
+    float: right;
+}
+
+.article img {
+    width: 15%;
+}
+
+.addetails {
+    width: 85%;
+    float: right;
+}
+
+.addetails>* {
+    margin: 0 20px;
+}
+
+.adtitle {
+    font-size: 2em;
+}
+
+.addescr {
+    font-size: 1.4em;
+    margin-bottom: 50px;
+}
+
+i.adloc {
+    font-size: 1.7em;
+    position: absolute;
+    bottom: 10px;
+}
+
+i.adloc label {
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.adprice {
+    font-size: 1.7em;
+    position: absolute;
+    bottom: 10px;
+    right: 0px;
+    background-color: #66BB6A;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.activity-date{
+    font-size: 1.3em;
+    position: relative;
+    bottom: 10px;
+
+    background-color: #66BB6A;
+    color: white;
+    padding: 5px;
+}
+
+@media screen and (max-width: 905px) {
+    .articles {
+        flex-wrap: wrap;
+    }
+    .filters {
+        width: 100%;
+        padding-bottom: 55px;
+    }
+    .addad {
+        width: 100%;
+        padding: 0px;
+    }
+    .article-list {
+        width: 100%;
+    }
+    .homecontent{
+        overflow: unset;
+    }
+}
+
+
+/* ADVERTENTIE PLAATSEN  */
+
+.plaatsadvertentie {
+    display: flex;
+    flex-direction: column;
+    min-height: 87.3vh;
+    background-color: #C4E9C7;
+
+}
+
+
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 24px 40px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.plaatsadvertentie form label {
+    font-size: 1em;
+}
+
+.plaatsadvertentie form select {
+    width: 96%;
+    border-color: #66BB6A;
+    border-width: 2px;
+    padding: 5px;
+}
+
+.plaatsadvertentie form input {
+    border-color: #66BB6A;
+    border-width: 2px;
+    padding: 5px;
+}
+
+.plaatsadvertentie form input[type=number] {
+    width: 20%;
+}
+
+.plaatsadvertentie form input[type=text] {
+    width: 96%;
+}
+
+
+/* FOOTER */
+
+.footer {
+padding: 15px;
+    bottom: 0;
+    width: 100%;
+    background-color: #66BB6A;
+    justify-content: space-between;
+    text-align: center;
+    color: white;
+}
+
+
+.footer>p {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #eee;
+    padding: 5px;
+}
+
+
+/* Advertentiedetails */
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    margin: 0px auto;
+    width: 100%;
+    height: 100%;
+    border: 1px black;
+    background-color: #C4E9C7;
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.contact p{
+    font-size: 1.2em;
+}
+
+.main-content {
+    margin: 20px;
+    margin-left: 10%;
+    padding: 20px;
+    align-content: center;
+    max-width: 60%;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.main-content img {
+    max-width: 70%;
+}
+
+h1.title {
+    font-size: 2.3em;
+    margin-bottom: 20px;
+}
+
+.btn {
+    margin-top: 20px;
+    border: none;
+    background-color: #66BB6A;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+}
+
+.btn:hover {
+    background: #eee;
+    color: black;
+}
+
+.info {
+    margin: 20px;
+    margin-right: 10%;
+    padding: 20px;
+    max-width: 20%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.naam {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.locatie {
+    margin-bottom: 10px;
+}
+
+.persoonsbeschrijving {
+    max-width: 100%;
+    margin-top: 40px;
+}
+
+.stats {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.description {
+    margin-top: 10px;
+    font-size: 1.3em;
+}
+
+.details {
+    margin-top: 5%;
+}
+
+button {
+    size: 20px 20px;
+}
+
+img {
+    max-width: 100%;
+}
+
+b {
+    font-size: 1.5em;
+}
+
+@media screen and (max-width: 905px) {
+    .flex-container {
+        flex-wrap: wrap;
+    }
+    .main-content {
+        max-width: 100%;
+        margin: 20px;
+    }
+    .main-content img {
+        max-width: 100%;
+    }
+    .info {
+        max-width: 100%;
+        margin: 20px;
+    }
+}

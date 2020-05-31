@@ -1,0 +1,35 @@
+.filters{
+    margin-top: 50px;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.addetails{
+    float: none;
+}
+
+.addescr {
+    margin-bottom: 15px !important;
+}
+
+i.btn{
+    margin-top: 0 !important;
+}
+
+.activity-date {
+    bottom: 0 !important;
+}
+
+.participants{
+    margin-bottom: 20px;
+}
+
+.addetails{
+    width: 100%;
+}
+
+.trashcan{
+vertical-align: center}

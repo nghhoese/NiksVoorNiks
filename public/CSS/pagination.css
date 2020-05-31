@@ -1,0 +1,33 @@
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+    margin-bottom: 5px;
+}
+
+
+.page-item {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: black;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.active {
+    background-color: #66BB6A;
+    color: white;
+    border-radius: 5px;
+}
+
+.page-item:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+}
